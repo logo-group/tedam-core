@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form enabled="true" height="659" lastUpdate="2016-03-23 19:56:59" locationX="0" locationY="0"
+      name="EMXFPersonCard%1.jfm" tag="1000115" title="Personel Kartı - 1603231954277804 ( )" version="v2.44.7.0"
+      visible="true" width="803">
+    <Control enabled="true" hasLookup="false" height="103" locationX="5" locationY="5" mandatory="false" tag="100"
+             text="" title="Unknown" type="4" value="" visible="true" width="280">
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23" mandatory="false"
+                 tag="1000001" text="" title="Sicil Numarası" type="101" value="" visible="true" width="89"/>
+        <Control enabled="true" hasLookup="false" height="27" locationX="97" locationY="23" mandatory="false"
+                 tag="3000011" text="" title="Unknown" type="10" value="" visible="true" width="178">
+            <Control enabled="true" hasLookup="false" height="22" locationX="0" locationY="0" mandatory="true" tag="101"
+                     text="TC009985" title="Sicil Numarası" type="102" value="TC009985" visible="true" width="150"/>
+            <Control enabled="true" hasLookup="false" height="18" locationX="155" locationY="0" mandatory="false"
+                     tag="1500" text="" title="Unknown" type="111" value="" visible="true" width="18"/>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="50" mandatory="false"
+                 tag="1000002" text="" title="Adı" type="101" value="" visible="true" width="25"/>
+        <Control enabled="true" hasLookup="false" height="22" locationX="97" locationY="50" mandatory="false" tag="102"
+                 text="TC009985" title="Adı" type="102" value="TC009985" visible="true" width="178"/>
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="74" mandatory="false"
+                 tag="1000003" text="" title="Soyadı" type="101" value="" visible="true" width="45"/>
+        <Control enabled="true" hasLookup="false" height="22" locationX="97" locationY="74" mandatory="false" tag="103"
+                 text="TC009985" title="Soyadı" type="102" value="TC009985" visible="true" width="178"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="127" locationX="285" locationY="5" mandatory="false" tag="150"
+             text="" title="Unknown" type="4" value="" visible="true" width="380">
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23" mandatory="true"
+                 tag="1000004" text="" title="Kurum" type="101" value="" visible="true" width="50"/>
+        <Control enabled="true" hasLookup="true" height="24" locationX="58" locationY="23" mandatory="true" tag="111"
+                 text="" title="Kurum" type="102" value="01" visible="true" width="122"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="180" locationY="23" mandatory="false"
+                 tag="112" text="Merkez" title="Unknown" type="102" value="Merkez" visible="true" width="185"/>
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47" mandatory="true"
+                 tag="1000005" text="" title="İşyeri" type="101" value="" visible="true" width="42"/>
+        <Control enabled="true" hasLookup="true" height="24" locationX="58" locationY="47" mandatory="true" tag="115"
+                 text="" title="İşyeri" type="102" value="01.01" visible="true" width="122"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="180" locationY="47" mandatory="false"
+                 tag="116" text="Merkez" title="Unknown" type="102" value="Merkez" visible="true" width="185"/>
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="71" mandatory="true"
+                 tag="1000006" text="" title="Birim" type="101" value="" visible="true" width="42"/>
+        <Control enabled="true" hasLookup="true" height="24" locationX="58" locationY="71" mandatory="true" tag="117"
+                 text="" title="Birim" type="102" value="01.01.01" visible="true" width="122"/>
+        <Control enabled="true" hasLookup="false" height="27" locationX="180" locationY="71" mandatory="false"
+                 tag="3000000" text="" title="Unknown" type="10" value="" visible="true" width="185">
+            <Control enabled="true" hasLookup="false" height="20" locationX="5" locationY="0" mandatory="false"
+                     tag="119" text="" title="Üst Birimler" type="111" value="" visible="true" width="20"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="30" locationY="0" mandatory="false"
+                     tag="118" text="Merkez" title="Unknown" type="102" value="Merkez" visible="true" width="150"/>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="98" mandatory="true"
+                 tag="1000007" text="" title="Bölüm" type="101" value="" visible="true" width="49"/>
+        <Control enabled="true" hasLookup="true" height="24" locationX="58" locationY="98" mandatory="true" tag="113"
+                 text="" title="Bölüm" type="102" value="01" visible="true" width="122"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="180" locationY="98" mandatory="false"
+                 tag="114" text="Merkez" title="Unknown" type="102" value="Merkez" visible="true" width="185"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="134" locationX="665" locationY="5" mandatory="false" tag="160"
+             text="" title="Unknown" type="10" value="" visible="true" width="133">
+        <Control enabled="true" hasLookup="false" height="120" locationX="8" locationY="8" mandatory="false" tag="500"
+                 text="" title="Fotoğraf" type="153" value="null" visible="true" width="120"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="490" locationX="5" locationY="139" mandatory="false" tag="200"
+             text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true" width="793">
+        <Control enabled="true" hasLookup="false" height="467" locationX="0" locationY="23" mandatory="false"
+                 tag="1000029" text="" title="Ana Bilgiler" type="3" value="0" visible="true" width="793">
+            <Control enabled="true" hasLookup="false" height="163" locationX="5" locationY="5" mandatory="false"
+                     tag="201" text="" title="Unknown" type="4" value="" visible="true" width="782">
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="12" mandatory="false"
+                         tag="1000008" text="" title="İkinci Adı" type="101" value="" visible="true" width="56"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="149" locationY="12" mandatory="false"
+                         tag="202" text="" title="İkinci Adı" type="102" value="" visible="true" width="150"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="312" locationY="12" mandatory="false"
+                         tag="1000009" text="" title="Akademik Unvanı" type="101" value="" visible="true" width="103"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="431" locationY="12" mandatory="false"
+                         tag="203" text="" title="Akademik Unvanı" type="102" value="" visible="true" width="165"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="604" locationY="12" mandatory="false"
+                         tag="235" text="" title="Unknown" type="102" value="" visible="true" width="115"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="36" mandatory="true"
+                         tag="1000010" text="" title="Giriş Tarihi" type="101" value="" visible="true" width="73"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="149" locationY="36" mandatory="true"
+                         tag="204" text="" title="Unknown" type="116" value="01/01/2016" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="312" locationY="36" mandatory="true"
+                         tag="1000128" text="" title="İşyerine Giriş Tarihi" type="101" value="" visible="true"
+                         width="119"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="431" locationY="36" mandatory="true"
+                         tag="476" text="" title="Unknown" type="116" value="01/01/2016" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="60" mandatory="false"
+                         tag="1000012" text="" title="Sosyal Güvenlik Statüsü" type="101" value="" visible="true"
+                         width="140"/>
+                <Control enabled="true" hasLookup="false" height="22"
+                         itemList="SGK (Çalışan)~1|SGK (Emekli)~2|SGK (Çırak)~3|SGK (Stajyer)~4|SGK (Yabancı)~5|Emekli Sandığı (Memur)~10|Emekli Sandığı (Çalışan)~6|Emekli Sandığı (Emekli)~7|Bağ-Kur (Çalışan)~8|Bağ-Kur (Emekli)~9|Diğer"
+                         locationX="149" locationY="60" mandatory="false" tag="206" text=""
+                         title="Sosyal Güvenlik Statüsü" type="106" value="0" value_tag="1" visible="true" width="158"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="312" locationY="60" mandatory="false"
+                         tag="1000013" text="" title="Şifresi" type="101" value="" visible="true" width="43"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="431" locationY="60" mandatory="false"
+                         tag="210" text="" title="Şifresi" type="102" value="" visible="true" width="80"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="84" mandatory="false"
+                         tag="1000270" text="" title="Kanun No" type="101" value="" visible="true" width="63"/>
+                <Control enabled="false" hasLookup="false" height="22" itemList="631|666~1" locationX="149"
+                         locationY="84" mandatory="false" tag="271" text="" title="Kanun No" type="106" value="0"
+                         value_tag="0" visible="true" width="80"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="312" locationY="84" mandatory="false"
+                         tag="1000015" text="" title="Mesleği" type="101" value="" visible="true" width="51"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="431" locationY="84" mandatory="false"
+                         tag="251" text="" title="Mesleği" type="102" value="" visible="true" width="165"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="604" locationY="84" mandatory="false"
+                         tag="236" text="" title="Unknown" type="102" value="" visible="true" width="115"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="108" mandatory="false"
+                         tag="1000272" text="" title="Kanun Sıra No" type="101" value="" visible="true" width="88"/>
+                <Control enabled="false" hasLookup="false" height="22" itemList="" locationX="149" locationY="108"
+                         mandatory="false" tag="272" text="" title="Kanun Sıra No" type="106" value="-1" value_tag="0"
+                         visible="true" width="150"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="312" locationY="108" mandatory="false"
+                         tag="1000014" text="" title="Personel Statüsü" type="101" value="" visible="true" width="103"/>
+                <Control enabled="true" hasLookup="false" height="22"
+                         itemList="|Statü_1~1|HRCRH_STATÜSÜ~100|EMBATCH001~248|FOREMFT001~249|TC004888~250"
+                         locationX="431" locationY="108" mandatory="false" tag="209" text="" title="Personel Statüsü"
+                         type="106" value="0" value_tag="0" visible="true" width="173"/>
+                <Control enabled="false" hasLookup="false" height="0" locationX="9" locationY="132" mandatory="false"
+                         tag="1000016" text="" title="Çıkış Tarihi" type="101" value="" visible="false" width="70"/>
+                <Control enabled="false" hasLookup="false" height="0" locationX="149" locationY="132" mandatory="false"
+                         tag="211" text="__/__/____" title="Çıkış Tarihi" type="116" value="__/__/____" visible="false"
+                         width="80"/>
+                <Control enabled="false" hasLookup="false" height="0" locationX="312" locationY="132" mandatory="false"
+                         tag="1000144" text="" title="Çıkış Nedeni (SGK)" type="101" value="" visible="false"
+                         width="115"/>
+                <Control enabled="true" hasLookup="false" height="0" locationX="431" locationY="132" mandatory="false"
+                         tag="379" text="" title="Çıkış Nedeni (SGK)" type="102" value="" visible="false" width="346"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="9" locationY="132" mandatory="false"
+                         tag="1000011" text="" title="Bordro Kodu" type="101" value="" visible="true" width="77"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="149" locationY="132" mandatory="false"
+                         tag="205" text="" title="Bordro Kodu" type="102" value="" visible="true" width="80"/>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="161" locationX="5" locationY="168" mandatory="false"
+                     tag="221" text="" title="Unknown" type="4" value="" visible="true" width="779">
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="12" mandatory="false"
+                         tag="1000217" text="" title="Pozisyon Grubu" type="101" value="" visible="true" width="94"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="12" mandatory="false"
+                         tag="506" text="" title="Pozisyon Grubu" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="12" mandatory="false"
+                         tag="507" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="36" mandatory="false"
+                         tag="1000017" text="" title="Pozisyonu" type="101" value="" visible="true" width="64"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="36" mandatory="false"
+                         tag="222" text="" title="Pozisyonu" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="36" mandatory="false"
+                         tag="223" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="519" locationY="36" mandatory="false"
+                         tag="234" text="" title="Unknown" type="102" value="" visible="true" width="255"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="60" mandatory="false"
+                         tag="1000018" text="" title="Görev Yeri" type="101" value="" visible="true" width="64"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="60" mandatory="false"
+                         tag="224" text="" title="Görev Yeri" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="60" mandatory="false"
+                         tag="225" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="84" mandatory="false"
+                         tag="1000019" text="" title="Unvanı" type="101" value="" visible="true" width="46"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="84" mandatory="false"
+                         tag="228" text="" title="Unvanı" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="84" mandatory="false"
+                         tag="229" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="108" mandatory="false"
+                         tag="1000020" text="" title="Kadro Kartı" type="101" value="" visible="true" width="69"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="108" mandatory="false"
+                         tag="230" text="" title="Kadro Kartı" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="108" mandatory="false"
+                         tag="231" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="132" mandatory="false"
+                         tag="1000021" text="" title="Yöneticisi" type="101" value="" visible="true" width="61"/>
+                <Control enabled="true" hasLookup="true" height="24" locationX="102" locationY="132" mandatory="false"
+                         tag="232" text="" title="Yöneticisi" type="102" value="" visible="true" width="122"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="229" locationY="132" mandatory="false"
+                         tag="233" text="" title="Unknown" type="102" value="" visible="true" width="290"/>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="137" locationX="5" locationY="329" mandatory="false"
+                     tag="241" text="" title="Unknown" type="4" value="" visible="true" width="569">
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="12" mandatory="false"
+                         tag="1000024" text="" title="Doğum Tarihi" type="101" value="" visible="true" width="83"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="112" locationY="12" mandatory="false"
+                         tag="242" text="" title="Unknown" type="116" value="__/__/____" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="275" locationY="12" mandatory="false"
+                         tag="1000023" text="" title="Ehliyet Sınıfı/Tarihi" type="101" value="" visible="true"
+                         width="108"/>
+                <Control enabled="true" hasLookup="false" height="22"
+                         itemList="|Yok~1|A1~2|A2~3|B~4|C~5|D~6|E~7|H~8|F~9|G~10|K~11" locationX="391" locationY="12"
+                         mandatory="false" tag="243" text="" title="Ehliyet Sınıfı/Tarihi" type="106" value="0"
+                         value_tag="0" visible="true" width="69"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="460" locationY="12" mandatory="false"
+                         tag="244" text="" title="Unknown" type="116" value="__/__/____" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="36" mandatory="false"
+                         tag="1000022" text="" title="TC. Kimlik No" type="101" value="" visible="true" width="83"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="112" locationY="36" mandatory="false"
+                         tag="259" text="" title="TC. Kimlik No" type="102" value="" visible="true" width="158"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="275" locationY="36" mandatory="false"
+                         tag="1000025" text="" title="Pasaport Numarası" type="101" value="" visible="true"
+                         width="116"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="391" locationY="36" mandatory="false"
+                         tag="246" text="" title="Pasaport Numarası" type="102" value="" visible="true" width="150"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="60" mandatory="false"
+                         tag="1000026" text="" title="Cinsiyeti" type="101" value="" visible="true" width="55"/>
+                <Control enabled="true" hasLookup="false" height="22" itemList="~999|Erkek~1|Kadın~2" locationX="112"
+                         locationY="60" mandatory="false" tag="245" text="" title="Cinsiyeti" type="106" value="1"
+                         value_tag="1" visible="true" width="80"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="275" locationY="60" mandatory="false"
+                         tag="1000027" text="" title="Askerlik Durumu" type="101" value="" visible="true" width="99"/>
+                <Control enabled="true" hasLookup="false" height="22" itemList="|Tecilli~1|Terhis~2|Muaf~3"
+                         locationX="391" locationY="60" mandatory="false" tag="248" text="" title="Askerlik Durumu"
+                         type="106" value="2" value_tag="2" visible="true" width="115"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="84" mandatory="false"
+                         tag="1000028" text="" title="Medeni Hali" type="101" value="" visible="true" width="73"/>
+                <Control enabled="true" hasLookup="false" height="22" itemList="|Evli~1|Bekar~2|Boşanmış~3|Dul~4"
+                         locationX="112" locationY="84" mandatory="false" tag="247" text="" title="Medeni Hali"
+                         type="106" value="2" value_tag="2" visible="true" width="80"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="275" locationY="84" mandatory="false"
+                         tag="1000030" text="" title="Terhis Tarihi" type="101" value="" visible="true" width="77"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="391" locationY="84" mandatory="false"
+                         tag="250" text="" title="Unknown" type="116" value="__/__/____" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="108" mandatory="false"
+                         tag="1000033" text="" title="Öğrenim Durumu" type="101" value="" visible="true" width="104"/>
+                <Control enabled="true" hasLookup="false" height="22"
+                         itemList="|Okuryazar~1|İlköğretim~2|Ortaöğretim~3|Lise~4|Meslek Yüksek Okulu~5|Üniversite~6|Yüksek Lisans~7|Doktora~8"
+                         locationX="112" locationY="108" mandatory="false" tag="249" text="" title="Öğrenim Durumu"
+                         type="106" value="3" value_tag="3" visible="true" width="158"/>
+                <Control enabled="false" hasLookup="false" height="24" locationX="275" locationY="108" mandatory="false"
+                         tag="1000034" text="" title="Tecil Süresi" type="101" value="" visible="true" width="73"/>
+                <Control enabled="false" hasLookup="false" height="22" locationX="391" locationY="108" mandatory="false"
+                         tag="252" text="" title="Tecil Süresi" type="102" value="" visible="true" width="150"/>
+            </Control>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="467" locationX="0" locationY="23" mandatory="false"
+                 tag="1000074" text="" title="Ücret Bilgileri" type="3" value="1" visible="false" width="793">
+            <Control enabled="true" hasLookup="false" height="457" locationX="5" locationY="5" mandatory="false"
+                     tag="300" text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true"
+                     width="783">
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000064" text="" title="Temel" type="3" value="0" visible="true" width="783">
+                    <Control enabled="true" hasLookup="false" height="86" locationX="5" locationY="5" mandatory="false"
+                             tag="301" text="" title="Unknown" type="4" value="" visible="true" width="650">
+                        <Control enabled="true" hasLookup="false" height="29" locationX="8" locationY="23"
+                                 mandatory="false" tag="3000001" text="" title="Unknown" type="10" value=""
+                                 visible="true" width="634">
+                            <Control enabled="true" hasLookup="false" height="24" locationX="0" locationY="0"
+                                     mandatory="false" tag="1000035" text="" title="Ücreti" type="101" value=""
+                                     visible="true" width="40"/>
+                            <Control enabled="true" hasLookup="false" height="22" locationX="129" locationY="0"
+                                     mandatory="false" tag="302" text="0" title="Ücreti" type="117" value="0"
+                                     visible="true" width="115"/>
+                            <Control enabled="true" hasLookup="false" height="22"
+                                     itemList="USD~1|EUR~20|GBP~17|DEM~2|AUD~3|ATS~4|BEF~5|DKK~6|FIM~7|FRF~8|NLG~9|SEK~10|CHF~11|ITL~12|JPY~13|CAD~14|KWD~15|NOK~16|SAR~18|XEU~19|AZM~21|BRL~22|BGN~23|CZK~24|CNY~25|EEK~26|GEL~27|INR~28|HKD~29|IQD~30|IRR~31|IEP~32|ESP~33|ILS~34|ISK~35|CYP~36|KGS~37|LVL~38|LYD~39|LBP~40|LTL~41|LUF~42|HUF~43|MYR~44|MXN~45|EGP~46|BBD~47|PLN~48|PTE~49|ROL~50|RUB~51|TWD~52|JOD~54|GRD~55|ARS~56|LAK~57|ADP~58|AED~59|AFN~60|ALL~61|ANG~62|AOA~63|BDT~64|BHD~65|BIF~66|BMD~67|BND~68|BOB~69|BSD~70|BTN~71|BWP~72|BZD~73|CLP~74|COP~75|CRC~76|CUP~77|CVE~78|DJF~79|DOP~80|DZD~81|ECS~82|ETB~83|FJD~84|FKP~85|GHS~86|GIP~87|GMD~88|GNF~89|GTQ~90|GWP~91|GYD~92|HNL~93|HTG~94|IDR~95|JMD~96|KES~97|KHR~98|KMF~99|KPW~100|KRW~101|KYD~102|LKR~103|LRD~104|LSL~105|MAD~106|MNT~107|MOP~108|MRO~109|MTL~110|MUR~111|MVR~112|MWK~113|MZN~114|NGN~115|NIO~116|NPR~117|NZD~118|OMR~119|PAB~120|PEN~121|PGK~122|PHP~123|PKR~124|PYG~125|QAR~126|RWF~127|SBD~128|SCR~129|SDG~130|SGD~131|SHP~132|SLL~133|SOS~134|SRG~135|STD~136|SVC~137|SYP~138|SZL~139|THB~140|TND~141|TPE~142|TTD~143|TZS~144|UGX~145|UYU~146|VEB~147|VND~148|WST~149|YDD~150|YER~151|YUD~152|ZAR~153|ZMK~154|ZWD~155|KZT~156|UAH~157|TMM~158|UZS~159|TRY~160|RON~161|AZN~162|TJS~163|MKD~164"
+                                     locationX="244" locationY="0" mandatory="false" tag="303" text="" title="Unknown"
+                                     type="106" value="158" value_tag="160" visible="true" width="66"/>
+                            <Control enabled="true" hasLookup="false" height="24" locationX="317" locationY="0"
+                                     mandatory="false" tag="1000031" text="" title="Ödeme Tipi" type="101" value=""
+                                     visible="true" width="72"/>
+                            <Control enabled="true" hasLookup="false" height="22"
+                                     itemList="|Ay~1|Gün~2|Saat~3|Aylık saat~4" locationX="389" locationY="0"
+                                     mandatory="false" tag="304" text="" title="Ödeme Tipi" type="106" value="1"
+                                     value_tag="1" visible="true" width="66"/>
+                            <Control enabled="true" hasLookup="false" height="24" locationX="460" locationY="0"
+                                     mandatory="false" tag="1000032" text="" title="Hesaplama Şekli" type="101" value=""
+                                     visible="true" width="103"/>
+                            <Control enabled="true" hasLookup="false" height="22" itemList="|Net~1|Brüt~2"
+                                     locationX="563" locationY="0" mandatory="false" tag="306" text=""
+                                     title="Hesaplama Şekli" type="106" value="2" value_tag="2" visible="true"
+                                     width="66"/>
+                        </Control>
+                        <Control enabled="true" hasLookup="false" height="29" locationX="8" locationY="52"
+                                 mandatory="false" tag="633" text="" title="Unknown" type="10" value="" visible="true"
+                                 width="559">
+                            <Control enabled="true" hasLookup="false" height="24" locationX="0" locationY="0"
+                                     mandatory="false" tag="1000036" text="" title="Hizmet Sınıfı" type="101" value=""
+                                     visible="true" width="76"/>
+                            <Control enabled="true" hasLookup="false" height="22"
+                                     itemList="GİH Genel İdari Hizmetler 0.0/0.0~1" locationX="76" locationY="0"
+                                     mandatory="false" tag="1339" text="" title="Hizmet Sınıfı" type="106" value="0"
+                                     value_tag="1" visible="true" width="181"/>
+                            <Control enabled="true" hasLookup="false" height="24" locationX="264" locationY="0"
+                                     mandatory="false" tag="1000038" text="" title="Görev Sınıfı" type="101" value=""
+                                     visible="true" width="70"/>
+                            <Control enabled="true" hasLookup="false" height="22"
+                                     itemList="AVKH Avukatlık hizmetleri sınıfı ~20|DİNH.A Din hizmetleri sınıfı (A) ~21|DİNH.B Din hizmetleri sınıfı (B) ~22|EMNH.A Emniyet hizmetleri sınıfı (A) ~23|EMNH.B Emniyet hizmetleri sınıfı (B) ~24|EMNH.C Emniyet hizmetleri sınıfı (C) ~25|EMNH.D Emniyet hizmetleri sınıfı (D) ~26|EMNH.E.1 Emniyet hizmetleri sınıfı (E-1) ~27|EMNH.E.2 Emniyet hizmetleri sınıfı (E-2) ~28|EĞÖH.A Eğitim ve öğretim hiz. sınıfı (A) ~18|EĞÖH.B Eğitim ve öğretim hiz. sınıfı (B) ~19|GİDH.A Genel İdare Hizmetleri (A) ~1|GİDH.B Genel İdare Hizmetleri (B) ~2|GİDH.C Genel İdare Hizmetleri (C) ~3|GİDH.D Genel İdare Hizmetleri (D) ~4|GİDH.E Genel İdare Hizmetleri (E) ~5|GİDH.F Genel İdare Hizmetleri (F) ~6|GİDH.G Genel İdare Hizmetleri (G) ~7|GİDH.H Genel İdare Hizmetleri (H) ~8|GİDH.İ.1 Genel İdare Hizmetleri (İ-1) ~9|GİDH.İ.2 Genel İdare Hizmetleri (İ-2) ~10|GİHK.1 Genel idari hizmetler kadrolu (1) ~32|GİHK.2 Genel idari hizmetler kadrolu (2) ~33|GİHK.3 Genel idari hizmetler kadrolu (3) ~34|GİHK.4 Genel idari hizmetler kadrolu (4) ~35|GİHK.5 Genel idari hizmetler kadrolu (5) ~36|GİHK.6 Genel idari hizmetler kadrolu (6) ~37|MİAH.A Mülki idare amirliği hiz. sınıfı (A) ~29|MİAH.B Mülki idare amirliği hiz. sınıfı (B) ~30|MİAH.C Mülki idare amirliği hiz. sınıfı (C) ~31|SAĞH.A Sağlık hizmetleri sınıfı (A) ~15|SAĞH.B Sağlık hizmetleri sınıfı (B) ~16|SAĞH.C Sağlık hizmetleri sınıfı (C) ~17|TKNH.A Teknik Hizmetler Sınıfı (A) ~11|TKNH.B Teknik Hizmetler Sınıfı (B) ~12|TKNH.C Teknik Hizmetler Sınıfı (C) ~13|TKNH.D Teknik hizmetler sınıfı (D) ~14"
+                                     locationX="334" locationY="0" mandatory="false" tag="1340" text=""
+                                     title="Görev Sınıfı" type="106" value="11" value_tag="1" visible="true"
+                                     width="220"/>
+                        </Control>
+                    </Control>
+                    <Control enabled="false" hasLookup="false" height="0" locationX="5" locationY="5" mandatory="false"
+                             tag="321" text="" title="Unknown" type="4" value="" visible="false" width="0">
+                        <Control enabled="false" hasLookup="false" height="77" locationX="8" locationY="23"
+                                 mandatory="false" tag="3000002" text="" title="Unknown" type="10" value=""
+                                 visible="true" width="596">
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="0" mandatory="false" tag="323" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="83"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="300" locationY="0"
+                                     mandatory="false" tag="324" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="358" locationY="0"
+                                     mandatory="false" tag="325" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="421" locationY="0"
+                                     mandatory="false" tag="1000037" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="487" locationY="0"
+                                     mandatory="false" tag="326" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="24" mandatory="false" tag="333" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="83"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="300" locationY="24"
+                                     mandatory="false" tag="334" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="358" locationY="24"
+                                     mandatory="false" tag="335" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="421" locationY="24"
+                                     mandatory="false" tag="1000041" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="487" locationY="24"
+                                     mandatory="false" tag="336" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="48" mandatory="false" tag="328" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="83"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="300" locationY="48"
+                                     mandatory="false" tag="329" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="20" locationX="358" locationY="48"
+                                     mandatory="false" tag="330" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="58"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="421" locationY="48"
+                                     mandatory="false" tag="1000039" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="487" locationY="48"
+                                     mandatory="false" tag="331" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="0" mandatory="false" tag="322" text="" title="Maaş"
+                                     type="106" value="14" value_tag="15" visible="false" width="88"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="0"
+                                     mandatory="false" tag="1000042" text="" title="Maaş" type="101" value=""
+                                     visible="false" width="38"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="24" mandatory="false" tag="332" text=""
+                                     title="Emekli Sandığı" type="106" value="14" value_tag="15" visible="false"
+                                     width="88"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="48" mandatory="false" tag="327" text="" title="Kadro"
+                                     type="106" value="14" value_tag="15" visible="false" width="88"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="24"
+                                     mandatory="false" tag="1000043" text="" title="Emekli Sandığı" type="101" value=""
+                                     visible="false" width="91"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="48"
+                                     mandatory="false" tag="1000044" text="" title="Kadro" type="101" value=""
+                                     visible="false" width="41"/>
+                        </Control>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="100"
+                                 mandatory="false" tag="1000045" text="" title="Kıdem Yılı" type="101" value=""
+                                 visible="false" width="63"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="137" locationY="100"
+                                 mandatory="false" tag="337" text="0" title="Kıdem Yılı" type="117" value="0"
+                                 visible="false" width="24"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="335" locationY="100"
+                                 mandatory="false" tag="1000046" text="" title="Terfi Tarihi" type="101" value=""
+                                 visible="false" width="66"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="482" locationY="100"
+                                 mandatory="false" tag="338" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="false" width="104"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="124"
+                                 mandatory="false" tag="1000047" text="" title="Hizmet Sınıfı" type="101" value=""
+                                 visible="false" width="76"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="GİH Genel İdari Hizmetler 0.0/0.0~1" locationX="137" locationY="124"
+                                 mandatory="false" tag="2339" text="" title="Hizmet Sınıfı" type="106" value="0"
+                                 value_tag="1" visible="false" width="198"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="335" locationY="124"
+                                 mandatory="false" tag="1000050" text="" title="Görev Sınıfı" type="101" value=""
+                                 visible="false" width="70"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="AVKH Avukatlık hizmetleri sınıfı ~20|DİNH.A Din hizmetleri sınıfı (A) ~21|DİNH.B Din hizmetleri sınıfı (B) ~22|EMNH.A Emniyet hizmetleri sınıfı (A) ~23|EMNH.B Emniyet hizmetleri sınıfı (B) ~24|EMNH.C Emniyet hizmetleri sınıfı (C) ~25|EMNH.D Emniyet hizmetleri sınıfı (D) ~26|EMNH.E.1 Emniyet hizmetleri sınıfı (E-1) ~27|EMNH.E.2 Emniyet hizmetleri sınıfı (E-2) ~28|EĞÖH.A Eğitim ve öğretim hiz. sınıfı (A) ~18|EĞÖH.B Eğitim ve öğretim hiz. sınıfı (B) ~19|GİDH.A Genel İdare Hizmetleri (A) ~1|GİDH.B Genel İdare Hizmetleri (B) ~2|GİDH.C Genel İdare Hizmetleri (C) ~3|GİDH.D Genel İdare Hizmetleri (D) ~4|GİDH.E Genel İdare Hizmetleri (E) ~5|GİDH.F Genel İdare Hizmetleri (F) ~6|GİDH.G Genel İdare Hizmetleri (G) ~7|GİDH.H Genel İdare Hizmetleri (H) ~8|GİDH.İ.1 Genel İdare Hizmetleri (İ-1) ~9|GİDH.İ.2 Genel İdare Hizmetleri (İ-2) ~10|GİHK.1 Genel idari hizmetler kadrolu (1) ~32|GİHK.2 Genel idari hizmetler kadrolu (2) ~33|GİHK.3 Genel idari hizmetler kadrolu (3) ~34|GİHK.4 Genel idari hizmetler kadrolu (4) ~35|GİHK.5 Genel idari hizmetler kadrolu (5) ~36|GİHK.6 Genel idari hizmetler kadrolu (6) ~37|MİAH.A Mülki idare amirliği hiz. sınıfı (A) ~29|MİAH.B Mülki idare amirliği hiz. sınıfı (B) ~30|MİAH.C Mülki idare amirliği hiz. sınıfı (C) ~31|SAĞH.A Sağlık hizmetleri sınıfı (A) ~15|SAĞH.B Sağlık hizmetleri sınıfı (B) ~16|SAĞH.C Sağlık hizmetleri sınıfı (C) ~17|TKNH.A Teknik Hizmetler Sınıfı (A) ~11|TKNH.B Teknik Hizmetler Sınıfı (B) ~12|TKNH.C Teknik Hizmetler Sınıfı (C) ~13|TKNH.D Teknik hizmetler sınıfı (D) ~14"
+                                 locationX="482" locationY="124" mandatory="false" tag="2340" text=""
+                                 title="Görev Sınıfı" type="106" value="11" value_tag="1" visible="false" width="220"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="148"
+                                 mandatory="false" tag="1000052" text="" title="Özel Hizmet Tazminatı" type="101"
+                                 value="" visible="false" width="129"/>
+                        <Control enabled="false" hasLookup="false" height="22" itemList="Almayacak|Alacak~1"
+                                 locationX="137" locationY="148" mandatory="false" tag="1381" text=""
+                                 title="Özel Hizmet Tazminatı" type="106" value="0" value_tag="0" visible="false"
+                                 width="198"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="335" locationY="148"
+                                 mandatory="false" tag="1000134" text="" title="Kazanılmış Hak Derecesi" type="101"
+                                 value="" visible="false" width="147"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                 locationX="482" locationY="148" mandatory="false" tag="504" text=""
+                                 title="Kazanılmış Hak Derecesi" type="106" value="14" value_tag="15" visible="false"
+                                 width="104"/>
+                    </Control>
+                    <Control enabled="false" hasLookup="false" height="0" locationX="5" locationY="5" mandatory="false"
+                             tag="341" text="" title="Unknown" type="4" value="" visible="false" width="650">
+                        <Control enabled="false" hasLookup="false" height="53" locationX="8" locationY="23"
+                                 mandatory="false" tag="3000005" text="" title="Unknown" type="10" value=""
+                                 visible="true" width="654">
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="0"
+                                     mandatory="false" tag="1000054" text="" title="Ücreti" type="101" value=""
+                                     visible="false" width="40"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="129" locationY="0"
+                                     mandatory="false" tag="342" text="0" title="Ücreti" type="117" value="0"
+                                     visible="false" width="80"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="USD~1|EUR~20|GBP~17|DEM~2|AUD~3|ATS~4|BEF~5|DKK~6|FIM~7|FRF~8|NLG~9|SEK~10|CHF~11|ITL~12|JPY~13|CAD~14|KWD~15|NOK~16|SAR~18|XEU~19|AZM~21|BRL~22|BGN~23|CZK~24|CNY~25|EEK~26|GEL~27|INR~28|HKD~29|IQD~30|IRR~31|IEP~32|ESP~33|ILS~34|ISK~35|CYP~36|KGS~37|LVL~38|LYD~39|LBP~40|LTL~41|LUF~42|HUF~43|MYR~44|MXN~45|EGP~46|BBD~47|PLN~48|PTE~49|ROL~50|RUB~51|TWD~52|JOD~54|GRD~55|ARS~56|LAK~57|ADP~58|AED~59|AFN~60|ALL~61|ANG~62|AOA~63|BDT~64|BHD~65|BIF~66|BMD~67|BND~68|BOB~69|BSD~70|BTN~71|BWP~72|BZD~73|CLP~74|COP~75|CRC~76|CUP~77|CVE~78|DJF~79|DOP~80|DZD~81|ECS~82|ETB~83|FJD~84|FKP~85|GHS~86|GIP~87|GMD~88|GNF~89|GTQ~90|GWP~91|GYD~92|HNL~93|HTG~94|IDR~95|JMD~96|KES~97|KHR~98|KMF~99|KPW~100|KRW~101|KYD~102|LKR~103|LRD~104|LSL~105|MAD~106|MNT~107|MOP~108|MRO~109|MTL~110|MUR~111|MVR~112|MWK~113|MZN~114|NGN~115|NIO~116|NPR~117|NZD~118|OMR~119|PAB~120|PEN~121|PGK~122|PHP~123|PKR~124|PYG~125|QAR~126|RWF~127|SBD~128|SCR~129|SDG~130|SGD~131|SHP~132|SLL~133|SOS~134|SRG~135|STD~136|SVC~137|SYP~138|SZL~139|THB~140|TND~141|TPE~142|TTD~143|TZS~144|UGX~145|UYU~146|VEB~147|VND~148|WST~149|YDD~150|YER~151|YUD~152|ZAR~153|ZMK~154|ZWD~155|KZT~156|UAH~157|TMM~158|UZS~159|TRY~160|RON~161|AZN~162|TJS~163|MKD~164"
+                                     locationX="209" locationY="0" mandatory="false" tag="343" text="" title="Unknown"
+                                     type="106" value="158" value_tag="160" visible="false" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="280" locationY="0"
+                                     mandatory="false" tag="1000048" text="" title="Ödeme Tipi" type="101" value=""
+                                     visible="true" width="122"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="|Ay~1|Gün~2|Saat~3|Aylık saat~4" locationX="402" locationY="0"
+                                     mandatory="false" tag="344" text="" title="Ödeme Tipi" type="106" value="1"
+                                     value_tag="1" visible="false" width="59"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="487" locationY="0"
+                                     mandatory="false" tag="1000049" text="" title="Hesaplama Şekli" type="101" value=""
+                                     visible="true" width="103"/>
+                            <Control enabled="false" hasLookup="false" height="22" itemList="|Net~1|Brüt~2"
+                                     locationX="590" locationY="0" mandatory="false" tag="345" text="" title="Unknown"
+                                     type="106" value="2" value_tag="2" visible="false" width="59"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="24"
+                                     mandatory="false" tag="1000602" text="" title="Ücret Göstergesi" type="101"
+                                     value="" visible="false" width="101"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="129" locationY="24"
+                                     mandatory="false" tag="601" text="0" title="Ücret Göstergesi" type="117" value="0"
+                                     visible="false" width="80"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="280" locationY="24"
+                                     mandatory="false" tag="1000602" text="" title="Tazminat Göstergesi" type="101"
+                                     value="" visible="true" width="122"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="402" locationY="24"
+                                     mandatory="false" tag="602" text="0" title="Ücret Göstergesi" type="117" value="0"
+                                     visible="false" width="80"/>
+                        </Control>
+                        <Control enabled="false" hasLookup="false" height="77" locationX="8" locationY="76"
+                                 mandatory="false" tag="3000006" text="" title="Unknown" type="10" value=""
+                                 visible="true" width="618">
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="0" mandatory="false" tag="347" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="80"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="297" locationY="0"
+                                     mandatory="false" tag="348" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="370" locationY="0"
+                                     mandatory="false" tag="349" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="443" locationY="0"
+                                     mandatory="false" tag="1000051" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="509" locationY="0"
+                                     mandatory="false" tag="350" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="0" mandatory="false" tag="346" text="" title="Maaş"
+                                     type="106" value="14" value_tag="15" visible="false" width="87"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="0"
+                                     mandatory="false" tag="1000055" text="" title="Maaş" type="101" value=""
+                                     visible="false" width="38"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="24"
+                                     mandatory="false" tag="1000056" text="" title="Emekli Sandığı" type="101" value=""
+                                     visible="false" width="91"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="24" mandatory="false" tag="351" text=""
+                                     title="Emekli Sandığı" type="106" value="14" value_tag="15" visible="false"
+                                     width="87"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="24" mandatory="false" tag="352" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="80"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="297" locationY="24"
+                                     mandatory="false" tag="353" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="370" locationY="24"
+                                     mandatory="false" tag="354" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="443" locationY="24"
+                                     mandatory="false" tag="1000053" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="509" locationY="24"
+                                     mandatory="false" tag="355" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="0" locationY="48"
+                                     mandatory="false" tag="1000057" text="" title="Kadro" type="101" value=""
+                                     visible="false" width="41"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                     locationX="129" locationY="48" mandatory="false" tag="850" text="" title="Kadro"
+                                     type="106" value="14" value_tag="15" visible="false" width="87"/>
+                            <Control enabled="false" hasLookup="false" height="22"
+                                     itemList="1. Kademe~1|2. Kademe~2|3. Kademe~3|4. Kademe~4|5. Kademe~5|6. Kademe~6|7. Kademe~7|8. Kademe~8|9. Kademe~9"
+                                     locationX="217" locationY="48" mandatory="false" tag="851" text="" title="Unknown"
+                                     type="106" value="8" value_tag="9" visible="false" width="80"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="297" locationY="48"
+                                     mandatory="false" tag="852" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="370" locationY="48"
+                                     mandatory="false" tag="853" text="0" title="Unknown" type="117" value="0"
+                                     visible="false" width="73"/>
+                            <Control enabled="false" hasLookup="false" height="24" locationX="443" locationY="48"
+                                     mandatory="false" tag="1000456" text="" title="Terfi Tarihi" type="101" value=""
+                                     visible="true" width="66"/>
+                            <Control enabled="false" hasLookup="false" height="22" locationX="509" locationY="48"
+                                     mandatory="false" tag="854" text="" title="Unknown" type="116" value="__/__/____"
+                                     visible="false" width="104"/>
+                        </Control>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="153"
+                                 mandatory="false" tag="1000058" text="" title="Kıdem Yılı" type="101" value=""
+                                 visible="false" width="63"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="137" locationY="153"
+                                 mandatory="false" tag="356" text="0" title="Kıdem Yılı" type="117" value="0"
+                                 visible="false" width="24"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="366" locationY="153"
+                                 mandatory="false" tag="1000059" text="" title="Terfi Tarihi" type="101" value=""
+                                 visible="false" width="66"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="438" locationY="153"
+                                 mandatory="false" tag="357" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="false" width="104"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="177"
+                                 mandatory="false" tag="1000060" text="" title="Hizmet Sınıfı" type="101" value=""
+                                 visible="false" width="76"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="GİH Genel İdari Hizmetler 0.0/0.0~1" locationX="137" locationY="177"
+                                 mandatory="false" tag="3339" text="" title="Hizmet Sınıfı" type="106" value="0"
+                                 value_tag="1" visible="false" width="185"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="366" locationY="177"
+                                 mandatory="false" tag="1000061" text="" title="Görev Sınıfı" type="101" value=""
+                                 visible="false" width="70"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="AVKH Avukatlık hizmetleri sınıfı ~20|DİNH.A Din hizmetleri sınıfı (A) ~21|DİNH.B Din hizmetleri sınıfı (B) ~22|EMNH.A Emniyet hizmetleri sınıfı (A) ~23|EMNH.B Emniyet hizmetleri sınıfı (B) ~24|EMNH.C Emniyet hizmetleri sınıfı (C) ~25|EMNH.D Emniyet hizmetleri sınıfı (D) ~26|EMNH.E.1 Emniyet hizmetleri sınıfı (E-1) ~27|EMNH.E.2 Emniyet hizmetleri sınıfı (E-2) ~28|EĞÖH.A Eğitim ve öğretim hiz. sınıfı (A) ~18|EĞÖH.B Eğitim ve öğretim hiz. sınıfı (B) ~19|GİDH.A Genel İdare Hizmetleri (A) ~1|GİDH.B Genel İdare Hizmetleri (B) ~2|GİDH.C Genel İdare Hizmetleri (C) ~3|GİDH.D Genel İdare Hizmetleri (D) ~4|GİDH.E Genel İdare Hizmetleri (E) ~5|GİDH.F Genel İdare Hizmetleri (F) ~6|GİDH.G Genel İdare Hizmetleri (G) ~7|GİDH.H Genel İdare Hizmetleri (H) ~8|GİDH.İ.1 Genel İdare Hizmetleri (İ-1) ~9|GİDH.İ.2 Genel İdare Hizmetleri (İ-2) ~10|GİHK.1 Genel idari hizmetler kadrolu (1) ~32|GİHK.2 Genel idari hizmetler kadrolu (2) ~33|GİHK.3 Genel idari hizmetler kadrolu (3) ~34|GİHK.4 Genel idari hizmetler kadrolu (4) ~35|GİHK.5 Genel idari hizmetler kadrolu (5) ~36|GİHK.6 Genel idari hizmetler kadrolu (6) ~37|MİAH.A Mülki idare amirliği hiz. sınıfı (A) ~29|MİAH.B Mülki idare amirliği hiz. sınıfı (B) ~30|MİAH.C Mülki idare amirliği hiz. sınıfı (C) ~31|SAĞH.A Sağlık hizmetleri sınıfı (A) ~15|SAĞH.B Sağlık hizmetleri sınıfı (B) ~16|SAĞH.C Sağlık hizmetleri sınıfı (C) ~17|TKNH.A Teknik Hizmetler Sınıfı (A) ~11|TKNH.B Teknik Hizmetler Sınıfı (B) ~12|TKNH.C Teknik Hizmetler Sınıfı (C) ~13|TKNH.D Teknik hizmetler sınıfı (D) ~14"
+                                 locationX="438" locationY="177" mandatory="false" tag="358" text=""
+                                 title="Görev Sınıfı" type="106" value="11" value_tag="1" visible="false" width="220"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="201"
+                                 mandatory="false" tag="1000062" text="" title="Özel Hizmet Tazminatı" type="101"
+                                 value="" visible="false" width="129"/>
+                        <Control enabled="false" hasLookup="false" height="22" itemList="Almayacak|Alacak~1"
+                                 locationX="137" locationY="201" mandatory="false" tag="1382" text=""
+                                 title="Özel Hizmet Tazminatı" type="106" value="0" value_tag="0" visible="false"
+                                 width="115"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="366" locationY="201"
+                                 mandatory="false" tag="1000135" text="" title="Kazanılmış Hak Derecesi" type="101"
+                                 value="" visible="false" width="72"/>
+                        <Control enabled="false" hasLookup="false" height="22"
+                                 itemList="1. Derece~1|2. Derece~2|3. Derece~3|4. Derece~4|5. Derece~5|6. Derece~6|7. Derece~7|8. Derece~8|9. Derece~9|10. Derece~10|11. Derece~11|12. Derece~12|13. Derece~13|14. Derece~14|15. Derece~15"
+                                 locationX="438" locationY="201" mandatory="false" tag="505" text=""
+                                 title="Kazanılmış Hak Derecesi" type="106" value="14" value_tag="15" visible="false"
+                                 width="104"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="124" locationX="5" locationY="91"
+                             mandatory="false" tag="361" text="" title="Unknown" type="4" value="" visible="true"
+                             width="650">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000063" text="" title="Yetki Kodu" type="101" value=""
+                                 visible="true" width="66"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="100" locationY="23"
+                                 mandatory="false" tag="362" text="" title="Yetki Kodu" type="102" value=""
+                                 visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="255" locationY="23"
+                                 mandatory="false" tag="1000065" text="" title="Özel Kod" type="101" value=""
+                                 visible="true" width="57"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="422" locationY="23"
+                                 mandatory="false" tag="367" text="" title="Özel Kod" type="102" value="" visible="true"
+                                 width="141"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000066" text="" title="Ödeme Şekli" type="101" value=""
+                                 visible="true" width="79"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="Nakit~1|Çek~2|Banka~3"
+                                 locationX="100" locationY="47" mandatory="false" tag="363" text="" title="Ödeme Şekli"
+                                 type="106" value="2" value_tag="3" visible="true" width="115"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="255" locationY="47"
+                                 mandatory="false" tag="1000067" text="" title="E. Sandığı Esas Ek Gösterge" type="101"
+                                 value="" visible="true" width="167"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="422" locationY="47"
+                                 mandatory="false" tag="372" text="0" title="E. Sandığı Esas Ek Gösterge" type="117"
+                                 value="0" visible="true" width="80"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="71"
+                                 mandatory="false" tag="1000068" text="" title="Emsal Durumu" type="101" value=""
+                                 visible="true" width="92"/>
+                        <Control enabled="false" hasLookup="false" height="22" itemList="Evet~1|Hayır" locationX="100"
+                                 locationY="71" mandatory="false" tag="364" text="" title="Emsal Durumu" type="106"
+                                 value="1" value_tag="0" visible="true" width="66"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="255" locationY="71"
+                                 mandatory="false" tag="1000140" text="" title="Tenzili Terfi Ek Gösterge" type="101"
+                                 value="" visible="true" width="141"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="422" locationY="71"
+                                 mandatory="false" tag="378" text="0" title="Tenzili Terfi Ek Gösterge" type="117"
+                                 value="0" visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="95"
+                                 mandatory="false" tag="1000070" text="" title="Harcırah Grubu" type="101" value=""
+                                 visible="true" width="92"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="100" locationY="95"
+                                 mandatory="false" tag="1366" text="" title="Harcırah Grubu" type="102" value=""
+                                 visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="255" locationY="95"
+                                 mandatory="false" tag="1000069" text="" title="Ücret Çalışma Tipi" type="101" value=""
+                                 visible="true" width="110"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="Peşin Alan|Çalışıp Alan~1"
+                                 locationX="422" locationY="95" mandatory="false" tag="371" text=""
+                                 title="Ücret Çalışma Tipi" type="106" value="0" value_tag="0" visible="true"
+                                 width="101"/>
+                    </Control>
+                    <Control enabled="false" hasLookup="false" height="56" locationX="5" locationY="215"
+                             mandatory="false" tag="391" text="" title="Tazminatlar" type="4" value="" visible="false"
+                             width="378">
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="27"
+                                 mandatory="false" tag="1000141" text="" title="Denge Tazminatı Oranı" type="101"
+                                 value="" visible="true" width="134"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="142" locationY="27"
+                                 mandatory="false" tag="392" text="0" title="Denge Tazminatı Oranı" type="117" value="0"
+                                 visible="true" width="80"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="227" locationY="27"
+                                 mandatory="false" tag="1000145" text="" title="ÖHT Oranı" type="101" value=""
+                                 visible="true" width="66"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="293" locationY="27"
+                                 mandatory="false" tag="393" text="0" title="ÖHT Oranı" type="117" value="0"
+                                 visible="true" width="80"/>
+                    </Control>
+                    <Control enabled="false" hasLookup="false" height="67"
+                             itemList="Puan 1 [XXXXXXX]~1|Puan 2 [XXXXXXX]~2|Puan 3 [XXXXXXX]~4|Puan 4 [XXXXXXX]~8|Puan 5 [XXXXXXX]~16|Puan 6 [XXXXXXX]~32|Puan 7 [XXXXXXX]~64|Puan 8 [XXXXXXX]~128"
+                             locationX="5" locationY="271" mandatory="false" selectedList="1~4~7" tag="394" text=""
+                             title="Tabi Olduğu Yan Ödeme Puanları" type="151" value="0" visible="false" width="458"/>
+                </Control>
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000073" text="" title="Detay" type="3" value="1" visible="false" width="783">
+                    <Control enabled="true" hasLookup="false" height="172" locationX="5" locationY="5" mandatory="false"
+                             tag="3810" text="" title="Unknown" type="4" value="" visible="true" width="773">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000071" text="" title="Ücret Grubu" type="101" value=""
+                                 visible="true" width="74"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="120" locationY="23"
+                                 mandatory="false" tag="456" text="" title="Ücret Grubu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="257" locationY="23"
+                                 mandatory="false" tag="457" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000072" text="" title="Derecesi" type="101" value=""
+                                 visible="true" width="58"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="120" locationY="47"
+                                 mandatory="false" tag="226" text="" title="Derecesi" type="102" value="" visible="true"
+                                 width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="257" locationY="47"
+                                 mandatory="false" tag="227" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="71"
+                                 mandatory="false" tag="1000075" text="" title="Cari Hesap Kodu" type="101" value=""
+                                 visible="true" width="103"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="120" locationY="71"
+                                 mandatory="false" tag="369" text="" title="Cari Hesap Kodu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="257" locationY="71"
+                                 mandatory="false" tag="370" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="95"
+                                 mandatory="false" tag="1000076" text="" title="Ödeme Grubu" type="101" value=""
+                                 visible="true" width="86"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="120" locationY="95"
+                                 mandatory="false" tag="458" text="" title="Ödeme Grubu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="257" locationY="95"
+                                 mandatory="false" tag="459" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="119"
+                                 mandatory="false" tag="1000077" text="" title="Kıdem/İhbar Grubu" type="101" value=""
+                                 visible="true" width="112"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="120" locationY="119"
+                                 mandatory="false" tag="470" text="" title="Kıdem/İhbar Grubu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="257" locationY="119"
+                                 mandatory="false" tag="471" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="143"
+                                 mandatory="false" tag="1000078" text="" title="Diğer Ücret" type="101" value=""
+                                 visible="true" width="70"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="120" locationY="143"
+                                 mandatory="false" tag="468" text="0" title="Diğer Ücret" type="117" value="0"
+                                 visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="257" locationY="143"
+                                 mandatory="false" tag="1000079" text="" title="TFRS İskonto Oranı" type="101" value=""
+                                 visible="true" width="115"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="372" locationY="143"
+                                 mandatory="false" tag="413" text="1" title="TFRS İskonto Oranı" type="117" value="1"
+                                 visible="true" width="45"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="124" locationX="5" locationY="177"
+                             mandatory="false" tag="387" text="" title="Unknown" type="4" value="" visible="true"
+                             width="773">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000080" text="" title="Analiz Boyutu" type="101" value=""
+                                 visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="159" locationY="23"
+                                 mandatory="false" tag="373" text="" title="Analiz Boyutu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="296" locationY="23"
+                                 mandatory="false" tag="374" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000081" text="" title="Dağıtım Şablonu" type="101" value=""
+                                 visible="true" width="100"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="159" locationY="47"
+                                 mandatory="false" tag="365" text="" title="Dağıtım Şablonu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="296" locationY="47"
+                                 mandatory="false" tag="366" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="71"
+                                 mandatory="false" tag="1000082" text="" title="Proje Kodu" type="101" value=""
+                                 visible="true" width="69"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="159" locationY="71"
+                                 mandatory="false" tag="375" text="" title="Proje Kodu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="296" locationY="71"
+                                 mandatory="false" tag="376" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="95"
+                                 mandatory="false" tag="1000084" text="" title="Muhasebe Bağlantı Grubu" type="101"
+                                 value="" visible="true" width="151"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="159" locationY="95"
+                                 mandatory="false" tag="368" text="" title="Muhasebe Bağlantı Grubu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="296" locationY="95"
+                                 mandatory="false" tag="377" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="290"/>
+                    </Control>
+                </Control>
+            </Control>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="467" locationX="0" locationY="23" mandatory="false"
+                 tag="1000088" text="" title="Bordro Bilgileri" type="3" value="2" visible="false" width="793">
+            <Control enabled="true" hasLookup="false" height="457" locationX="5" locationY="5" mandatory="false"
+                     tag="400" text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true"
+                     width="783">
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000083" text="" title="Temel" type="3" value="0" visible="true" width="783">
+                    <Control enabled="true" hasLookup="false" height="76" locationX="5" locationY="5" mandatory="false"
+                             tag="401" text="" title="Unknown" type="4" value="" visible="true" width="468">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000085" text="" title="Ücretsiz İzin Günleri" type="101"
+                                 value="" visible="true" width="116"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="124" locationY="23"
+                                 mandatory="false" tag="402" text="0" title="Ücretsiz İzin Günleri" type="117" value="0"
+                                 visible="true" width="38"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="209" locationY="23"
+                                 mandatory="false" tag="1000086" text="" title="Sakatlık Derecesi" type="101" value=""
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Yok|1. Derece~1|2. Derece~2|3. Derece~3|1. Derece vergi ind. yok~4|2. Derece vergi ind. yok~5|3. Derece vergi ind. yok~6"
+                                 locationX="313" locationY="23" mandatory="false" tag="403" text=""
+                                 title="Sakatlık Derecesi" type="106" value="0" value_tag="0" visible="true"
+                                 width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000089" text="" title="Ücret Ayarlama" type="101" value=""
+                                 visible="true" width="91"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="Evet~1|Hayır" locationX="124"
+                                 locationY="47" mandatory="false" tag="404" text="" title="Ücret Ayarlama" type="106"
+                                 value="0" value_tag="1" visible="true" width="80"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="209" locationY="47"
+                                 mandatory="false" tag="1000090" text="" title="Toplu Terfi" type="101" value=""
+                                 visible="true" width="66"/>
+                        <Control enabled="false" hasLookup="false" height="22" itemList="Evet~1|Hayır" locationX="313"
+                                 locationY="47" mandatory="false" tag="405" text="" title="Toplu Terfi" type="106"
+                                 value="0" value_tag="1" visible="true" width="80"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="143" locationX="5" locationY="81"
+                             mandatory="false" tag="381" text="" title="Banka" type="4" value="" visible="true"
+                             width="773">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="42"
+                                 mandatory="false" tag="1000091" text="" title="Banka Şubesi" type="101" value=""
+                                 visible="true" width="85"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="111" locationY="42"
+                                 mandatory="false" tag="384" text="" title="Banka Şubesi" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="253" locationY="42"
+                                 mandatory="false" tag="385" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="360"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="66"
+                                 mandatory="false" tag="1000092" text="" title="Banka Kodu" type="101" value=""
+                                 visible="true" width="75"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="111" locationY="66"
+                                 mandatory="false" tag="382" text="" title="Banka Kodu" type="102" value=""
+                                 visible="true" width="137"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="253" locationY="66"
+                                 mandatory="false" tag="383" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="360"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="90"
+                                 mandatory="false" tag="1000093" text="" title="Hesap Numarası" type="101" value=""
+                                 visible="true" width="103"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="111" locationY="90"
+                                 mandatory="false" tag="386" text="" title="Hesap Numarası" type="102" value=""
+                                 visible="true" width="136"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="114"
+                                 mandatory="false" tag="1000094" text="" title="IBAN" type="101" value="" visible="true"
+                                 width="35"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="111" locationY="114"
+                                 mandatory="false" tag="388" text="" title="IBAN" type="102" value="" visible="true"
+                                 width="220"/>
+                    </Control>
+                </Control>
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000087" text="" title="Detay" type="3" value="1" visible="false" width="783">
+                    <Control enabled="true" hasLookup="false" height="72" locationX="5" locationY="5" mandatory="false"
+                             tag="421" text="" title="Unknown" type="4" value="" visible="true" width="480">
+                        <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="23"
+                                 mandatory="false" tag="422" text="" title="Devreden Yuvarlama Farkı Sıfırlaması"
+                                 type="107" value="false" visible="true" width="203"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="211" locationY="23"
+                                 mandatory="false" tag="423" text="" title="Eski Hükümlü" type="107" value="false"
+                                 visible="true" width="88"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="309" locationY="23"
+                                 mandatory="false" tag="424" text="" title="Göçmenlik Durumu" type="107" value="false"
+                                 visible="true" width="114"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="45"
+                                 mandatory="false" tag="425" text="" title="Kümülatif Matrah Aktarılmayacak" type="107"
+                                 value="false" visible="true" width="183"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="211" locationY="45"
+                                 mandatory="false" tag="426" text="" title="Terör Mağduru" type="107" value="false"
+                                 visible="true" width="98"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="309" locationY="45"
+                                 mandatory="false" tag="427" text="" title="Çalışmadığı Süre Ötelenmesin" type="107"
+                                 value="false" visible="false" width="166"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="69" locationX="5" locationY="77" mandatory="false"
+                             tag="431" text="" title="Muafiyetler" type="4" value="" visible="true" width="314">
+                        <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="42"
+                                 mandatory="false" tag="432" text="" title="Gelir Vergisi" type="107" value="false"
+                                 visible="true" width="82"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="90" locationY="42"
+                                 mandatory="false" tag="435" text="" title="Asgari Geçim İndirimi" type="107"
+                                 value="false" visible="true" width="125"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="215" locationY="42"
+                                 mandatory="false" tag="434" text="" title="Damga Vergisi" type="107" value="false"
+                                 visible="true" width="94"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="167" locationX="5" locationY="146"
+                             mandatory="false" tag="441" text="" title="Tabilikler" type="4" value="" visible="true"
+                             width="643">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="42"
+                                 mandatory="false" tag="1000095" text="" title="İndirim Kanunu" type="101" value=""
+                                 visible="true" width="92"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="|00000 Tabi değil~1|14857 Sakatlık, E.hükümlü-terör indirimi kanunu~2|05084 Hazine İndirimi %100~3|85084 Hazine İndirimi %80~4|06111 Torba Yasa~5|05746 AR-GE Yasası~6|05510 Hazine %5~7"
+                                 locationX="145" locationY="42" mandatory="false" tag="442" text=""
+                                 title="İndirim Kanunu" type="106" value="1" value_tag="1" visible="true" width="228"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="378" locationY="42"
+                                 mandatory="false" tag="1000096" text="" title="Çalışma Kanunu" type="101" value=""
+                                 visible="true" width="101"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="İş Kanunu|Deniz İş Yasası~1|Basın İş Yasası~2" locationX="488" locationY="42"
+                                 mandatory="false" tag="443" text="" title="Çalışma Kanunu" type="106" value="0"
+                                 value_tag="0" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="66"
+                                 mandatory="false" tag="1000097" text="" title="Belge Türü" type="101" value=""
+                                 visible="true" width="68"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="|01 Hizmet Akdi İle Tüm Sigorta Kollarına Tabi Çalışanlar~1|02 Sosyal Güvenlik Destek Primine Tabi Çalışanlar~2|07 3308 Sayılı Kanunda Belirtilen Aday Çırak, Çırak Ve Mesleki İşletmelerde Eğitim Gören Öğrenciler~3|13 Tüm Sigorta Kollarına Tabi Olup İşsizlik Sigortası Primi Kesilmeyenler İle Sosyal Güvenlik Sözleşmesi İmzalanmamış Ülke Vatandaşlarından Hizmet Akdine İstinaden Çalışanlar~4|14 Libya’da Çalışanlar~5|19 Ceza İnfaz Kurumları İle Tutukevleri Bünyesinde Oluşturulan Tesis Atölye Ve Benzeri Ünitelerde Çalıştırılan Hükümlü Ve Tutuklular~6|20 İstisna Akdine İstinaden Almanya'ya Götürülen Türk İşçiler~7|21 Türk İşverenler Tarafından Sosyal Güvenlik Sözleşmesi İmzalanmamış Ülkelere Götürülerek Çalıştırılan Türk İşçileri~8|22 Meslek Liselerinde Okumakta İken Veya Yüksek Öğrenimleri Sırasında Zorunlu Staja Tabi Tutulan Öğrenciler~9|23 Harp Malulleri İle 3713 Ve 2330 Sayılı Kanunlara Göre Vazife Malullüğü Aylığı Alanlardan Kısa Vadeli Sigorta Kollarına Tabi Olanlar~10|24 Harp Malulleri İle 3713 Ve 2330 Sayılı Kanunlara Göre Vazife Malullüğü Aylığı Alanlardan Kısa Ve Uzun Vadeli Sigorta Kollarına Tabi Olanlar~11|25 4447 Sayılı Kanun Gereğince İşsizlik Ödeneği Almayıp Türkiye İş Kurumu Tarafından Düzenlenen Eğitimlere Katılan Kursiyerler~12|26 4447 Sayılı Kanun Gereğince İşsizlik Ödeneği Alıp Türkiye İş Kurumu Tarafından Düzenlenen Eğitimlere Katılan Kursiyerler~13|27 4447 Sayılı Kanun Gereğince İşsizlik Ödeneği Alıp Türkiye İş Kurumu Tarafından Düzenlenen Eğitimlere Katılmayan Kursiyerler~14|28 4046 Sayılı Kanunun 21 İnci Maddesi Kapsamında İş Kaybı Tazminatı Alanlar~15|29 Tüm Sigorta Kollarına Tabi Çalışıp 60 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~16|30 İşsizlik Sigortası Hariç 60 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~17|31 Harp Malulleri İle 3713 Ve 2330 Sayılı Kanunlara Göre Vazife Malullüğü Aylığı Alanlardan Kısa Ve Uzun Vadeli Sigorta Kollarına Tabi Olup 60 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~18|32 Tüm Sigorta Kollarına Tabi Çalışıp 90 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~19|33 İşsizlik Sigortası Hariç 90 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~20|34 Harp Malulleri İle 3713 Ve 2330 Sayılı Kanunlara Göre Vazife Malullüğü Aylığı Alanlardan Kısa Ve Uzun Vadeli Sigorta Kollarına Tabi Olup 90 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~21|35 Tüm Sigorta Kollarına Tabi Çalışıp 180 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~22|36 İşsizlik Sigortası Hariç 180 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~23|37 Harp Malulleri İle 3713 Ve 2330 Sayılı Kanunlara Göre Vazife Malullüğü Aylığı Alanlardan Kısa Ve Uzun Vadeli Sigorta Kollarına Tabi Olup 180 Gün Fiili Hizmet Süresi Zammına Tabi Çalışanlar~24|38 Sosyal Güvenlik Sözleşmesi İmzalanmış Ülke Vatandaşı Olup Türkiye’de Çalışanlar, Birleşik Krallıkta İkamet Edenler Ve İsviçre Vatandaşı Olanlardan Uzun Vadeli Sigorta Kolunu Tercih Edenler~25|39 Birleşik Krallıkta İkamet Edenler Ve İsviçre Vatandaşı Olanlardan Uzun Vadeli Sigorta Kolunun Uygulanmasını Talep Etmeyenler~26|40 Kısa Çalışma Ödeneği Alanlar~27|01- Maaş Ödemeleri ayın 15. günü peşin yapılanlar~28|02- Maaş Ödemeleri ayın 1. günü peşin olarak yapılanlar~29|03- Maaş Ödemeleri çalıştıktan sonra ayın 15’inde yapılanlar~30|04- Maaş Ödemeleri çalıştıktan sonra ayın 1’inde yapılanlar~31|04 Yer Altında Sürekli Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~32|05 Yer Altında Gruplu Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~33|06 Yer Üstü Gruplu Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~34|90 İtibari Hizmet Süresine Tabi Olarak Çalışanlar~35|91 60 gün Fiili Hizmet Süresi Zammına Tabi Olanlardan İtibari Hizmet Süresine Tabi Olarak Çalışanlar~36|92 90 gün Fiili Hizmet Süresi Zammına Tabi Olanlardan İtibari Hizmet Süresine Tabi Olarak Çalışanlar~37|90 İtibari Hizmet Süresine Tabi Olarak Çalışanlar~90|91 60 gün Fiili Hizmet Süresi Zammına Tabi Olanlardan İtibari Hizmet Süresine Tabi Olarak Çalışanlar~91|92 90 gün Fiili Hizmet Süresi Zammına Tabi Olanlardan İtibari Hizmet Süresine Tabi Olarak Çalışanlar~92|04 Yer Altında Sürekli Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~104|05 Yer Altında Gruplu Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~105|06 Yer Üstü Gruplu Çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)~106"
+                                 locationX="145" locationY="66" mandatory="false" tag="444" text="" title="Belge Türü"
+                                 type="106" value="1" value_tag="1" visible="true" width="228"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="378" locationY="66"
+                                 mandatory="false" tag="1000098" text="" title="Özür Grubu" type="101" value=""
+                                 visible="true" width="70"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="Yok|özürix~1" locationX="488"
+                                 locationY="66" mandatory="false" tag="445" text="" title="Özür Grubu" type="106"
+                                 value="0" value_tag="0" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="90"
+                                 mandatory="false" tag="1000099" text="" title="İstihdam Yasası" type="101" value=""
+                                 visible="true" width="97"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="145" locationY="90"
+                                 mandatory="false" tag="390" text="" title="İstihdam Yasası" type="102" value=""
+                                 visible="true" width="228"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="378" locationY="90"
+                                 mandatory="false" tag="1000100" text="" title="Fiili Hizmet Zammı" type="101" value=""
+                                 visible="true" width="110"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Belirtilmemiş|60 Gün / %1~1|90 Gün / %1,5~2|180 Gün / %3~3|60 Gün / %3,33~4|90 Gün / %5~5|180 Gün / %10~6"
+                                 locationX="488" locationY="90" mandatory="false" tag="397" text=""
+                                 title="Fiili Hizmet Zammı" type="106" value="0" value_tag="0" visible="true"
+                                 width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="114"
+                                 mandatory="false" tag="1000141" text="" title="AR-GE Yasası" type="101" value=""
+                                 visible="true" width="86"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Belirtilmemiş|%90~1|%80~2|%100~3" locationX="145" locationY="114"
+                                 mandatory="false" tag="395" text="" title="AR-GE Yasası" type="106" value="0"
+                                 value_tag="0" visible="true" width="228"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="378" locationY="114"
+                                 mandatory="false" tag="1000103" text="" title="AR-GE Gün/Ay" type="101" value=""
+                                 visible="true" width="86"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="488" locationY="114"
+                                 mandatory="false" tag="396" text="0" title="AR-GE Gün/Ay" type="117" value="0"
+                                 visible="true" width="115"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="138"
+                                 mandatory="false" tag="1000102" text="" title="AR-GE Başlangıç Tarihi" type="101"
+                                 value="" visible="true" width="137"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="145" locationY="138"
+                                 mandatory="false" tag="398" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="115"/>
+                    </Control>
+                </Control>
+            </Control>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="467" locationX="0" locationY="23" mandatory="false"
+                 tag="1000112" text="" title="Çalışma Bilgileri" type="3" value="3" visible="false" width="793">
+            <Control enabled="true" hasLookup="false" height="457" locationX="5" locationY="5" mandatory="false"
+                     tag="450" text="" title="Tabbed Pane - Selected Index" type="2" value="1" visible="true"
+                     width="783">
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000101" text="" title="Temel" type="3" value="0" visible="false" width="783">
+                    <Control enabled="true" hasLookup="false" height="148" locationX="5" locationY="5" mandatory="false"
+                             tag="451" text="" title="Unknown" type="4" value="" visible="true" width="706">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000104" text="" title="Sosyal Güvenlik Numarası" type="101"
+                                 value="" visible="true" width="153"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="161" locationY="23"
+                                 mandatory="false" tag="452" text="" title="Sosyal Güvenlik Numarası" type="102"
+                                 value="" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="316" locationY="23"
+                                 mandatory="false" tag="1000105" text="" title="Görev Tipi" type="101" value=""
+                                 visible="true" width="63"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="İşveren Vekili~1|Diğer İdari Görevliler~2|Güvenlik Görevlileri~3|Diğerleri"
+                                 locationX="421" locationY="23" mandatory="false" tag="453" text="" title="Görev Tipi"
+                                 type="106" value="3" value_tag="0" visible="true" width="280"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000106" text="" title="S.G. Başlangıç Tarihi" type="101"
+                                 value="" visible="true" width="123"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="161" locationY="47"
+                                 mandatory="false" tag="454" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="316" locationY="47"
+                                 mandatory="false" tag="1000107" text="" title="Çalışma Şekli" type="101" value=""
+                                 visible="true" width="85"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Daimi|Yarı Zamanlı~1|Mevsimlik~2|Geçici~3|Tam Zamanlı~5|Dış Kullanım~6|Diğer~4"
+                                 locationX="421" locationY="47" mandatory="false" tag="455" text=""
+                                 title="Çalışma Şekli" type="106" value="0" value_tag="0" visible="true" width="280"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="71"
+                                 mandatory="false" tag="1000108" text="" title="Memuriyete Giriş Tarihi" type="101"
+                                 value="" visible="true" width="134"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="161" locationY="71"
+                                 mandatory="false" tag="460" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="316" locationY="71"
+                                 mandatory="false" tag="1000109" text="" title="Cezai Durumu" type="101" value=""
+                                 visible="true" width="87"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="|Açığa alınmış~1|Tutuklu~2"
+                                 locationX="421" locationY="71" mandatory="false" tag="360" text="" title="Cezai Durumu"
+                                 type="106" value="0" value_tag="0" visible="true" width="280"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="95"
+                                 mandatory="false" tag="1000110" text="" title="SGK Emeklilik Günü" type="101" value=""
+                                 visible="true" width="119"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="161" locationY="95"
+                                 mandatory="false" tag="414" text="0" title="SGK Emeklilik Günü" type="117" value="0"
+                                 visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="316" locationY="95"
+                                 mandatory="false" tag="1000113" text="" title="Yıllık Kıdem Günü" type="101" value=""
+                                 visible="true" width="105"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="421" locationY="95"
+                                 mandatory="false" tag="415" text="0" title="Yıllık Kıdem Günü" type="117" value="0"
+                                 visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="119"
+                                 mandatory="false" tag="1000114" text="" title="Günlük Kıdem Ek Ödeme" type="101"
+                                 value="" visible="true" width="147"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="161" locationY="119"
+                                 mandatory="false" tag="416" text="0" title="Günlük Kıdem Ek Ödeme" type="117" value="0"
+                                 visible="true" width="115"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="316" locationY="119"
+                                 mandatory="false" tag="1000116" text="" title="Meslek Kodu" type="101" value=""
+                                 visible="true" width="79"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="421" locationY="119"
+                                 mandatory="false" tag="417" text="" title="Meslek Kodu" type="102" value=""
+                                 visible="true" width="95"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="516" locationY="119"
+                                 mandatory="false" tag="418" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="185"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="76" locationX="5" locationY="153"
+                             mandatory="false" tag="461" text="" title="Unknown" type="4" value="" visible="true"
+                             width="722">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000117" text="" title="Vergi Numarası" type="101" value=""
+                                 visible="true" width="94"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="102" locationY="23"
+                                 mandatory="false" tag="462" text="" title="Vergi Numarası" type="102" value=""
+                                 visible="true" width="360"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="467" locationY="23"
+                                 mandatory="false" tag="1000118" text="" title="Çalışma Takvimi" type="101" value=""
+                                 visible="true" width="100"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="567" locationY="23"
+                                 mandatory="false" tag="463" text="" title="Çalışma Takvimi" type="102" value=""
+                                 visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000119" text="" title="Vergi Dairesi" type="101" value=""
+                                 visible="true" width="79"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="102" locationY="47"
+                                 mandatory="false" tag="464" text="" title="Vergi Dairesi" type="102" value=""
+                                 visible="true" width="360"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="467" locationY="47"
+                                 mandatory="false" tag="1000120" text="" title="Sözleşme Şekli" type="101" value=""
+                                 visible="true" width="93"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Belirsiz Süreli|Belirli Süreli~1|Kısmi Zamanlı~2" locationX="567"
+                                 locationY="47" mandatory="false" tag="465" text="" title="Sözleşme Şekli" type="106"
+                                 value="0" value_tag="0" visible="true" width="150"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="76" locationX="5" locationY="229"
+                             mandatory="false" tag="480" text="" title="Unknown" type="4" value="" visible="true"
+                             width="722">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="false" tag="1000121" text="" title="Kullanıcı" type="101" value=""
+                                 visible="true" width="55"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="140" locationY="23"
+                                 mandatory="false" tag="207" text="" title="Kullanıcı" type="117" value="0"
+                                 visible="true" width="59"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="223" locationY="23"
+                                 mandatory="false" tag="208" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="94"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="322" locationY="23"
+                                 mandatory="false" tag="1000122" text="" title="Elektronik Mesaj Sunucusu" type="101"
+                                 value="" visible="true" width="157"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="479" locationY="23"
+                                 mandatory="false" tag="466" text="" title="Elektronik Mesaj Sunucusu" type="102"
+                                 value="" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="false" tag="1000123" text="" title="Self Servis Yetki Grubu" type="101"
+                                 value="" visible="true" width="132"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="140" locationY="47"
+                                 mandatory="false" tag="467" text="" title="Self Servis Yetki Grubu" type="102" value=""
+                                 visible="true" width="165"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="50" locationX="5" locationY="305"
+                             mandatory="false" tag="501" text="" title="Unknown" type="4" value="" visible="true"
+                             width="210">
+                        <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="23"
+                                 mandatory="false" tag="502" text="" title="Satış Uzmanı" type="107" value="false"
+                                 visible="true" width="87"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="95" locationY="23"
+                                 mandatory="false" tag="503" text="" title="Satınalma Uzmanı" type="107" value="false"
+                                 visible="true" width="110"/>
+                    </Control>
+                </Control>
+                <Control enabled="true" hasLookup="false" height="434" locationX="0" locationY="23" mandatory="false"
+                         tag="1000111" text="" title="Detay" type="3" value="1" visible="true" width="783">
+                    <Control enabled="true" hasLookup="false" height="172" locationX="5" locationY="5" mandatory="false"
+                             tag="4710" text="" title="Unknown" type="4" value="" visible="true" width="773">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23"
+                                 mandatory="true" tag="1000124" text="" title="Gruba Giriş Tarihi" type="101" value=""
+                                 visible="true" width="110"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="163" locationY="23"
+                                 mandatory="true" tag="472" text="" title="Unknown" type="116" value="01/01/2016"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="313" locationY="23"
+                                 mandatory="true" tag="1000125" text="" title="Hakların Başlangıç Tarihi" type="101"
+                                 value="" visible="true" width="151"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="468" locationY="23"
+                                 mandatory="true" tag="473" text="" title="Unknown" type="116" value="01/01/2016"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="47"
+                                 mandatory="true" tag="1000126" text="" title="Kuruma Giriş Tarihi" type="101" value=""
+                                 visible="true" width="120"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="163" locationY="47"
+                                 mandatory="true" tag="474" text="" title="Unknown" type="116" value="01/01/2016"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="313" locationY="47"
+                                 mandatory="false" tag="1000127" text="" title="Sözleşme Başlangıç Tarihi" type="101"
+                                 value="" visible="true" width="155"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="468" locationY="47"
+                                 mandatory="false" tag="475" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="313" locationY="71"
+                                 mandatory="false" tag="1000129" text="" title="Sözleşme Bitiş Tarihi" type="101"
+                                 value="" visible="true" width="124"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="468" locationY="71"
+                                 mandatory="false" tag="477" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="104"/>
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="95"
+                                 mandatory="false" tag="479" text="" title="KPDS Giriş Tarihi" type="101" value=""
+                                 visible="false" width="104"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="163" locationY="95"
+                                 mandatory="false" tag="478" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="false" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="119"
+                                 mandatory="false" tag="1000130" text="" title="Çalışma Durumu" type="101" value=""
+                                 visible="true" width="103"/>
+                        <Control enabled="true" hasLookup="false" height="22"
+                                 itemList="Aktif Çalışan|Ücretsiz İzinde~1|Askerde~2|Yurtdışında~3" locationX="163"
+                                 locationY="119" mandatory="false" tag="490" text="" title="Çalışma Durumu" type="106"
+                                 value="0" value_tag="0" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="313" locationY="119"
+                                 mandatory="false" tag="10001590" text="" title="Bulunduğu Ülke" type="101" value=""
+                                 visible="true" width="96"/>
+                        <Control enabled="false" hasLookup="true" height="24" locationX="468" locationY="119"
+                                 mandatory="false" tag="159" text="" title="Bulunduğu Ülke" type="102" value=""
+                                 visible="true" width="80"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="548" locationY="119"
+                                 mandatory="false" tag="163" text="" title="Unknown" type="102" value="" visible="true"
+                                 width="220"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="143"
+                                 mandatory="false" tag="10001610" text="" title="Yurtdışı Ek Gösterge Puanı" type="101"
+                                 value="" visible="true" width="155"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="163" locationY="143"
+                                 mandatory="false" tag="161" text="0" title="Yurtdışı Ek Gösterge Puanı" type="117"
+                                 value="0" visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="313" locationY="143"
+                                 mandatory="false" tag="10001620" text="" title="Ülke Gösterge Puanı" type="101"
+                                 value="" visible="true" width="122"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="468" locationY="143"
+                                 mandatory="false" tag="162" text="0" title="Ülke Gösterge Puanı" type="117" value="0"
+                                 visible="true" width="66"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="141" locationX="5" locationY="177"
+                             mandatory="false" tag="481" text="" title="Deneme Süresi Bilgileri" type="4" value=""
+                             visible="true" width="325">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="42"
+                                 mandatory="false" tag="1000131" text="" title="Deneme Süresi" type="101" value=""
+                                 visible="true" width="95"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="170" locationY="42"
+                                 mandatory="false" tag="482" text="0" title="Deneme Süresi" type="117" value="0"
+                                 visible="true" width="34"/>
+                        <Control enabled="true" hasLookup="false" height="22" itemList="Ay|Gün~1" locationX="204"
+                                 locationY="42" mandatory="false" tag="483" text="" title="Unknown" type="106" value="0"
+                                 value_tag="0" visible="true" width="80"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="66"
+                                 mandatory="false" tag="484" text="" title="Süre sonunda düzenleme yapılacak" type="107"
+                                 value="false" visible="true" width="194"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="88"
+                                 mandatory="false" tag="1000132" text="" title="Deneme Süresi Sonu Ücreti" type="101"
+                                 value="" visible="true" width="162"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="170" locationY="88"
+                                 mandatory="false" tag="485" text="0" title="Deneme Süresi Sonu Ücreti" type="117"
+                                 value="0" visible="true" width="115"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="112"
+                                 mandatory="false" tag="1000133" text="" title="Açıklama" type="101" value=""
+                                 visible="true" width="58"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="170" locationY="112"
+                                 mandatory="false" tag="486" text="" title="Açıklama" type="102" value="" visible="true"
+                                 width="150"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="119" locationX="392" locationY="177"
+                             mandatory="false" tag="491" text="" title="Uyarılacak Kullanıcı Bilgileri" type="4"
+                             value="" visible="true" width="252">
+                        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="42"
+                                 mandatory="false" tag="1000142" text="" title="Sicil Numarası" type="101" value=""
+                                 visible="true" width="89"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="97" locationY="42"
+                                 mandatory="false" tag="492" text="" title="Sicil Numarası" type="102" value=""
+                                 visible="true" width="122"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="66"
+                                 mandatory="false" tag="1000143" text="" title="Adı" type="101" value="" visible="true"
+                                 width="25"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="97" locationY="66"
+                                 mandatory="false" tag="493" text="" title="Sicil Numarası" type="102" value=""
+                                 visible="true" width="150"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="90"
+                                 mandatory="false" tag="1000003" text="" title="Soyadı" type="101" value=""
+                                 visible="true" width="45"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="97" locationY="90"
+                                 mandatory="false" tag="494" text="" title="Sicil Numarası" type="102" value=""
+                                 visible="true" width="150"/>
+                    </Control>
+                    <Control enabled="true" hasLookup="false" height="95" locationX="5" locationY="318"
+                             mandatory="false" tag="513" text="" title="İzin Bilgileri" type="4" value="" visible="true"
+                             width="375">
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="42"
+                                 mandatory="false" tag="1000001" text="" title="İzin Grubu" type="101" value=""
+                                 visible="true" width="63"/>
+                        <Control enabled="true" hasLookup="true" height="24" locationX="106" locationY="42"
+                                 mandatory="false" tag="511" text="" title="İzin Grubu" type="102" value="TC010000"
+                                 visible="true" width="80"/>
+                        <Control enabled="false" hasLookup="false" height="22" locationX="210" locationY="42"
+                                 mandatory="false" tag="512" text="TC009985" title="Unknown" type="102" value="TC009985"
+                                 visible="true" width="122"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="66"
+                                 mandatory="false" tag="1000005" text="" title="Mutabakat Tarihi" type="101" value=""
+                                 visible="true" width="98"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="106" locationY="66"
+                                 mandatory="false" tag="1000136" text="" title="Unknown" type="116" value="__/__/____"
+                                 visible="true" width="104"/>
+                        <Control enabled="true" hasLookup="false" height="24" locationX="210" locationY="66"
+                                 mandatory="false" tag="1000007" text="" title="Mutabakat Günü" type="101" value=""
+                                 visible="true" width="97"/>
+                        <Control enabled="true" hasLookup="false" height="22" locationX="332" locationY="66"
+                                 mandatory="false" tag="1000137" text="0" title="Unknown" type="117" value="0"
+                                 visible="true" width="38"/>
+                    </Control>
+                </Control>
+            </Control>
+        </Control>
+    </Control>
+    <Control attribute="FORMPOPUP" enabled="true" hasLookup="false" height="5"
+             itemList="Öndeğer Uygula~11|Fotoğraf Yükle~21|Fotoğraf Çıkar~22|Fotoğrafı Dosyaya Kaydet~25" locationX="0"
+             locationY="0" mandatory="false" tag="800" text="" title="Unknown" type="154" value="" visible="false"
+             width="5"/>
+    <Control enabled="true" hasLookup="false" height="25" locationX="5" locationY="635" mandatory="false" tag="3000010"
+             text="" title="Unknown" type="10" value="" visible="true" width="57">
+        <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20" itemList="Özel Durumlar~1"
+                 locationX="0" locationY="0" mandatory="false" tag="157" text="" title="Bağlı Kayıtlar" type="112"
+                 value="" visible="true" width="32"/>
+        <Control enabled="true" hasLookup="false" height="20" locationX="32" locationY="0" mandatory="false" tag="1203"
+                 text="" title="Durumunu Değiştir" type="111" value="" visible="true" width="20"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="31" locationX="644" locationY="629" mandatory="false"
+             tag="9008009" text="" title="Unknown" type="10" value="" visible="true" width="154">
+        <Control attribute="SAVECLOSE" enabled="true" hasLookup="false" height="21" locationX="5" locationY="5"
+                 mandatory="false" tag="1100" text="" title="Kaydet" type="109" value="" visible="true" width="67"/>
+        <Control attribute="CLOSE" enabled="true" hasLookup="false" height="21" locationX="77" locationY="5"
+                 mandatory="false" tag="1101" text="" title="Vazgeç" type="109" value="" visible="true" width="67"/>
+        <Control attribute="CLOSE" enabled="true" hasLookup="false" height="21" locationX="149" locationY="5"
+                 mandatory="false" tag="1102" text="" title="Kapat" type="109" value="" visible="false" width="0"/>
+    </Control>
+    <Messages/>
+</Form>

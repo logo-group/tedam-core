@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form enabled="true" height="994" lastUpdate="2017-01-31 09:22:42" locationX="0" locationY="0"
+      name="PRXFPointCalculations.jfm" tag="1000007" title="Hesap Özeti - TC013514 (TC013514 TC013514)"
+      version="v2.48.6.0" visible="true" width="1917">
+    <Control enabled="true" hasLookup="false" height="958" locationX="5" locationY="5" mandatory="false" tag="10"
+             text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true" width="1907">
+        <Control enabled="true" hasLookup="false" height="935" locationX="0" locationY="23" mandatory="false"
+                 tag="1000003" text="" title="Hesaplar" type="3" value="0" visible="true" width="1907">
+            <DataGrid enabled="true" height="898" locationX="5" locationY="5" splitterIndex="-1" tag="100"
+                      visible="true" width="1897">
+                <Columns>
+                    <Column align="LEFT" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="LineStr" tag="1000" type="0" visible="true" width="1874"/>
+                </Columns>
+                <Rows>
+                    <Row col1000="   Çalışma Ayı                       : Temmuz-2016" state="selected"/>
+                    <Row col1000="   Sicil No                          : TC013514" state="deselected"/>
+                    <Row col1000="   AD/SOYAD                          : TC013514 TC013514" state="deselected"/>
+                    <Row col1000="   Kurum                             : 001 Merkez" state="deselected"/>
+                    <Row col1000="   İşyeri                            : 01.01 Merkez" state="deselected"/>
+                    <Row col1000="   Bölüm                             : 01 Merkez" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Ücret                             :        5.000,00 TRY / Ay (Brüt)"
+                         state="deselected"/>
+                    <Row col1000="   Aylık Brüt Ücret                  :        5.000,00" state="deselected"/>
+                    <Row col1000="   Günlük Brüt Ücret                 :          161,29" state="deselected"/>
+                    <Row col1000="   Saat Brüt Ücreti                  :           20,16" state="deselected"/>
+                    <Row col1000="   SGK Primine Esas Gün              :   30" state="deselected"/>
+                    <Row col1000="   Vergi İndirim Gün Sayısı          :   30" state="deselected"/>
+                    <Row col1000="   Toplam Çalışma Günü               :   30" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Mesailer             Gün   Saat  Ksayı Brüt              Net" state="deselected"/>
+                    <Row col1000="   -------------------- ----- ----- ----- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   Normal Mesai        " state="deselected"/>
+                    <Row col1000="    Normal                 30   240     1          4.838,71          3.554,74"
+                         state="deselected"/>
+                    <Row col1000="   -------------------------------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   Mesai Kazançları Toplamı                        4.838,71          3.554,74"
+                         state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Ödemeler             Nakdi             Ayni              Toplam"
+                         state="deselected"/>
+                    <Row col1000="   -------------------- ----------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   Mesai Kazançları              4.838,71                            4.838,71"
+                         state="deselected"/>
+                    <Row col1000="   Ek Mesailer                       0,00                                0,00"
+                         state="deselected"/>
+                    <Row col1000="   Sosyal Yardımlar                  0,00              0,00              0,00"
+                         state="deselected"/>
+                    <Row col1000="   Ek Ödemeler                       0,00              0,00              0,00"
+                         state="deselected"/>
+                    <Row col1000="   Alacak Ödemeleri                  0,00                                0,00"
+                         state="deselected"/>
+                    <Row col1000="   -------------------- ----------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   Kazançlar Toplamı             4.838,71              0,00          4.838,71"
+                         state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   ----- SOSYAL SİGORTA PRİMLERİ -----" state="deselected"/>
+                    <Row col1000="   ( SGK Taban Matrahı                :        1.647,00  )" state="deselected"/>
+                    <Row col1000="   ( SGK Tavan Matrahı                :       10.705,50  )" state="deselected"/>
+                    <Row col1000="   PRİME ESAS ÖDEMELER (ÜCRET)        :        4.838,71" state="deselected"/>
+                    <Row col1000="   PRİME ESAS ÖDEMELER (EK ÖDEME)     :            0,00" state="deselected"/>
+                    <Row col1000="   DEVREDEN MATRAH (2.AY)             :            0,00" state="deselected"/>
+                    <Row col1000="   DEVREDEN MATRAH (1.AY)             :            0,00" state="deselected"/>
+                    <Row col1000="   DEVREDECEK OLAN SGK MATRAHI        :            0,00" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   PRİME ESAS ÖDEMELER (AYLIK)        :        4.838,71" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   SGK MATRAHI (İŞÇİ)                 :        4.838,71" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Tabi Olduğu Primler  Yüzde     İşçi Prim       İşveren Prim         Toplam"
+                         state="deselected"/>
+                    <Row col1000="   -------------------- ----- ----------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   İş Kaz./Meslek Has.      0              0,00              0,00              0,00"
+                         state="deselected"/>
+                    <Row col1000="   Mal./Yaş./Ölüm Sig.     20            435,49            532,26            967,75"
+                         state="deselected"/>
+                    <Row col1000="   İşsizlik Sigortası       3             48,39             96,77            145,16"
+                         state="deselected"/>
+                    <Row col1000="   Genel Sağ.Sig.        12,5            241,93            362,90            604,83"
+                         state="deselected"/>
+                    <Row col1000="   -------------------------- ----------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="   SGK Prim Toplamı                      725,81            991,93          1.717,74"
+                         state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Hazinece Karşılanacak İşveren Primi            :              0,00"
+                         state="deselected"/>
+                    <Row col1000="   İşsizlik Fonunca Karşılanacak İşveren Primi    :              0,00"
+                         state="deselected"/>
+                    <Row col1000="   Ekonomi Bakanlığınca Karşılanacak İşveren Primi:              0,00"
+                         state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   AR-GE Gün Sayısı                            :            30,00"
+                         state="deselected"/>
+                    <Row col1000="   AR-GE SGK Teşvik Tutarı / Matrahı           :           447,58 /         4.838,71"
+                         state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   ---------- GELİR VERGİSİ ----------" state="deselected"/>
+                    <Row col1000="   GELİR VER. MATRAHI (İNDİRİMSİZ)    :        4.838,71" state="deselected"/>
+                    <Row col1000="   - Sigorta Primleri                 :          725,81" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   GELİR VERGİSİ MATRAHI (NORMAL)     :        4.112,90" state="deselected"/>
+                    <Row col1000="   Devreden Kümülatif Vergi Matrahı   :            0,00" state="deselected"/>
+                    <Row col1000="   Son Kümülatif Vergi Matrahı        :        4.112,90" state="deselected"/>
+                    <Row col1000="   Devreden Küm. Vergi Matrahı(AR-GE) :            0,00" state="deselected"/>
+                    <Row col1000="   Son Kümülatif Vergi Matrahı(AR-GE) :        4.112,90" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Vergi Oranı       Matrah              Vergi" state="deselected"/>
+                    <Row col1000="   ----------- ------------------ ------------------" state="deselected"/>
+                    <Row col1000="            15           4.112,90             616,94" state="deselected"/>
+                    <Row col1000="   ------------------------------ ------------------" state="deselected"/>
+                    <Row col1000="   GELİR VERGİSİ (NORMAL)                     616,94" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Asgari Geçim İndirimi Matrahı              636,75" state="deselected"/>
+                    <Row col1000="   Aylık Asgari Geçim İndirimi                 95,51" state="deselected"/>
+                    <Row col1000="   Ödenmiş Asgari Geçim İndirimi                0,00" state="deselected"/>
+                    <Row col1000="   Uygulanacak Asgari Geçim İndirimi           95,51" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   AR-GE Gün Sayısı                            :            30,00"
+                         state="deselected"/>
+                    <Row col1000="   AR-GE Gelir Vergisi İstisna Tutarı / Matrahı:           521,43 /           4.112,90"
+                         state="deselected"/>
+                    <Row col1000="   GELİR VERGİSİ (NORMAL)                     521,43" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   ---------- DAMGA VERGİSİ ----------" state="deselected"/>
+                    <Row col1000="   Kazançlar Toplamı                  :        4.838,71" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   Damga Vergisi Matrahı              :        4.838,71" state="deselected"/>
+                    <Row col1000="   AR-GE Damga Vergisi İstisna Tutarı / Matrahı:           36,73 /           4.838,71"
+                         state="deselected"/>
+                    <Row col1000="   Damga Vergisi                      :           36,73" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Sigorta Primleri                   :          725,81" state="deselected"/>
+                    <Row col1000="   GELİR VERGİSİ (NORMAL)             :          521,43" state="deselected"/>
+                    <Row col1000="   Damga Vergisi                      :           36,73" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Açıklama                   Tür        Tutar             Aylık Tutar       Yıllık Tutar"
+                         state="deselected"/>
+                    <Row col1000="   -------------------------- ---------- ----------------- ----------------- -----------------"
+                         state="deselected"/>
+                    <Row col1000="                              Değer                   0,00              0,00              0,00"
+                         state="deselected"/>
+                    <Row col1000="   test 2                     Kesinti                 0,00              0,00              0,00"
+                         state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   Yasal Kesintiler Toplamı           :        1.283,97" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="" state="deselected"/>
+                    <Row col1000="   Tüm Ödemeler Toplamı               :        4.838,71" state="deselected"/>
+                    <Row col1000="   - Yasal Kesintiler Toplamı         :        1.283,97" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   Net İstihkak                       :        3.554,74" state="deselected"/>
+                    <Row col1000="   + Yuvarlama Farkı                  :            0,00" state="deselected"/>
+                    <Row col1000="                                       ----------------" state="deselected"/>
+                    <Row col1000="   Net Ödenecek                       :        3.554,74" state="deselected"/>
+                </Rows>
+            </DataGrid>
+            <Control enabled="true" hasLookup="false" height="27" locationX="5" locationY="903" mandatory="false"
+                     tag="3000000" text="" title="Unknown" type="10" value="" visible="true" width="290">
+                <Control enabled="true" hasLookup="false" height="22" locationX="0" locationY="0" mandatory="false"
+                         tag="1000001" text="" title="Para Birimi" type="101" value="" visible="true" width="57"/>
+                <Control enabled="true" hasLookup="false" height="22"
+                         itemList="USD~1|EUR~20|GBP~17|DEM~2|AUD~3|ATS~4|BEF~5|DKK~6|FIM~7|FRF~8|NLG~9|SEK~10|CHF~11|ITL~12|JPY~13|CAD~14|KWD~15|NOK~16|SAR~18|XEU~19|AZM~21|BRL~22|BGN~23|CZK~24|CNY~25|EEK~26|GEL~27|INR~28|HKD~29|IQD~30|IRR~31|IEP~32|ESP~33|ILS~34|ISK~35|CYP~36|KGS~37|LVL~38|LYD~39|LBP~40|LTL~41|LUF~42|HUF~43|MYR~44|MXN~45|EGP~46|BBD~47|PLN~48|PTE~49|ROL~50|RUB~51|TWD~52|JOD~54|GRD~55|ARS~56|LAK~57|ADP~58|AED~59|AFN~60|ALL~61|ANG~62|AOA~63|BDT~64|BHD~65|BIF~66|BMD~67|BND~68|BOB~69|BSD~70|BTN~71|BWP~72|BZD~73|CLP~74|COP~75|CRC~76|CUP~77|CVE~78|DJF~79|DOP~80|DZD~81|ECS~82|ETB~83|FJD~84|FKP~85|GHS~86|GIP~87|GMD~88|GNF~89|GTQ~90|GWP~91|GYD~92|HNL~93|HTG~94|IDR~95|JMD~96|KES~97|KHR~98|KMF~99|KPW~100|KRW~101|KYD~102|LKR~103|LRD~104|LSL~105|MAD~106|MNT~107|MOP~108|MRO~109|MTL~110|MUR~111|MVR~112|MWK~113|MZN~114|NGN~115|NIO~116|NPR~117|NZD~118|OMR~119|PAB~120|PEN~121|PGK~122|PHP~123|PKR~124|PYG~125|QAR~126|RWF~127|SBD~128|SCR~129|SDG~130|SGD~131|SHP~132|SLL~133|SOS~134|SRG~135|STD~136|SVC~137|SYP~138|SZL~139|THB~140|TND~141|TPE~142|TTD~143|TZS~144|UGX~145|UYU~146|VEB~147|VND~148|WST~149|YDD~150|YER~151|YUD~152|ZAR~153|ZMK~154|ZWD~155|KZT~156|UAH~157|TMM~158|UZS~159|TRY~160|RON~161|AZN~162|TJS~163|MKD~164"
+                         locationX="57" locationY="0" mandatory="false" tag="101" text="" title="Unknown" type="106"
+                         value="158" value_tag="160" visible="true" width="66"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="128" locationY="0" mandatory="false"
+                         tag="1000002" text="" title="Kur Tarihi" type="101" value="" visible="true" width="53"/>
+                <Control enabled="true" hasLookup="false" height="22" locationX="181" locationY="0" mandatory="false"
+                         tag="102" text="" title="Unknown" type="116" value="01/07/2016" visible="true" width="104"/>
+            </Control>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="0" locationX="0" locationY="0" mandatory="false" tag="1000006"
+                 text="" title="Detaylar" type="3" value="-1" visible="false" width="0">
+            <DataGrid enabled="true" height="246" locationX="0" locationY="0" splitterIndex="-1" tag="200"
+                      visible="true" width="633">
+                <Columns>
+                    <Column align="LEFT" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="LineStr" tag="1001" type="0" visible="true" width="740"/>
+                </Columns>
+                <Rows/>
+            </DataGrid>
+            <Control enabled="true" hasLookup="false" height="22" locationX="0" locationY="0" mandatory="false"
+                     tag="1000001" text="" title="Para Birimi" type="101" value="" visible="true" width="57"/>
+            <Control enabled="true" hasLookup="false" height="0" locationX="0" locationY="0" mandatory="false"
+                     tag="3000001" text="" title="Unknown" type="10" value="" visible="true" width="0">
+                <Control enabled="true" hasLookup="false" height="22" locationX="0" locationY="0" mandatory="false"
+                         tag="1000005" text="" title="Para Birimi" type="101" value="" visible="true" width="57"/>
+                <Control enabled="true" hasLookup="false" height="20" locationX="0" locationY="0" mandatory="false"
+                         tag="202" text="" title="Yazdır" type="111" value="" visible="true" width="20"/>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="22"
+                     itemList="USD~1|EUR~20|GBP~17|DEM~2|AUD~3|ATS~4|BEF~5|DKK~6|FIM~7|FRF~8|NLG~9|SEK~10|CHF~11|ITL~12|JPY~13|CAD~14|KWD~15|NOK~16|SAR~18|XEU~19|AZM~21|BRL~22|BGN~23|CZK~24|CNY~25|EEK~26|GEL~27|INR~28|HKD~29|IQD~30|IRR~31|IEP~32|ESP~33|ILS~34|ISK~35|CYP~36|KGS~37|LVL~38|LYD~39|LBP~40|LTL~41|LUF~42|HUF~43|MYR~44|MXN~45|EGP~46|BBD~47|PLN~48|PTE~49|ROL~50|RUB~51|TWD~52|JOD~54|GRD~55|ARS~56|LAK~57|ADP~58|AED~59|AFN~60|ALL~61|ANG~62|AOA~63|BDT~64|BHD~65|BIF~66|BMD~67|BND~68|BOB~69|BSD~70|BTN~71|BWP~72|BZD~73|CLP~74|COP~75|CRC~76|CUP~77|CVE~78|DJF~79|DOP~80|DZD~81|ECS~82|ETB~83|FJD~84|FKP~85|GHS~86|GIP~87|GMD~88|GNF~89|GTQ~90|GWP~91|GYD~92|HNL~93|HTG~94|IDR~95|JMD~96|KES~97|KHR~98|KMF~99|KPW~100|KRW~101|KYD~102|LKR~103|LRD~104|LSL~105|MAD~106|MNT~107|MOP~108|MRO~109|MTL~110|MUR~111|MVR~112|MWK~113|MZN~114|NGN~115|NIO~116|NPR~117|NZD~118|OMR~119|PAB~120|PEN~121|PGK~122|PHP~123|PKR~124|PYG~125|QAR~126|RWF~127|SBD~128|SCR~129|SDG~130|SGD~131|SHP~132|SLL~133|SOS~134|SRG~135|STD~136|SVC~137|SYP~138|SZL~139|THB~140|TND~141|TPE~142|TTD~143|TZS~144|UGX~145|UYU~146|VEB~147|VND~148|WST~149|YDD~150|YER~151|YUD~152|ZAR~153|ZMK~154|ZWD~155|KZT~156|UAH~157|TMM~158|UZS~159|TRY~160|RON~161|AZN~162|TJS~163|MKD~164"
+                     locationX="0" locationY="0" mandatory="false" tag="201" text="" title="Unknown" type="106"
+                     value="158" value_tag="160" visible="true" width="66"/>
+        </Control>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="26" locationX="5" locationY="963" mandatory="false" tag="3000002"
+             text="" title="Unknown" type="10" value="" visible="true" width="1907">
+        <Control enabled="true" hasLookup="false" height="20" locationX="0" locationY="1" mandatory="false" tag="103"
+                 text="" title="Yazdır" type="111" value="" visible="true" width="20"/>
+        <Control attribute="CLOSE" enabled="true" hasLookup="false" height="21" locationX="1841" locationY="0"
+                 mandatory="false" tag="500" text="" title="Kapat" type="109" value="" visible="true" width="61"/>
+    </Control>
+    <Messages/>
+</Form>

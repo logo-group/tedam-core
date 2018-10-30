@@ -1,0 +1,6 @@
+<TestReportIgnoredVariables>
+	<reports>
+		<report name="LORPSalesCampaignsList">
+		</report>
+	</reports>
+</TestReportIgnoredVariables>

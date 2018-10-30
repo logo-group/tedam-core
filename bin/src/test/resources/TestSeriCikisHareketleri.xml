@@ -1,0 +1,83 @@
+<Form enabled="true" height="404" lastUpdate="2015-11-24 16:35:12" locationX="0" locationY="0"
+      name="MMXFSLTransactions%5.jfm" tag="1000007" title="Seri Çıkış Hareketleri" version="v2.42.6.0" visible="true"
+      width="560">
+    <Control enabled="true" hasLookup="false" height="61" locationX="5" locationY="5" mandatory="false" tag="50" text=""
+             title="Unknown" type="10" value="" visible="true" width="361">
+        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="8" mandatory="false"
+                 tag="1000001" text="" title="Kod" type="101" value="" visible="true" width="30"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="66" locationY="8" mandatory="false" tag="51"
+                 text="TC007544" title="Kod" type="102" value="TC007544" visible="true" width="178"/>
+        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="32" mandatory="false"
+                 tag="1000002" text="" title="Açıklama" type="101" value="" visible="true" width="58"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="66" locationY="32" mandatory="false" tag="52"
+                 text="TC007544" title="Açıklama" type="102" value="TC007544" visible="true" width="290"/>
+    </Control>
+    <DataGrid enabled="true" height="200" locationX="5" locationY="66" splitterIndex="-1" tag="100" visible="true"
+              width="550">
+        <Columns>
+            <Column align="LEFT" caption="Lot Numarası" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="SLMaster.LotNo" tag="4025" type="0" visible="true" width="100"/>
+            <Column align="LEFT" caption="Seri Numarası" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="SLMaster.Code" tag="4001" type="0" visible="true" width="100"/>
+            <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="SLMaster.Description" tag="4002" type="0" visible="true" width="120"/>
+            <Column align="LEFT" caption="Birim" hasLookup="false" headerAlign="CENTER" mandatory="false" property=""
+                    tag="4005" type="0" visible="true" width="96"/>
+            <Column align="RIGHT" caption="Garanti Süresi" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="GuarantyPeriod" tag="4021" type="1" visible="true" width="93"/>
+            <Column align="LEFT" caption="Garanti Süresi Tipi" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="GuarantyPeriodType" tag="4022" type="4" visible="true" width="116"/>
+            <Column align="CENTER" caption="Garanti Başlangıcı" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="StartGuaranty" tag="4023" type="2" visible="true" width="115"/>
+            <Column align="CENTER" caption="Garanti Bitişi" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="TransInfo.GuarantyEndDate" tag="4024" type="2" visible="true" width="84"/>
+            <Column align="CENTER" caption="Son Kullanım Tarihi" hasLookup="false" headerAlign="CENTER"
+                    mandatory="false" property="DateOfExpiry" tag="4006" type="2" visible="true" width="121"/>
+            <Column align="RIGHT" caption="Not" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="ScoreRate" tag="4007" type="1" visible="true" width="92"/>
+            <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                    property="Description" tag="4008" type="0" visible="true" width="65"/>
+        </Columns>
+        <Rows>
+            <Row col4001="TC007544" col4002="" col4005="ADET" col4006="24/11/2015" col4007="0" col4008="" col4021="0"
+                 col4022="Gün" col4022_tag="0" col4023="24/11/2015" col4024="24/11/2015" col4025="" state="selected"/>
+        </Rows>
+    </DataGrid>
+    <Control enabled="true" hasLookup="false" height="97" locationX="5" locationY="266" mandatory="false" tag="2000"
+             text="" title="Unknown" type="4" value="" visible="true" width="244">
+        <Control enabled="true" hasLookup="false" height="24" locationX="8" locationY="23" mandatory="false"
+                 tag="1000003" text="" title="Numara" type="101" value="" visible="true" width="53"/>
+        <Control enabled="true" hasLookup="false" height="22" locationX="61" locationY="23" mandatory="false" tag="2001"
+                 text="" title="Numara" type="102" value="" visible="true" width="178"/>
+        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="47" mandatory="false"
+                 tag="1000004" text="" title="Miktar" type="101" value="" visible="true" width="40"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="61" locationY="47" mandatory="false"
+                 tag="2002" text="" title="Miktar" type="117" value="0" visible="true" width="178"/>
+        <Control enabled="true" hasLookup="false" height="21" locationX="185" locationY="71" mandatory="false"
+                 tag="2010" text="" title="Ekle" type="109" value="" visible="true" width="54"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="97" locationX="249" locationY="266" mandatory="false" tag="200"
+             text="" title="Unknown" type="4" value="" visible="true" width="287">
+        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="23" mandatory="false"
+                 tag="1000005" text="" title="Hareket Miktarı" type="101" value="" visible="true" width="89"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="97" locationY="23" mandatory="false" tag="201"
+                 text="1" title="Hareket Miktarı" type="117" value="1" visible="true" width="185"/>
+        <Control enabled="false" hasLookup="false" height="24" locationX="8" locationY="47" mandatory="false"
+                 tag="1000006" text="" title="Toplam Miktar" type="101" value="" visible="true" width="85"/>
+        <Control enabled="false" hasLookup="false" height="22" locationX="97" locationY="47" mandatory="false" tag="202"
+                 text="1" title="Toplam Miktar" type="117" value="1" visible="true" width="185"/>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="36" locationX="5" locationY="363" mandatory="false" tag="3000000"
+             text="" title="Unknown" type="10" value="" visible="true" width="550">
+        <Control enabled="true" hasLookup="false" height="20" locationX="0" locationY="11" mandatory="false" tag="1100"
+                 text="" title="Seri/lot/Stok Yeri ile ilişkilendir" type="111" value="" visible="true" width="20"/>
+        <Control attribute="SAVECLOSE" enabled="true" hasLookup="false" height="21" locationX="406" locationY="10"
+                 mandatory="false" tag="1101" text="" title="Kaydet" type="109" value="" visible="true" width="67"/>
+        <Control attribute="CLOSE" enabled="true" hasLookup="false" height="21" locationX="478" locationY="10"
+                 mandatory="false" tag="1102" text="" title="Vazgeç" type="109" value="" visible="true" width="67"/>
+    </Control>
+    <Control attribute="FORMPOPUP" enabled="true" hasLookup="false" height="0" itemList="Birim Çevrimi~5" locationX="0"
+             locationY="0" mandatory="false" tag="1200" text="" title="Unknown" type="154" value="" visible="false"
+             width="0"/>
+    <Messages/>
+</Form>

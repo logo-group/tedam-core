@@ -1,0 +1,198 @@
+<Form enabled="true" height="481" lastUpdate="2016-05-17 15:34:24" locationX="0" locationY="0"
+      name="MMXFItemBrowser%0.jfm" tag="1000007" title="Malzemeler" version="v2.45.9.0" visible="true" width="774">
+    <Control enabled="true" hasLookup="false" height="471" locationX="5" locationY="5" mandatory="false" tag="10"
+             text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true" width="764">
+        <Control enabled="true" hasLookup="false" height="448" locationX="0" locationY="23" mandatory="false"
+                 tag="1000001" text="" title="Kayıtlar" type="3" value="0" visible="true" width="764">
+            <DataGrid enabled="true" height="380" locationX="5" locationY="5" splitterIndex="-1" tag="100"
+                      visible="true" width="754">
+                <Columns>
+                    <Column align="CENTER" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="" tag="1007" type="0" visible="true" width="13"/>
+                    <Column align="LEFT" caption="Türü" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="" tag="1001" type="0" visible="true" width="120"/>
+                    <Column align="LEFT" caption="Kod" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="Code" tag="1002" type="0" visible="true" width="160"/>
+                    <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="Description" tag="1003" type="0" visible="true" width="200"/>
+                    <Column align="LEFT" caption="2. Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="Description2" tag="1015" type="0" visible="true" width="200"/>
+                    <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="LangEq_Equivalent" tag="1009" type="0" visible="false" width="0"/>
+                    <Column align="LEFT" caption="Ana Birim" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="BaseUnit" tag="1004" type="0" visible="true" width="80"/>
+                    <Column align="RIGHT" caption="Fiili Stok" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="OnHandAmount" tag="1005" type="0" visible="true" width="100"/>
+                    <Column align="RIGHT" caption="Gerçek Stok" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="RealAmount" tag="1006" type="0" visible="true" width="100"/>
+                    <Column align="LEFT" caption="Arama Metni" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="SearchText" tag="1013" type="0" visible="true" width="100"/>
+                    <Column align="LEFT" caption="Üretici Kodu" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                            property="ProcuderCode" tag="1014" type="0" visible="true" width="100"/>
+                </Columns>
+                <Rows>
+                    <Row col1001="(TM) Ticari Mal" col1002="A_TC005711_01" col1003="A_TC005711_01" col1004="ADET"
+                         col1005="" col1006="" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(MT) Malzeme Takımı" col1002="B_TC005711_02" col1003="B_TC005711_02" col1004="ADET"
+                         col1005="" col1006="-100" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="C_TC005711_03" col1003="C_TC005711_03" col1004="ADET"
+                         col1005="" col1006="-20" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="D_TC005711_04" col1003="D_TC005711_04" col1004="ADET"
+                         col1005="" col1006="" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="DENEME" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="DENEME2" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="DENEME3" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="DENEME4" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001242_A" col1003="" col1004="ADET" col1005="20"
+                         col1006="20" col1007="" col1013="" col1014="" col1015="" state="cursor"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001303_A" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001309_A" col1003="" col1004="ADET" col1005="6"
+                         col1006="6" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001312_A" col1003="" col1004="ADET" col1005="100"
+                         col1006="100" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001312_B" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001314_A" col1003="" col1004="ADET" col1005="10"
+                         col1006="10" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001316_A" col1003="" col1004="ADET" col1005="10"
+                         col1006="10" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001334_A" col1003="" col1004="ADET" col1005="10"
+                         col1006="10" col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                    <Row col1001="(TM) Ticari Mal" col1002="TC_001335_A" col1003="" col1004="ADET" col1005="" col1006=""
+                         col1007="" col1013="" col1014="" col1015="" state="deselected"/>
+                </Rows>
+            </DataGrid>
+            <Control enabled="true" hasLookup="false" height="22" locationX="5" locationY="385" mandatory="false"
+                     tag="101" text="" title="Unknown" type="101" value="" visible="true" width="10"/>
+            <Control enabled="true" hasLookup="false" height="36" locationX="5" locationY="407" mandatory="false"
+                     tag="3000000" text="" title="Unknown" type="10" value="" visible="true" width="754">
+                <Control attribute="DBNEW" enabled="true" hasLookup="false" height="20"
+                         itemList="(TM) Ticari Mal~1|(DM) Depozitolu Mal~3|(VA) Varlık~4|(HM) Hammadde~10|(YM) Yarı Mamul~11|(MM) Mamul~12|(TK) Tüketim Malı~13|(AS) Asorti~15|(MT) Malzeme Takımı~16"
+                         locationX="0" locationY="11" mandatory="false" tag="151" text="" title="Ekle" type="112"
+                         value="" visible="true" width="32"/>
+                <Control attribute="DBNEW" enabled="true" hasLookup="false" height="20" locationX="0" locationY="11"
+                         mandatory="false" tag="181" text="" title="Ekle" type="111" value="" visible="false"
+                         width="20"/>
+                <Control attribute="DBNEW" enabled="true" hasLookup="false" height="20" itemList="Asorti~15|Basit~16"
+                         locationX="0" locationY="11" mandatory="false" tag="191" text="" title="Ekle" type="112"
+                         value="" visible="false" width="32"/>
+                <Control attribute="DBUPDATE" enabled="true" hasLookup="false" height="20" locationX="32" locationY="11"
+                         mandatory="false" tag="152" text="" title="Değiştir" type="111" value="" visible="true"
+                         width="20"/>
+                <Control attribute="DBDELETE" enabled="true" hasLookup="false" height="20" locationX="52" locationY="11"
+                         mandatory="false" tag="153" text="" title="Sil" type="111" value="" visible="true" width="20"/>
+                <Control attribute="DBDUPLICATE" enabled="true" hasLookup="false" height="20" locationX="72"
+                         locationY="11" mandatory="false" tag="154" text="" title="Kopyala" type="111" value=""
+                         visible="true" width="20"/>
+                <Control attribute="DBVIEW" enabled="true" hasLookup="false" height="20" locationX="92" locationY="11"
+                         mandatory="false" tag="155" text="" title="İncele" type="111" value="" visible="true"
+                         width="20"/>
+                <Control enabled="true" hasLookup="false" height="20" itemList="Gönder (Etiket)~1|Gönder (Mektup)~2"
+                         locationX="112" locationY="11" mandatory="false" tag="163" text="" title="Gönder" type="112"
+                         value="" visible="true" width="32"/>
+                <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                         itemList="Organizasyonel Birim Parametreleri~16|Sınıf Bağlantıları~30|Ürün Reçetesi İlişkisi~55|Referans Malzemeler~54|Alternatifler~44||Diğer Varlık Bağlantıları~58|-~-1|Satınalma Fiyatları~27|Satış Fiyatları~28|Müşteriler/Tedarikçiler~43|Standart Maliyetler~47|-|Muhasebe Bağlantı Kodları (Ana Hesap Planı)~40|Muhasebe Bağlantı Kodları (İkinci Hesap Planı)~46|Muhasebe Bağlantı Kodları (Üçüncü Hesap Planı)~48|-~-2|Doküman Kataloğu~888"
+                         locationX="144" locationY="11" mandatory="false" tag="157" text="" title="Bağlı Kayıtlar"
+                         type="112" value="" visible="true" width="32"/>
+                <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                         itemList="Muhasebe Bağlantı Kodları (Ana Hesap Planı)~40|Muhasebe Bağlantı Kodları (İkinci Hesap Planı)~46|Muhasebe Bağlantı Kodları (Üçüncü Hesap Planı)~48|-~-1|Satınalma Fiyatları~27|-~-2|Satış Fiyatları~28|Müşteriler/Tedarikçiler~43|-~-3|Doküman Kataloğu~888|Takım Bileşenleri~50"
+                         locationX="176" locationY="11" mandatory="false" tag="159" text="" title="Bağlı Kayıtlar"
+                         type="112" value="" visible="false" width="0"/>
+                <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                         itemList="Hareketler~12||Sipariş Hareketleri~15|Talep Hareketleri~18|Sözleşme Hareketleri~19|Teklif Hareketleri~20|Sevkiyat Hareketleri~21"
+                         locationX="176" locationY="11" mandatory="false" tag="164" text="" title="İlişkili Kayıtlar"
+                         type="112" value="" visible="true" width="32"/>
+                <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                         itemList="Satınalma - Satış Toplamları~22|-~41|-~44|Ambar Toplamları~24|||Ekstre~40||||-~-1|Kayıt Bilgisi~887|İzleme~888"
+                         locationX="208" locationY="11" mandatory="false" tag="158" text="" title="Bilgiler" type="112"
+                         value="" visible="true" width="32"/>
+                <Control attribute="DBSELECT" enabled="true" hasLookup="false" height="21" locationX="639"
+                         locationY="10" mandatory="false" tag="161" text="" title="Seç" type="109" value=""
+                         visible="false" width="49"/>
+            </Control>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="448" locationX="0" locationY="23" mandatory="false" tag="3000"
+                 text="" title="Filtreler" type="3" value="1" visible="false" width="764">
+            <FilterGrid enabled="true" height="380" locationX="5" locationY="5" tag="300" visible="true" width="754">
+                <Filters>
+                    <Filter description="Durumu" hasLookup="false" id="1000002"
+                            itemList="Tümü~2|Kullanımda|Kullanım Dışı~1" type="SELECTION" valueList="Kullanımda"/>
+                    <Filter description="Türü" hasLookup="false" id="1000003"
+                            itemList="(TM) Ticari Mal~1|(DM) Depozitolu Mal~3|(VA) Varlık~4|(HM) Hammadde~10|(YM) Yarı Mamul~11|(MM) Mamul~12|(TK) Tüketim Malı~13|(HZ) Hizmet~30|(AS) Asorti~15|(MT) Malzeme Takımı~16"
+                            type="GROUP" valueList=""/>
+                    <Filter description="Kod" excludedValue="" hasLookup="true" highValue="" id="10001" lowValue=" "
+                            type="STRINGRANGE"/>
+                    <Filter description="Açıklama" excludedValue="" hasLookup="true" highValue="" id="10002"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="2. Açıklama" excludedValue="" hasLookup="true" highValue="" id="110013"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Varlık Kategorisi" hasLookup="false" id="1000008"
+                            itemList="Gayrimenkul~1|Nakil Vasıtası~2|Ekipman~3|Diğer Varlık~4" type="GROUP"
+                            valueList=""/>
+                    <Filter description="Özel Kodu" excludedValue="" hasLookup="true" highValue="" id="10122"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Özel Kodu 2" excludedValue="" hasLookup="true" highValue="" id="10123"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Özel Kodu 3" excludedValue="" hasLookup="true" highValue="" id="10124"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Özel Kodu 4" excludedValue="" hasLookup="true" highValue="" id="10125"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Özel Kodu 5" excludedValue="" hasLookup="true" highValue="" id="10126"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Yetki Kodu" excludedValue="" hasLookup="true" highValue="" id="10017"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Grup Kodu" excludedValue="" hasLookup="true" highValue="" id="110018"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Cari Hesap Kodu" excludedValue="" hasLookup="true" highValue="" id="32001"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Cari Hesap Açıklaması" excludedValue="" hasLookup="true" highValue=""
+                            id="24102" lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Müşteri/Tedarikçi Kodu" excludedValue="" hasLookup="false" highValue=""
+                            id="15001" lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Müşteri/Tedarikçi Açıklaması" excludedValue="" hasLookup="false" highValue=""
+                            id="15002" lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Üst Sınıf Kodu" excludedValue="" hasLookup="true" id="10014" type="STRING"
+                            value=""/>
+                    <Filter description="Üst Sınıf Açıklaması" excludedValue="" hasLookup="true" id="10023"
+                            type="STRING" value=""/>
+                    <Filter description="Üst Sınıf Özel Kodu" excludedValue="" hasLookup="true" id="10096" type="STRING"
+                            value=""/>
+                    <Filter description="Üst Sınıf Yetki Kodu" excludedValue="" hasLookup="true" id="10097"
+                            type="STRING" value=""/>
+                    <Filter description="Üst Sınıf Grup Kodu" excludedValue="" hasLookup="true" id="110019"
+                            type="STRING" value=""/>
+                    <Filter description="Referans Kodu" excludedValue="" hasLookup="true" highValue="" id="11111"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Referans Açıklaması" excludedValue="" hasLookup="true" highValue="" id="11112"
+                            lowValue=" " type="STRINGRANGE"/>
+                    <Filter description="Tevkifat" hasLookup="false" id="11113"
+                            itemList="Hepsi~-1|Uygulananlar~1|Uygulanmayanlar" type="SELECTION" valueList="Hepsi~-1"/>
+                    <Filter description="Açıklama Giriş Yapılan Dilde Gösterilsin" hasLookup="false" id="1000004"
+                            itemList="Hayır|Evet~1" type="SELECTION" valueList="Hayır"/>
+                    <Filter description="Fiili Stok" hasLookup="false" id="100"
+                            itemList="Hepsi|Pozitif değerler~1|Negatif değerler~2|Sıfır~3" type="SELECTION"
+                            valueList="Hepsi"/>
+                    <Filter description="Gerçek Stok" hasLookup="false" id="101"
+                            itemList="Hepsi|Pozitif değerler~1|Negatif değerler~2|Sıfır~3" type="SELECTION"
+                            valueList="Hepsi"/>
+                    <Filter description="Toplamlarda Kullanılacak Ambarlar" excludedValue="" hasLookup="true"
+                            highValue="" id="1001" lowValue=" " type="STRINGRANGE"/>
+                </Filters>
+            </FilterGrid>
+            <Control enabled="true" hasLookup="false" height="22" locationX="5" locationY="385" mandatory="false"
+                     tag="351" text="" title="Unknown" type="101" value="" visible="true" width="10"/>
+            <Control enabled="true" hasLookup="false" height="36" locationX="5" locationY="407" mandatory="false"
+                     tag="3000001" text="" title="Unknown" type="10" value="" visible="true" width="754"/>
+        </Control>
+    </Control>
+    <Control attribute="FORMPOPUP" enabled="true" hasLookup="false" height="5"
+             itemList="Ekle~1|Değiştir~2|Sil~3|İncele~4|Kopyala~7|-~-1|Durumunu Değiştir~20|Doküman Oluştur~21|Hızlı Barkod Girişi~22|-~-2|Satış Fiyatı Oluştur~31|Satınalma Fiyatı Oluştur~32|-~-3|Kayıt Sayısı~41|-~-4"
+             locationX="0" locationY="0" mandatory="false" tag="1000006" text="" title="Unknown" type="154" value=""
+             visible="false" width="5"/>
+    <Messages/>
+</Form>

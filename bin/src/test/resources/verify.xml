@@ -1,0 +1,314 @@
+<Form enabled="true" height="580" lastUpdate="2016-11-21 13:11:13" locationX="0" locationY="0"
+      name="MMXFItemConfigBrowser.jfm" tag="10067" title="Malzeme Varyantları" version="v2.46.3.0" visible="true"
+      width="988">
+    <Control enabled="true" hasLookup="false" height="570" locationX="5" locationY="5" mandatory="false" tag="99"
+             text="" title="Unknown" type="10" value="" visible="true" width="439">
+        <Control enabled="true" hasLookup="false" height="72" locationX="5" locationY="5" mandatory="false" tag="20000"
+                 text="" title="Unknown" type="4" value="" visible="true" width="429">
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="23" mandatory="false"
+                     tag="1000007" text="" title="Kod" type="101" value="" visible="true" width="26"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="64" locationY="23" mandatory="false"
+                     tag="20001" text="TC012218" title="Kod" type="102" value="TC012218" visible="true" width="178"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="45" mandatory="false"
+                     tag="1000008" text="" title="Açıklaması" type="101" value="" visible="true" width="56"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="64" locationY="45" mandatory="false"
+                     tag="20002" text="TC012218 varyantlı malzeme" title="Açıklaması" type="102"
+                     value="TC012218 varyantlı malzeme" visible="true" width="360"/>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="488" locationX="5" locationY="77" mandatory="false"
+                 tag="20010" text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true" width="429">
+            <Control enabled="true" hasLookup="false" height="465" locationX="0" locationY="23" mandatory="false"
+                     tag="21000" text="" title="Kayıtlar" type="3" value="0" visible="true" width="429">
+                <DataGrid enabled="true" height="419" locationX="5" locationY="5" splitterIndex="-1" tag="20100"
+                          visible="true" width="419">
+                    <Columns>
+                        <Column align="LEFT" caption="Kod" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Code" tag="21002" type="0" visible="true" width="150"/>
+                        <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Description" tag="21003" type="0" visible="true" width="220"/>
+                        <Column align="LEFT" caption="Fiili Stok" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="" tag="21006" type="0" visible="true" width="100"/>
+                        <Column align="LEFT" caption="Gerçek Stok" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="" tag="21007" type="0" visible="true" width="100"/>
+                    </Columns>
+                    <Rows>
+                        <Row col21002="TC012218_V01" col21003="TC012218 varyant-1" col21006="0" col21007="0"
+                             state="deselected"/>
+                        <Row col21002="TC012218_V02" col21003="TC012218 varyant-2" col21006="0" col21007="0"
+                             state="cursor"/>
+                    </Rows>
+                </DataGrid>
+                <Control enabled="true" hasLookup="false" height="36" locationX="5" locationY="424" mandatory="false"
+                         tag="3000000" text="" title="Unknown" type="10" value="" visible="true" width="419">
+                    <Control attribute="DBNEW" enabled="true" hasLookup="false" height="20" locationX="0" locationY="11"
+                             mandatory="false" tag="20151" text="" title="Ekle" type="111" value="" visible="true"
+                             width="20"/>
+                    <Control attribute="DBUPDATE" enabled="true" hasLookup="false" height="20" locationX="20"
+                             locationY="11" mandatory="false" tag="20152" text="" title="Değiştir" type="111" value=""
+                             visible="true" width="20"/>
+                    <Control attribute="DBDELETE" enabled="true" hasLookup="false" height="20" locationX="40"
+                             locationY="11" mandatory="false" tag="20153" text="" title="Sil" type="111" value=""
+                             visible="true" width="20"/>
+                    <Control attribute="DBDUPLICATE" enabled="true" hasLookup="false" height="20" locationX="60"
+                             locationY="11" mandatory="false" tag="20154" text="" title="Kopyala" type="111" value=""
+                             visible="true" width="20"/>
+                    <Control attribute="DBVIEW" enabled="true" hasLookup="false" height="20" locationX="80"
+                             locationY="11" mandatory="false" tag="20155" text="" title="İncele" type="111" value=""
+                             visible="true" width="20"/>
+                    <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                             itemList="Referans Malzemeler~1|Ambar Parametreleri~2|Malzeme Hareketleri~15|Sipariş Hareketleri~16|Talep Hareketleri~18|Lot / Seri Numaraları~17|Sözleşme Hareketleri~19|Teklif Hareketleri~20|Sevkiyat Hareketleri~21|Müşteriler/Tedarikçiler~22"
+                             locationX="100" locationY="11" mandatory="false" tag="20159" text="" title="Bağlı Kayıtlar"
+                             type="112" value="" visible="true" width="32"/>
+                    <Control attribute="DBCUSTOM" enabled="true" hasLookup="false" height="20"
+                             itemList="Satınalma - Satış Toplamları~22|Ambar Toplamları~24|Kayıt Bilgisi~14"
+                             locationX="132" locationY="11" mandatory="false" tag="20158" text="" title="Bilgiler"
+                             type="112" value="" visible="true" width="32"/>
+                    <Control attribute="DBSELECT" enabled="true" hasLookup="false" height="21" locationX="299"
+                             locationY="10" mandatory="false" tag="20161" text="" title="Seç" type="109" value=""
+                             visible="false" width="49"/>
+                    <Control attribute="CLOSE" enabled="true" hasLookup="false" height="21" locationX="353"
+                             locationY="10" mandatory="false" tag="20162" text="" title="Kapat" type="109" value=""
+                             visible="true" width="61"/>
+                </Control>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="465" locationX="0" locationY="23" mandatory="false"
+                     tag="23000" text="" title="Filtreler" type="3" value="1" visible="false" width="429">
+                <FilterGrid enabled="true" height="419" locationX="5" locationY="5" tag="20300" visible="true"
+                            width="419">
+                    <Filters>
+                        <Filter description="Kod" excludedValue="" hasLookup="true" highValue="" id="10076" lowValue=" "
+                                type="STRINGRANGE"/>
+                        <Filter description="Açıklama" excludedValue="" hasLookup="true" highValue="" id="10077"
+                                lowValue=" " type="STRINGRANGE"/>
+                        <Filter description="Özel Kod" excludedValue="" hasLookup="true" highValue="" id="10089"
+                                lowValue=" " type="STRINGRANGE"/>
+                        <Filter description="Yetki Kodu" excludedValue="" hasLookup="true" highValue="" id="10090"
+                                lowValue=" " type="STRINGRANGE"/>
+                    </Filters>
+                </FilterGrid>
+                <Control enabled="true" hasLookup="false" height="36" locationX="5" locationY="424" mandatory="false"
+                         tag="3000001" text="" title="Unknown" type="10" value="" visible="true" width="419">
+                    <Control attribute="FILTERSAVE" enabled="true" hasLookup="false" height="20" locationX="0"
+                             locationY="11" mandatory="false" tag="20305" text="" title="Filtre değerlerini sakla"
+                             type="111" value="" visible="true" width="20"/>
+                    <Control attribute="FILTERLOAD" enabled="true" hasLookup="false" height="20" locationX="20"
+                             locationY="11" mandatory="false" tag="20306" text="" title="Filtre değerlerini yükle"
+                             type="111" value="" visible="true" width="20"/>
+                    <Control attribute="FILTERAPPLY" enabled="true" hasLookup="false" height="21" locationX="348"
+                             locationY="10" mandatory="false" tag="20307" text="" title="Uygula" type="109" value=""
+                             visible="true" width="66"/>
+                </Control>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="465" locationX="0" locationY="23" mandatory="false"
+                     tag="24000" text="" title="Özellik Filtreleri" type="3" value="2" visible="false" width="429">
+                <Control enabled="true" hasLookup="false" height="96" locationX="5" locationY="5" mandatory="false"
+                         tag="24100" text="" title="Unknown" type="4" value="" visible="true" width="419">
+                    <Control enabled="true" hasLookup="false" height="22" locationX="8" locationY="23" mandatory="false"
+                             tag="1000009" text="" title="Özellik Seti Kodu" type="101" value="" visible="true"
+                             width="86"/>
+                    <Control enabled="true" hasLookup="true" height="24" locationX="118" locationY="23"
+                             mandatory="false" tag="24104" text="" title="Özellik Seti Kodu" type="102" value=""
+                             visible="true" width="296"/>
+                    <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="47"
+                             mandatory="false" tag="1000011" text="" title="Özellik Seti Açıklaması" type="101" value=""
+                             visible="true" width="110"/>
+                    <Control enabled="false" hasLookup="false" height="22" locationX="118" locationY="47"
+                             mandatory="false" tag="24105" text="" title="Özellik Seti Açıklaması" type="102" value=""
+                             visible="true" width="296"/>
+                    <Control enabled="true" hasLookup="false" height="22" locationX="118" locationY="69"
+                             mandatory="false" tag="24200" text="" title="Özellik Değeri Filtresi" type="107"
+                             value="false" visible="true" width="125"/>
+                </Control>
+                <FilterGrid enabled="true" height="334" locationX="5" locationY="101" tag="20400" visible="true"
+                            width="419">
+                    <Filters/>
+                </FilterGrid>
+                <Control attribute="FILTERAPPLY" enabled="true" hasLookup="false" height="21" locationX="358"
+                         locationY="439" mandatory="false" tag="20407" text="" title="Uygula" type="109" value=""
+                         visible="true" width="66"/>
+            </Control>
+        </Control>
+    </Control>
+    <Control enabled="true" hasLookup="false" height="570" locationX="449" locationY="5" mandatory="false" tag="4500"
+             text="" title="Unknown" type="10" value="" visible="true" width="534">
+        <Control enabled="true" hasLookup="false" height="0" locationX="8" locationY="8" mandatory="false" tag="1010"
+                 text="" title="Unknown" type="10" value="" visible="false" width="0">
+            <Control enabled="true" hasLookup="false" height="22" locationX="5" locationY="5" mandatory="false"
+                     tag="1000010" text="" title="Malzeme Kodu" type="101" value="" visible="true" width="76"/>
+            <Control enabled="true" hasLookup="false" height="22" locationX="81" locationY="5" mandatory="false"
+                     tag="101" text="TC012218" title="Unknown" type="102" value="TC012218" visible="false" width="123"/>
+            <Control enabled="true" hasLookup="false" height="22" locationX="209" locationY="5" mandatory="false"
+                     tag="102" text="TC012218 varyantlı malzeme" title="Malzeme Açıklaması" type="102"
+                     value="TC012218 varyantlı malzeme" visible="false" width="0"/>
+        </Control>
+        <Control enabled="false" hasLookup="false" height="62" locationX="8" locationY="8" mandatory="false" tag="100"
+                 text="" title="Unknown" type="4" value="" visible="true" width="309">
+            <Control enabled="false" hasLookup="false" height="22" locationX="9" locationY="13" mandatory="true"
+                     tag="1000003" text="" title="Kod" type="101" value="" visible="true" width="32"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="58" locationY="13" mandatory="true"
+                     tag="103" text="TC012218_V02" title="Kod" type="102" value="TC012218_V02" visible="true"
+                     width="132"/>
+            <Control enabled="false" hasLookup="false" height="18" locationX="195" locationY="13" mandatory="false"
+                     tag="1000000" text="" title="Numara ver" type="111" value="" visible="true" width="18"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="9" locationY="35" mandatory="false"
+                     tag="1000010" text="" title="Açıklama" type="101" value="" visible="true" width="49"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="58" locationY="35" mandatory="false"
+                     tag="106" text="TC012218 varyant-2" title="Unknown" type="102" value="TC012218 varyant-2"
+                     visible="true" width="241"/>
+        </Control>
+        <Control enabled="false" hasLookup="false" height="128" locationX="8" locationY="70" mandatory="false" tag="150"
+                 text="" title="Unknown" type="4" value="" visible="true" width="482">
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="13" mandatory="false"
+                     tag="1000004" text="" title="Özellik Seti Kodu" type="101" value="" visible="true" width="86"/>
+            <Control enabled="false" hasLookup="true" height="22" locationX="94" locationY="13" mandatory="false"
+                     tag="104" text="" title="Özellik Seti Kodu" type="102" value="TC012218" visible="true"
+                     width="123"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="222" locationY="13" mandatory="false"
+                     tag="105" text="TC012218 özellik seti" title="Özellik Seti Açıklaması" type="102"
+                     value="TC012218 özellik seti" visible="true" width="255"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="35" mandatory="false"
+                     tag="1000010" text="" title="Özel Kod" type="101" value="" visible="true" width="50"/>
+            <Control enabled="false" hasLookup="true" height="22" locationX="94" locationY="35" mandatory="false"
+                     tag="120" text="" title="Unknown" type="102" value="" visible="true" width="115"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="57" mandatory="false"
+                     tag="1000010" text="" title="Yetki Kodu" type="101" value="" visible="true" width="58"/>
+            <Control enabled="false" hasLookup="true" height="22" locationX="94" locationY="57" mandatory="false"
+                     tag="121" text="" title="Unknown" type="102" value="" visible="true" width="115"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="79" mandatory="false"
+                     tag="1000001" text="" title="Başlangıç Tarihi" type="101" value="" visible="true" width="81"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="94" locationY="79" mandatory="false"
+                     tag="127" text="__/__/____" title="Başlangıç Tarihi" type="104" value="__/__/____" visible="true"
+                     width="70"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="222" locationY="79" mandatory="false"
+                     tag="128" text="00:00" title="Unknown" type="105" value="00:00" visible="true" width="58"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="8" locationY="101" mandatory="false"
+                     tag="1000021" text="" title="Bitiş Tarihi" type="101" value="" visible="true" width="56"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="94" locationY="101" mandatory="false"
+                     tag="129" text="__/__/____" title="Bitiş Tarihi" type="104" value="__/__/____" visible="true"
+                     width="70"/>
+            <Control enabled="false" hasLookup="false" height="22" locationX="222" locationY="101" mandatory="false"
+                     tag="130" text="00:00" title="Unknown" type="105" value="00:00" visible="true" width="58"/>
+        </Control>
+        <Control enabled="false" hasLookup="false" height="147" locationX="8" locationY="198" mandatory="false"
+                 tag="1020" text="" title="Unknown" type="10" value="" visible="true" width="521">
+            <Control enabled="false" hasLookup="false" height="137" locationX="5" locationY="5" mandatory="false"
+                     tag="400" text="" title="Malzeme Resmi" type="4" value="" visible="true" width="95">
+                <Control enabled="false" hasLookup="false" height="100" locationX="8" locationY="32" mandatory="false"
+                         tag="401" text=""
+                         title="Yeni bir resim eklemek veya varolan resmi değiştirmek için çift tıklayın!" type="153"
+                         value="[B@35570276" visible="true" width="82"/>
+            </Control>
+            <Control enabled="false" hasLookup="false" height="137" locationX="100" locationY="5" mandatory="false"
+                     tag="300" text="" title="Özellik Resimleri" type="4" value="" visible="true" width="416"/>
+        </Control>
+        <Control enabled="true" hasLookup="false" height="220" locationX="8" locationY="345" mandatory="false" tag="200"
+                 text="" title="Tabbed Pane - Selected Index" type="2" value="0" visible="true" width="521">
+            <Control enabled="true" hasLookup="false" height="197" locationX="0" locationY="23" mandatory="false"
+                     tag="1000041" text="" title="Özellikler" type="3" value="0" visible="true" width="521">
+                <DataGrid enabled="false" height="187" locationX="5" locationY="5" splitterIndex="-1" tag="3100"
+                          visible="true" width="511">
+                    <Columns>
+                        <Column align="LEFT" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="" tag="3103" type="0" visible="true" width="40"/>
+                        <Column align="LEFT" caption="Açıklama" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Description" tag="3101" type="0" visible="true" width="167"/>
+                        <Column align="RIGHT" caption="Değer" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="" tag="3102" type="1" visible="true" width="167"/>
+                        <Column align="LEFT" caption="Fiyatı Etkiler" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="EffectsPrice" tag="3111" type="5" visible="true"
+                                width="101"/>
+                    </Columns>
+                    <Rows>
+                        <Row col3101="TC012218 kumaş" col3102="Gabardin" col3103="" col3111="false" state="selected"/>
+                        <Row col3101="TC012218 renk" col3102="Mavi" col3103="" col3111="false" state="deselected"/>
+                    </Rows>
+                </DataGrid>
+            </Control>
+            <Control enabled="true" hasLookup="false" height="197" locationX="0" locationY="23" mandatory="false"
+                     tag="1000042" text="" title="Birimler" type="3" value="1" visible="false" width="521">
+                <DataGrid enabled="false" height="187" locationX="5" locationY="5" splitterIndex="-1" tag="3200"
+                          visible="true" width="511">
+                    <Columns>
+                        <Column align="RIGHT" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Multiplier" tag="3101" type="1" visible="true" width="167"/>
+                        <Column align="LEFT" caption="Birim" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="UOMDef.Code" tag="3102" type="0" visible="true" width="167"/>
+                        <Column align="CENTER" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="" tag="3103" type="0" visible="true" width="40"/>
+                        <Column align="RIGHT" caption="" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Divisor" tag="3104" type="1" visible="true" width="60"/>
+                        <Column align="LEFT" caption="Ana Birim" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="" tag="3105" type="0" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Bölünebilen" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="UOMDef.Divisible" tag="3106" type="5" visible="true"
+                                width="96"/>
+                        <Column align="LEFT" caption="Barkod" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="" tag="3107" type="0" visible="true" width="128"/>
+                        <Column align="LEFT" caption="Birimli Barkod" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="UnitBarcode" tag="3126" type="0" visible="true"
+                                width="128"/>
+                        <Column align="RIGHT" caption="Ondalık Hane" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="DecimalPlace" tag="3127" type="4" visible="true"
+                                width="128"/>
+                        <Column align="LEFT" caption="Erişim" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Ext_Acc_Flags" tag="3108" type="4" visible="true" width="128"/>
+                        <Column align="LEFT" caption="Modüller" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="" tag="3109" type="4" visible="true" width="300"/>
+                        <Column align="RIGHT" caption="Öncelik-MY" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="MM_Priority" tag="3141" type="1" visible="true" width="75"/>
+                        <Column align="RIGHT" caption="Öncelik-SA" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="PC_Priority" tag="3142" type="1" visible="true" width="73"/>
+                        <Column align="RIGHT" caption="Öncelik-SD" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="SD_Priority" tag="3143" type="1" visible="true" width="73"/>
+                        <Column align="RIGHT" caption="En" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Width" tag="3110" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="WidthUOM.Code" tag="3111" type="0" visible="true" width="101"/>
+                        <Column align="RIGHT" caption="Boy" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Length" tag="3112" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="LengthUOM.Code" tag="3113" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Yükseklik" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="Height" tag="3114" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="HeightUOM.Code" tag="3115" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Alan" hasLookup="false" headerAlign="CENTER" mandatory="false"
+                                property="Area" tag="3116" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="AreaUOM.Code" tag="3117" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Net Hacim" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="Volume" tag="3118" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="VolumeUOM.Code" tag="3119" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Brüt Hacim" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="Gross_Volume" tag="3120" type="1" visible="true"
+                                width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="GrossVolUOM.Code" tag="3121" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Net Ağırlık" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="Weight" tag="3122" type="1" visible="true" width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="WeightUOM.Code" tag="3123" type="0" visible="true" width="80"/>
+                        <Column align="RIGHT" caption="Brüt Ağırlık" hasLookup="false" headerAlign="CENTER"
+                                mandatory="false" property="Gross_Weight" tag="3124" type="1" visible="true"
+                                width="80"/>
+                        <Column align="LEFT" caption="Birimi" hasLookup="true" headerAlign="CENTER" mandatory="false"
+                                property="GrossWgtUOM.Code" tag="3125" type="0" visible="true" width="80"/>
+                    </Columns>
+                    <Rows>
+                        <Row col3101="1" col3102="ADET" col3103="=" col3104="1" col3105="" col3106="false" col3107=""
+                             col3108="" col3108_tag="4" col3109="" col3109_tag="7" col3110="0" col3111="" col3112="0"
+                             col3113="" col3114="0" col3115="" col3116="0" col3117="" col3118="0" col3119="" col3120="0"
+                             col3121="" col3122="0" col3123="" col3124="0" col3125="" col3126="" col3127=""
+                             col3127_tag="0" col3141="0" col3142="0" col3143="0" state="selected"/>
+                    </Rows>
+                </DataGrid>
+            </Control>
+        </Control>
+    </Control>
+    <Control attribute="FORMPOPUP" enabled="true" hasLookup="false" height="0"
+             itemList="Ekle~1|Değiştir~2|Sil~3|İncele~4|Kopyala~5|-~-1|Durumunu Değiştir~20|-~-2|Otomatik Varyant Atama~9"
+             locationX="0" locationY="0" mandatory="false" tag="90720" text="" title="Unknown" type="154" value=""
+             visible="false" width="0"/>
+    <Messages/>
+</Form>
