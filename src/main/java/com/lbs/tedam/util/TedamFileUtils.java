@@ -17,36 +17,52 @@
 
 package com.lbs.tedam.util;
 
-import com.lbs.tedam.bsh.utils.ScriptService;
-import com.lbs.tedam.exception.CreateNewFileException;
-import com.lbs.tedam.model.DTO.LogoTestResult;
-import com.lbs.tedam.model.TedamFile;
-import com.lbs.tedam.model.TestReport;
-import com.lbs.tedam.util.Enums.StatusMessages;
-import com.lbs.tedam.util.Enums.TedamLogLevel;
-import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
-import jxl.*;
-import jxl.format.Border;
-import jxl.format.BorderLineStyle;
-import jxl.read.biff.BiffException;
-import jxl.write.*;
-import jxl.write.biff.RowsExceededException;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.lbs.tedam.bsh.utils.ScriptService;
+import com.lbs.tedam.exception.CreateNewFileException;
+import com.lbs.tedam.model.TedamFile;
+import com.lbs.tedam.model.TestReport;
+import com.lbs.tedam.model.DTO.LogoTestResult;
+import com.lbs.tedam.util.Enums.StatusMessages;
+import com.lbs.tedam.util.Enums.TedamLogLevel;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
+
+import jxl.Cell;
+import jxl.CellView;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.read.biff.BiffException;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 public class TedamFileUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(TedamFileUtils.class);
@@ -247,15 +263,18 @@ public class TedamFileUtils {
             }
             TedamLogUtils.log("TedamFileUtils.copySourceToDestinationWithFormat",
                     sourceFilePath.toUri() + " File successfully " + destinationFilePath.toFile().getParent() + " copied to path. ", TedamLogLevel.INFO,
-                    Boolean.TRUE);
+					java.lang.Boolean.TRUE);
             return true;
         } catch (CreateNewFileException e) {
-            TedamLogUtils.log("TedamFileUtils.copySourceToDestinationWithFormat", "File does not exist filePath : " + e.getMessage(), TedamLogLevel.ERROR, Boolean.TRUE);
+			TedamLogUtils.log("TedamFileUtils.copySourceToDestinationWithFormat",
+					"File does not exist filePath : " + e.getMessage(), TedamLogLevel.ERROR, java.lang.Boolean.TRUE);
             LOGGER.error("" + e);
             return false;
         } catch (IOException e) {
             TedamLogUtils.log("TedamFileUtils.copySourceToDestinationWithFormat",
-                    sourceFilePath.toUri() + " File " + destinationFilePath.toFile().getParent() + " Unable to copy to path.", TedamLogLevel.ERROR, Boolean.TRUE);
+					sourceFilePath.toUri() + " File " + destinationFilePath.toFile().getParent()
+							+ " Unable to copy to path.",
+					TedamLogLevel.ERROR, java.lang.Boolean.TRUE);
             LOGGER.error("" + e);
             return false;
         }
@@ -277,18 +296,23 @@ public class TedamFileUtils {
         // Before this method can be used, the machine where the archive file is located must be authorized to the C:\\TedamFace folder on the machine 172.16.2.190.
         // In addition, the corresponding folder map must be introduced as Z network location by network drive.
         // Unless these priorities are provided, this method will not work due to authorization failure.
-        ss.log("TedamFileUtils.overwriteReportParameterFile", "The file to be copied is being prepared... sourceFileDirectory :" + sourceFileDirectory, TedamLogLevel.INFO, Boolean.TRUE);
+		ss.log("TedamFileUtils.overwriteReportParameterFile",
+				"The file to be copied is being prepared... sourceFileDirectory :" + sourceFileDirectory,
+				TedamLogLevel.INFO, java.lang.Boolean.TRUE);
 
         // path of the file to read
         Path sourceFilePath = Paths.get(sourceFileDirectory);
         // the path to the destination file
         Path destinationFilePath = Paths.get(destinationDirectory);
-        ss.log("TedamFileUtils.overwriteReportParameterFile", "sourceFile :" + sourceFileDirectory, TedamLogLevel.INFO, Boolean.TRUE);
-        ss.log("TedamReportUtils.overwriteReportParameterFile", "filterFile :" + destinationDirectory, TedamLogLevel.INFO, Boolean.TRUE);
+		ss.log("TedamFileUtils.overwriteReportParameterFile", "sourceFile :" + sourceFileDirectory, TedamLogLevel.INFO,
+				java.lang.Boolean.TRUE);
+		ss.log("TedamReportUtils.overwriteReportParameterFile", "filterFile :" + destinationDirectory,
+				TedamLogLevel.INFO, java.lang.Boolean.TRUE);
         try {
             byte[] source = Files.readAllBytes(sourceFilePath);
             Files.write(destinationFilePath, source, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
-            ss.log("TedamFileUtils.overwriteReportParameterFile", "The files have been successfully copied. ", TedamLogLevel.INFO, Boolean.TRUE);
+			ss.log("TedamFileUtils.overwriteReportParameterFile", "The files have been successfully copied. ",
+					TedamLogLevel.INFO, java.lang.Boolean.TRUE);
         } catch (IOException e) {
             LOGGER.error("" + e);
         }
