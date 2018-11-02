@@ -1,5 +1,6 @@
 target/
 bin/
+src/main/resources/mail.properties
 src/test/resources/configTest.properties
 
 # IntelliJ project files

@@ -17,10 +17,10 @@
 
 package com.lbs.tedam.util;
 
-import com.lbs.tedam.localization.TedamLocalizerWrapper;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.lbs.tedam.localization.TedamLocalizerWrapper;
 
 public class EnumsV2 {
 
@@ -906,6 +906,10 @@ public class EnumsV2 {
         }
 
     }
+
+	public enum NotificationType {
+		MAIL;
+	}
 
     public interface IEnumsV2 extends TedamLocalizerWrapper {
 

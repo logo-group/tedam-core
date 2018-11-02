@@ -17,17 +17,29 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.util.DateTimeUtils;
-import com.lbs.tedam.util.EnumsV2.JobStatus;
-import com.lbs.tedam.util.EnumsV2.JobType;
-import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Where;
+
+import com.lbs.tedam.util.DateTimeUtils;
+import com.lbs.tedam.util.EnumsV2.JobStatus;
+import com.lbs.tedam.util.EnumsV2.JobType;
 
 /**
  * @author Tarik.Mikyas<br>
@@ -88,6 +100,11 @@ public class Job extends AbstractBaseEntity {
     @JoinColumn(name = "ENVIRONMENT_ID")
     @Where(clause = "IS_DELETED=0")
     private Environment jobEnvironment;
+
+	@ManyToOne
+	@JoinColumn(name = "NOTIFICATION_GROUP_ID")
+	@Where(clause = "IS_DELETED=0")
+	private NotificationGroup notificationGroup;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "JOB_ID")
@@ -222,9 +239,17 @@ public class Job extends AbstractBaseEntity {
         this.jobEnvironment = jobEnvironment;
     }
 
-    /**
-     * @return the jobDetails
-     */
+	public NotificationGroup getNotificationGroup() {
+		return notificationGroup;
+	}
+
+	public void setNotificationGroup(NotificationGroup notificationGroup) {
+		this.notificationGroup = notificationGroup;
+	}
+
+	/**
+	 * @return the jobDetails
+	 */
     public List<JobDetail> getJobDetails() {
         return jobDetails;
     }
