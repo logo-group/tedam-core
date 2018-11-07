@@ -12,3 +12,9 @@ before_install:
   - cd tedam-rest && mvn install -DskipTests && cd ..
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -DskipTests
+notifications:
+  email:
+    recipients:
+      - logobs@logo.com.tr
+    on_success: never
+    on_failure: always
