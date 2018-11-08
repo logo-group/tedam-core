@@ -554,6 +554,7 @@ public final class Constants {
     public static final String TEDAM_EXECUTION_FILE_PATH = "tedamExecutionFilePath";
     public static final String TEMP_FILE_PATH = "tempFilePath";
     public static final String LOG_FILE_PATH = "logFilePath";
+	public static final String CLIENT_PROJECT_NAME = "projectName";
     public static final String CONFIG_FILE_PATH = "configFilePath";
     public static final String REST_PARAM_PROJECT_NAME = "ProjectName";
     public static final String BASE_REST_URL = "baseRestUrl";

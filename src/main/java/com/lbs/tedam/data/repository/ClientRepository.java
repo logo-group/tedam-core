@@ -17,10 +17,10 @@
 
 package com.lbs.tedam.data.repository;
 
+import java.util.List;
+
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
-
-import java.util.List;
 
 /**
  * Repository for entity Client.
@@ -31,6 +31,6 @@ public interface ClientRepository extends BaseRepository<Client, Integer> {
 
     List<Client> findByDeleted(boolean deleted);
 
-    Client findByNameAndDeleted(String clientName, boolean deleted);
+	Client findByNameAndDeletedAndProjectName(String clientName, boolean deleted, String projectName);
 
 }

@@ -17,14 +17,15 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.ClientStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.ClientStatus;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -32,8 +33,9 @@ public class ClientMessageTest extends BaseServiceTest {
 
     @Test
     public void testSetters() {
-        ClientMessage clientMessage = new ClientMessage("clientName", ClientStatus.DEAD);
+		ClientMessage clientMessage = new ClientMessage("clientName", "projectName", ClientStatus.DEAD);
         clientMessage.setClientName("clientName");
+		clientMessage.setProjectName("projectName");
         clientMessage.setClientStatus(null);
     }
 
@@ -41,6 +43,7 @@ public class ClientMessageTest extends BaseServiceTest {
     public void testGetters() {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.getClientName();
+		clientMessage.getProjectName();
         clientMessage.getClientStatus();
     }
 

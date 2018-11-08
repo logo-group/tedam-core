@@ -17,11 +17,11 @@
 
 package com.lbs.tedam.data.service;
 
+import java.util.List;
+
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
-
-import java.util.List;
 
 public interface ClientService extends BaseService<Client, Integer> {
 
@@ -29,5 +29,5 @@ public interface ClientService extends BaseService<Client, Integer> {
 
     List<Client> getClientList() throws LocalizedException;
 
-    Client getClientByName(String clientName) throws LocalizedException;
+	Client getClientByNameAndProjectName(String clientName, String projectName) throws LocalizedException;
 }

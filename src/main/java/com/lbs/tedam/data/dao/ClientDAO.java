@@ -17,11 +17,11 @@
 
 package com.lbs.tedam.data.dao;
 
+import java.util.List;
+
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
-
-import java.util.List;
 
 public interface ClientDAO extends BaseDAO<Client, Integer> {
 
@@ -29,6 +29,6 @@ public interface ClientDAO extends BaseDAO<Client, Integer> {
 
     public List<Client> getClientList() throws LocalizedException;
 
-    public Client getClientByName(String clientName) throws LocalizedException;
+	public Client getClientByNameAndProjectName(String clientName, String projectName) throws LocalizedException;
 
 }

@@ -17,6 +17,11 @@
 
 package com.lbs.tedam.data.dao.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.lbs.tedam.data.dao.ClientDAO;
 import com.lbs.tedam.data.repository.ClientRepository;
 import com.lbs.tedam.exception.localized.GeneralLocalizedException;
@@ -24,10 +29,6 @@ import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.util.EnumsV2.TedamBoolean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ClientDAOImpl extends BaseDAOImpl<Client, Integer> implements ClientDAO {
@@ -67,9 +68,10 @@ public class ClientDAOImpl extends BaseDAOImpl<Client, Integer> implements Clien
     }
 
     @Override
-    public Client getClientByName(String clientName) throws LocalizedException {
+	public Client getClientByNameAndProjectName(String clientName, String projectName) throws LocalizedException {
         try {
-            Client client = repository.findByNameAndDeleted(clientName, TedamBoolean.FALSE.getBooleanValue());
+			Client client = repository.findByNameAndDeletedAndProjectName(clientName,
+					TedamBoolean.FALSE.getBooleanValue(), projectName);
             return client;
         } catch (Exception e) {
             throw new GeneralLocalizedException(e);

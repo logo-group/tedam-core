@@ -23,15 +23,18 @@ public class ClientMessage {
 
     private String clientName;
 
+	private String projectName;
+
     private ClientStatus clientStatus;
 
     public ClientMessage() {
         // An empty constructor is needed for all beans
     }
 
-    public ClientMessage(String clientName, ClientStatus clientStatus) {
+	public ClientMessage(String clientName, String projectName, ClientStatus clientStatus) {
         super();
         this.clientName = clientName;
+		this.projectName = projectName;
         this.clientStatus = clientStatus;
     }
 
@@ -51,4 +54,11 @@ public class ClientMessage {
         this.clientStatus = clientStatus;
     }
 
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
 }

@@ -17,6 +17,11 @@
 
 package com.lbs.tedam.data.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.lbs.tedam.data.dao.ClientDAO;
 import com.lbs.tedam.data.service.ClientService;
 import com.lbs.tedam.data.service.JobDetailService;
@@ -25,10 +30,6 @@ import com.lbs.tedam.data.service.TedamUserFavoriteService;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClientServiceImpl extends BaseServiceImpl<Client, Integer> implements ClientService {
@@ -68,8 +69,8 @@ public class ClientServiceImpl extends BaseServiceImpl<Client, Integer> implemen
     }
 
     @Override
-    public Client getClientByName(String clientName) throws LocalizedException {
-        Client client = dao.getClientByName(clientName);
+	public Client getClientByNameAndProjectName(String clientName, String projectName) throws LocalizedException {
+		Client client = dao.getClientByNameAndProjectName(clientName, projectName);
         return client;
     }
 

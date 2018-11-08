@@ -17,10 +17,15 @@
 
 package com.lbs.tedam.model;
 
-import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Where;
 
 /**
  * @author Tarik.Mikyas<br>
@@ -32,13 +37,13 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Where(clause = "IS_DELETED=0")
-@Table(name = "CLIENT")
+@Table(name = "CLIENT", uniqueConstraints = { @UniqueConstraint(columnNames = { "NAME", "PROJECT_ID" }) })
 public class Client extends AbstractBaseEntity {
     /** long serialVersionUID */
     private static final long serialVersionUID = 8661312830056616561L;
 
     /** String name */
-    @Column(name = "NAME", unique = true)
+	@Column(name = "NAME")
     @Size(min = 1, max = 255)
     private String name;
 

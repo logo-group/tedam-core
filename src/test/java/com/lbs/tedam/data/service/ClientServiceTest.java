@@ -17,13 +17,8 @@
 
 package com.lbs.tedam.data.service;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.impl.ClientServiceImpl;
-import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
-import com.lbs.tedam.exception.localized.LocalizedException;
-import com.lbs.tedam.model.Client;
-import com.lbs.tedam.model.Project;
-import com.lbs.tedam.test.BaseServiceTest;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +26,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.impl.ClientServiceImpl;
+import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
+import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Client;
+import com.lbs.tedam.model.Project;
+import com.lbs.tedam.test.BaseServiceTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ClientServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class, DataConfig.class})
@@ -58,7 +59,7 @@ public class ClientServiceTest extends BaseServiceTest {
 
     @Test
     public void testGetClientByName() throws LocalizedException {
-        Client client = clientService.getClientByName("Client2");
+		Client client = clientService.getClientByNameAndProjectName("Client2", "j-platform");
         Assert.assertNull(client);
     }
 
