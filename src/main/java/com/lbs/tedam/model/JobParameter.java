@@ -21,7 +21,7 @@ public class JobParameter extends AbstractBaseEntity {
     /**
      * String name
      */
-    @Column(name = "NAME", unique = true)
+    @Column(name = "NAME")
     @Size(min = 1, max = 255)
     private String name;
 
