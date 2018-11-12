@@ -17,13 +17,13 @@
 
 package com.lbs.tedam.model;
 
-import org.hibernate.annotations.Where;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Where;
 
 /**
  * @author Tarik.Mikyas<br>
@@ -41,7 +41,7 @@ public class JobParameterValue extends AbstractBaseEntity {
     /**
      * String value
      */
-    @Column(name = "VALUE", unique = true)
+	@Column(name = "VALUE")
     @Size(min = 1, max = 255)
     private String value;
 
