@@ -17,7 +17,10 @@
 
 package com.lbs.tedam.data.config;
 
-import com.lbs.tedam.data.DbConnectionInfo;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -29,8 +32,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import javax.sql.DataSource;
-import java.util.Properties;
+import com.lbs.tedam.data.DbConnectionInfo;
 
 /**
  * This class is configuration class for data management. Database connection, data source, entity and adapter beans are in this class. Looks up package
@@ -92,7 +94,7 @@ public class DataConfig {
         properties.setProperty("hibernate.hikari.dataSource.url", connectionInfo.getUrl());
         properties.setProperty("hibernate.hikari.dataSource.user", connectionInfo.getUserName());
         properties.setProperty("hibernate.hikari.dataSource.password", connectionInfo.getPass());
-        properties.setProperty("hibernate.hikari.maximumPoolSize", "150");
+		properties.setProperty("hibernate.hikari.maximumPoolSize", "50");
         properties.setProperty("hibernate.hikari.connectionTimeout", "30000");
         properties.setProperty("hibernate.hikari.maxLifetime", "600000");
         properties.setProperty("hibernate.hbm2ddl.auto", connectionInfo.getDdlMode());
