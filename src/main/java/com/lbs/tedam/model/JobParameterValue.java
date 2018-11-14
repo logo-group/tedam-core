@@ -89,4 +89,9 @@ public class JobParameterValue extends AbstractBaseEntity {
         return value;
     }
 
+	public JobParameterValue cloneJobParameterValue() {
+		JobParameterValue newEntity = new JobParameterValue(getValue(), getJobParameterId());
+		return newEntity;
+	}
+
 }

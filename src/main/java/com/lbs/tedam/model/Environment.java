@@ -17,12 +17,20 @@
 
 package com.lbs.tedam.model;
 
-import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Where;
 
 /**
  * @author Canberk.Erkmen<br>
@@ -107,5 +115,16 @@ public class Environment extends AbstractBaseEntity {
     public String toString() {
         return name;
     }
+
+	public Environment cloneEnvironment() {
+		Environment newEntity = new Environment();
+		newEntity.setName(getName());
+		newEntity.setProject(getProject());
+		jobParameterValues.forEach(value -> {
+			JobParameterValue cloned = value.cloneJobParameterValue();
+			newEntity.getJobParameterValues().add(cloned);
+		});
+		return newEntity;
+	}
 
 }
