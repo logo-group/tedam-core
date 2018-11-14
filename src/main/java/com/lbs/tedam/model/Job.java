@@ -73,6 +73,9 @@ public class Job extends AbstractBaseEntity {
     @Column(name = "LAST_EXECUTED_END_DATE")
     private LocalDateTime lastExecutedEndDate;
 
+	@Column(name = "PLANNED_DATE")
+	private LocalDateTime plannedDate;
+
     @Transient
     private String executionDuration;
 
@@ -308,5 +311,13 @@ public class Job extends AbstractBaseEntity {
     public String getLastExecutingUserName() {
         return getLastExecutingUser() != null ? getLastExecutingUser().getUserName() : "";
     }
+
+	public LocalDateTime getPlannedDate() {
+		return plannedDate;
+	}
+
+	public void setPlannedDate(LocalDateTime plannedDate) {
+		this.plannedDate = plannedDate;
+	}
 
 }

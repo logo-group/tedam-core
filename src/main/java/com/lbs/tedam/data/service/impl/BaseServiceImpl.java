@@ -17,15 +17,16 @@
 
 package com.lbs.tedam.data.service.impl;
 
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.lbs.tedam.data.dao.BaseDAO;
 import com.lbs.tedam.data.service.BaseService;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.AbstractBaseEntity;
-import org.springframework.stereotype.Service;
-
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @param <T>
@@ -55,6 +56,7 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Serializab
 
     @Override
     public T save(T entity) throws LocalizedException {
+		beforeSave(entity);
         T saved = baseDao.save(entity);
         return saved;
     }
@@ -90,6 +92,10 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Serializab
         baseDao.deleteByLogic(id);
         afterDeleteByLogic(id);
     }
+
+	public void beforeSave(T entity) throws LocalizedException {
+		// before save operations by entity
+	}
 
     public void beforeDelete(ID id) throws LocalizedException {
         // before delete operations by id

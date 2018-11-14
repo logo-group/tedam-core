@@ -17,15 +17,16 @@
 
 package com.lbs.tedam.data.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.lbs.tedam.exception.localized.JobPlannedDateExpiredException;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.model.TedamUser;
 import com.lbs.tedam.util.EnumsV2.CommandStatus;
 import com.lbs.tedam.util.EnumsV2.JobStatus;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Canberk.Erkmen
@@ -49,5 +50,7 @@ public interface JobService extends BaseService<Job, Integer> {
     public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException;
 
     public void deleteJobClientByClientId(Integer clientId) throws LocalizedException;
+
+	public void checkJobPlannedDate(Job entity) throws JobPlannedDateExpiredException;
 
 }
