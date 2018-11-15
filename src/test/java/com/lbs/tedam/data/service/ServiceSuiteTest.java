@@ -31,6 +31,6 @@ import org.junit.runners.Suite.SuiteClasses;
         TedamFolderServiceTest.class, TedamScriptAccessorServiceImplTest.class, TedamUserServiceTest.class,
         TestCaseServiceTest.class, TestSetServiceTest.class, TestTimeLogServiceImplTest.class,
         TestStepServiceTest.class})
-public class ServiceTestSuite {
+public class ServiceSuiteTest {
 
 }
