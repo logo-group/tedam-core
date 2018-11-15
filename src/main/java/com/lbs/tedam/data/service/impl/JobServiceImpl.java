@@ -26,7 +26,12 @@ import org.springframework.stereotype.Service;
 
 import com.lbs.tedam.data.dao.JobDAO;
 import com.lbs.tedam.data.service.JobService;
+import com.lbs.tedam.exception.localized.EmptyJobDetailException;
+import com.lbs.tedam.exception.localized.EmptyTestCaseException;
+import com.lbs.tedam.exception.localized.EmptyTestStepException;
+import com.lbs.tedam.exception.localized.EmptyTestStepParameterException;
 import com.lbs.tedam.exception.localized.JobDeleteException;
+import com.lbs.tedam.exception.localized.JobDetailTestSetNotSelectedException;
 import com.lbs.tedam.exception.localized.JobPlannedDateExpiredException;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
@@ -34,6 +39,9 @@ import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.JobDetail;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.model.TedamUser;
+import com.lbs.tedam.model.TestCase;
+import com.lbs.tedam.model.TestSet;
+import com.lbs.tedam.model.TestStep;
 import com.lbs.tedam.util.EnumsV2.CommandStatus;
 import com.lbs.tedam.util.EnumsV2.JobStatus;
 
@@ -134,17 +142,50 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 	}
 
 	@Override
-	public void checkJobPlannedDate(Job entity) throws JobPlannedDateExpiredException {
+	public void beforeSave(Job entity) throws LocalizedException {
+		checkJobPlannedDate(entity);
+		super.beforeSave(entity);
+	}
+
+	@Override
+	public void checkJobBeforeRun(Job entity) throws LocalizedException {
+		checkJobPlannedDate(entity);
+		checkJobForEmptyValues(entity);
+	}
+
+	private void checkJobPlannedDate(Job entity) throws JobPlannedDateExpiredException {
 		LocalDateTime plannedDate = entity.getPlannedDate();
 		if (plannedDate != null && LocalDateTime.now().compareTo(plannedDate) >= 0) {
 			throw new JobPlannedDateExpiredException();
 		}
 	}
 
-	@Override
-	public void beforeSave(Job entity) throws LocalizedException {
-		checkJobPlannedDate(entity);
-		super.beforeSave(entity);
+	private void checkJobForEmptyValues(Job entity) throws LocalizedException {
+		List<JobDetail> jobDetails = entity.getJobDetails();
+		if (jobDetails.size() == 0) {
+			throw new EmptyJobDetailException();
+		}
+		for (JobDetail jobDetail : jobDetails) {
+			TestSet testSet = jobDetail.getTestSet();
+			if (testSet == null) {
+				throw new JobDetailTestSetNotSelectedException(jobDetail.getId());
+			}
+			List<TestCase> testCases = testSet.getTestCases();
+			if (testCases.size() == 0) {
+				throw new EmptyTestCaseException(testSet.getId());
+			}
+			for (TestCase testCase : testCases) {
+				List<TestStep> testSteps = testCase.getTestSteps();
+				if (testSteps.size() == 0) {
+					throw new EmptyTestStepException(testCase.getId());
+				}
+				for (TestStep testStep : testSteps) {
+					if (testStep.getParameter() == null || testStep.getParameter().length() == 0) {
+						throw new EmptyTestStepParameterException(testStep.getId());
+					}
+				}
+			}
+		}
 	}
 
 }

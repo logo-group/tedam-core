@@ -20,7 +20,6 @@ package com.lbs.tedam.data.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.lbs.tedam.exception.localized.JobPlannedDateExpiredException;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.Project;
@@ -33,24 +32,24 @@ import com.lbs.tedam.util.EnumsV2.JobStatus;
  */
 public interface JobService extends BaseService<Job, Integer> {
 
-    List<Job> getJobListByProject(Project project) throws LocalizedException;
+	List<Job> getJobListByProject(Project project) throws LocalizedException;
 
-    List<Job> getCIJobListByProject(Project project) throws LocalizedException;
+	List<Job> getCIJobListByProject(Project project) throws LocalizedException;
 
-    List<Job> getRunnableJobListByProject(Project project) throws LocalizedException;
+	List<Job> getRunnableJobListByProject(Project project) throws LocalizedException;
 
-    void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate)
-            throws LocalizedException;
+	void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate,
+			LocalDateTime lastExecutedEndDate) throws LocalizedException;
 
-    public Job saveJobAndJobDetailsStatus(Job job, JobStatus jobStatus, CommandStatus commandStatus,
-                                          TedamUser executingUser) throws LocalizedException;
+	public Job saveJobAndJobDetailsStatus(Job job, JobStatus jobStatus, CommandStatus commandStatus,
+			TedamUser executingUser) throws LocalizedException;
 
-    public void resetJob(Integer jobId) throws LocalizedException;
+	public void resetJob(Integer jobId) throws LocalizedException;
 
-    public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException;
+	public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException;
 
-    public void deleteJobClientByClientId(Integer clientId) throws LocalizedException;
+	public void deleteJobClientByClientId(Integer clientId) throws LocalizedException;
 
-	public void checkJobPlannedDate(Job entity) throws JobPlannedDateExpiredException;
+	public void checkJobBeforeRun(Job entity) throws LocalizedException;
 
 }
