@@ -17,6 +17,19 @@
 
 package com.lbs.tedam.data.service;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import com.lbs.tedam.data.config.DataConfig;
 import com.lbs.tedam.data.service.impl.MenuPathServiceImpl;
 import com.lbs.tedam.data.service.impl.PropertyServiceImpl;
@@ -26,17 +39,6 @@ import com.lbs.tedam.exception.DifferencesSnapshotException;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.SnapshotValue;
 import com.lbs.tedam.test.BaseServiceTest;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
-import java.util.List;
-
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SnapshotValueServiceImpl.class, SnapshotDefinitionServiceImpl.class, PropertyServiceImpl.class, MenuPathServiceImpl.class, TestDataConfig.class,
@@ -79,7 +81,7 @@ public class SnapshotValueServiceImplTest extends BaseServiceTest {
     @Test
     public void testGetSnapshotValuesVersionedRowIndexNotEquals() throws LocalizedException {
         List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "ROW_INDEX,RUN_ORDER", false);
-        Assert.assertNotEquals(snapshotValList.size(), 0);
+		Assert.assertEquals(snapshotValList.size(), 0);
     }
 
     @Test

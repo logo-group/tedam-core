@@ -94,7 +94,7 @@ public class DataConfig {
         properties.setProperty("hibernate.hikari.dataSource.url", connectionInfo.getUrl());
         properties.setProperty("hibernate.hikari.dataSource.user", connectionInfo.getUserName());
         properties.setProperty("hibernate.hikari.dataSource.password", connectionInfo.getPass());
-		properties.setProperty("hibernate.hikari.maximumPoolSize", "50");
+		properties.setProperty("hibernate.hikari.maximumPoolSize", "1");
         properties.setProperty("hibernate.hikari.connectionTimeout", "30000");
         properties.setProperty("hibernate.hikari.maxLifetime", "600000");
         properties.setProperty("hibernate.hbm2ddl.auto", connectionInfo.getDdlMode());

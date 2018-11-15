@@ -17,6 +17,25 @@
 
 package com.lbs.tedam.data.service;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.xml.xpath.XPathExpressionException;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import com.lbs.tedam.data.config.DataConfig;
 import com.lbs.tedam.data.service.impl.MenuPathServiceImpl;
 import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
@@ -26,20 +45,6 @@ import com.lbs.tedam.model.Project;
 import com.lbs.tedam.snapshot.utils.SnapShotUtils;
 import com.lbs.tedam.test.BaseServiceTest;
 import com.lbs.tedam.util.Enums.PathType;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.xml.xpath.XPathExpressionException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {MenuPathServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class, DataConfig.class})
@@ -59,11 +64,17 @@ public class MenuPathServiceTest extends BaseServiceTest {
      */
     @Test
     public void test02Save() throws LocalizedException {
-
         Set<Integer> menuTagSet = new HashSet<>();
-        SnapShotUtils snapshotUtils = new SnapShotUtils();
+		SnapShotUtils snapshotUtils = mock(SnapShotUtils.class);
         List<List<Integer>> menuList = new ArrayList<>();
+		List<List<Integer>> mockMenuList = new ArrayList<>();
+		List<Integer> mockIntegerList = new ArrayList<>();
+		mockIntegerList.add(1);
+		mockIntegerList.add(2);
+		mockIntegerList.add(3);
+		mockMenuList.add(mockIntegerList);
         try {
+			when(snapshotUtils.createMenuPathList(PathType.TOTAL)).thenReturn(mockMenuList);
             menuList = snapshotUtils.createMenuPathList(PathType.TOTAL);
             for (List<Integer> list : menuList) {
                 for (Integer integer : list) {

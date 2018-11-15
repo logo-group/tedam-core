@@ -17,8 +17,9 @@
 
 package com.lbs.tedam.generator.steptype;
 
-import com.lbs.tedam.exception.localized.LocalizedException;
 import org.junit.Test;
+
+import com.lbs.tedam.exception.localized.LocalizedException;
 
 public class ReportGeneratorTest {
 
@@ -46,8 +47,8 @@ public class ReportGeneratorTest {
         reportGenerator.getReportWaitSleepMillis();
     }
 
-    @Test
-    public void testDegenerateLookUp() throws LocalizedException {
+	@Test(expected = UnsupportedOperationException.class)
+	public void testDegenerateLookUp() throws LocalizedException {
         ReportGenerator reportGenerator = new ReportGenerator();
         reportGenerator.degenerateLookUp("parameter");
     }

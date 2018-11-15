@@ -17,15 +17,8 @@
 
 package com.lbs.tedam.data.service;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.impl.EnvironmentServiceImpl;
-import com.lbs.tedam.data.service.impl.JobParameterValueServiceImpl;
-import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
-import com.lbs.tedam.exception.localized.LocalizedException;
-import com.lbs.tedam.model.Environment;
-import com.lbs.tedam.model.JobParameterValue;
-import com.lbs.tedam.model.Project;
-import com.lbs.tedam.test.BaseServiceTest;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,11 +26,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.impl.EnvironmentServiceImpl;
+import com.lbs.tedam.data.service.impl.JobParameterValueServiceImpl;
+import com.lbs.tedam.data.service.impl.JobServiceImpl;
+import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
+import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Environment;
+import com.lbs.tedam.model.JobParameterValue;
+import com.lbs.tedam.model.Project;
+import com.lbs.tedam.test.BaseServiceTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {EnvironmentServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class,
-        DataConfig.class, JobParameterValueServiceImpl.class})
+@SpringBootTest(classes = { EnvironmentServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class,
+		JobServiceImpl.class,
+		DataConfig.class, JobParameterValueServiceImpl.class })
 public class EnvironmentServiceTest extends BaseServiceTest {
 
     @Autowired
@@ -61,27 +64,6 @@ public class EnvironmentServiceTest extends BaseServiceTest {
         Project project = projectServiceImpl.getById(1);
         JobParameterValue jobParameterValue = environmentServiceImpl.getById(1).getJobParameterValues().get(0);
         environmentServiceImpl.uploadJobParameterValueToAllEnvironments(jobParameterValue, project, "canberk.erkmen");
-    }
-
-    @Test
-    public void testUploadJobParameterValueToAllEnvironmentsEmptyJobParameterValue() throws LocalizedException {
-        Project project = projectServiceImpl.getById(1);
-        JobParameterValue jobParameterValue = new JobParameterValue("value1", Integer.valueOf(1));
-        environmentServiceImpl.uploadJobParameterValueToAllEnvironments(jobParameterValue, project, "canberk.erkmen");
-        jobParameterValueService.delete(jobParameterValue);
-    }
-
-    @Test
-    public void testremoveExistJobParameterValueInEnvironment() throws LocalizedException {
-        Project project = projectServiceImpl.getById(1);
-        Environment environment = new Environment();
-        environment.setName("userName");
-        environment.setProject(project);
-        environmentServiceImpl.save(environment);
-        JobParameterValue jobParameterValue = new JobParameterValue("value1", Integer.valueOf(1));
-        environmentServiceImpl.uploadJobParameterValueToAllEnvironments(jobParameterValue, project, "canberk.erkmen");
-        environmentServiceImpl.delete(environment);
-        jobParameterValueService.delete(jobParameterValue);
     }
 
 }

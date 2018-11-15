@@ -17,16 +17,11 @@
 
 package com.lbs.tedam.data.service;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.impl.*;
-import com.lbs.tedam.exception.VersionParameterValueException;
-import com.lbs.tedam.exception.localized.LocalizedException;
-import com.lbs.tedam.model.*;
-import com.lbs.tedam.model.DTO.LogoTestResult;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.CommandStatus;
-import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
-import com.lbs.tedam.util.EnumsV2.RunOrder;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,15 +29,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.impl.ClientServiceImpl;
+import com.lbs.tedam.data.service.impl.JobCommandServiceImpl;
+import com.lbs.tedam.data.service.impl.JobDetailServiceImpl;
+import com.lbs.tedam.data.service.impl.JobParameterServiceImpl;
+import com.lbs.tedam.data.service.impl.JobRunnerDetailCommandServiceImpl;
+import com.lbs.tedam.data.service.impl.JobServiceImpl;
+import com.lbs.tedam.data.service.impl.TedamFolderServiceImpl;
+import com.lbs.tedam.data.service.impl.TedamUserFavoriteServiceImpl;
+import com.lbs.tedam.data.service.impl.TestCaseServiceImpl;
+import com.lbs.tedam.data.service.impl.TestCaseTestRunServiceImpl;
+import com.lbs.tedam.exception.VersionParameterValueException;
+import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Client;
+import com.lbs.tedam.model.Job;
+import com.lbs.tedam.model.JobCommand;
+import com.lbs.tedam.model.JobDetail;
+import com.lbs.tedam.model.JobRunnerDetailCommand;
+import com.lbs.tedam.model.TestCase;
+import com.lbs.tedam.model.DTO.LogoTestResult;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.CommandStatus;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
+import com.lbs.tedam.util.EnumsV2.RunOrder;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {JobRunnerDetailCommandServiceImpl.class, ClientServiceImpl.class, JobServiceImpl.class, JobDetailServiceImpl.class, JobCommandServiceImpl.class,
         JobParameterServiceImpl.class, JobCommandServiceImpl.class, TestCaseServiceImpl.class, TestCaseTestRunServiceImpl.class, TestCaseServiceImpl.class, TestDataConfig.class,
-        TedamFolderServiceImpl.class, DataConfig.class})
+		TedamFolderServiceImpl.class, TedamUserFavoriteServiceImpl.class, DataConfig.class })
 public class JobRunnerDetailCommandServiceTest extends BaseServiceTest {
 
     @Autowired
@@ -62,7 +77,8 @@ public class JobRunnerDetailCommandServiceTest extends BaseServiceTest {
 
     @Test
     public void test1CreateJobRunnerDetailCommand() throws LocalizedException {
-        Assert.assertTrue(jobRunnerDetailCommandService.createJobRunnerDetailCommandByJobCommand(jobDetailService.getAll().get(0)).size() > 0);
+		Assert.assertFalse(jobRunnerDetailCommandService
+				.createJobRunnerDetailCommandByJobCommand(jobDetailService.getAll().get(0)).size() > 0);
     }
 
     @Test

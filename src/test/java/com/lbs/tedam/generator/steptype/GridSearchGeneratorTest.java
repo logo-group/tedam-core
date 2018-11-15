@@ -17,12 +17,10 @@
 
 package com.lbs.tedam.generator.steptype;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.data.service.impl.PropertyServiceImpl;
-import com.lbs.tedam.data.service.impl.SnapshotDefinitionServiceImpl;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.TestStepType;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
@@ -30,9 +28,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertNotNull;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.data.service.impl.PropertyServiceImpl;
+import com.lbs.tedam.data.service.impl.SnapshotDefinitionServiceImpl;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.TestStepType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SnapshotDefinitionServiceImpl.class, PropertyServiceImpl.class, TestDataConfig.class, DataConfig.class})
@@ -44,7 +45,7 @@ public class GridSearchGeneratorTest extends BaseServiceTest {
     @Test
     public void testGenerate() {
         GridSearchGenerator gridSearchGenerator = (GridSearchGenerator) GeneratorFactory.getGenerator(TestStepType.GRID_SEARCH, beanFactory);
-        gridSearchGenerator.degenerate("100!ps![(1002,TC018361)]");
+		gridSearchGenerator.degenerate("100!ps![(1003!cmm!TC001309SIPF)]");
         gridSearchGenerator.validate();
         assertNotNull(gridSearchGenerator.generate());
         gridSearchGenerator.getGridTag();
@@ -65,7 +66,7 @@ public class GridSearchGeneratorTest extends BaseServiceTest {
     public void testGenerateControl() {
         GridSearchGenerator gridSearchGenerator = (GridSearchGenerator) GeneratorFactory.getGenerator(TestStepType.GRID_SEARCH, beanFactory);
         gridSearchGenerator.generate();
-        gridSearchGenerator.degenerate("100!ps![(1002,TC018361,1,TC018322)]");
+		gridSearchGenerator.degenerate("100!ps![(1001!cmm!TC016939)]");
         gridSearchGenerator.generate();
 
     }
@@ -73,15 +74,14 @@ public class GridSearchGeneratorTest extends BaseServiceTest {
     @Test
     public void testDegenerateControl() {
         GridSearchGenerator gridSearchGenerator = (GridSearchGenerator) GeneratorFactory.getGenerator(TestStepType.GRID_SEARCH, beanFactory);
-        gridSearchGenerator.degenerate("");
-        gridSearchGenerator.degenerate("100");
+		gridSearchGenerator.degenerate("100!ps![(1001!cmm!27352)]");
 
     }
 
     @Test
     public void testGenerateLookUp() {
         GridSearchGenerator gridSearchGenerator = (GridSearchGenerator) GeneratorFactory.getGenerator(TestStepType.GRID_SEARCH, beanFactory);
-        gridSearchGenerator.degenerateLookUp(TestStepType.GRID_SEARCH.getBeginRegex() + "100!ps![(1002,TC018361)]");
+		gridSearchGenerator.degenerateLookUp(TestStepType.GRID_SEARCH.getBeginRegex() + "100!ps![(1002!cmm!TC006020)]");
         assertNotNull(gridSearchGenerator.generateLookUp());
     }
 

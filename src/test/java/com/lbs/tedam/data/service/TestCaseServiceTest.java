@@ -17,6 +17,18 @@
 
 package com.lbs.tedam.data.service;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import com.lbs.tedam.data.config.DataConfig;
 import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
 import com.lbs.tedam.data.service.impl.TedamFolderServiceImpl;
@@ -29,17 +41,6 @@ import com.lbs.tedam.model.TedamFolder;
 import com.lbs.tedam.model.TestCase;
 import com.lbs.tedam.test.BaseServiceTest;
 import com.lbs.tedam.util.TedamStringUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Tarik.Mikyas <br>
@@ -93,7 +94,6 @@ public class TestCaseServiceTest extends BaseServiceTest {
         String testParamaters = TedamStringUtils.findTestParamaters(testCase.getTestSteps());
         System.out.println(testParamaters);
         assertNotNull(testParamaters);
-
     }
 
 }

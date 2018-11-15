@@ -1,17 +1,24 @@
 dist: trusty
 language: java
 sudo: false
+services:
+  - mysql
 addons:
   sonarcloud:
     organization: "logobusinesssolutions-github"
     token:
       secure: "rb9iZzWCd6clYiQBiqGhOdiDGXqhsXYmNIEtTiKkCvQzv20vSIEWmZt8R+hWX40/aAXpR+EaBMl+Tljk2t42lHSOPNnyhq3w67IPU6RDjDeVd+acJy5On4snpr7EdxUejiL+b9KQpApraHiIGtJXoQiHg33h2oSWf8VG94RdcDulPxJ0MINQlc2DJz8sGT5Ipd3qEfIup0NhJjiSYI/rKZ1N6llcJgnkbDf4vlmzctym0yA214tKvo2km8+iVFu4Q8DNsLZDsE40GfB5Ihfl/8HTajB8xaTJrB/M4dAN6wWa+UKJfGbJ/BD2kTKiKBCXMzWcSraFqcnxtssl2LWpGNjw4OedoRTuipg3qw1ImAvKkNd2KRzR5ingYNjOS6waChOKy7MkgdOY7r14FmnSay7upEh7lO0R0xfXyM41+g9WlzKsSneQRArr5KLrA+W98CyM7dS7KDrZ2pgmGk4ZuRxJywfGDdmLeVbb8vCuZGR9/QSq/MrUeLGKLAT0rfH49GdkBRF1lA3nLuQX8DflQMQBMcDXgJ9jp53z2gRCv8++/gTBeWIY5in/UGL3kKSvtswC2Lrl/o8IkKCnGt+cUloetzEksTL4XTqfny1XrMHU1KCKTPuKC0o0iF40RwlaShapUsVxZJsKeY9MNyCM3KnmT99YpeNw5tSbBoZ3z9Y="
 before_install:
+  - echo -e "[mysqld]\nlower_case_table_names=1" | sudo tee -a /etc/mysql/my.cnf
+  - sudo service mysql restart
   - npm install -g newman
   - git clone https://github.com/logobs/tedam-rest.git
   - cd tedam-rest && mvn install -DskipTests && cd ..
+  - cd sql-back && unzip backup.zip
+  - mysql -u root -e 'CREATE DATABASE TEDAM CHARACTER SET utf8 COLLATE utf8_turkish_ci;'
+  - mysql -u root TEDAM < backup.sql && cd ..
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -DskipTests
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 notifications:
   email:
     recipients:

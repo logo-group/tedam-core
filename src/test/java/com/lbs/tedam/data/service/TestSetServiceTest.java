@@ -17,22 +17,28 @@
 
 package com.lbs.tedam.data.service;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.impl.*;
-import com.lbs.tedam.exception.localized.LocalizedException;
-import com.lbs.tedam.model.Project;
-import com.lbs.tedam.model.TedamFolder;
-import com.lbs.tedam.model.TestSet;
-import com.lbs.tedam.test.BaseServiceTest;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
-import static org.junit.Assert.assertNotNull;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.impl.JobDetailServiceImpl;
+import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
+import com.lbs.tedam.data.service.impl.TedamFolderServiceImpl;
+import com.lbs.tedam.data.service.impl.TestCaseServiceImpl;
+import com.lbs.tedam.data.service.impl.TestCaseTestRunServiceImpl;
+import com.lbs.tedam.data.service.impl.TestSetServiceImpl;
+import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Project;
+import com.lbs.tedam.model.TedamFolder;
+import com.lbs.tedam.model.TestSet;
+import com.lbs.tedam.test.BaseServiceTest;
 
 /**
  * @author Tarik.Mikyas <br>
@@ -78,7 +84,7 @@ public class TestSetServiceTest extends BaseServiceTest {
 
     @Test
     public void test04GetTestSetByName() throws LocalizedException {
-        TestSet testSet = testSetService.getTestSetByName("deneme");
+		TestSet testSet = testSetService.getTestSetByName("TEDAM-1025");
         assertNotNull(testSet);
     }
 

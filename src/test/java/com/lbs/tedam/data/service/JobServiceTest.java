@@ -17,16 +17,11 @@
 
 package com.lbs.tedam.data.service;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.impl.JobServiceImpl;
-import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
-import com.lbs.tedam.exception.localized.LocalizedException;
-import com.lbs.tedam.model.Job;
-import com.lbs.tedam.model.Project;
-import com.lbs.tedam.model.TedamUser;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.CommandStatus;
-import com.lbs.tedam.util.EnumsV2.JobStatus;
+import static org.junit.Assert.assertFalse;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,11 +29,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.impl.JobServiceImpl;
+import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
+import com.lbs.tedam.data.service.impl.TedamUserServiceImpl;
+import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Environment;
+import com.lbs.tedam.model.Job;
+import com.lbs.tedam.model.Project;
+import com.lbs.tedam.model.TedamUser;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.CommandStatus;
+import com.lbs.tedam.util.EnumsV2.JobStatus;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {JobServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class, DataConfig.class})
+@SpringBootTest(classes = { JobServiceImpl.class, ProjectServiceImpl.class, TedamUserServiceImpl.class,
+		TestDataConfig.class, DataConfig.class })
 public class JobServiceTest extends BaseServiceTest {
 
     @Autowired
@@ -83,16 +89,18 @@ public class JobServiceTest extends BaseServiceTest {
         jobService.saveJobAndJobDetailsStatus(job, JobStatus.PLANNED, CommandStatus.IN_PROGRESS, user);
     }
 
-    @Test
-    public void testSaveAndDelete() throws LocalizedException {
-        Project project = projectService.getAll().get(2);
-        Job job = new Job("testTedam", project);
-        job = jobService.save(job);
-        jobService.deleteByLogic(job.getId());
-        Job job1 = new Job("testTedam", project);
-        job1 = jobService.save(job1);
-        jobService.deleteById(job1.getId());
+	@Test
+	public void testResetJob() throws LocalizedException {
+		Job job = jobService.getById(66);
+		jobService.resetJob(job.getId());
+	}
 
-    }
+	@Test
+	public void testgetJobIdListByEnvironmentId() throws LocalizedException {
+		Job job = jobService.getById(66);
+		Environment environment = job.getJobEnvironment();
+		List<Integer> idList = jobService.getJobIdListByEnvironmentId(environment.getId());
+		assertFalse(idList.isEmpty());
+	}
 
 }

@@ -30,4 +30,6 @@ public interface ClientService extends BaseService<Client, Integer> {
     List<Client> getClientList() throws LocalizedException;
 
 	Client getClientByNameAndProjectName(String clientName, String projectName) throws LocalizedException;
+
+	public void afterDeleteByLogic(Integer id) throws LocalizedException;
 }

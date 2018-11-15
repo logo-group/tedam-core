@@ -28,14 +28,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lbs.tedam.data.config.DataConfig;
 import com.lbs.tedam.data.service.impl.ClientServiceImpl;
+import com.lbs.tedam.data.service.impl.JobDetailServiceImpl;
+import com.lbs.tedam.data.service.impl.JobServiceImpl;
 import com.lbs.tedam.data.service.impl.ProjectServiceImpl;
+import com.lbs.tedam.data.service.impl.TedamUserFavoriteServiceImpl;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Client;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.test.BaseServiceTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {ClientServiceImpl.class, ProjectServiceImpl.class, TestDataConfig.class, DataConfig.class})
+@SpringBootTest(classes = { ClientServiceImpl.class, ProjectServiceImpl.class, TedamUserFavoriteServiceImpl.class,
+		JobDetailServiceImpl.class, JobServiceImpl.class,
+		TestDataConfig.class, DataConfig.class })
 public class ClientServiceTest extends BaseServiceTest {
 
     @Autowired
@@ -62,5 +67,11 @@ public class ClientServiceTest extends BaseServiceTest {
 		Client client = clientService.getClientByNameAndProjectName("Client2", "j-platform");
         Assert.assertNull(client);
     }
+
+	@Test
+	public void testafterDeleteByLogic() throws LocalizedException {
+		Client client = clientService.getClientByNameAndProjectName("canberkizgi", "Diva");
+		clientService.afterDeleteByLogic(client.getId());
+	}
 
 }

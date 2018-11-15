@@ -17,18 +17,24 @@
 
 package com.lbs.tedam.util;
 
-import com.lbs.tedam.model.DTO.ButtonCtrl;
-import com.lbs.tedam.model.DTO.GridRow;
-import com.lbs.tedam.model.DTO.TabbedPaneAndPageParent;
-import com.lbs.tedam.test.BaseServiceTest;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import com.lbs.tedam.model.DTO.ButtonCtrl;
+import com.lbs.tedam.model.DTO.GridRow;
+import com.lbs.tedam.model.DTO.TabbedPaneAndPageParent;
+import com.lbs.tedam.test.BaseServiceTest;
 
 public class TedamXPathUtilsTest extends BaseServiceTest {
 
@@ -71,11 +77,11 @@ public class TedamXPathUtilsTest extends BaseServiceTest {
      * @author Seyma.Sahin
      * if we send empty snapshot we will get an exception(not working now)
      */
-    @Test(expected = Exception.class)
+	@Test
     public void testGetVersionFromSnapshot3() {
         Element nullSnapShot = null;
         String version = TedamXPathUtils.getVersionFromSnapshot(nullSnapShot);
-
+		assertEquals(version, null);
     }
 
     /**
@@ -199,10 +205,11 @@ public class TedamXPathUtilsTest extends BaseServiceTest {
      * @author Berk.Kemaloglu
      * @author Seyma.Sahin
      */
-    @Test(expected = Exception.class)
+	@Test
     public void testGetCloseButton3() {
         Element element = null;
         int closeButtonTag = TedamXPathUtils.getCloseButton(element);
+		assertEquals(closeButtonTag, 0);
     }
 
     @Test

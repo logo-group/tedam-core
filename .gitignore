@@ -1,6 +1,5 @@
 target/
 bin/
-src/test/resources/configTest.properties
 
 # IntelliJ project files
 *.iml

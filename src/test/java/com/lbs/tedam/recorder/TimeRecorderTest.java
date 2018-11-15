@@ -17,9 +17,11 @@
 
 package com.lbs.tedam.recorder;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class TimeRecorderTest {
 
@@ -47,7 +49,6 @@ public class TimeRecorderTest {
             @Override
             public void run() {
                 for (int i = 0; i < LOOP; i++) {
-                    System.out.println(i);
                 }
             }
         });
