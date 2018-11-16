@@ -122,6 +122,7 @@ public class Environment extends AbstractBaseEntity {
 		newEntity.setProject(getProject());
 		jobParameterValues.forEach(value -> {
 			JobParameterValue cloned = value.cloneJobParameterValue();
+			cloned.setId(value.getId());
 			newEntity.getJobParameterValues().add(cloned);
 		});
 		return newEntity;
