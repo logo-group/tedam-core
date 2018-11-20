@@ -144,6 +144,10 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 	@Override
 	public void beforeSave(Job entity) throws LocalizedException {
 		checkJobPlannedDate(entity);
+		if (entity.getPlannedDate() != null) { // check for empty values, because if planned date is set, job will be
+												// sent to manager after save.
+			checkJobForEmptyValues(entity);
+		}
 		super.beforeSave(entity);
 	}
 
@@ -186,6 +190,11 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 				}
 			}
 		}
+	}
+
+	@Override
+	public void resetJobPlannedDate(Integer jobId) throws LocalizedException {
+		dao.resetJobPlannedDate(jobId);
 	}
 
 }

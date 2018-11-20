@@ -45,4 +45,6 @@ public interface JobDAO extends BaseDAO<Job, Integer> {
 
     public List<Job> getJobListByClientId(Integer clientId) throws LocalizedException;
 
+    public void resetJobPlannedDate(Integer jobId) throws LocalizedException;
+
 }

@@ -51,5 +51,7 @@ public interface JobService extends BaseService<Job, Integer> {
 	public void deleteJobClientByClientId(Integer clientId) throws LocalizedException;
 
 	public void checkJobBeforeRun(Job entity) throws LocalizedException;
+	
+	public void resetJobPlannedDate(Integer jobId) throws LocalizedException;
 
 }

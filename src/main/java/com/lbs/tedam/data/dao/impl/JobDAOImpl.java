@@ -89,6 +89,15 @@ public class JobDAOImpl extends BaseDAOImpl<Job, Integer> implements JobDAO {
             throw new GeneralLocalizedException(e);
         }
     }
+    
+	@Override
+	public void resetJobPlannedDate(Integer jobId) throws LocalizedException {
+		try {
+			repository.resetJobPlannedDate(jobId);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
     @Override
     public void deleteByLogic(Integer id) throws LocalizedException {

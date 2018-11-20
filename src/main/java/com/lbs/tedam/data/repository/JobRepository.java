@@ -47,6 +47,11 @@ public interface JobRepository extends BaseRepository<Job, Integer> {
     @Modifying
     @Query("update Job j set j.status = 0 where j.id = ?1")
     public void resetJob(Integer jobId);
+    
+    @Transactional
+    @Modifying
+    @Query("update Job j set j.plannedDate = null where j.id = ?1")
+    public void resetJobPlannedDate(Integer jobId);
 
     @Query("select j.id from Job j where j.jobEnvironment.id = ?1")
     public List<Integer> getJobIdListByEnvironmentId(Integer environmentId);
