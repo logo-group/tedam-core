@@ -320,4 +320,8 @@ public class Job extends AbstractBaseEntity {
 		this.plannedDate = plannedDate;
 	}
 
+	public String getJobEnvironmentName() {
+		return getJobEnvironment() != null ? getJobEnvironment().getName() : "";
+	}
+
 }
