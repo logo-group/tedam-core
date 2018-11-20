@@ -91,6 +91,9 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 		job.setLastExecutingUser(executingUser);
 		job.setDateUpdated(LocalDateTime.now());
 		job.setStatus(jobStatus);
+		if (JobStatus.PLANNED.equals(jobStatus)) {
+			job.setActive(true);
+		}
 		for (JobDetail jobDetail : job.getJobDetails()) {
 			jobDetail.setStatus(commandStatus);
 			jobDetail.getTestSet().setTestSetStatus(commandStatus);
