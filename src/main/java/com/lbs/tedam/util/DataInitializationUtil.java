@@ -71,7 +71,7 @@ public class DataInitializationUtil {
 		Property tempFilePathProperty = new Property("CONFIG", "tempFilePath", "C:\\temp");
 		Property snapshotFileFolderProperty = new Property("CONFIG", "snapshotFileFolder", "C:\\");
 		Property scorderProperty = new Property("CONFIG", "scorder", "C:\\");
-		Property jobrunnerRestUrlProperty = new Property("CONFIG", "jobrunnerRestUrlProperty",
+		Property jobrunnerRestUrlProperty = new Property("CONFIG", "jobrunnerRestUrl",
 				"http://localhost:9080/TedamManager/api/JobRunnerRestService/");
 		propertyList.add(moduleConfigPoolPathProperty);
 		propertyList.add(moduleConfigOrderPathProperty);
