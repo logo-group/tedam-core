@@ -41,6 +41,7 @@ import com.lbs.tedam.model.JobDetail;
 import com.lbs.tedam.model.Recipient;
 import com.lbs.tedam.model.TestCase;
 import com.lbs.tedam.model.TestCaseTestRun;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
 
 public class TedamMailSender {
 
@@ -90,10 +91,12 @@ public class TedamMailSender {
 			for (JobDetail jobDetail : job.getJobDetails()) {
 				jobDetailBody += getJobDetails(jobDetail);
 			}
-			message.setContent(messageBody + jobDetailBody, "text/html; charset=utf-8");
-			message.setRecipients(Message.RecipientType.TO, recipientAddress);
-			Transport.send(message);
-			LOGGER.info("Email sent successfully!");
+			if (jobDetailBody.length() > 0) {
+				message.setContent(messageBody + jobDetailBody, "text/html; charset=utf-8");
+				message.setRecipients(Message.RecipientType.TO, recipientAddress);
+				Transport.send(message);
+				LOGGER.info("Email sent successfully!");
+			}
 		} catch (MessagingException e) {
 			LOGGER.info("Something went wrong while email sending!" + e);
 			throw new RuntimeException(e);
@@ -102,21 +105,31 @@ public class TedamMailSender {
 	}
 
 	private String getJobDetails(JobDetail jobDetail) {
-		String testSetInfo = "<strong>Test Set Name: </strong>" + jobDetail.getTestSetName() + "<br/>";
-		testSetInfo += getTestCaseStatus(jobDetail.getTestSet().getTestCases());
+		String testCaseStatus = getTestCaseStatus(jobDetail.getTestSet().getTestCases());
+		String testSetInfo = "";
+		if (testCaseStatus.length() > 0) {
+			testSetInfo = "<strong>Test Set Name: </strong>" + jobDetail.getTestSetName() + "<br/>";
+			testSetInfo += testCaseStatus + "<br/>";
+		}
 		return testSetInfo;
 	}
 
 	private String getTestCaseStatus(List<TestCase> testCaseList) {
-		String testCaseStatus = "<strong>Test Cases: </strong><br/>";
+		String testCaseStatus = "";
 		for (TestCase testCase : testCaseList) {
 			String testCaseName = testCase.getName();
 			List<TestCaseTestRun> testCaseTestRunList = testCase.getTestCaseTestRunList();
 			TestCaseTestRun testCaseTestRun = testCaseTestRunList.get(testCaseTestRunList.size() - 1);
-			testCaseStatus += "&emsp;<strong>" + testCaseName + ": </strong>"
-					+ testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate() + "<br/>";
+			if (testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.BLOCKED)
+					|| testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.CAUTION)
+					|| testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.FAILED)) {
+				testCaseStatus = "<strong>Test Cases: </strong><br/>";
+				testCaseStatus += "&emsp;<strong>" + testCaseName + ": </strong>"
+						+ testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate()
+						+ "<br/>";
+			}
 		}
-		return testCaseStatus + "<br/>";
+		return testCaseStatus;
 	}
 
 	public static TedamMailSender getTedamMailSender() {
@@ -125,4 +138,5 @@ public class TedamMailSender {
 		}
 		return sender;
 	}
+
 }
