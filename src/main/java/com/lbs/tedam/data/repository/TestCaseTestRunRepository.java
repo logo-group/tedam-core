@@ -17,21 +17,22 @@
 
 package com.lbs.tedam.data.repository;
 
-import com.lbs.tedam.model.TestCaseTestRun;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import com.lbs.tedam.model.TestCaseTestRun;
 
 /**
  * Repository for entity TestCaseTestRun.
  */
 public interface TestCaseTestRunRepository extends BaseRepository<TestCaseTestRun, Integer> {
 
-    @Query("select run from TestCaseTestRun run where run.testCaseId between :testCaseIdStart and :testCaseIdEnd and run.deleted = :deleted order by run.testCaseId desc, run.id desc")
+	@Query("select run from TestCaseTestRun run where run.testCaseId between :testCaseIdStart and :testCaseIdEnd and run.deleted = :deleted group by run.testCaseId order by run.testCaseId desc, run.id desc")
     public List<TestCaseTestRun> findByTestCaseIdRange(@Param("testCaseIdStart") Integer testCaseIdStart, @Param("testCaseIdEnd") Integer testCaseIdEnd, @Param("deleted") boolean deleted);
 
-    @Query("select run from TestCaseTestRun run where run.testSetId between :testSetIdStart and :testSetIdEnd and run.deleted = :deleted order by run.testSetId desc, run.id desc")
+	@Query("select run from TestCaseTestRun run where run.testSetId between :testSetIdStart and :testSetIdEnd and run.deleted = :deleted group by run.testSetId order by run.testSetId desc, run.id desc")
     public List<TestCaseTestRun> findByTestSetIdRange(@Param("testSetIdStart") Integer testSetIdStart, @Param("testSetIdEnd") Integer testSetIdEnd, @Param("deleted") boolean deleted);
 
 }
