@@ -338,48 +338,75 @@ public class TedamStringUtils {
 
 		for (SnapshotValue snapshotValue : fillerFieldsList) {
 			// For Control values
-			if (snapshotValue.getRowIndex() == -1) {
-				String tag = snapshotValue.getTag().trim();
-				String value = snapshotValue.getValue().trim();
-				// When loop encountered a incompability between values
-				if (!value.equals(verifyFieldMap.get(tag))) {
-					bshTestReportResult.addMessage(tag + TAGGED_DATA + value + "), entered data ("
-							+ verifyFieldMap.get(tag) + ") It does not match.");
-					status = getStatus(status, snapshotValue.getContinueOnError());
-				}
-				// For DataGrid values
-			} else if (snapshotValue.getRowIndex() != -1 && snapshotValue.getRowIndex() != -3) {
-				String tag = snapshotValue.getTag().trim();
-				String value = snapshotValue.getValue().trim();
-				int rowID = snapshotValue.getRowIndex();
-				String mapKey = tag + "," + Integer.toString(rowID);
-				// If isIgnoreRowIndex is true, it navigates over all the data and continues
-				// with the same data. If the rowIndex is checked independently but does not
-				// find the same datagram, it appends the error
-				// to the report.
-				if (isIgnoreRowIndex && !isValueExistInVerifyFieldMap(tag, value, verifyFieldMap)) { // if rowIndex
-					// is to be
-					// checked
-					// independently
-					bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
-							+ "), entered data validation map" + tag + " 'does not match any area.");
-					status = getStatus(status, snapshotValue.getContinueOnError());
-
-				} else if (!isIgnoreRowIndex && !value
-						.equals(verifyFieldMap.get(mapKey) == null ? null : verifyFieldMap.get(mapKey).trim())) {// When
-					// loop
-					// encountered
-					// a
-					// incompability
-					// between
-					// values
-					bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
-							+ "), entered data(" + verifyFieldMap.get(mapKey) + ") It does not match.");
-					status = getStatus(status, snapshotValue.getContinueOnError());
-				}
-			}
+			status = checkForFillerFieldsList(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status,
+					snapshotValue);
 		}
 
+		checkForStatusMessages(bshTestReportResult, status);
+
+		return bshTestReportResult;
+	}
+
+	private static StatusMessages checkForFillerFieldsList(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex,
+			TestReport bshTestReportResult, StatusMessages status, SnapshotValue snapshotValue) {
+		if (snapshotValue.getRowIndex() == -1) {
+			String tag = snapshotValue.getTag().trim();
+			String value = snapshotValue.getValue().trim();
+			// When loop encountered a incompability between values
+			status = verifyFieldMap(verifyFieldMap, bshTestReportResult, status, snapshotValue, tag, value);
+			// For DataGrid values
+		} else if (snapshotValue.getRowIndex() != -1 && snapshotValue.getRowIndex() != -3) {
+			String tag = snapshotValue.getTag().trim();
+			String value = snapshotValue.getValue().trim();
+			int rowID = snapshotValue.getRowIndex();
+			String mapKey = tag + "," + Integer.toString(rowID);
+			// If isIgnoreRowIndex is true, it navigates over all the data and continues
+			// with the same data. If the rowIndex is checked independently but does not
+			// find the same datagram, it appends the error
+			// to the report.
+			status = isIgnoreRowIndex(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status, snapshotValue,
+					tag, value, rowID, mapKey);
+		}
+		return status;
+	}
+
+	private static StatusMessages verifyFieldMap(Map<String, String> verifyFieldMap, TestReport bshTestReportResult,
+			StatusMessages status, SnapshotValue snapshotValue, String tag, String value) {
+		if (!value.equals(verifyFieldMap.get(tag))) {
+			bshTestReportResult.addMessage(tag + TAGGED_DATA + value + "), entered data ("
+					+ verifyFieldMap.get(tag) + ") It does not match.");
+			status = getStatus(status, snapshotValue.getContinueOnError());
+		}
+		return status;
+	}
+
+	private static StatusMessages isIgnoreRowIndex(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex,
+			TestReport bshTestReportResult, StatusMessages status, SnapshotValue snapshotValue, String tag,
+			String value, int rowID, String mapKey) {
+		if (isIgnoreRowIndex && !isValueExistInVerifyFieldMap(tag, value, verifyFieldMap)) { // if rowIndex
+			// is to be
+			// checked
+			// independently
+			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
+					+ "), entered data validation map" + tag + " 'does not match any area.");
+			status = getStatus(status, snapshotValue.getContinueOnError());
+
+		} else if (!isIgnoreRowIndex && !value
+				.equals(verifyFieldMap.get(mapKey) == null ? null : verifyFieldMap.get(mapKey).trim())) {// When
+			// loop
+			// encountered
+			// a
+			// incompability
+			// between
+			// values
+			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
+					+ "), entered data(" + verifyFieldMap.get(mapKey) + ") It does not match.");
+			status = getStatus(status, snapshotValue.getContinueOnError());
+		}
+		return status;
+	}
+
+	private static void checkForStatusMessages(TestReport bshTestReportResult, StatusMessages status) {
 		if (status.equals(StatusMessages.SUCCEEDED)) {
 			bshTestReportResult.setStatusMsg(StatusMessages.SUCCEEDED.getStatus());
 		} else if (status.equals(StatusMessages.CAUTION)) {
@@ -387,8 +414,6 @@ public class TedamStringUtils {
 		} else {
 			bshTestReportResult.setStatusMsg(StatusMessages.FAILED.getStatus());
 		}
-
-		return bshTestReportResult;
 	}
 
 	/**

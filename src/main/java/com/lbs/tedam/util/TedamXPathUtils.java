@@ -883,9 +883,7 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 					List<Integer> itemList = TedamStringUtils.collectResourceItemList(namedNodeMap
 							.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_SELECTEDLIST).getNodeValue());
 					value = "";
-					for (int j = 0; j < itemList.size(); j++) {
-						value += "/" + itemList.get(j);
-					}
+					value = itemListLoop(value, itemList);
 					value = value.substring(1);
 				} else {
 					value = "";
@@ -911,6 +909,13 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 		return tempSSValues;
 	}
 
+	private static String itemListLoop(String value, List<Integer> itemList) {
+		for (int j = 0; j < itemList.size(); j++) {
+			value += "/" + itemList.get(j);
+		}
+		return value;
+	}
+
 	/**
 	 * The information obtained from the definitions of Row and Column (DataGrid
 	 * children) that conforms to the standards in the given nodes parameter is
@@ -934,57 +939,77 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 					.getNodeValue();
 
 			// Row and Column information is retrieved.
-			NodeList rows;
-			NodeList columns;
-			if (TedamDOMUtils.isDummyNode(nodes.item(t).getChildNodes().item(0))) {
-				rows = nodes.item(t).getChildNodes().item(3).getChildNodes();
-				columns = nodes.item(t).getChildNodes().item(1).getChildNodes();
-			} else {
-				rows = nodes.item(t).getChildNodes().item(1).getChildNodes();
-				columns = nodes.item(t).getChildNodes().item(0).getChildNodes();
-			}
-			// Keeps rowIndex value.
-			int counter = 0;
-			// Returns for the Row elements.
-			for (int i = 0; i < rows.getLength(); i++) {
-				if (TedamDOMUtils.isDummyNode(rows.item(i))) {
-					continue;
-				}
-				Node columnDefinition;
-				// It returns for the attribute of the row element in our hand.
-				for (int j = 0; j < rows.item(i).getAttributes().getLength() - 1; j++) {
-					if (rows.item(i).getAttributes().item(j).getNodeValue().isEmpty()) {
-						continue;
-					}
-					// If row attribute has "_tag" text within, its value must replace for the cells
-					// value attribute defined without the "_tag" text
-					if (rows.item(i).getAttributes().item(j).getNodeName()
-							.contains(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG)) {
-						continue;
-					}
-					// The column tag is drawn in the name of the attribute that you have on the row
-					// definition.
-					columnDefinition = getColumnByTag(columns,
-							rows.item(i).getAttributes().item(j).getNodeName().substring(3));
-					// Column Node identification with a colon tag is taken.
-
-					if (columnDefinition != null) {
-						SnapshotValue tempSSValue = fillAndGetFormFieldsWithAttributes(
-								columnDefinition.getAttributes());
-						tempSSValue.setParentTag(parentTag);
-						tempSSValue.setRowIndex(counter);
-						tempSSValue.setValue(rows.item(i).getAttributes().item(j).getNodeValue());
-						tempSSValue.setCaption(columnDefinition.getAttributes()
-								.getNamedItem(Constants.SNAPSHOT_GRID_COLUMN_ATTRIBUTES_CAPTION).getNodeValue());
-						incomingValueList.add(tempSSValue);
-					}
-
-				}
-				counter++;
-			}
+			checkForDummyNode(nodes, t, incomingValueList, parentTag);
 			returnValueList.addAll(incomingValueList);
 		}
 		return returnValueList;
+	}
+
+	private static void checkForDummyNode(NodeList nodes, int t, ArrayList<SnapshotValue> incomingValueList,
+			String parentTag) {
+		NodeList rows;
+		NodeList columns;
+		if (TedamDOMUtils.isDummyNode(nodes.item(t).getChildNodes().item(0))) {
+			rows = nodes.item(t).getChildNodes().item(3).getChildNodes();
+			columns = nodes.item(t).getChildNodes().item(1).getChildNodes();
+		} else {
+			rows = nodes.item(t).getChildNodes().item(1).getChildNodes();
+			columns = nodes.item(t).getChildNodes().item(0).getChildNodes();
+		}
+		rowsLoop(incomingValueList, parentTag, rows, columns);
+	}
+
+	private static void rowsLoop(ArrayList<SnapshotValue> incomingValueList, String parentTag, NodeList rows,
+			NodeList columns) {
+		// Keeps rowIndex value.
+		int counter = 0;
+		// Returns for the Row elements.
+		for (int i = 0; i < rows.getLength(); i++) {
+			if (TedamDOMUtils.isDummyNode(rows.item(i))) {
+				continue;
+			}
+			Node columnDefinition = null;
+			// It returns for the attribute of the row element in our hand.
+			columnDefinition = checkForAttributes(incomingValueList, parentTag, rows, columns, counter, i,
+					columnDefinition);
+			counter++;
+		}
+	}
+
+	private static Node checkForAttributes(ArrayList<SnapshotValue> incomingValueList, String parentTag, NodeList rows,
+			NodeList columns, int counter, int i, Node columnDefinition) {
+		for (int j = 0; j < rows.item(i).getAttributes().getLength() - 1; j++) {
+			if (rows.item(i).getAttributes().item(j).getNodeValue().isEmpty()) {
+				continue;
+			}
+			// If row attribute has "_tag" text within, its value must replace for the cells
+			// value attribute defined without the "_tag" text
+			if (rows.item(i).getAttributes().item(j).getNodeName()
+					.contains(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG)) {
+				continue;
+			}
+			// The column tag is drawn in the name of the attribute that you have on the row
+			// definition.
+			columnDefinition = getColumnByTag(columns, rows.item(i).getAttributes().item(j).getNodeName().substring(3));
+			// Column Node identification with a colon tag is taken.
+
+			checkForColumnDefinition(incomingValueList, parentTag, rows, counter, i, columnDefinition, j);
+
+		}
+		return columnDefinition;
+	}
+
+	private static void checkForColumnDefinition(ArrayList<SnapshotValue> incomingValueList, String parentTag,
+			NodeList rows, int counter, int i, Node columnDefinition, int j) {
+		if (columnDefinition != null) {
+			SnapshotValue tempSSValue = fillAndGetFormFieldsWithAttributes(columnDefinition.getAttributes());
+			tempSSValue.setParentTag(parentTag);
+			tempSSValue.setRowIndex(counter);
+			tempSSValue.setValue(rows.item(i).getAttributes().item(j).getNodeValue());
+			tempSSValue.setCaption(columnDefinition.getAttributes()
+					.getNamedItem(Constants.SNAPSHOT_GRID_COLUMN_ATTRIBUTES_CAPTION).getNodeValue());
+			incomingValueList.add(tempSSValue);
+		}
 	}
 
 	/**
@@ -1038,11 +1063,7 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 		for (int t = 0; t < nodes.getLength(); t++) {
 
-			if (TedamDOMUtils.isDummyNode(nodes.item(t).getChildNodes().item(0))) {
-				rows = nodes.item(t).getChildNodes().item(1).getChildNodes();
-			} else {
-				rows = nodes.item(t).getChildNodes().item(0).getChildNodes();
-			}
+			rows = checkForFilterContentsFromFile(nodes, t);
 			String parentTag = nodes.item(t).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG)
 					.getNodeValue();
 
@@ -1073,99 +1094,25 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 				case "TIMERANGE":
 				case "DATERANGE":
 				case "NUMERICRANGE":
-					if (rows.item(i).getAttributes()
-							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE) == null) {
-						if (rows.item(i).getAttributes()
-								.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE) == null
-								|| rows.item(i).getAttributes()
-										.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE) == null) {
-							value = "";
-						} else {
-							if (!rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue().trim()
-									.isEmpty()) {
-								value += "<$gt>" + rows.item(i).getAttributes()
-										.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue();
-							}
-							if (!rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue().trim()
-									.isEmpty()) {
-								value += "<$lt>" + rows.item(i).getAttributes()
-										.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue();
-							}
-						}
-					} else {
-						// If filter is grouped, there would not be any high or low value. Value must be
-						// like <$gr>
-						if (!rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE)
-								.getNodeValue().trim().isEmpty()) {
-							value += "<$gr>" + rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE).getNodeValue();
-						}
-					}
+					value = checkForRange(rows, i, value);
 					// If there is any excluded value, it must be added at the end of the value with
 					// regex "<$!>"
-					if ((rows.item(i).getAttributes()
-							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null)
-							&& (rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
-									.getNodeValue() != null)
-							&& (!rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
-									.trim().isEmpty())) {
-						value += "<$!>" + rows.item(i).getAttributes()
-								.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue();
-					}
+					value = checkForRangeAttributes(rows, i, value);
 					break;
 				case "SELECTION":
-					try {
-						value = Integer
-								.toString(TedamStringUtils
-										.collectResourceItemList(
-												rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue())
-										.get(0));
-					} catch (IndexOutOfBoundsException e) {
-						LOGGER.error(e.getMessage(), e);
-					}
+					value = checkForSelection(rows, i, value);
 					break;
 				case "GROUP":
 					// If it is a group type, the valueList in the Filter element is parse and the
 					// value
 					// is generated with the tag values. Value form will be 1/2/5/76.
-					List<Integer> valueList = TedamStringUtils.collectResourceItemList(
-							rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue());
-					value = "";
-					if (valueList != null && valueList.isEmpty()) {
-						value = "";
-					}
-					StringBuilder sb = new StringBuilder(value);
-					if (valueList != null) {
-						for (int j = 0; j < valueList.size(); j++) {
-							if (j == 0) {
-								sb.append(Integer.toString(valueList.get(j)));
-							} else {
-								sb.append("/" + Integer.toString(valueList.get(j)));
-							}
-						}
-					}
-					value = sb.toString();
+					value = checkForGroup(rows, i);
 					break;
 				case "STRING":
 				case "TIME":
 				case "DATE":
 				case "NUMERIC":
-					value = Constants.VALUE_REGEX_GROUPPED
-							+ rows.item(i).getAttributes().getNamedItem("value").getNodeValue();
-					if (rows.item(i).getAttributes()
-							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null
-							&& !rows.item(i).getAttributes()
-									.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
-									.trim().isEmpty()
-							&& (!value.isEmpty())) {
-						// If there is a value in the ExcludedValue field, it is appended to the value.
-						value += "<$!>" + rows.item(i).getAttributes()
-								.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue();
-					}
+					value = checkForNonRange(rows, i);
 					break;
 				default:
 					break;
@@ -1181,6 +1128,117 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 			}
 		}
 		return snapshotValues;
+	}
+
+	private static String checkForNonRange(NodeList rows, int i) {
+		String value;
+		value = Constants.VALUE_REGEX_GROUPPED
+				+ rows.item(i).getAttributes().getNamedItem("value").getNodeValue();
+		if (rows.item(i).getAttributes()
+				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null
+				&& !rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
+						.trim().isEmpty()
+				&& (!value.isEmpty())) {
+			// If there is a value in the ExcludedValue field, it is appended to the value.
+			value += "<$!>" + rows.item(i).getAttributes()
+					.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue();
+		}
+		return value;
+	}
+
+	private static String checkForGroup(NodeList rows, int i) {
+		String value;
+		List<Integer> valueList = TedamStringUtils.collectResourceItemList(
+				rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue());
+		value = "";
+		if (valueList != null && valueList.isEmpty()) {
+			value = "";
+		}
+		StringBuilder sb = new StringBuilder(value);
+		if (valueList != null) {
+			for (int j = 0; j < valueList.size(); j++) {
+				if (j == 0) {
+					sb.append(Integer.toString(valueList.get(j)));
+				} else {
+					sb.append("/" + Integer.toString(valueList.get(j)));
+				}
+			}
+		}
+		value = sb.toString();
+		return value;
+	}
+
+	private static String checkForSelection(NodeList rows, int i, String value) {
+		try {
+			value = Integer
+					.toString(TedamStringUtils
+							.collectResourceItemList(
+									rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue())
+							.get(0));
+		} catch (IndexOutOfBoundsException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+		return value;
+	}
+
+	private static String checkForRangeAttributes(NodeList rows, int i, String value) {
+		if ((rows.item(i).getAttributes()
+				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null)
+				&& (rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
+						.getNodeValue() != null)
+				&& (!rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
+						.trim().isEmpty())) {
+			value += "<$!>" + rows.item(i).getAttributes()
+					.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue();
+		}
+		return value;
+	}
+
+	private static String checkForRange(NodeList rows, int i, String value) {
+		if (rows.item(i).getAttributes()
+				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE) == null) {
+			if (rows.item(i).getAttributes()
+					.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE) == null
+					|| rows.item(i).getAttributes()
+							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE) == null) {
+				value = "";
+			} else {
+				if (!rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue().trim()
+						.isEmpty()) {
+					value += "<$gt>" + rows.item(i).getAttributes()
+							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue();
+				}
+				if (!rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue().trim()
+						.isEmpty()) {
+					value += "<$lt>" + rows.item(i).getAttributes()
+							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue();
+				}
+			}
+		} else {
+			// If filter is grouped, there would not be any high or low value. Value must be
+			// like <$gr>
+			if (!rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE)
+					.getNodeValue().trim().isEmpty()) {
+				value += "<$gr>" + rows.item(i).getAttributes()
+						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE).getNodeValue();
+			}
+		}
+		return value;
+	}
+
+	private static NodeList checkForFilterContentsFromFile(NodeList nodes, int t) {
+		NodeList rows;
+		if (TedamDOMUtils.isDummyNode(nodes.item(t).getChildNodes().item(0))) {
+			rows = nodes.item(t).getChildNodes().item(1).getChildNodes();
+		} else {
+			rows = nodes.item(t).getChildNodes().item(0).getChildNodes();
+		}
+		return rows;
 	}
 
 	/**
