@@ -841,6 +841,14 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 	}
 
+	private static boolean canContinue(String tempType, Node node) {
+		boolean canContinue = false;
+		if (unpermittedComponentList.contains(tempType) || node.hasChildNodes()) {
+			canContinue = true;
+		}
+		return canContinue;
+	}
+
 	/**
 	 * Control definitions that conform to the standards in the given nodes
 	 * parameter are converted to SnapshotValue objects and returned in a list.
@@ -856,7 +864,7 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 		for (int i = 0; i < nodes.getLength(); i++) {
 			String tempType = nodes.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE)
 					.getNodeValue();
-			if (unpermittedComponentList.contains(tempType) || nodes.item(i).hasChildNodes()) {
+			if (canContinue(tempType, nodes.item(i))) {
 				continue;
 			}
 
@@ -870,9 +878,7 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 			switch (nodeValue) {
 			case Constants.COMBO_CONTROLTYPE_COMBOBOX:
-				if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG) != null) {
-					value = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG).getNodeValue();
-				}
+				value = checkForComboboxValue(namedNodeMap, value);
 				break;
 			case Enums.TAG_CHECKBOXGROUP:
 				if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_SELECTEDLIST) != null) {
@@ -907,6 +913,13 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 			tempSSValues.add(snapshotValue);
 		}
 		return tempSSValues;
+	}
+
+	private static String checkForComboboxValue(NamedNodeMap namedNodeMap, String value) {
+		if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG) != null) {
+			value = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG).getNodeValue();
+		}
+		return value;
 	}
 
 	private static String itemListLoop(String value, List<Integer> itemList) {
