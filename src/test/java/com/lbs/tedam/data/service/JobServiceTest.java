@@ -84,20 +84,20 @@ public class JobServiceTest extends BaseServiceTest {
 
     @Test
     public void testSaveJobAndJobDetailsStatus() throws LocalizedException {
-        Job job = jobService.getById(90);
+		Job job = jobService.getById(67);
         TedamUser user = userService.getAll().get(0);
         jobService.saveJobAndJobDetailsStatus(job, JobStatus.PLANNED, CommandStatus.IN_PROGRESS, user);
     }
 
 	@Test
 	public void testResetJob() throws LocalizedException {
-		Job job = jobService.getById(66);
+		Job job = jobService.getById(67);
 		jobService.resetJob(job.getId());
 	}
 
 	@Test
 	public void testgetJobIdListByEnvironmentId() throws LocalizedException {
-		Job job = jobService.getById(66);
+		Job job = jobService.getById(67);
 		Environment environment = job.getJobEnvironment();
 		List<Integer> idList = jobService.getJobIdListByEnvironmentId(environment.getId());
 		assertFalse(idList.isEmpty());
