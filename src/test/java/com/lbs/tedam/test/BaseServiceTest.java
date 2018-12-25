@@ -17,81 +17,91 @@
 
 package com.lbs.tedam.test;
 
-import com.lbs.tedam.config.ConfigTestContext;
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.util.Constants;
-import com.lbs.tedam.util.PropUtils;
-import com.lbs.tedam.util.TedamFileUtils;
-import org.junit.BeforeClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Element;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Element;
+
+import com.lbs.tedam.config.ConfigTestContext;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.util.Constants;
+import com.lbs.tedam.util.PropUtils;
+import com.lbs.tedam.util.TedamFileUtils;
+
 public class BaseServiceTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceTest.class);
 
-    private static String tempdir = System.getProperty("java.io.tmpdir");
+	private static String tempdir = System.getProperty("java.io.tmpdir");
 
-    @BeforeClass
-    public static void testLoadPropertyFile() {
-        String configFilePath = BaseServiceTest.class.getResource(Constants.RESOURCE_CONFIG_TEST_PROPERTIES).getPath();
-        PropUtils.loadPropFile(configFilePath);
-        ConfigTestContext.registerConfig(TestDataConfig.class, DataConfig.class);
-    }
+	@BeforeClass
+	public static void testLoadPropertyFile() {
+		String configFilePath = BaseServiceTest.class.getResource(Constants.RESOURCE_CONFIG_TEST_PROPERTIES).getPath();
+		PropUtils.loadPropFile(configFilePath);
+		ConfigTestContext.registerConfig(TestDataConfig.class, DataConfig.class);
+	}
 
-    /**
-     * this method getTempdir fetches the defined temp file.<br>
-     *
-     * @return <br>
-     * @author Tarik.Mikyas
-     */
-    public static String getTempdir() {
-        return tempdir + Constants.FILE_SEPARATOR;
-    }
+	@Test
+	public void testDummyBase() {
+		String dummyContent = "dummy";
+		assertNotNull(dummyContent);
+	}
 
-    /**
-     * @param sourcePath
-     * @return <br>
-     * this method getElementFromXmlFile
-     * @author Tarik.Mikyas
-     */
-    public Element getElementFromXmlFilePath(String sourceName) {
-        return TedamFileUtils.getElementFromXmlFile(getFilePathFromSourceName(sourceName));
-    }
+	/**
+	 * this method getTempdir fetches the defined temp file.<br>
+	 *
+	 * @return <br>
+	 * @author Tarik.Mikyas
+	 */
+	public static String getTempdir() {
+		return tempdir + Constants.FILE_SEPARATOR;
+	}
 
-    /**
-     * this method getFilePathFromSourceName <br>
-     *
-     * @param sourcePath
-     * @return <br>
-     * @author Tarik.Mikyas
-     */
-    protected String getFilePathFromSourceName(String sourceName) {
-        return getClass().getResource(sourceName).getFile();
-    }
+	/**
+	 * @param sourcePath
+	 * @return <br>
+	 *         this method getElementFromXmlFile
+	 * @author Tarik.Mikyas
+	 */
+	public Element getElementFromXmlFilePath(String sourceName) {
+		return TedamFileUtils.getElementFromXmlFile(getFilePathFromSourceName(sourceName));
+	}
 
-    /**
-     * @param sourcePath
-     * @return <br>
-     * this method getFilePath
-     * @author Tarik.Mikyas
-     */
-    public File getFilePath(String sourcePath) {
-        URL resource = getClass().getResource(sourcePath);
-        File file = null;
-        try {
-            file = (Paths.get(resource.toURI()).toFile()).getAbsoluteFile();
-        } catch (URISyntaxException e) {
-            LOGGER.error("" + e);
-        }
+	/**
+	 * this method getFilePathFromSourceName <br>
+	 *
+	 * @param sourcePath
+	 * @return <br>
+	 * @author Tarik.Mikyas
+	 */
+	protected String getFilePathFromSourceName(String sourceName) {
+		return getClass().getResource(sourceName).getFile();
+	}
 
-        return file;
-    }
+	/**
+	 * @param sourcePath
+	 * @return <br>
+	 *         this method getFilePath
+	 * @author Tarik.Mikyas
+	 */
+	public File getFilePath(String sourcePath) {
+		URL resource = getClass().getResource(sourcePath);
+		File file = null;
+		try {
+			file = (Paths.get(resource.toURI()).toFile()).getAbsoluteFile();
+		} catch (URISyntaxException e) {
+			LOGGER.error("" + e);
+		}
+
+		return file;
+	}
 
 }

@@ -17,10 +17,13 @@
 
 package com.lbs.tedam.bsh.utils;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 
 import com.lbs.tedam.test.BaseServiceTest;
@@ -30,42 +33,47 @@ import com.lbs.tedam.test.BaseServiceTest;
  */
 public class ScriptServiceOtherTest extends BaseServiceTest {
 
-    @Parameter
-    private static List<Object> popUpMenuItemIndexList;
-    private ScriptService scriptService = new ScriptService(true);
+	@Parameter
+	private static List<Object> popUpMenuItemIndexList;
 
-    /**
-     * @author Tarik.Mikyas <br>
-     * this method testFillPopUpMenuItemIndexList
-     */
-    @BeforeClass
-    public static void testFillPopUpMenuItemIndexList() {
-        // [(Add,1), (Change,2), (Clear,3), (Look,4), (Copy,7), (-,-1), (Change
-        // Status,13), (Bulk Status Change,15), (,0), (-,-2), (,0), (,0), (,0), (,0),
-        // (,0),
-        // (-,-3), (,0), (,0), (,0), (-,-4)]
-        popUpMenuItemIndexList = new ArrayList<>();
-        popUpMenuItemIndexList.add("(Ekle,1)");
-        popUpMenuItemIndexList.add("(Değiştir,2)");
-        popUpMenuItemIndexList.add("(Sil,3)");
-        popUpMenuItemIndexList.add("(İncele,4)");
-        popUpMenuItemIndexList.add("(Kopyala,7)");
-        popUpMenuItemIndexList.add("(-,-1)");
-        popUpMenuItemIndexList.add("(Durumunu Değiştir,13)");
-        popUpMenuItemIndexList.add("(Toplu Durum Değişikliği,15)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(-,-2)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(-,-3)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(,0)");
-        popUpMenuItemIndexList.add("(-,-4)");
-    }
+	/**
+	 * @author Tarik.Mikyas <br>
+	 *         this method testFillPopUpMenuItemIndexList
+	 */
+	@BeforeClass
+	public static void testFillPopUpMenuItemIndexList() {
+		// [(Add,1), (Change,2), (Clear,3), (Look,4), (Copy,7), (-,-1), (Change
+		// Status,13), (Bulk Status Change,15), (,0), (-,-2), (,0), (,0), (,0), (,0),
+		// (,0),
+		// (-,-3), (,0), (,0), (,0), (-,-4)]
+		popUpMenuItemIndexList = new ArrayList<>();
+		popUpMenuItemIndexList.add("(Ekle,1)");
+		popUpMenuItemIndexList.add("(Değiştir,2)");
+		popUpMenuItemIndexList.add("(Sil,3)");
+		popUpMenuItemIndexList.add("(İncele,4)");
+		popUpMenuItemIndexList.add("(Kopyala,7)");
+		popUpMenuItemIndexList.add("(-,-1)");
+		popUpMenuItemIndexList.add("(Durumunu Değiştir,13)");
+		popUpMenuItemIndexList.add("(Toplu Durum Değişikliği,15)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(-,-2)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(-,-3)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(,0)");
+		popUpMenuItemIndexList.add("(-,-4)");
+	}
+
+	@Test
+	public void testDummy() {
+		String dummyContent = "dummy";
+		assertNotNull(dummyContent);
+	}
 
 	/*
 	 * @Test public void test1GetPopUpMenuItemIndex() { int index =
