@@ -46,6 +46,7 @@ import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
 public class TedamMailSender {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TedamMailSender.class);
+	private static final String BR = "<br/>";
 
 	private static TedamMailSender sender;
 
@@ -83,7 +84,7 @@ public class TedamMailSender {
 				recipientAddress[counter] = new InternetAddress(recipient.trim());
 				counter++;
 			}
-			String messageBody = "<strong>Job Name: </strong>" + job.getName() + "<br/><br/>";
+			String messageBody = "<strong>Job Name: </strong>" + job.getName() + BR + BR;
 			String jobDetailBody = "";
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(props.getProperty("username")));
@@ -108,8 +109,8 @@ public class TedamMailSender {
 		String testCaseStatus = getTestCaseStatus(jobDetail.getTestSet().getTestCases());
 		String testSetInfo = "";
 		if (testCaseStatus.length() > 0) {
-			testSetInfo = "<strong>Test Set Name: </strong>" + jobDetail.getTestSetName() + "<br/>";
-			testSetInfo += testCaseStatus + "<br/>";
+			testSetInfo = "<strong>Test Set Name: </strong>" + jobDetail.getTestSetName() + BR;
+			testSetInfo += testCaseStatus + BR;
 		}
 		return testSetInfo;
 	}
@@ -125,8 +126,7 @@ public class TedamMailSender {
 					|| testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.FAILED)) {
 				testCaseStatus = "<strong>Test Cases: </strong><br/>";
 				testCaseStatus += "&emsp;<strong>" + testCaseName + ": </strong>"
-						+ testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate()
-						+ "<br/>";
+						+ testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate() + BR;
 			}
 		}
 		return testCaseStatus;
