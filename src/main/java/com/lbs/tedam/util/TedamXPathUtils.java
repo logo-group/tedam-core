@@ -864,17 +864,17 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 			boolean tmpHasLookUp = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_HAS_LOOKUP)
 					.getNodeValue().equalsIgnoreCase(Constants.VALUE_TRUE) ? true : false;
-			String value;
+			String value = "";
 			// For elements with type 106, value_tag attribute is used for gathering value
-			if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue()
-					.equals(Constants.COMBO_CONTROLTYPE_COMBOBOX)
-					&& namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG) != null) {
-				value = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG).getNodeValue();
-			} else if (SnapshotControls.CHECKBOXGROUP.getType()
-					.equals(namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue())) {
-				// For elements with type 151 (SnapshotControls), selectedlist attribute is
-				// parsed and value is constitutd with putting "/" between
-				// resulting values
+			String nodeValue = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue();
+
+			switch (nodeValue) {
+			case Constants.COMBO_CONTROLTYPE_COMBOBOX:
+				if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG) != null) {
+					value = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUETAG).getNodeValue();
+				}
+				break;
+			case Enums.TAG_CHECKBOXGROUP:
 				if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_SELECTEDLIST) != null) {
 					if (namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_SELECTEDLIST).getNodeValue()
 							.isEmpty()) {
@@ -888,16 +888,16 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 				} else {
 					value = "";
 				}
-			} else {
-				// Otherwise just the value attribute is used
+				break;
+			default:
 				value = namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VALUE).getNodeValue();
+				break;
 			}
 
 			SnapshotValue snapshotValue = new SnapshotValue(
 					namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TITLE).getNodeValue(),
 					namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG).getNodeValue(), value,
-					"TEMP_VERSION", true, -1,
-					namedNodeMap.getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue());
+					"TEMP_VERSION", true, -1, nodeValue);
 			snapshotValue.setParentTag(Constants.VALUE_NULL);
 			snapshotValue.setLookUp(tmpHasLookUp);
 			snapshotValue.setOrder(Constants.VALUE_NULL_INTEGER * -1);
@@ -1132,13 +1132,10 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 	private static String checkForNonRange(NodeList rows, int i) {
 		String value;
-		value = Constants.VALUE_REGEX_GROUPPED
-				+ rows.item(i).getAttributes().getNamedItem("value").getNodeValue();
-		if (rows.item(i).getAttributes()
-				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null
-				&& !rows.item(i).getAttributes()
-						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
-						.trim().isEmpty()
+		value = Constants.VALUE_REGEX_GROUPPED + rows.item(i).getAttributes().getNamedItem("value").getNodeValue();
+		if (rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null
+				&& !rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
+						.getNodeValue().trim().isEmpty()
 				&& (!value.isEmpty())) {
 			// If there is a value in the ExcludedValue field, it is appended to the value.
 			value += "<$!>" + rows.item(i).getAttributes()
@@ -1149,8 +1146,8 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 	private static String checkForGroup(NodeList rows, int i) {
 		String value;
-		List<Integer> valueList = TedamStringUtils.collectResourceItemList(
-				rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue());
+		List<Integer> valueList = TedamStringUtils
+				.collectResourceItemList(rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue());
 		value = "";
 		if (valueList != null && valueList.isEmpty()) {
 			value = "";
@@ -1171,11 +1168,9 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 
 	private static String checkForSelection(NodeList rows, int i, String value) {
 		try {
-			value = Integer
-					.toString(TedamStringUtils
-							.collectResourceItemList(
-									rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue())
-							.get(0));
+			value = Integer.toString(TedamStringUtils
+					.collectResourceItemList(rows.item(i).getAttributes().getNamedItem("valueList").getNodeValue())
+					.get(0));
 		} catch (IndexOutOfBoundsException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
@@ -1183,14 +1178,11 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 	}
 
 	private static String checkForRangeAttributes(NodeList rows, int i, String value) {
-		if ((rows.item(i).getAttributes()
-				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null)
-				&& (rows.item(i).getAttributes()
-						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
+		if ((rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE) != null)
+				&& (rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
 						.getNodeValue() != null)
-				&& (!rows.item(i).getAttributes()
-						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue()
-						.trim().isEmpty())) {
+				&& (!rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE)
+						.getNodeValue().trim().isEmpty())) {
 			value += "<$!>" + rows.item(i).getAttributes()
 					.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_EXCLUDEDVALUE).getNodeValue();
 		}
@@ -1198,23 +1190,19 @@ public class TedamXPathUtils extends TedamBaseXPathUtils {
 	}
 
 	private static String checkForRange(NodeList rows, int i, String value) {
-		if (rows.item(i).getAttributes()
-				.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE) == null) {
-			if (rows.item(i).getAttributes()
-					.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE) == null
+		if (rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_GROUPVALUE) == null) {
+			if (rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE) == null
 					|| rows.item(i).getAttributes()
 							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE) == null) {
 				value = "";
 			} else {
-				if (!rows.item(i).getAttributes()
-						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue().trim()
-						.isEmpty()) {
+				if (!rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE)
+						.getNodeValue().trim().isEmpty()) {
 					value += "<$gt>" + rows.item(i).getAttributes()
 							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_LOWVALUE).getNodeValue();
 				}
-				if (!rows.item(i).getAttributes()
-						.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue().trim()
-						.isEmpty()) {
+				if (!rows.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE)
+						.getNodeValue().trim().isEmpty()) {
 					value += "<$lt>" + rows.item(i).getAttributes()
 							.getNamedItem(Constants.SNAPSHOT_FILTER_ATTRIBUTES_HIGHVALUE).getNodeValue();
 				}

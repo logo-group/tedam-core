@@ -28,6 +28,7 @@ public class Enums {
 	private static final String TAG_VERSION = "version";
 	private static final String TAG_TEST_CASE_ID = "testCaseId";
 	private static final String TAG_TIME_RECORDING = "timeRecording";
+	public static final String TAG_CHECKBOXGROUP = "151";
 
 	public Enums() {
 		super();
@@ -184,6 +185,7 @@ public class Enums {
 	 *         SnapshotControls
 	 */
 	public enum SnapshotControls {
+
 		/**
 		 * 2 values are kept.
 		 */
@@ -195,7 +197,7 @@ public class Enums {
 		/**
 		 * 151 values are kept.
 		 */
-		CHECKBOXGROUP("151");
+		CHECKBOXGROUP(TAG_CHECKBOXGROUP);
 
 		private String type;
 
