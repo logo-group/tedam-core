@@ -105,7 +105,8 @@ public class TedamDOMUtils {
         String result = "";
         try {
             StringWriter sw = new StringWriter();
-            Transformer serializer = TransformerFactory.newInstance().newTransformer();
+            TransformerFactory factory = TransformerFactory.newInstance();
+			Transformer serializer = factory.newTransformer();
             serializer.transform(new DOMSource(element), new StreamResult(sw));
             result = sw.toString();
         } catch (TransformerException e) {

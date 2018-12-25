@@ -27,7 +27,6 @@ public class EnumsV2 {
 	private static final String TAG_FORM_FILL = "FormFill";
 	private static final String TAG_BUTTON_CLICK = "ButtonClick";
 	private static final String TAG_VERIFY = "Verify";
-	private static final String TAG_UTILS = "Utils";
 
 	public enum TestStepType implements IEnumsV2 {
 
@@ -844,42 +843,6 @@ public class EnumsV2 {
 		public String toString() {
 			return getLocaleValue(getId());
 		}
-	}
-
-	public enum ModularScriptSahiFilePath {
-		ButtonClick(TAG_BUTTON_CLICK, TAG_BUTTON_CLICK + Constants.FILE_SEPARATOR + "ButtonClick.sah"), //
-		FormFill(TAG_FORM_FILL, TAG_FORM_FILL + Constants.FILE_SEPARATOR + "FormFill.sah"), //
-		Verify(TAG_VERIFY, TAG_VERIFY + Constants.FILE_SEPARATOR + "Verify.sah"), //
-		Utils(TAG_UTILS, TAG_UTILS + Constants.FILE_SEPARATOR + "Utils.sah"),
-		Functions("Functions", TAG_UTILS + Constants.FILE_SEPARATOR + "Functions.sah");
-
-		private final String value;
-		private final String path;
-
-		private ModularScriptSahiFilePath(String value, String path) {
-			this.value = value;
-			this.path = path;
-		}
-
-		public static ModularScriptSahiFilePath fromName(String name) {
-			if (name != null) {
-				for (ModularScriptSahiFilePath modularScriptsSahiFilePath : values()) {
-					if (modularScriptsSahiFilePath.getValue().equals(name)) {
-						return modularScriptsSahiFilePath;
-					}
-				}
-			}
-			return null;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public String getPath() {
-			return path;
-		}
-
 	}
 
 	public enum TedamUserRole {
