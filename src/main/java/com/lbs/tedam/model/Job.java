@@ -96,6 +96,9 @@ public class Job extends AbstractBaseEntity {
     @Column(name = "IS_CI")
     private boolean ci = false;
 
+	@Column(name = "IS_RUN_EVERY_DAY")
+	private boolean runEveryDay = false;
+
     /**
      * Environment jobEnvironment
      */
@@ -322,6 +325,14 @@ public class Job extends AbstractBaseEntity {
 
 	public String getJobEnvironmentName() {
 		return getJobEnvironment() != null ? getJobEnvironment().getName() : "";
+	}
+
+	public boolean isRunEveryDay() {
+		return runEveryDay;
+	}
+
+	public void setRunEveryDay(boolean runEveryDay) {
+		this.runEveryDay = runEveryDay;
 	}
 
 }
