@@ -1,6 +1,6 @@
 package com.lbs.tedam.exception;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -11,6 +11,6 @@ public class GeneralLocalizedExceptionTest {
 	@Test
 	public void testGeneralLocalizedExceptionTest() {
 		GeneralLocalizedException exception = new GeneralLocalizedException(new Exception("generalException"));
-		assertNull(exception.getMessage());
+		assertNotNull(exception.getMessage());
 	}
 }
