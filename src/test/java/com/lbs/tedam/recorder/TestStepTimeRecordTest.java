@@ -28,5 +28,6 @@ public class TestStepTimeRecordTest {
     public void testSetters() {
         TestStepTimeRecord testStepTimeRecord = new TestStepTimeRecord();
         testStepTimeRecord.setRelease("release");
+		testStepTimeRecord.setTestStepId(1);
     }
 }

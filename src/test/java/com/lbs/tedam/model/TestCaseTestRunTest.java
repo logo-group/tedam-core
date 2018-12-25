@@ -17,18 +17,19 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
-import com.lbs.tedam.util.EnumsV2.TestRunType;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
+import com.lbs.tedam.util.EnumsV2.TestRunType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -61,6 +62,9 @@ public class TestCaseTestRunTest extends BaseServiceTest {
         testCaseTestRun.getTestRunType();
         testCaseTestRun.getTestStepTestRunList();
         testCaseTestRun.getVersion();
+		testCaseTestRun.getTestCaseName();
+		testCaseTestRun.getJobName();
+		testCaseTestRun.getTestSetName();
     }
 
 }

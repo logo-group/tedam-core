@@ -17,15 +17,17 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.Assert;
 
-import java.util.ArrayList;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -52,5 +54,13 @@ public class FormDefinitionTest extends BaseServiceTest {
         formDefinition.getSnapshots();
         formDefinition.toString();
     }
+
+	@Test
+	public void testAddFormField() {
+		FormDefinition formDefinition = new FormDefinition();
+		FormField field = new FormField();
+		formDefinition.addFormField(field);
+		Assert.notEmpty(formDefinition.getFormFields());
+	}
 
 }

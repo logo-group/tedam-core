@@ -17,16 +17,19 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.TedamFolderType;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.TedamFolderType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -56,5 +59,22 @@ public class TedamFolderTest extends BaseServiceTest {
         tedamFolder.toString();
         tedamFolder.getFolderType();
     }
+
+	@Test
+	public void testFindNullParentFolder() {
+		TedamFolder tedamFolder = new TedamFolder();
+		tedamFolder.setName("Parent folder");
+		assertNotNull(tedamFolder.findParentFolder(tedamFolder));
+	}
+
+	@Test
+	public void testFindParentFolder() {
+		TedamFolder tedamFolder = new TedamFolder();
+		TedamFolder parentFolder = new TedamFolder();
+		parentFolder.setName("Parent folder");
+		tedamFolder.setParentFolder(parentFolder);
+		tedamFolder.setName("Folder");
+		assertNotNull(tedamFolder.findParentFolder(tedamFolder));
+	}
 
 }

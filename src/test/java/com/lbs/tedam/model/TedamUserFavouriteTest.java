@@ -18,14 +18,17 @@
 package com.lbs.tedam.model;
 
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.TedamUserFavoriteType;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.TedamUserFavoriteType;
 
 
 /**
@@ -65,6 +68,23 @@ public class TedamUserFavouriteTest extends BaseServiceTest {
         tedamUserFavorite.setClient(client);
         tedamUserFavorite.getName();
     }
+
+	@Test
+	public void testgetEnvironment() {
+		TedamUserFavorite tedamUserFavorite = new TedamUserFavorite();
+		Environment environment = new Environment();
+		tedamUserFavorite.setEnvironment(environment);
+		assertNotNull(tedamUserFavorite.getEnvironment());
+	}
+
+	@Test
+	public void testGetNameWithEnvironment() {
+		TedamUserFavorite tedamUserFavorite = new TedamUserFavorite();
+		Environment environment = new Environment();
+		environment.setName("Environment Name");
+		tedamUserFavorite.setEnvironment(environment);
+		assertNotNull(tedamUserFavorite.getName());
+	}
 
     @Test
     public void testConstructor() {

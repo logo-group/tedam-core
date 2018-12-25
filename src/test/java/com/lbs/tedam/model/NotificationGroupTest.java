@@ -1,5 +1,7 @@
 package com.lbs.tedam.model;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,19 @@ public class NotificationGroupTest extends BaseServiceTest {
 		notificationGroup.getGroupName();
 		notificationGroup.getProject();
 		notificationGroup.getType();
+	}
+
+	@Test
+	public void testToString() {
+		NotificationGroup notificationGroup = new NotificationGroup();
+		notificationGroup.setGroupName("Grup1");
+		assertNotNull(notificationGroup.toString());
+	}
+
+	@Test
+	public void testgetTransitVariableDescription() {
+		NotificationGroup notificationGroup = new NotificationGroup();
+		assertNotNull(notificationGroup.getTransitVariableDescription());
 	}
 
 }
