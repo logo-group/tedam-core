@@ -65,13 +65,14 @@ public class DataInitializationUtil {
 	}
 
 	private void loadPropertyData() throws LocalizedException {
+		String config = "CONFIG";
 		List<Property> propertyList = new ArrayList<>();
-		Property moduleConfigPoolPathProperty = new Property("CONFIG", "moduleConfigPoolPath", "C:\\");
-		Property moduleConfigOrderPathProperty = new Property("CONFIG", "moduleConfigOrderPath", "C:\\");
-		Property tempFilePathProperty = new Property("CONFIG", "tempFilePath", "C:\\temp");
-		Property snapshotFileFolderProperty = new Property("CONFIG", "snapshotFileFolder", "C:\\");
-		Property scorderProperty = new Property("CONFIG", "scorder", "C:\\");
-		Property jobrunnerRestUrlProperty = new Property("CONFIG", "jobrunnerRestUrl",
+		Property moduleConfigPoolPathProperty = new Property(config, "moduleConfigPoolPath", "C:\\");
+		Property moduleConfigOrderPathProperty = new Property(config, "moduleConfigOrderPath", "C:\\");
+		Property tempFilePathProperty = new Property(config, "tempFilePath", "C:\\temp");
+		Property snapshotFileFolderProperty = new Property(config, "snapshotFileFolder", "C:\\");
+		Property scorderProperty = new Property(config, "scorder", "C:\\");
+		Property jobrunnerRestUrlProperty = new Property(config, "jobrunnerRestUrl",
 				"http://localhost:9080/TedamManager/api/JobRunnerRestService/");
 		propertyList.add(moduleConfigPoolPathProperty);
 		propertyList.add(moduleConfigOrderPathProperty);
