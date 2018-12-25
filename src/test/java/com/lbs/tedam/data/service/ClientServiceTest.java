@@ -68,10 +68,5 @@ public class ClientServiceTest extends BaseServiceTest {
         Assert.assertNull(client);
     }
 
-	@Test
-	public void testafterDeleteByLogic() throws LocalizedException {
-		Client client = clientService.getClientByNameAndProjectName("canberkizgi", "Diva");
-		clientService.afterDeleteByLogic(client.getId());
-	}
 
 }
