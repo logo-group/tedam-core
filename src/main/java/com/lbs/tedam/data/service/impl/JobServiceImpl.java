@@ -173,24 +173,35 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 			throw new EmptyJobDetailException();
 		}
 		for (JobDetail jobDetail : jobDetails) {
-			TestSet testSet = jobDetail.getTestSet();
-			if (testSet == null) {
-				throw new JobDetailTestSetNotSelectedException(jobDetail.getId());
-			}
-			List<TestCase> testCases = testSet.getTestCases();
-			if (testCases.size() == 0) {
-				throw new EmptyTestCaseException(testSet.getId());
-			}
+			List<TestCase> testCases = checkForTestSet(jobDetail);
 			for (TestCase testCase : testCases) {
 				List<TestStep> testSteps = testCase.getTestSteps();
-				if (testSteps.size() == 0) {
-					throw new EmptyTestStepException(testCase.getId());
-				}
-				for (TestStep testStep : testSteps) {
-					if (testStep.getParameter() == null || testStep.getParameter().length() == 0) {
-						throw new EmptyTestStepParameterException(testStep.getId());
-					}
-				}
+				checkForTestStepException(testCase, testSteps);
+			}
+		}
+	}
+
+	private List<TestCase> checkForTestSet(JobDetail jobDetail)
+			throws JobDetailTestSetNotSelectedException, EmptyTestCaseException {
+		TestSet testSet = jobDetail.getTestSet();
+		if (testSet == null) {
+			throw new JobDetailTestSetNotSelectedException(jobDetail.getId());
+		}
+		List<TestCase> testCases = testSet.getTestCases();
+		if (testCases.size() == 0) {
+			throw new EmptyTestCaseException(testSet.getId());
+		}
+		return testCases;
+	}
+
+	private void checkForTestStepException(TestCase testCase, List<TestStep> testSteps)
+			throws EmptyTestStepException, EmptyTestStepParameterException {
+		if (testSteps.size() == 0) {
+			throw new EmptyTestStepException(testCase.getId());
+		}
+		for (TestStep testStep : testSteps) {
+			if (testStep.getParameter() == null || testStep.getParameter().length() == 0) {
+				throw new EmptyTestStepParameterException(testStep.getId());
 			}
 		}
 	}
