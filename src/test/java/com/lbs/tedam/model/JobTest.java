@@ -17,22 +17,23 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.JobStatus;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.JobStatus;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -52,6 +53,8 @@ public class JobTest extends BaseServiceTest {
         job.setProject(null);
         job.setStatus(JobStatus.PLANNED);
         job.setType(null);
+		job.setRunEveryDay(false);
+		job.setPlannedDate(null);
     }
 
     @Test
@@ -68,6 +71,8 @@ public class JobTest extends BaseServiceTest {
         job.getProject();
         job.getStatus();
         job.getType();
+		job.isRunEveryDay();
+		job.getPlannedDate();
 
         assertTrue(job.getExecutionDuration().isEmpty());
         job.setLastExecutedStartDate(LocalDateTime.of(LocalDate.now(), LocalTime.of(10, 10)));
