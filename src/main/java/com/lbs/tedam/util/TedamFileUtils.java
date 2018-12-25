@@ -367,25 +367,27 @@ public class TedamFileUtils {
 				Sheet excelSheet = workBook.getSheet(k);
 				Cell statusCell = excelSheet.findCell("Status");
 				int j = statusCell.getColumn();
-				for (int i = 1; i < excelSheet.getRows(); i++) {
-					Cell cell = excelSheet.getCell(j, i);
-					if (!TedamStringUtils.isInteger(excelSheet.getCell(0, i).getContents())) {
-						continue;
-					}
-					if (StatusMessages.FAILED.getStatus().equalsIgnoreCase(cell.getContents())) {
-						resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.FAILED));
-						break;
-					}
-					if (StatusMessages.CAUTION.getStatus().equalsIgnoreCase(cell.getContents())) {
-						resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.CAUTION));
-					}
-					if (StatusMessages.SUCCEEDED.getStatus().equalsIgnoreCase(cell.getContents())) {
-						resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.SUCCEEDED));
-					}
-				}
+				checkForStatusMessage(resultSet, excelSheet, j);
 			}
 		}
 		return resultSet;
+	}
+
+	private static void checkForStatusMessage(List<LogoTestResult> resultSet, Sheet excelSheet, int j) {
+		for (int i = 1; i < excelSheet.getRows(); i++) {
+			Cell cell = excelSheet.getCell(j, i);
+			if (!TedamStringUtils.isInteger(excelSheet.getCell(0, i).getContents())) {
+				continue;
+			}
+			if (StatusMessages.FAILED.getStatus().equalsIgnoreCase(cell.getContents())) {
+				resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.FAILED));
+				break;
+			} else if (StatusMessages.CAUTION.getStatus().equalsIgnoreCase(cell.getContents())) {
+				resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.CAUTION));
+			} else if (StatusMessages.SUCCEEDED.getStatus().equalsIgnoreCase(cell.getContents())) {
+				resultSet.add(createTestResult(excelSheet, i, ExecutionStatus.SUCCEEDED));
+			}
+		}
 	}
 
 	private static LogoTestResult createTestResult(Sheet excelSheet, int i, ExecutionStatus executionStatus) {

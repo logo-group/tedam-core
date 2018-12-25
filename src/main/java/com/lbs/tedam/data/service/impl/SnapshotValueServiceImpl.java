@@ -158,29 +158,13 @@ public class SnapshotValueServiceImpl extends BaseServiceImpl<SnapshotValue, Int
                 combinedSnapshotValues.addAll(TedamXPathUtils.getFilterContentsFromFile(nodes));
             }
 
-            for (int i = 0; i < combinedSnapshotValues.size(); i++) {
-                combinedSnapshotValues.get(i).setVersion(version);
-            }
+            setCombinedSnapshotValuesVersion(version, combinedSnapshotValues);
             // Lists snapshotValues with given snapshotDefinitionId with unique tags according to version currency
             List<SnapshotValue> snapshotValueList = getSnapshotValuesVersioned(tcVersion, snapshotDefinitionId, "RUN_ORDER", null);
             // If there are matching tags between xmlDoc elements and snapshotValues gathered from DB, override xmlDoc element with updated snapshotValue.
-            for (int i = 0; i < combinedSnapshotValues.size(); i++) {
-                for (int j = 0; j < snapshotValueList.size(); j++) {
-                    if (combinedSnapshotValues.get(i).getTag().equals(snapshotValueList.get(j).getTag())
-                            && combinedSnapshotValues.get(i).getRowIndex() == snapshotValueList.get(j).getRowIndex()) {
-                        snapshotValueList.get(j).setCaption(combinedSnapshotValues.get(i).getCaption());
-                        combinedSnapshotValues.set(i, snapshotValueList.get(j));
-                        break;
-                    }
-                }
-            }
+            checkForCombinedValues(combinedSnapshotValues, snapshotValueList);
 
-            for (int i = 0; i < snapshotValueList.size(); i++) {
-
-                if (!combinedSnapshotValues.contains(snapshotValueList.get(i))) {
-                    combinedSnapshotValues.add(snapshotValueList.get(i));
-                }
-            }
+            combinedSnapshotValuesWithList(combinedSnapshotValues, snapshotValueList);
 
             // Sort hybrid values by their order properties
             Comparator<SnapshotValue> comparaSnapshotValues = (o1, o2) -> {
@@ -193,5 +177,35 @@ public class SnapshotValueServiceImpl extends BaseServiceImpl<SnapshotValue, Int
             throw new DifferencesSnapshotException("An error was encountered during Xpath operations. e: " + e);
         }
     }
+
+	private void setCombinedSnapshotValuesVersion(String version, List<SnapshotValue> combinedSnapshotValues) {
+		for (int i = 0; i < combinedSnapshotValues.size(); i++) {
+		    combinedSnapshotValues.get(i).setVersion(version);
+		}
+	}
+
+	private void combinedSnapshotValuesWithList(List<SnapshotValue> combinedSnapshotValues,
+			List<SnapshotValue> snapshotValueList) {
+		for (int i = 0; i < snapshotValueList.size(); i++) {
+
+		    if (!combinedSnapshotValues.contains(snapshotValueList.get(i))) {
+		        combinedSnapshotValues.add(snapshotValueList.get(i));
+		    }
+		}
+	}
+
+	private void checkForCombinedValues(List<SnapshotValue> combinedSnapshotValues,
+			List<SnapshotValue> snapshotValueList) {
+		for (int i = 0; i < combinedSnapshotValues.size(); i++) {
+		    for (int j = 0; j < snapshotValueList.size(); j++) {
+		        if (combinedSnapshotValues.get(i).getTag().equals(snapshotValueList.get(j).getTag())
+		                && combinedSnapshotValues.get(i).getRowIndex() == snapshotValueList.get(j).getRowIndex()) {
+		            snapshotValueList.get(j).setCaption(combinedSnapshotValues.get(i).getCaption());
+		            combinedSnapshotValues.set(i, snapshotValueList.get(j));
+		            break;
+		        }
+		    }
+		}
+	}
 
 }

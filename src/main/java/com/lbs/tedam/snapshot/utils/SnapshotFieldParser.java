@@ -29,7 +29,90 @@ public class SnapshotFieldParser {
     public static List<FormField> checkFields(List<FormField> currentDBList, List<FormField> incomingFieldList,
                                               String version) {
         List<FormField> formFieldList = new ArrayList<FormField>();
-        for (int i = 0; i < currentDBList.size(); i++) {
+        checkForCurrentDBList(currentDBList, incomingFieldList, version, formFieldList);
+        checkForIncomingFieldList(currentDBList, incomingFieldList, formFieldList);
+        for (int k = 0; k < currentDBList.size(); k++) {
+            innerLoopForIncomingList(currentDBList, incomingFieldList, version, formFieldList, k);
+        }
+        return formFieldList;
+    }
+
+	private static void innerLoopForIncomingList(List<FormField> currentDBList, List<FormField> incomingFieldList,
+			String version, List<FormField> formFieldList, int k) {
+		for (int i = 0; i < incomingFieldList.size(); i++) {
+		    // Do any of the fields in the incomingFieldList have
+		    //anything in our database?
+		    FormField formField = incomingFieldList.get(i);
+		    compareFields(currentDBList, incomingFieldList, version, formFieldList, k, i, formField);
+		}
+	}
+
+	private static void compareFields(List<FormField> currentDBList, List<FormField> incomingFieldList, String version,
+			List<FormField> formFieldList, int k, int i, FormField formField) {
+		if (incomingFieldList.get(i).getTag().trim().equals(currentDBList.get(k).getTag().trim())) {
+		    // Are there any mandatory changes from those?
+		    if (incomingFieldList.get(i).getMandatory() == true && currentDBList.get(k).getMandatory() == false) {
+		        // The area that was formerly mandatory NO is now YES.
+		        // new registration mandatory YES done and version updated
+		        // version updated
+		        formField = incomingFieldList.get(i);
+		        formField.setMandatory(true);
+		        formField.setVersion(version);
+		        formField.setId(0);
+		        formFieldList.add(formField);
+		    } else if (incomingFieldList.get(i).getMandatory() == false && currentDBList.get(k).getMandatory() == true) {
+		        // In the past the mandatory YES field has now become NO.
+		        // new registration to be made mandatory NO and
+		        // updated version
+		        formField = incomingFieldList.get(i);
+		        formField.setMandatory(false);
+		        formField.setVersion(version);
+		        formField.setId(0);
+		        formFieldList.add(formField);
+		    }
+		    // If there is a field with the same tag but different type in Db and newcomers, we update it. At the same time we look at
+		    // the status of DB.
+		    checkForIncomingListVSCurrentDbList(currentDBList, incomingFieldList, version, formFieldList, k, i,
+					formField);
+		}
+	}
+
+	private static void checkForIncomingListVSCurrentDbList(List<FormField> currentDBList,
+			List<FormField> incomingFieldList, String version, List<FormField> formFieldList, int k, int i,
+			FormField formField) {
+		if (!incomingFieldList.get(i).getType().equals(currentDBList.get(k).getType()) && currentDBList.get(k).getStatus()) {
+		    boolean alreadyAddedIntoFormFieldList = false;
+		    for (int j = 0; j < formFieldList.size(); j++) {
+		        if (formFieldList.get(j).getTag().equals(formField.getTag())) {
+		            alreadyAddedIntoFormFieldList = true;
+		            break;
+		        }
+		    }
+		    if (!alreadyAddedIntoFormFieldList) {
+		        formField = incomingFieldList.get(i);
+		        formField.setVersion(version);
+		        formField.setId(0);
+		        formFieldList.add(formField);
+		    }
+		}
+	}
+
+	private static void checkForIncomingFieldList(List<FormField> currentDBList, List<FormField> incomingFieldList,
+			List<FormField> formFieldList) {
+		for (int i = 0; i < incomingFieldList.size(); i++) {
+            if (!containsFields(incomingFieldList.get(i), currentDBList)) {
+                // newcomers do not have the record databased,
+                // we go directly in.
+                FormField formField = incomingFieldList.get(i);
+                formField.setId(0);
+                formFieldList.add(formField);
+            }
+        }
+	}
+
+	private static void checkForCurrentDBList(List<FormField> currentDBList, List<FormField> incomingFieldList,
+			String version, List<FormField> formFieldList) {
+		for (int i = 0; i < currentDBList.size(); i++) {
             if (!containsFields(currentDBList.get(i), incomingFieldList)) {
                 // The record in the database does not exist in the newcomers.
                 // status will be rolled out and will be posted to the fieldsForDB list.
@@ -43,63 +126,7 @@ public class SnapshotFieldParser {
                 }
             }
         }
-        for (int i = 0; i < incomingFieldList.size(); i++) {
-            if (!containsFields(incomingFieldList.get(i), currentDBList)) {
-                // newcomers do not have the record databased,
-                // we go directly in.
-                FormField formField = incomingFieldList.get(i);
-                formField.setId(0);
-                formFieldList.add(formField);
-            }
-        }
-        for (int k = 0; k < currentDBList.size(); k++) {
-            for (int i = 0; i < incomingFieldList.size(); i++) {
-                // Do any of the fields in the incomingFieldList have
-                //anything in our database?
-                FormField formField = incomingFieldList.get(i);
-                if (incomingFieldList.get(i).getTag().trim().equals(currentDBList.get(k).getTag().trim())) {
-                    // Are there any mandatory changes from those?
-                    if (incomingFieldList.get(i).getMandatory() == true && currentDBList.get(k).getMandatory() == false) {
-                        // The area that was formerly mandatory NO is now YES.
-                        // new registration mandatory YES done and version updated
-                        // version updated
-                        formField = incomingFieldList.get(i);
-                        formField.setMandatory(true);
-                        formField.setVersion(version);
-                        formField.setId(0);
-                        formFieldList.add(formField);
-                    } else if (incomingFieldList.get(i).getMandatory() == false && currentDBList.get(k).getMandatory() == true) {
-                        // In the past the mandatory YES field has now become NO.
-                        // new registration to be made mandatory NO and
-                        // updated version
-                        formField = incomingFieldList.get(i);
-                        formField.setMandatory(false);
-                        formField.setVersion(version);
-                        formField.setId(0);
-                        formFieldList.add(formField);
-                    }
-                    // If there is a field with the same tag but different type in Db and newcomers, we update it. At the same time we look at
-                    // the status of DB.
-                    if (!incomingFieldList.get(i).getType().equals(currentDBList.get(k).getType()) && currentDBList.get(k).getStatus()) {
-                        boolean alreadyAddedIntoFormFieldList = false;
-                        for (int j = 0; j < formFieldList.size(); j++) {
-                            if (formFieldList.get(j).getTag().equals(formField.getTag())) {
-                                alreadyAddedIntoFormFieldList = true;
-                                break;
-                            }
-                        }
-                        if (!alreadyAddedIntoFormFieldList) {
-                            formField = incomingFieldList.get(i);
-                            formField.setVersion(version);
-                            formField.setId(0);
-                            formFieldList.add(formField);
-                        }
-                    }
-                }
-            }
-        }
-        return formFieldList;
-    }
+	}
 
     /**
      * Looks for an element in the given list that has the tag value of the given formField.

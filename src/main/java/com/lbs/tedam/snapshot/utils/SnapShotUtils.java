@@ -112,34 +112,49 @@ public class SnapShotUtils {
         XPathExpression expr;
         Document configDoc;
         XPath configXPath = XPathFactory.newInstance().newXPath();
-        for (int j = 0; j < configFileOrderList.size(); j++) {
+        checkForConfigFileOrderList(configPoolPath, configFileNameList, configFileOrderList, configXPath);
+        List<List<Integer>> menuList = getMenuListByType(type);
+        return menuList;
+    }
+
+	private void checkForConfigFileOrderList(String configPoolPath, List<String> configFileNameList,
+			List<String> configFileOrderList, XPath configXPath) throws XPathExpressionException {
+		XPathExpression expr;
+		Document configDoc;
+		for (int j = 0; j < configFileOrderList.size(); j++) {
             if (configFileNameList.contains(configFileOrderList.get(j))) {
                 // Gets root module definition element from config xml
                 configDoc = TedamDOMUtils.domParserStarter(configPoolPath + "\\" + configFileOrderList.get(j));
                 expr = configXPath.compile("//nodes/node");
                 NodeList result = (NodeList) expr.evaluate(configDoc, XPathConstants.NODESET);
-                for (int i = 0; i < result.getLength(); i++) {
-                    List<Integer> menuList = new ArrayList<Integer>();
-                    // Bypass improper nodes
-                    if (TedamDOMUtils.isDummyNode(result.item(i)) || result.item(i).getAttributes() == null
-                            || result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE) == null
-                            || !"M".equals(result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue())) {
-                        continue;
-                    }
-                    // Loop for all first generation children, for defining pathTypes(Definitions, Transactions ,Operations, Reports...etc)
-                    for (int k = 0; k < result.item(i).getChildNodes().getLength(); k++) {
-                        if (TedamDOMUtils.isDummyNode(result.item(i).getChildNodes().item(k))) {
-                            continue;
-                        }
-                        // Fills member lists according to elements defined types
-                        createSeperatedMenus(result.item(i), k, menuList);
-                    }
-                }
+                checkForNodeListResult(result);
             }
         }
-        List<List<Integer>> menuList = getMenuListByType(type);
-        return menuList;
-    }
+	}
+
+	private void checkForNodeListResult(NodeList result) {
+		for (int i = 0; i < result.getLength(); i++) {
+		    List<Integer> menuList = new ArrayList<Integer>();
+		    // Bypass improper nodes
+		    if (TedamDOMUtils.isDummyNode(result.item(i)) || result.item(i).getAttributes() == null
+		            || result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE) == null
+		            || !"M".equals(result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue())) {
+		        continue;
+		    }
+		    // Loop for all first generation children, for defining pathTypes(Definitions, Transactions ,Operations, Reports...etc)
+		    checkForDummyNode(result, i, menuList);
+		}
+	}
+
+	private void checkForDummyNode(NodeList result, int i, List<Integer> menuList) {
+		for (int k = 0; k < result.item(i).getChildNodes().getLength(); k++) {
+		    if (TedamDOMUtils.isDummyNode(result.item(i).getChildNodes().item(k))) {
+		        continue;
+		    }
+		    // Fills member lists according to elements defined types
+		    createSeperatedMenus(result.item(i), k, menuList);
+		}
+	}
 
     private List<List<Integer>> getMenuListByType(PathType type) {
         switch (type) {

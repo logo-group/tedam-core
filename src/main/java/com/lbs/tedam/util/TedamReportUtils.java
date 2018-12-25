@@ -64,43 +64,63 @@ public class TedamReportUtils {
                 return testReport;
             }
 
-            for (int i = 0; i < sourceDocument.getPages().getCount(); i++) {
-                StringBuilder sourceStringBuilderPage = getPDFTextStripperTextWithReplaceDateAndTime(sourceDocument, i + 1);
-                StringBuilder targetStringBuilderPage = getPDFTextStripperTextWithReplaceDateAndTime(targetDocument, i + 1);
-
-                String[] sourceLines = sourceStringBuilderPage.toString().split("\\n");
-                String[] targetLines = targetStringBuilderPage.toString().split("\\n");
-
-                for (int j = 0; j < sourceLines.length; j++) {
-                    LinkedList<Diff> diffList = new DiffMatchPatch().diffMain(sourceLines[j], targetLines[j]);
-                    if (diffList.size() > 0) {
-                        for (int k = 0; k < diffList.size(); k++) {
-                            Diff diff = diffList.get(k);
-                            if (!Operation.EQUAL.equals(diff.operation) && !TedamStringUtils.isInteger(diff.text) && !diff.text.trim().isEmpty()) {
-                                TedamLogUtils.log(headerCompareTwoPDFFile, diff.operation + " " + diff.text, logLevelInfo, printLog);
-                                TestReport testReport = createTestReport("Page: " + (i + 1) + ", Line number: " + j, pdfTargetFormName,
-                                        String.valueOf(diff.operation).toLowerCase() + ": '" + diff.text + "'", StatusMessages.FAILED.getStatus());
-                                reportList.add(testReport);
-                            }
-                        }
-
-                    }
-                }
-            }
+            loopOnSourceDocument(headerCompareTwoPDFFile, pdfTargetFormName, reportList, sourceDocument,
+					targetDocument);
             sourceDocument.getDocument().close();
             targetDocument.getDocument().close();
             sourceDocument.close();
             targetDocument.close();
-            if (!reportList.isEmpty()) {
-                return buildReport(pdfTargetFormName, Constants.EMPTY_STRING, buildMessage(reportList), StatusMessages.FAILED.getStatus());
-            } else {
-                return buildReport(pdfTargetFormName, Constants.EMPTY_STRING, Constants.EMPTY_STRING, StatusMessages.SUCCEEDED.getStatus());
-            }
+            return buildReport(pdfTargetFormName, reportList);
         } catch (IOException e) {
             LOGGER.error("" + e);
             return buildReport(pdfTargetFormName, Constants.EMPTY_STRING, e.getMessage(), StatusMessages.FAILED.getStatus());
         }
     }
+
+	private void loopOnSourceDocument(String headerCompareTwoPDFFile, String pdfTargetFormName,
+			List<TestReport> reportList, PDDocument sourceDocument, PDDocument targetDocument) throws IOException {
+		for (int i = 0; i < sourceDocument.getPages().getCount(); i++) {
+		    StringBuilder sourceStringBuilderPage = getPDFTextStripperTextWithReplaceDateAndTime(sourceDocument, i + 1);
+		    StringBuilder targetStringBuilderPage = getPDFTextStripperTextWithReplaceDateAndTime(targetDocument, i + 1);
+
+		    String[] sourceLines = sourceStringBuilderPage.toString().split("\\n");
+		    String[] targetLines = targetStringBuilderPage.toString().split("\\n");
+
+		    loopOnSourceLines(headerCompareTwoPDFFile, pdfTargetFormName, reportList, i, sourceLines, targetLines);
+		}
+	}
+
+	private TestReport buildReport(String pdfTargetFormName, List<TestReport> reportList) {
+		if (!reportList.isEmpty()) {
+		    return buildReport(pdfTargetFormName, Constants.EMPTY_STRING, buildMessage(reportList), StatusMessages.FAILED.getStatus());
+		} else {
+		    return buildReport(pdfTargetFormName, Constants.EMPTY_STRING, Constants.EMPTY_STRING, StatusMessages.SUCCEEDED.getStatus());
+		}
+	}
+
+	private void loopOnSourceLines(String headerCompareTwoPDFFile, String pdfTargetFormName,
+			List<TestReport> reportList, int i, String[] sourceLines, String[] targetLines) {
+		for (int j = 0; j < sourceLines.length; j++) {
+		    LinkedList<Diff> diffList = new DiffMatchPatch().diffMain(sourceLines[j], targetLines[j]);
+		    if (diffList.size() > 0) {
+		        loopOnDiff(headerCompareTwoPDFFile, pdfTargetFormName, reportList, i, j, diffList);
+
+		    }
+		}
+	}
+
+	private void loopOnDiff(String headerCompareTwoPDFFile, String pdfTargetFormName, List<TestReport> reportList,
+			int i, int j, LinkedList<Diff> diffList) {
+		for (int k = 0; k < diffList.size(); k++) {
+		    Diff diff = diffList.get(k);
+		    if (!Operation.EQUAL.equals(diff.operation) && !TedamStringUtils.isInteger(diff.text) && !diff.text.trim().isEmpty()) {
+		        TedamLogUtils.log(headerCompareTwoPDFFile, diff.operation + " " + diff.text, logLevelInfo, printLog);
+		        TestReport testReport = createTestReport("Page: " + (i + 1) + ", Line number: " + j, pdfTargetFormName,
+		                String.valueOf(diff.operation).toLowerCase() + ": '" + diff.text + "'", StatusMessages.FAILED.getStatus());
+		        reportList.add(testReport);
+		    }
+		}
+	}
 
     private TestReport buildReport(String formName, String stepName, String message, String statusMessage) {
         TestReport report = new TestReport();
