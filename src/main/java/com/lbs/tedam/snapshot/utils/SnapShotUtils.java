@@ -39,418 +39,336 @@ import java.util.List;
 import java.util.Map;
 
 public class SnapShotUtils {
-    private static Logger LOGGER = LoggerFactory.getLogger(SnapShotUtils.class);
-    private List<List<Integer>> m_totalMenulist = new ArrayList<List<Integer>>();
-    private List<List<Integer>> m_defAndTransMenulist = new ArrayList<List<Integer>>();
-    private List<List<Integer>> m_batchMenulist = new ArrayList<List<Integer>>();
-    private List<List<Integer>> m_reportMenulist = new ArrayList<List<Integer>>();
+	private static Logger LOGGER = LoggerFactory.getLogger(SnapShotUtils.class);
+	private List<List<Integer>> m_totalMenulist = new ArrayList<List<Integer>>();
+	private List<List<Integer>> m_defAndTransMenulist = new ArrayList<List<Integer>>();
+	private List<List<Integer>> m_batchMenulist = new ArrayList<List<Integer>>();
+	private List<List<Integer>> m_reportMenulist = new ArrayList<List<Integer>>();
 
-    private Map<String, String> m_popUpMenuItems = null;
+	private Map<String, String> m_popUpMenuItems = null;
 
-    public SnapShotUtils() {
-        super();
-    }
+	public SnapShotUtils() {
+		super();
+	}
 
-    public List<List<Integer>> getMenuList() {
-        return m_totalMenulist;
-    }
+	public List<List<Integer>> getMenuList() {
+		return m_totalMenulist;
+	}
 
-    public List<List<Integer>> getMenuBrowserList() {
-        return m_defAndTransMenulist;
-    }
+	public List<List<Integer>> getMenuBrowserList() {
+		return m_defAndTransMenulist;
+	}
 
-    public List<List<Integer>> getMenuBatchList() {
-        return m_batchMenulist;
-    }
+	public List<List<Integer>> getMenuBatchList() {
+		return m_batchMenulist;
+	}
 
-    public List<List<Integer>> getMenuReportList() {
-        return m_reportMenulist;
-    }
+	public List<List<Integer>> getMenuReportList() {
+		return m_reportMenulist;
+	}
 
-    public Map<String, String> getPopUpMenuItems() {
-        return m_popUpMenuItems;
-    }
+	public Map<String, String> getPopUpMenuItems() {
+		return m_popUpMenuItems;
+	}
 
-    public void setPopUpMenuItems(List<Object> popUpMenuItems) {
-        if (m_popUpMenuItems == null) {
-            m_popUpMenuItems = new HashMap<String, String>();
-        } else {
-            m_popUpMenuItems.clear();
-        }
+	public void setPopUpMenuItems(List<Object> popUpMenuItems) {
+		if (m_popUpMenuItems == null) {
+			m_popUpMenuItems = new HashMap<String, String>();
+		} else {
+			m_popUpMenuItems.clear();
+		}
 
-        for (int i = 0; i < popUpMenuItems.size(); i++) {
-            // It is parsed according to Name and tag values.
-            String[] nameAndTag = popUpMenuItems.get(i).toString().split(",");
-            nameAndTag[0] = nameAndTag[0].substring(1);
-            nameAndTag[1] = nameAndTag[1].replace(")", "");
-            m_popUpMenuItems.put(nameAndTag[0], nameAndTag[1]);
-        }
-    }
+		for (int i = 0; i < popUpMenuItems.size(); i++) {
+			// It is parsed according to Name and tag values.
+			String[] nameAndTag = popUpMenuItems.get(i).toString().split(",");
+			nameAndTag[0] = nameAndTag[0].substring(1);
+			nameAndTag[1] = nameAndTag[1].replace(")", "");
+			m_popUpMenuItems.put(nameAndTag[0], nameAndTag[1]);
+		}
+	}
 
-    public void setPopUpMenuItems(Map<String, String> popUpMenuItems) {
-        this.m_popUpMenuItems = popUpMenuItems;
-    }
+	public void setPopUpMenuItems(Map<String, String> popUpMenuItems) {
+		this.m_popUpMenuItems = popUpMenuItems;
+	}
 
-    /**
-     * Used in: SnapshotCollector.bsh, SnapshotCollectorForBatch.bsh, MenuPathCollector.bsh
-     *
-     * @param type
-     * @return
-     * @throws XPathExpressionException
-     * @throws SAXException
-     * @throws IOException
-     * @throws ParserConfigurationException
-     * @author Ozgur.Ozbil
-     */
-    public List<List<Integer>> createMenuPathList(PathType type) throws XPathExpressionException {
-        String configPoolPath = PropUtils.getProperty(Constants.PROPERTY_MODULE_CONFIG_POOL_PATH);
-        File file = new File(configPoolPath);
-        // All config xml files under given container (c:\Projects\jguar_GIT_Set\jprod\Unity\bin\Config\Modules\)
-        List<String> configFileNameList = listFilesForFolder(file);
-        // Sorted list of config xml files with respect to product tree in J'guar
-        List<String> configFileOrderList = TedamXPathUtils.getOrderedConfigFileNameList();
-        XPathExpression expr;
-        Document configDoc;
-        XPath configXPath = XPathFactory.newInstance().newXPath();
-        checkForConfigFileOrderList(configPoolPath, configFileNameList, configFileOrderList, configXPath);
-        List<List<Integer>> menuList = getMenuListByType(type);
-        return menuList;
-    }
+	/**
+	 * Used in: SnapshotCollector.bsh, SnapshotCollectorForBatch.bsh, MenuPathCollector.bsh
+	 *
+	 * @param type
+	 * @return
+	 * @throws XPathExpressionException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 * @author Ozgur.Ozbil
+	 */
+	public List<List<Integer>> createMenuPathList(PathType type) throws XPathExpressionException {
+		String configPoolPath = PropUtils.getProperty(Constants.PROPERTY_MODULE_CONFIG_POOL_PATH);
+		File file = new File(configPoolPath);
+		// All config xml files under given container (c:\Projects\jguar_GIT_Set\jprod\Unity\bin\Config\Modules\)
+		List<String> configFileNameList = listFilesForFolder(file);
+		// Sorted list of config xml files with respect to product tree in J'guar
+		List<String> configFileOrderList = TedamXPathUtils.getOrderedConfigFileNameList();
+		XPathExpression expr;
+		Document configDoc;
+		XPath configXPath = XPathFactory.newInstance().newXPath();
+		checkForConfigFileOrderList(configPoolPath, configFileNameList, configFileOrderList, configXPath);
+		List<List<Integer>> menuList = getMenuListByType(type);
+		return menuList;
+	}
 
-	private void checkForConfigFileOrderList(String configPoolPath, List<String> configFileNameList,
-			List<String> configFileOrderList, XPath configXPath) throws XPathExpressionException {
+	private void checkForConfigFileOrderList(String configPoolPath, List<String> configFileNameList, List<String> configFileOrderList, XPath configXPath)
+			throws XPathExpressionException {
 		XPathExpression expr;
 		Document configDoc;
 		for (int j = 0; j < configFileOrderList.size(); j++) {
-            if (configFileNameList.contains(configFileOrderList.get(j))) {
-                // Gets root module definition element from config xml
-                configDoc = TedamDOMUtils.domParserStarter(configPoolPath + "\\" + configFileOrderList.get(j));
-                expr = configXPath.compile("//nodes/node");
-                NodeList result = (NodeList) expr.evaluate(configDoc, XPathConstants.NODESET);
-                checkForNodeListResult(result);
-            }
-        }
+			if (configFileNameList.contains(configFileOrderList.get(j))) {
+				// Gets root module definition element from config xml
+				configDoc = TedamDOMUtils.domParserStarter(configPoolPath + "\\" + configFileOrderList.get(j));
+				expr = configXPath.compile("//nodes/node");
+				NodeList result = (NodeList) expr.evaluate(configDoc, XPathConstants.NODESET);
+				checkForNodeListResult(result);
+			}
+		}
 	}
 
 	private void checkForNodeListResult(NodeList result) {
 		for (int i = 0; i < result.getLength(); i++) {
-		    List<Integer> menuList = new ArrayList<Integer>();
-		    // Bypass improper nodes
-		    if (TedamDOMUtils.isDummyNode(result.item(i)) || result.item(i).getAttributes() == null
-		            || result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE) == null
-		            || !"M".equals(result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue())) {
-		        continue;
-		    }
-		    // Loop for all first generation children, for defining pathTypes(Definitions, Transactions ,Operations, Reports...etc)
-		    checkForDummyNode(result, i, menuList);
+			List<Integer> menuList = new ArrayList<Integer>();
+			// Bypass improper nodes
+			if (TedamDOMUtils.isDummyNode(result.item(i)) || result.item(i).getAttributes() == null
+					|| result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE) == null
+					|| !"M".equals(result.item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue())) {
+				continue;
+			}
+			// Loop for all first generation children, for defining pathTypes(Definitions, Transactions ,Operations, Reports...etc)
+			checkForDummyNode(result, i, menuList);
 		}
 	}
 
 	private void checkForDummyNode(NodeList result, int i, List<Integer> menuList) {
 		for (int k = 0; k < result.item(i).getChildNodes().getLength(); k++) {
-		    if (TedamDOMUtils.isDummyNode(result.item(i).getChildNodes().item(k))) {
-		        continue;
-		    }
-		    // Fills member lists according to elements defined types
-		    createSeperatedMenus(result.item(i), k, menuList);
+			if (TedamDOMUtils.isDummyNode(result.item(i).getChildNodes().item(k))) {
+				continue;
+			}
+			// Fills member lists according to elements defined types
+			createSeperatedMenus(result.item(i), k, menuList);
 		}
 	}
 
-    private List<List<Integer>> getMenuListByType(PathType type) {
-        switch (type) {
-            case TOTAL:
-                return m_totalMenulist;
-            case DEFINITION_AND_TRANSACTION:
-                return m_defAndTransMenulist;
-            case BATCH:
-                return m_batchMenulist;
-            case REPORT:
-                return m_reportMenulist;
-            default:
-                return m_defAndTransMenulist;
-        }
-    }
+	private List<List<Integer>> getMenuListByType(PathType type) {
+		switch (type) {
+		case TOTAL:
+			return m_totalMenulist;
+		case DEFINITION_AND_TRANSACTION:
+			return m_defAndTransMenulist;
+		case BATCH:
+			return m_batchMenulist;
+		case REPORT:
+			return m_reportMenulist;
+		default:
+			return m_defAndTransMenulist;
+		}
+	}
 
-    /**
-     * Returns list of all documents under given folder.
-     *
-     * @param folder
-     * @return
-     * @author Ozgur.Ozbil
-     */
-    private List<String> listFilesForFolder(final File folder) {
-        List<String> configNameList = new ArrayList<String>();
-        for (File listDoc : folder.listFiles()) {
-            if (listDoc.isDirectory()) {
-                listFilesForFolder(listDoc);
-            } else {
-                configNameList.add(listDoc.getName());
-            }
-        }
-        return configNameList;
-    }
+	/**
+	 * Returns list of all documents under given folder.
+	 *
+	 * @param folder
+	 * @return
+	 * @author Ozgur.Ozbil
+	 */
+	private List<String> listFilesForFolder(final File folder) {
+		List<String> configNameList = new ArrayList<String>();
+		for (File listDoc : folder.listFiles()) {
+			if (listDoc.isDirectory()) {
+				listFilesForFolder(listDoc);
+			} else {
+				configNameList.add(listDoc.getName());
+			}
+		}
+		return configNameList;
+	}
 
-    /**
-     * According to secondary parent groups under the module (definitions, movements, operations, reports ...), group ConfigPaths and assign them to lists.
-     *
-     * @param rootNode
-     * @param childIndex
-     * @param menuList
-     * @author Ozgur.Ozbil
-     */
-    private void createSeperatedMenus(Node rootNode, int childIndex, List<Integer> menuList) {
-        menuList.clear();
-        switch (rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue()) {
-            case "C":
-                // Browsers (Definitions/Transactions...etc)
-                menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                createMenu(rootNode.getChildNodes().item(childIndex), m_defAndTransMenulist, m_totalMenulist, menuList);
-                break;
-            case "O":
-                // Operations(Batch)
-                menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                createMenu(rootNode.getChildNodes().item(childIndex), m_batchMenulist, m_totalMenulist, menuList);
-                break;
-            case "R":
-                // Reports
-                menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                createMenu(rootNode.getChildNodes().item(childIndex), m_reportMenulist, m_totalMenulist, menuList);
-                break;
-            default:
-                break;
-        }
-    }
+	/**
+	 * According to secondary parent groups under the module (definitions, movements, operations, reports ...), group ConfigPaths and assign them to lists.
+	 *
+	 * @param rootNode
+	 * @param childIndex
+	 * @param menuList
+	 * @author Ozgur.Ozbil
+	 */
+	private void createSeperatedMenus(Node rootNode, int childIndex, List<Integer> menuList) {
+		menuList.clear();
+		switch (rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_CODE).getNodeValue()) {
+		case "C":
+			// Browsers (Definitions/Transactions...etc)
+			menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			createMenu(rootNode.getChildNodes().item(childIndex), m_defAndTransMenulist, m_totalMenulist, menuList);
+			break;
+		case "O":
+			// Operations(Batch)
+			menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			createMenu(rootNode.getChildNodes().item(childIndex), m_batchMenulist, m_totalMenulist, menuList);
+			break;
+		case "R":
+			// Reports
+			menuList.add(Integer.parseInt(rootNode.getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			menuList.add(Integer.parseInt(rootNode.getChildNodes().item(childIndex).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+			createMenu(rootNode.getChildNodes().item(childIndex), m_reportMenulist, m_totalMenulist, menuList);
+			break;
+		default:
+			break;
+		}
+	}
 
-    /**
-     * Recursive method. He visits the children of the node that came to him. Child nodes recursively if they have children. Otherwise it gets the current and adds it to both the menuPathlist and
-     * the totalMenuPathlist.
-     *
-     * @param node
-     * @param menuPathlist
-     * @param totalMenuPathlist
-     * @param menuPath
-     */
-    private void createMenu(Node node, List<List<Integer>> menuPathlist, List<List<Integer>> totalMenuPathlist, List<Integer> menuPath) {
-        List<Integer> tempMenuList;
-        for (int i = 0; i < node.getChildNodes().getLength(); i++) {
-            tempMenuList = new ArrayList<Integer>(menuPath);
-            // Bypass improper nodes
-            if (TedamDOMUtils.isDummyNode(node.getChildNodes().item(i))) {
-                continue;
-            } else if (node.getChildNodes().item(i).getAttributes() == null
-                    || node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID) == null) {
-                continue;
-            } else if (node.getChildNodes().item(i).hasChildNodes()) {
-                // If there are child nodes under current node, recursively call same method until get info from every single leaf
-                tempMenuList.add(Integer.parseInt(node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                createMenu(node.getChildNodes().item(i), menuPathlist, totalMenuPathlist, tempMenuList);
-            } else {
-                // If there is no child of the node definition in our hand
-                tempMenuList.add(Integer.parseInt(node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
-                menuPathlist.add(tempMenuList);
-                totalMenuPathlist.add(tempMenuList);
-            }
-        }
-    }
+	/**
+	 * Recursive method. He visits the children of the node that came to him. Child nodes recursively if they have children. Otherwise it gets the current and adds it to both the
+	 * menuPathlist and the totalMenuPathlist.
+	 *
+	 * @param node
+	 * @param menuPathlist
+	 * @param totalMenuPathlist
+	 * @param menuPath
+	 */
+	private void createMenu(Node node, List<List<Integer>> menuPathlist, List<List<Integer>> totalMenuPathlist, List<Integer> menuPath) {
+		List<Integer> tempMenuList;
+		for (int i = 0; i < node.getChildNodes().getLength(); i++) {
+			tempMenuList = new ArrayList<Integer>(menuPath);
+			// Bypass improper nodes
+			if (TedamDOMUtils.isDummyNode(node.getChildNodes().item(i))) {
+				continue;
+			} else if (node.getChildNodes().item(i).getAttributes() == null
+					|| node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID) == null) {
+				continue;
+			} else if (node.getChildNodes().item(i).hasChildNodes()) {
+				// If there are child nodes under current node, recursively call same method until get info from every single leaf
+				tempMenuList.add(Integer.parseInt(node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+				createMenu(node.getChildNodes().item(i), menuPathlist, totalMenuPathlist, tempMenuList);
+			} else {
+				// If there is no child of the node definition in our hand
+				tempMenuList.add(Integer.parseInt(node.getChildNodes().item(i).getAttributes().getNamedItem(Constants.CONFIG_NODE_ATTRIBUTES_ID).getNodeValue()));
+				menuPathlist.add(tempMenuList);
+				totalMenuPathlist.add(tempMenuList);
+			}
+		}
+	}
 
-    /**
-     * Returns the button with the DBNEW attribute on the browser.
-     * <p>
-     * Used in: SnapshotCollector.bsh
-     *
-     * @param element
-     * @return
-     * @throws XPathExpressionException
-     * @throws SQLException
-     * @throws NotFoundException
-     */
-    public ButtonCtrl getDBNewButton(Element element) throws XPathExpressionException {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XPathExpression tagExpr = xpath.compile("//Control[@attribute='DBNEW']");
+	/**
+	 * Returns the button with the DBNEW attribute on the browser.
+	 * <p>
+	 * Used in: SnapshotCollector.bsh
+	 *
+	 * @param element
+	 * @return
+	 * @throws XPathExpressionException
+	 * @throws SQLException
+	 * @throws NotFoundException
+	 */
+	public ButtonCtrl getDBNewButton(Element element) throws XPathExpressionException {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		XPathExpression tagExpr = xpath.compile("//Control[@attribute='DBNEW']");
 
-        NodeList btnDbNewList = (NodeList) tagExpr.evaluate(element, XPathConstants.NODESET);
-        try {
-            for (int i = 0; i < btnDbNewList.getLength(); i++) {
-                if (btnDbNewList.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VISIBLE).getNodeValue().equals(Constants.VALUE_TRUE)
-                        && btnDbNewList.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ENABLED).getNodeValue().equals(Constants.VALUE_TRUE)) {
-                    return fillButtonInfo(btnDbNewList.item(i));
-                }
-            }
-        } catch (NullPointerException e) {
-            LOGGER.error("" + e);
-            return null;
-        }
-        return null;
-    }
+		NodeList btnDbNewList = (NodeList) tagExpr.evaluate(element, XPathConstants.NODESET);
+		try {
+			for (int i = 0; i < btnDbNewList.getLength(); i++) {
+				if (btnDbNewList.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_VISIBLE).getNodeValue().equals(Constants.VALUE_TRUE)
+						&& btnDbNewList.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ENABLED).getNodeValue().equals(Constants.VALUE_TRUE)) {
+					return fillButtonInfo(btnDbNewList.item(i));
+				}
+			}
+		} catch (NullPointerException e) {
+			LOGGER.error("" + e);
+			return null;
+		}
+		return null;
+	}
 
-    /**
-     * Fills button information into a ButtonCtrl object, and returns that object.
-     *
-     * @param menuButtonNode
-     * @return
-     * @author Ozgur.Ozbil
-     */
-    private ButtonCtrl fillButtonInfo(Node menuButtonNode) {
-        ButtonCtrl buttonControl = new ButtonCtrl();
-        if (menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST) != null) {
-            // If button is with type menuButton, element in xml document should have "itemList" attribute.
-            buttonControl.setMenuButtonItemTagList(
-                    TedamStringUtils.collectResourceItemList(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST).getNodeValue()));
-            buttonControl.setMenuButtonItemTextList(
-                    TedamStringUtils.collectResourceItemNameList(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST).getNodeValue()));
-        }
-        buttonControl.setTag(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG).getNodeValue());
-        buttonControl.setType(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue());
-        return buttonControl;
-    }
+	/**
+	 * Fills button information into a ButtonCtrl object, and returns that object.
+	 *
+	 * @param menuButtonNode
+	 * @return
+	 * @author Ozgur.Ozbil
+	 */
+	private ButtonCtrl fillButtonInfo(Node menuButtonNode) {
+		ButtonCtrl buttonControl = new ButtonCtrl();
+		if (menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST) != null) {
+			// If button is with type menuButton, element in xml document should have "itemList" attribute.
+			buttonControl.setMenuButtonItemTagList(
+					TedamStringUtils.collectResourceItemList(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST).getNodeValue()));
+			buttonControl.setMenuButtonItemTextList(
+					TedamStringUtils.collectResourceItemNameList(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_ITEMLIST).getNodeValue()));
+		}
+		buttonControl.setTag(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TAG).getNodeValue());
+		buttonControl.setType(menuButtonNode.getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue());
+		return buttonControl;
+	}
 
-    /**
-     * Checks and updates form opened directly from other forms.<br>
-     * Used in: SnapshotCollector.bsh
-     *
-     * @author Ozgur.Ozbil
-     * @param snapshotList
-     * @param versionUpdate
-     *            If True, it means that it comes from snapshotCollector. Thus YES - NO operations are executed. If False is given, no checking is done. False in the interface.
-     * @return
-     * @throws TransformerException
-     * @throws XPathExpressionException
-     */
+	/**
+	 * Returns the element that has the configIDs in the array given as parameters, cleared from the main menu.
+	 *
+	 * @param excludedMenuPaths
+	 * @return
+	 * @author Ozgur.Ozbil
+	 */
+	public List<List<Integer>> excludeMenuPaths(Integer[] excludedMenuPaths) {
+		List<List<Integer>> menuList = new ArrayList<List<Integer>>();
 
-    /**
-     * Clears the menu steps in excludedMenuPaths from the m_defAndTransMenulist with the excludeMenuPaths () method. It then reads the menu number from the scorder file.
-     * If the given value is the module, it works for the given module.
-     *
-     * @param excludedMenuPaths
-     * @return
-     */
-    public List<List<Integer>> getSnapshotMenuPathList(Integer[] excludedMenuPaths) {
-        // IMPORTANT nextModule can be written as 0 to the file, if it is 0 then an appropriate value must be written for the next module.
-        int nextModule = 0;
-        String orderFilePath = PropUtils.getProperty(Constants.PROPERTY_SNAPSHOTCOLLECTOR_ORDERFILE_PATH);
-        List<List<Integer>> includedMenuPaths = new ArrayList<List<Integer>>();
-        try (InputStream fis = new FileInputStream(orderFilePath); //
-             InputStreamReader isr = new InputStreamReader(fis); //
-             BufferedReader br = new BufferedReader(isr)) {
-            int readedConfigParameter = Integer.parseInt(br.readLine());
-            List<List<Integer>> mainList = excludeMenuPaths(excludedMenuPaths);
-            for (int i = 0; i < mainList.size(); i++) {
-                if (mainList.get(i).get(0) == readedConfigParameter) {
-                    // Turning to module numbers. For example, all paths starting with 10000.
-                    includedMenuPaths.add(mainList.get(i));
-                    if (i != mainList.size() - 1 && mainList.get(i + 1).get(0) != readedConfigParameter) {
-                        // If the value written in the file is module no, then the next module's no is set to nextModule
-                        // (to write to the file)
-                        nextModule = mainList.get(i + 1).get(0);
-                        break;
-                    }
-                }
-            }
+		for (List<Integer> currentMenuPath : m_defAndTransMenulist) {
+			boolean excludedCond = false;
+			for (Integer currentExcluded : excludedMenuPaths) {
+				if (currentMenuPath.contains(currentExcluded)) {
+					excludedCond = true;
+					break;
+				}
+			}
+			if (!excludedCond) {
+				menuList.add(currentMenuPath);
+			}
+		}
 
-            if (includedMenuPaths.isEmpty()) {
-                fillIncludedMenuPaths(mainList, includedMenuPaths, readedConfigParameter, nextModule);
-            }
-            return includedMenuPaths;
-        } catch (
+		return menuList;
+	}
 
-                FileNotFoundException e) {
-            LOGGER.error("" + e);
-        } catch (IOException e) {
-            LOGGER.error("" + e);
-        } finally {
-            updateConfigOrderParameter(nextModule, false);
-        }
-        return includedMenuPaths;
-    }
+	/**
+	 * Writes the given configOrderParameter value to the corresponding file.
+	 *
+	 * @param configOrderParameter
+	 * @param isNextModule
+	 *            If true, the next module value is found and its value is printed if false, an incoming value is written to the file.
+	 */
+	public void updateConfigOrderParameter(int configOrderParameter, boolean isNextModule) {
+		int newConfigOrderParameter = 0;
+		if (isNextModule) {
+			newConfigOrderParameter = getConfigOrderParameter(configOrderParameter);
+		}
+		try (PrintStream ps = new PrintStream(PropUtils.getProperty(Constants.PROPERTY_SNAPSHOTCOLLECTOR_ORDERFILE_PATH))) {
+			ps.print(newConfigOrderParameter);
+		} catch (FileNotFoundException e) {
+			LOGGER.error("" + e);
+		}
+	}
 
-    private void fillIncludedMenuPaths(List<List<Integer>> mainList, List<List<Integer>> includedMenuPaths,
-                                       int readedConfigParameter, int nextModule) {
-        int modulId = 0;
-        for (List<Integer> currentMenu : mainList) {
-            if (currentMenu.get(currentMenu.size() - 1) == readedConfigParameter) {
-                // If we found the correct module, we will take the module (10000) and collect
-                // the contents of that module.
-                modulId = currentMenu.get(0);
-            }
-            if (modulId > 0) {
-                if (currentMenu.get(0) == modulId) {
-                    // modulId get the first list of menus on the list in equal order, because
-                    // ordered
-                    includedMenuPaths.add(currentMenu);
-                } else {
-                    // If you enter the else, it means that you have passed to the next module, so
-                    // we are making a break.
-                    nextModule = currentMenu.get(0);
-                    break;
-                }
-            }
-        }
-    }
+	/**
+	 * This procedure calls the given int on static m_defAndTransMenulist static. the next module value is found. If the first value is not its own next value, it returns the
+	 * variable.
+	 *
+	 * @param configOrderParameter
+	 * @author Tarik.Mikyas
+	 */
+	public int getConfigOrderParameter(int configOrderParameter) {
 
-    /**
-     * Returns the element that has the configIDs in the array given as parameters, cleared from the main menu.
-     *
-     * @param excludedMenuPaths
-     * @return
-     * @author Ozgur.Ozbil
-     */
-    public List<List<Integer>> excludeMenuPaths(Integer[] excludedMenuPaths) {
-        List<List<Integer>> menuList = new ArrayList<List<Integer>>();
+		for (int i = 0; i < m_defAndTransMenulist.size(); i++) {
+			if (configOrderParameter == m_defAndTransMenulist.get(i).get(0) && i != m_defAndTransMenulist.size() - 1
+					&& m_defAndTransMenulist.get(i + 1).get(0) != configOrderParameter) {
 
-        for (List<Integer> currentMenuPath : m_defAndTransMenulist) {
-            boolean excludedCond = false;
-            for (Integer currentExcluded : excludedMenuPaths) {
-                if (currentMenuPath.contains(currentExcluded)) {
-                    excludedCond = true;
-                    break;
-                }
-            }
-            if (!excludedCond) {
-                menuList.add(currentMenuPath);
-            }
-        }
-
-        return menuList;
-    }
-
-    /**
-     * Writes the given configOrderParameter value to the corresponding file.
-     *
-     * @param configOrderParameter
-     * @param isNextModule         If true, the next module value is found and its value is printed if false, an incoming value is written to the file.
-     */
-    public void updateConfigOrderParameter(int configOrderParameter, boolean isNextModule) {
-        int newConfigOrderParameter = 0;
-        if (isNextModule) {
-            newConfigOrderParameter = getConfigOrderParameter(configOrderParameter);
-        }
-        try (PrintStream ps = new PrintStream(PropUtils.getProperty(Constants.PROPERTY_SNAPSHOTCOLLECTOR_ORDERFILE_PATH))) {
-            ps.print(newConfigOrderParameter);
-        } catch (FileNotFoundException e) {
-            LOGGER.error("" + e);
-        }
-    }
-
-    /**
-     * This procedure calls the given int on static m_defAndTransMenulist static. the next module value is found. If the first value is not its own next value,
-     * it returns the variable.
-     *
-     * @param configOrderParameter
-     * @author Tarik.Mikyas
-     */
-    public int getConfigOrderParameter(int configOrderParameter) {
-
-        for (int i = 0; i < m_defAndTransMenulist.size(); i++) {
-            if (configOrderParameter == m_defAndTransMenulist.get(i).get(0) && i != m_defAndTransMenulist.size() - 1
-                    && m_defAndTransMenulist.get(i + 1).get(0) != configOrderParameter) {
-
-                return m_defAndTransMenulist.get(i + 1).get(0);
-            }
-        }
-        return configOrderParameter;
-    }
+				return m_defAndTransMenulist.get(i + 1).get(0);
+			}
+		}
+		return configOrderParameter;
+	}
 
 }
