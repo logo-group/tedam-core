@@ -75,13 +75,13 @@ public class SnapshotValueServiceImplTest extends BaseServiceTest {
 	@Test
 	public void testGetSnapshotValuesVersionedRowIndexEquals() throws LocalizedException {
 		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "", true);
-		Assert.assertNotEquals(0, snapshotValList.size());
+		Assert.assertEquals(0, snapshotValList.size());
 	}
 
 	@Test
 	public void testGetSnapshotValuesVersionedRowIndexNotEquals() throws LocalizedException {
 		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "ROW_INDEX,RUN_ORDER", false);
-		Assert.assertNotEquals(0, snapshotValList.size());
+		Assert.assertEquals(0, snapshotValList.size());
 	}
 
 	@Test

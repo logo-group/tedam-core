@@ -63,7 +63,7 @@ public class TedamMailSender {
 				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("Something went wrong!" + e);
 		}
 	}
 
@@ -121,12 +121,10 @@ public class TedamMailSender {
 			String testCaseName = testCase.getName();
 			List<TestCaseTestRun> testCaseTestRunList = testCase.getTestCaseTestRunList();
 			TestCaseTestRun testCaseTestRun = testCaseTestRunList.get(testCaseTestRunList.size() - 1);
-			if (testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.BLOCKED)
-					|| testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.CAUTION)
+			if (testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.BLOCKED) || testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.CAUTION)
 					|| testCaseTestRun.getExecutionStatus().equals(ExecutionStatus.FAILED)) {
 				testCaseStatus = "<strong>Test Cases: </strong><br/>";
-				testCaseStatus += "&emsp;<strong>" + testCaseName + ": </strong>"
-						+ testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate() + BR;
+				testCaseStatus += "&emsp;<strong>" + testCaseName + ": </strong>" + testCaseTestRun.getExecutionStatus().getValue() + " at " + testCaseTestRun.getEndDate() + BR;
 			}
 		}
 		return testCaseStatus;

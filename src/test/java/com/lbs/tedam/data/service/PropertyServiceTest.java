@@ -77,7 +77,7 @@ public class PropertyServiceTest extends BaseServiceTest {
     @Test
     public void testGetPropertyListByValueEmpty() throws LocalizedException {
         List<Property> list = propertyServiceImpl.getPropertyListByValue("NotExist");
-        Assert.assertNotEquals(0, list.size());
+        Assert.assertEquals(0, list.size());
     }
 
     @Test
@@ -101,13 +101,13 @@ public class PropertyServiceTest extends BaseServiceTest {
     @Test
     public void testGetPropertyListByCriteriaEqual() throws LocalizedException {
         List<Property> list = propertyServiceImpl.getPropertyListByCriteria("SPLITTER", "4346,5201", false);
-        Assert.assertNotEquals(1, list.size());
+        Assert.assertEquals(1, list.size());
     }
 
     @Test
     public void testGetPropertyListByCriteriaLike() throws LocalizedException {
         List<Property> list = propertyServiceImpl.getPropertyListByCriteria("SPLITTER", "43", true);
-        Assert.assertNotEquals(11, list.size());
+        Assert.assertEquals(11, list.size());
     }
 
     @Test
