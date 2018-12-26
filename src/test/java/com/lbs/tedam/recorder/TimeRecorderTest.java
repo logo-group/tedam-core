@@ -25,62 +25,60 @@ import org.junit.Test;
 
 public class TimeRecorderTest {
 
-    private static final int LOOP = 1000000;
+	private static final int LOOP = 1000000;
 
-    @Test
-    public void testNoRecordByTestStepTimeRecorder() {
-        TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder(false);
-        recorder.record(new Runnable() {
+	@Test
+	public void testNoRecordByTestStepTimeRecorder() {
+		TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder(false);
+		recorder.record(new Runnable() {
 
-            @Override
-            public void run() {
-                for (int i = 0; i < LOOP; i++) {
-                }
-            }
-        });
-        assertEquals(recorder.getRecordList().size(), 0);
-    }
+			@Override
+			public void run() {
+				for (int i = 0; i < LOOP; i++) {
+				}
+			}
+		});
+		assertEquals(0, recorder.getRecordList().size());
+	}
 
-    @Test
-    public void testRecordByTestStepTimeRecorder() {
-        TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder(true);
-        recorder.record(new Runnable() {
+	@Test
+	public void testRecordByTestStepTimeRecorder() {
+		TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder(true);
+		recorder.record(new Runnable() {
 
-            @Override
-            public void run() {
-                for (int i = 0; i < LOOP; i++) {
-                }
-            }
-        });
-        assertEquals(recorder.getRecordList().size(), 1);
-        TimeRecord record = recorder.getRecordList().get(0);
-        assertNotNull(record.getStartDate());
-        assertNotEquals(record.getDuration(), 0);
-    }
+			@Override
+			public void run() {
+				for (int i = 0; i < LOOP; i++) {
+				}
+			}
+		});
+		assertEquals(1, recorder.getRecordList().size());
+		TimeRecord record = recorder.getRecordList().get(0);
+		assertNotNull(record.getStartDate());
+		assertNotEquals(0, record.getDuration());
+	}
 
-    @Test
-    public void testRecordWithLoopByTestStepTimeRecorder() {
-        TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder();
-        Runnable runnable = new Runnable() {
+	@Test
+	public void testRecordWithLoopByTestStepTimeRecorder() {
+		TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder();
+		Runnable runnable = new Runnable() {
 
-            @Override
-            public void run() {
-                for (int i = 0; i < LOOP; i++) {
-                }
-            }
-        };
-        recorder.record(runnable);
-        recorder.record(runnable);
-        assertEquals(recorder.getRecordList().size(), 2);
-    }
+			@Override
+			public void run() {
+				for (int i = 0; i < LOOP; i++) {
+				}
+			}
+		};
+		recorder.record(runnable);
+		recorder.record(runnable);
+		assertEquals(2, recorder.getRecordList().size());
+	}
 
-    /**
-     * @author Seyma.Sahin
-     */
-    @Test
-    public void testSetters() {
-        TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder();
-        recorder.setRecording(true);
-    }
+	@Test
+	public void testSetters() {
+		TimeRecorder<TestStepTimeRecord> recorder = new TestStepTimeRecorder();
+		recorder.setRecording(true);
+		assertEquals(true, recorder.isRecording());
+	}
 
 }
