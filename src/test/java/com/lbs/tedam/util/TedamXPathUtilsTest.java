@@ -193,7 +193,7 @@ public class TedamXPathUtilsTest extends BaseServiceTest {
 	public void testGetCloseButton2() {
 		Element element = getElementFromXmlFilePath("/Malzemeler5.xml");
 		int closeButtonTag = TedamXPathUtils.getCloseButton(element);
-		assertNotEquals(0, closeButtonTag);
+		assertNotEquals(0, closeButtonTag); 
 	}
 
 	/**
