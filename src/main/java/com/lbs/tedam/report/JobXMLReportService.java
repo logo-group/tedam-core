@@ -72,8 +72,7 @@ public class JobXMLReportService extends JobReportServiceImpl {
 		return reportMap;
 	}
 
-	private JobXMLTestSuitesReportDTO buildJobXMLTestSuitesReportModel(int jobId,
-			Map<JobReport, JobReportResult> reportMap) {
+	private JobXMLTestSuitesReportDTO buildJobXMLTestSuitesReportModel(int jobId, Map<JobReport, JobReportResult> reportMap) {
 		JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel = new JobXMLTestSuitesReportDTO();
 		jobXMLTestSuitesReportModel.setJobId(jobId);
 		jobXMLTestSuitesReportModel.setJobXMLTestSuiteReportModelList(buildJobXMLTestSuiteReportModel(reportMap));
@@ -85,24 +84,20 @@ public class JobXMLReportService extends JobReportServiceImpl {
 
 		for (Iterator<JobReport> iterator = reportMap.keySet().iterator(); iterator.hasNext();) {
 			JobReport jobReport = iterator.next();
-			JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel = getJobXMLTestSuiteReportModel(
-					jobReport.getTestSetId(), jobXMLTestSuiteReportModelList);
+			JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel = getJobXMLTestSuiteReportModel(jobReport.getTestSetId(), jobXMLTestSuiteReportModelList);
 			if (jobXMLTestSuiteReportModel != null) {
-				jobXMLTestSuiteReportModel.getJobXMLTestCaseReportModelList()
-						.add(buildJobXMLTestCaseReportModel(jobReport, reportMap.get(jobReport)));
+				jobXMLTestSuiteReportModel.getJobXMLTestCaseReportModelList().add(buildJobXMLTestCaseReportModel(jobReport, reportMap.get(jobReport)));
 			} else {
 				jobXMLTestSuiteReportModel = new JobXMLTestSuiteReportDTO();
 				jobXMLTestSuiteReportModel.setTestSetId(jobReport.getTestSetId());
-				jobXMLTestSuiteReportModel.setJobXMLTestCaseReportModelList(
-						buildJobXMLTestCaseReportModelList(jobReport, reportMap.get(jobReport)));
+				jobXMLTestSuiteReportModel.setJobXMLTestCaseReportModelList(buildJobXMLTestCaseReportModelList(jobReport, reportMap.get(jobReport)));
 			}
 			jobXMLTestSuiteReportModelList.add(jobXMLTestSuiteReportModel);
 		}
 		return jobXMLTestSuiteReportModelList;
 	}
 
-	private JobXMLTestSuiteReportDTO getJobXMLTestSuiteReportModel(int testSetId,
-			List<JobXMLTestSuiteReportDTO> jobXMLTestSuiteReportModelList) {
+	private JobXMLTestSuiteReportDTO getJobXMLTestSuiteReportModel(int testSetId, List<JobXMLTestSuiteReportDTO> jobXMLTestSuiteReportModelList) {
 		for (JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel : jobXMLTestSuiteReportModelList) {
 			if (jobXMLTestSuiteReportModel.getTestSetId() == testSetId) {
 				return jobXMLTestSuiteReportModel;
@@ -111,8 +106,7 @@ public class JobXMLReportService extends JobReportServiceImpl {
 		return null;
 	}
 
-	private JobXMLTestCaseReportDTO buildJobXMLTestCaseReportModel(JobReport jobReport,
-			JobReportResult jobReportResult) {
+	private JobXMLTestCaseReportDTO buildJobXMLTestCaseReportModel(JobReport jobReport, JobReportResult jobReportResult) {
 		JobXMLTestCaseReportDTO jobXMLTestCaseReportModel = new JobXMLTestCaseReportDTO();
 		jobXMLTestCaseReportModel.setTestCaseId(jobReport.getTestCaseId());
 		jobXMLTestCaseReportModel.setTestCaseName(jobReport.getTestCaseName());
@@ -125,15 +119,13 @@ public class JobXMLReportService extends JobReportServiceImpl {
 		return jobXMLTestCaseReportModel;
 	}
 
-	private List<JobXMLTestCaseReportDTO> buildJobXMLTestCaseReportModelList(JobReport jobReport,
-			JobReportResult jobReportResult) {
+	private List<JobXMLTestCaseReportDTO> buildJobXMLTestCaseReportModelList(JobReport jobReport, JobReportResult jobReportResult) {
 		List<JobXMLTestCaseReportDTO> jobXMLTestCaseReportModelList = new ArrayList<>();
 		jobXMLTestCaseReportModelList.add(buildJobXMLTestCaseReportModel(jobReport, jobReportResult));
 		return jobXMLTestCaseReportModelList;
 	}
 
-	private void createXMLReportFile(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel, String jobReportFilePath,
-			int jobId) {
+	private void createXMLReportFile(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel, String jobReportFilePath, int jobId) {
 		try {
 
 			TedamFileUtils.createNewFilePath(jobReportFilePath);
@@ -151,16 +143,15 @@ public class JobXMLReportService extends JobReportServiceImpl {
 			transformer.transform(source, result);
 
 		} catch (ParserConfigurationException pce) {
-			LOGGER.error("" + pce);
+			LOGGER.error("{0}", pce);
 		} catch (TransformerException tfe) {
-			LOGGER.error("" + tfe);
+			LOGGER.error("{0}", tfe);
 		} catch (CreateNewFileException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 
-	private Document createTestSuitesNode(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel,
-			DocumentBuilder docBuilder) {
+	private Document createTestSuitesNode(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel, DocumentBuilder docBuilder) {
 		// root elements
 		Document doc = docBuilder.newDocument();
 		Element testSuites = doc.createElement(Constants.ELEMENT_TESTSUITES);
@@ -171,10 +162,8 @@ public class JobXMLReportService extends JobReportServiceImpl {
 		return doc;
 	}
 
-	private void createTestSuiteNode(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel, Document doc,
-			Element testSuites) {
-		for (JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel : jobXMLTestSuitesReportModel
-				.getJobXMLTestSuiteReportModelList()) {
+	private void createTestSuiteNode(JobXMLTestSuitesReportDTO jobXMLTestSuitesReportModel, Document doc, Element testSuites) {
+		for (JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel : jobXMLTestSuitesReportModel.getJobXMLTestSuiteReportModelList()) {
 			Element testSuite = doc.createElement(Constants.ELEMENT_TESTSUITE);
 			testSuites.appendChild(testSuite);
 			testSuite.setAttribute(Constants.ATTR_ID, String.valueOf(jobXMLTestSuiteReportModel.getTestSetId()));
@@ -182,10 +171,8 @@ public class JobXMLReportService extends JobReportServiceImpl {
 		}
 	}
 
-	private void createTestCaseNode(Document doc, JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel,
-			Element testSuite) {
-		for (JobXMLTestCaseReportDTO jobXMLTestCaseReportModel : jobXMLTestSuiteReportModel
-				.getJobXMLTestCaseReportModelList()) {
+	private void createTestCaseNode(Document doc, JobXMLTestSuiteReportDTO jobXMLTestSuiteReportModel, Element testSuite) {
+		for (JobXMLTestCaseReportDTO jobXMLTestCaseReportModel : jobXMLTestSuiteReportModel.getJobXMLTestCaseReportModelList()) {
 			Element testCase = doc.createElement(Constants.ELEMENT_TESTCASE);
 			testCase.setAttribute(Constants.ATTR_ID, String.valueOf(jobXMLTestCaseReportModel.getTestCaseId()));
 			testCase.setAttribute(Constants.ATTR_NAME, jobXMLTestCaseReportModel.getTestCaseName());
@@ -198,10 +185,8 @@ public class JobXMLReportService extends JobReportServiceImpl {
 	private void createFailureNode(Document doc, JobXMLTestCaseReportDTO jobXMLTestCaseReportModel, Element testCase) {
 		if (jobXMLTestCaseReportModel.getJobXMLFailureReportModel() != null) {
 			Element failure = doc.createElement(Constants.ELEMENT_FAILURE);
-			testCase.setAttribute(Constants.ATTR_TYPE,
-					jobXMLTestCaseReportModel.getJobXMLFailureReportModel().getType());
-			failure.appendChild(
-					doc.createTextNode(jobXMLTestCaseReportModel.getJobXMLFailureReportModel().getDescription()));
+			testCase.setAttribute(Constants.ATTR_TYPE, jobXMLTestCaseReportModel.getJobXMLFailureReportModel().getType());
+			failure.appendChild(doc.createTextNode(jobXMLTestCaseReportModel.getJobXMLFailureReportModel().getDescription()));
 			testCase.appendChild(failure);
 		}
 	}

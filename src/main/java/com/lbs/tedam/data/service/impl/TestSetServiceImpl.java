@@ -55,8 +55,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 	private TestCaseTestRunService testCaseRunService;
 
 	@Autowired
-	public void setDao(TestSetDAO dao, JobDetailService jobDetailService, TedamFolderService folderService,
-			TestCaseTestRunService testCaseRunService) {
+	public void setDao(TestSetDAO dao, JobDetailService jobDetailService, TedamFolderService folderService, TestCaseTestRunService testCaseRunService) {
 		this.dao = dao;
 		this.jobDetailService = jobDetailService;
 		this.folderService = folderService;
@@ -72,8 +71,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 	}
 
 	@Override
-	public List<TestSet> getTestSetListWithJobIdByProjectAndFolder(Project project, TedamFolder folder)
-			throws LocalizedException {
+	public List<TestSet> getTestSetListWithJobIdByProjectAndFolder(Project project, TedamFolder folder) throws LocalizedException {
 		List<TestSet> testSetList = dao.getTestSetListByProjectAndFolder(project, folder);
 		rebuildTestSetListWithJobId(project, testSetList);
 		return testSetList;
@@ -81,23 +79,18 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 
 	@Override
 	public List<TestSet> getTestSetListWithJobIdByProject(Project project) throws LocalizedException {
-		List<TestSet> testSetList = dao.getTestSetListByProject(project);
-		rebuildTestSetListWithJobId(project, testSetList);
-		return testSetList;
+		return getTestSetListByProject(project);
 	}
 
 	private void rebuildTestSetListWithJobId(Project project, List<TestSet> testSetList) throws LocalizedException {
 		List<JobDetail> jobDetailListByProject = jobDetailService.getJobDetailListByProject(project);
 		for (TestSet testSet : testSetList) {
-			List<JobDetail> jobDetailList = jobDetailListByProject.stream()
-					.filter(jobDetail -> jobDetail.getTestSetId().equals(testSet.getId())).collect(Collectors.toList());
-			String jobListAsString = TedamStringUtils.getListAsStringWithSeparator(jobDetailList.stream()
-					.map(jobDetail -> String.valueOf(jobDetail.getJobId())).collect(Collectors.toList()),
-					Constants.TEXT_COMMA);
+			List<JobDetail> jobDetailList = jobDetailListByProject.stream().filter(jobDetail -> jobDetail.getTestSetId().equals(testSet.getId())).collect(Collectors.toList());
+			String jobListAsString = TedamStringUtils
+					.getListAsStringWithSeparator(jobDetailList.stream().map(jobDetail -> String.valueOf(jobDetail.getJobId())).collect(Collectors.toList()), Constants.TEXT_COMMA);
 			testSet.setJobListAsString(jobListAsString);
 		}
-		List<TedamFolder> folderList = folderService.getTedamFolderListByProjectAndFolderType(project,
-				TedamFolderType.TESTSET);
+		List<TedamFolder> folderList = folderService.getTedamFolderListByProjectAndFolderType(project, TedamFolderType.TESTSET);
 		setTestCaseFolderName(testSetList, folderList);
 		setTestSetExecutionStatus(testSetList);
 	}
@@ -107,16 +100,13 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		if (size > 0) {
 			Integer endId = testSetList.get(0).getId();
 			Integer startId = testSetList.get(size - 1).getId();
-			List<TestCaseTestRun> runList = testCaseRunService.findByTestSetIdRange(startId, endId,
-					TedamBoolean.FALSE.getBooleanValue());
-			List<Object[]> testSetTestCaseList = dao.findByTestSetIdRange(startId, endId,
-					TedamBoolean.FALSE.getBooleanValue());
+			List<TestCaseTestRun> runList = testCaseRunService.findByTestSetIdRange(startId, endId, TedamBoolean.FALSE.getBooleanValue());
+			List<Object[]> testSetTestCaseList = dao.findByTestSetIdRange(startId, endId, TedamBoolean.FALSE.getBooleanValue());
 			countTestCaseStatus(testSetList, testSetTestCaseList, runList);
 		}
 	}
 
-	private void countTestCaseStatus(List<TestSet> testSetList, List<Object[]> testSetTestCaseList,
-			List<TestCaseTestRun> runList) {
+	private void countTestCaseStatus(List<TestSet> testSetList, List<Object[]> testSetTestCaseList, List<TestCaseTestRun> runList) {
 		int[] countArray = new int[5];
 		for (TestSet testSet : testSetList) {
 
@@ -136,8 +126,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		}
 	}
 
-	private void testSetTestCaseLoop(List<Object[]> testSetTestCaseList, List<TestCaseTestRun> runList,
-			int[] countArray, TestSet testSet) {
+	private void testSetTestCaseLoop(List<Object[]> testSetTestCaseList, List<TestCaseTestRun> runList, int[] countArray, TestSet testSet) {
 		for (Object[] testSetTestCase : testSetTestCaseList) {
 			Integer testSetId = (Integer) testSetTestCase[0];
 			if (!testSetId.equals(testSet.getId())) {
@@ -148,8 +137,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		}
 	}
 
-	private void countArrayLoop(List<TestCaseTestRun> runList, int[] countArray, Integer testSetId,
-			Integer testCaseId) {
+	private void countArrayLoop(List<TestCaseTestRun> runList, int[] countArray, Integer testSetId, Integer testCaseId) {
 		for (TestCaseTestRun run : runList) {
 			if (testSetId.equals(run.getTestSetId()) && testCaseId.equals(run.getTestCaseId())) {
 				switch (run.getExecutionStatus()) {
@@ -201,9 +189,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 
 	@Override
 	public boolean isTestSetInProgressStatus(TestSet testSet) {
-		boolean isInProgressStatus = (testSet != null && CommandStatus.IN_PROGRESS.equals(testSet.getTestSetStatus()))
-				? true
-				: false;
+		boolean isInProgressStatus = (testSet != null && CommandStatus.IN_PROGRESS.equals(testSet.getTestSetStatus())) ? true : false;
 		return isInProgressStatus;
 	}
 
@@ -212,8 +198,7 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		TestSet testSet = getById(id);
 		List<JobDetail> jobDetailList = jobDetailService.getJobDetailListByTestSet(testSet);
 		if (!jobDetailList.isEmpty()) {
-			String message = jobDetailList.stream().map(jobDetail -> jobDetail.getJobId().toString())
-					.collect(Collectors.joining(Constants.TEXT_COMMA));
+			String message = jobDetailList.stream().map(jobDetail -> jobDetail.getJobId().toString()).collect(Collectors.joining(Constants.TEXT_COMMA));
 			throw new TestSetDeleteException(message);
 		}
 		super.beforeDelete(id);

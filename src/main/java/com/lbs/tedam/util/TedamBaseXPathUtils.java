@@ -17,13 +17,7 @@
 
 package com.lbs.tedam.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,116 +26,123 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
-import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class TedamBaseXPathUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TedamBaseXPathUtils.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TedamBaseXPathUtils.class);
 
-    protected TedamBaseXPathUtils() {
-        // TedamBaseXPathUtils private constructor
-    }
+	protected TedamBaseXPathUtils() {
+		// TedamBaseXPathUtils private constructor
+	}
 
-    /**
-     * @param snapshot
-     * @param compileParameter
-     * @return <br>
-     * This procedure returns an object of type Node depending on the given snapshot element and given compile parameter.
-     * @author Tarik.Mikyas
-     */
-    protected static Node getNodeFromSnapshot(Element snapshot, String compileParameter) {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XPathExpression tagExpr;
-        Node node = null;
-        try {
-            tagExpr = xpath.compile(compileParameter);
-            node = (Node) tagExpr.evaluate(snapshot, XPathConstants.NODE);
-        } catch (Exception e) {
-            LOGGER.error("" + e);
-            return null;
-        }
-        return node;
-    }
+	/**
+	 * @param snapshot
+	 * @param compileParameter
+	 * @return <br>
+	 *         This procedure returns an object of type Node depending on the given snapshot element and given compile parameter.
+	 * @author Tarik.Mikyas
+	 */
+	protected static Node getNodeFromSnapshot(Element snapshot, String compileParameter) {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		XPathExpression tagExpr;
+		Node node = null;
+		try {
+			tagExpr = xpath.compile(compileParameter);
+			node = (Node) tagExpr.evaluate(snapshot, XPathConstants.NODE);
+		} catch (Exception e) {
+			LOGGER.error("{0}", e);
+			return null;
+		}
+		return node;
+	}
 
-    /**
-     * @param snapshot
-     * @param compileParameter
-     * @return <br>
-     * This procedure returns an object of type NodeList depending on the given snapshot element and given compile parameter.
-     * @author Tarik.Mikyas
-     */
-    protected static NodeList getNodeListFromSnapshot(Element snapshot, String compileParameter) {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XPathExpression tagExpr;
-        NodeList nodeList = null;
-        try {
-            tagExpr = xpath.compile(compileParameter);
-            nodeList = (NodeList) tagExpr.evaluate(snapshot, XPathConstants.NODESET);
-        } catch (Exception e) {
-            LOGGER.error("" + e);
-        }
-        return nodeList;
-    }
+	/**
+	 * @param snapshot
+	 * @param compileParameter
+	 * @return <br>
+	 *         This procedure returns an object of type NodeList depending on the given snapshot element and given compile parameter.
+	 * @author Tarik.Mikyas
+	 */
+	protected static NodeList getNodeListFromSnapshot(Element snapshot, String compileParameter) {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		XPathExpression tagExpr;
+		NodeList nodeList = null;
+		try {
+			tagExpr = xpath.compile(compileParameter);
+			nodeList = (NodeList) tagExpr.evaluate(snapshot, XPathConstants.NODESET);
+		} catch (Exception e) {
+			LOGGER.error("{0}", e);
+		}
+		return nodeList;
+	}
 
-    /**
-     * @param snapshot
-     * @param compileParameter
-     * @return <br>
-     * This procedure returns an object of type Node depending on the given document element and given compile parameter.
-     * @author Tarik.Mikyas
-     */
-    protected static Node getNodeFromDocument(Document document, String compileParameter) {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XPathExpression tagExpr;
-        Node node = null;
-        try {
-            tagExpr = xpath.compile(compileParameter);
-            node = (Node) tagExpr.evaluate(document, XPathConstants.NODE);
-        } catch (Exception e) {
-            LOGGER.error("" + e);
-        }
-        return node;
-    }
+	/**
+	 * @param snapshot
+	 * @param compileParameter
+	 * @return <br>
+	 *         This procedure returns an object of type Node depending on the given document element and given compile parameter.
+	 * @author Tarik.Mikyas
+	 */
+	protected static Node getNodeFromDocument(Document document, String compileParameter) {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		XPathExpression tagExpr;
+		Node node = null;
+		try {
+			tagExpr = xpath.compile(compileParameter);
+			node = (Node) tagExpr.evaluate(document, XPathConstants.NODE);
+		} catch (Exception e) {
+			LOGGER.error("{0}", e);
+		}
+		return node;
+	}
 
-    /**
-     * @param snapshot
-     * @param compileParameter
-     * @return <br>
-     * This procedure returns an object of type NodeList depending on the given document element and given compile parameter.
-     * @author Tarik.Mikyas
-     */
-    protected static NodeList getNodeListFromDocument(Document document, String compileParameter) {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        XPathExpression tagExpr;
-        NodeList nodeList = null;
-        try {
-            tagExpr = xpath.compile(compileParameter);
-            nodeList = (NodeList) tagExpr.evaluate(document, XPathConstants.NODESET);
-        } catch (Exception e) {
-            LOGGER.error("" + e);
-        }
-        return nodeList;
-    }
+	/**
+	 * @param snapshot
+	 * @param compileParameter
+	 * @return <br>
+	 *         This procedure returns an object of type NodeList depending on the given document element and given compile parameter.
+	 * @author Tarik.Mikyas
+	 */
+	protected static NodeList getNodeListFromDocument(Document document, String compileParameter) {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		XPathExpression tagExpr;
+		NodeList nodeList = null;
+		try {
+			tagExpr = xpath.compile(compileParameter);
+			nodeList = (NodeList) tagExpr.evaluate(document, XPathConstants.NODESET);
+		} catch (Exception e) {
+			LOGGER.error("{0}", e);
+		}
+		return nodeList;
+	}
 
-    /**
-     * @param filePath
-     * @return <br>
-     * Creates and returns a Document object according to the given filePath of the given String.
-     * @author Tarik.Mikyas
-     */
-    protected static Document getDocumentFromFilePath(String filePath) {
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        Document document = null;
-        try {
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            document = docBuilder.parse("file:///" + filePath);
-        } catch (ParserConfigurationException e) {
-            LOGGER.error("" + e);
-        } catch (SAXException e) {
-            LOGGER.error("" + e);
-        } catch (IOException e) {
-            LOGGER.error("" + e);
-        }
-        return document;
-    }
+	/**
+	 * @param filePath
+	 * @return <br>
+	 *         Creates and returns a Document object according to the given filePath of the given String.
+	 * @author Tarik.Mikyas
+	 */
+	protected static Document getDocumentFromFilePath(String filePath) {
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		Document document = null;
+		try {
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			document = docBuilder.parse("file:///" + filePath);
+		} catch (ParserConfigurationException e) {
+			LOGGER.error("{0}", e);
+		} catch (SAXException e) {
+			LOGGER.error("{0}", e);
+		} catch (IOException e) {
+			LOGGER.error("{0}", e);
+		}
+		return document;
+	}
 
 }

@@ -112,8 +112,7 @@ public class TedamFileUtils {
 	}
 
 	/**
-	 * It arranges and fills and creates an excel file based on the incoming list
-	 * and filePath.
+	 * It arranges and fills and creates an excel file based on the incoming list and filePath.
 	 *
 	 * @param reportList
 	 * @param resultFilePath
@@ -125,8 +124,7 @@ public class TedamFileUtils {
 		WorkbookSettings wbSettings = new WorkbookSettings();
 		int fontSize = 12;
 		// create create a bold font with underlines
-		WritableCellFormat timesBoldUnderline = new WritableCellFormat(
-				new WritableFont(WritableFont.TIMES, fontSize, WritableFont.BOLD, false));
+		WritableCellFormat timesBoldUnderline = new WritableCellFormat(new WritableFont(WritableFont.TIMES, fontSize, WritableFont.BOLD, false));
 		// Lets automatically wrap the cells
 		WritableWorkbook workbook = null;
 		try {
@@ -149,23 +147,22 @@ public class TedamFileUtils {
 			initiateReport(excelSheet, cvLong, cvShort, wcf);
 			fillReport(excelSheet, reportList);
 			workbook.write();
-			TedamLogUtils.log("TedamFileUtils.printReport", "The printReport procedure has been called.",
-					TedamLogLevel.INFO, true);
+			TedamLogUtils.log("TedamFileUtils.printReport", "The printReport procedure has been called.", TedamLogLevel.INFO, true);
 			return true;
 		} catch (WriteException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return false;
 		} catch (IOException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return false;
 		} finally {
 			if (workbook != null) {
 				try {
 					workbook.close();
 				} catch (WriteException e) {
-					LOGGER.error("" + e);
+					LOGGER.error("{0}", e);
 				} catch (IOException e) {
-					LOGGER.error("" + e);
+					LOGGER.error("{0}", e);
 				}
 			}
 		}
@@ -202,9 +199,9 @@ public class TedamFileUtils {
 			sheet.addCell(labStatus);
 			sheet.setColumnView(STATUSCOL + 1, cvShort);
 		} catch (RowsExceededException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		} catch (WriteException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 
@@ -245,17 +242,16 @@ public class TedamFileUtils {
 				sheet.addCell(labStatus);
 			}
 		} catch (WriteException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 
-	public static boolean copySourceToDestinationWithFormat(String sourceFilePathStr, String destinationFilePathStr,
-			String format, boolean isMoved) {
+	public static boolean copySourceToDestinationWithFormat(String sourceFilePathStr, String destinationFilePathStr, String format, boolean isMoved) {
 		String methodName = "TedamFileUtils.copySourceToDestinationWithFormat";
 		Path sourceFilePath = Paths.get(sourceFilePathStr + format);
 		Path destinationFilePath = Paths.get(destinationFilePathStr + format);
 		try {
-			if (!Files.exists(sourceFilePath)) {
+			if (!sourceFilePath.toFile().exists()) {
 				throw new CreateNewFileException(sourceFilePath.toString());
 			}
 			createNewFilePath(destinationFilePath.toFile().getParent());
@@ -264,38 +260,34 @@ public class TedamFileUtils {
 			} else {
 				Files.copy(sourceFilePath, destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
 			}
-			if (!Files.exists(destinationFilePath)) {
+			if (!sourceFilePath.toFile().exists()) {
 				throw new CreateNewFileException(destinationFilePath.toString());
 			}
-			TedamLogUtils.log(
-					methodName, sourceFilePath.toUri() + " File successfully "
-							+ destinationFilePath.toFile().getParent() + " copied to path. ",
-					TedamLogLevel.INFO, java.lang.Boolean.TRUE);
+			TedamLogUtils.log(methodName, sourceFilePath.toUri() + " File successfully " + destinationFilePath.toFile().getParent() + " copied to path. ", TedamLogLevel.INFO,
+					java.lang.Boolean.TRUE);
 			return true;
 		} catch (CreateNewFileException e) {
-			TedamLogUtils.log(methodName, "File does not exist filePath : " + e.getMessage(), TedamLogLevel.ERROR,
-					java.lang.Boolean.TRUE);
-			LOGGER.error("" + e);
+			TedamLogUtils.log(methodName, "File does not exist filePath : " + e.getMessage(), TedamLogLevel.ERROR, java.lang.Boolean.TRUE);
+			LOGGER.error("{0}", e);
 			return false;
 		} catch (IOException e) {
-			TedamLogUtils.log(methodName, sourceFilePath.toUri() + " File " + destinationFilePath.toFile().getParent()
-					+ " Unable to copy to path.", TedamLogLevel.ERROR, java.lang.Boolean.TRUE);
-			LOGGER.error("" + e);
+			TedamLogUtils.log(methodName, sourceFilePath.toUri() + " File " + destinationFilePath.toFile().getParent() + " Unable to copy to path.", TedamLogLevel.ERROR,
+					java.lang.Boolean.TRUE);
+			LOGGER.error("{0}", e);
 			return false;
 		}
 
 	}
 
 	/**
-	 * This method is used to copy the newly generated report and filter files to
-	 * the Z machine. <br>
-	 * These new report files are located under the moduler_scripts file where
-	 * base.bsh is located.
+	 * This method is used to copy the newly generated report and filter files to the Z machine. <br>
+	 * These new report files are located under the moduler_scripts file where base.bsh is located.
 	 *
 	 * @param testCaseID
 	 * @param reportFilePath
 	 * @param reportFileName
-	 * @param format         <br>
+	 * @param format
+	 *            <br>
 	 * @author Tarik.Mikyas
 	 */
 	public static void overwriteReportParameterFile(String sourceFileDirectory, String destinationDirectory) {
@@ -307,22 +299,20 @@ public class TedamFileUtils {
 		// Unless these priorities are provided, this method will not work due to
 		// authorization failure.
 		String methodName = "TedamFileUtils.overwriteReportParameterFile";
-		ss.log(methodName, "The file to be copied is being prepared... sourceFileDirectory :" + sourceFileDirectory,
-				TedamLogLevel.INFO, java.lang.Boolean.TRUE);
+		ss.log(methodName, "The file to be copied is being prepared... sourceFileDirectory :" + sourceFileDirectory, TedamLogLevel.INFO, java.lang.Boolean.TRUE);
 
 		// path of the file to read
 		Path sourceFilePath = Paths.get(sourceFileDirectory);
 		// the path to the destination file
 		Path destinationFilePath = Paths.get(destinationDirectory);
 		ss.log(methodName, "sourceFile :" + sourceFileDirectory, TedamLogLevel.INFO, java.lang.Boolean.TRUE);
-		ss.log("TedamReportUtils.overwriteReportParameterFile", "filterFile :" + destinationDirectory,
-				TedamLogLevel.INFO, java.lang.Boolean.TRUE);
+		ss.log("TedamReportUtils.overwriteReportParameterFile", "filterFile :" + destinationDirectory, TedamLogLevel.INFO, java.lang.Boolean.TRUE);
 		try {
 			byte[] source = Files.readAllBytes(sourceFilePath);
 			Files.write(destinationFilePath, source, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
 			ss.log(methodName, "The files have been successfully copied. ", TedamLogLevel.INFO, java.lang.Boolean.TRUE);
 		} catch (IOException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 
@@ -336,10 +326,10 @@ public class TedamFileUtils {
 		File file = new File(filePath);
 		if (file.exists()) {
 			isControlFileExist = true;
-			LOGGER.info(filePath + " The file was found.");
+			LOGGER.info(filePath, "{0} The file was found.");
 		} else {
 			isControlFileExist = false;
-			LOGGER.warn(filePath + " The file was not found.");
+			LOGGER.warn(filePath, "{0} The file was not found.");
 		}
 		return isControlFileExist;
 	}
@@ -357,9 +347,9 @@ public class TedamFileUtils {
 		try {
 			workBook = Workbook.getWorkbook(fileExcel);
 		} catch (BiffException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		} catch (IOException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 		if (workBook != null) {
 
@@ -407,7 +397,8 @@ public class TedamFileUtils {
 	/**
 	 * this method deleteFile <br>
 	 *
-	 * @param filePath <br>
+	 * @param filePath
+	 *            <br>
 	 * @author Canberk.Erkmen
 	 */
 	public static void deleteFile(String filePath) {
@@ -415,15 +406,15 @@ public class TedamFileUtils {
 			File file = new File(filePath);
 
 			if (file.delete()) {
-				LOGGER.info(file.getName() + " The file has been deleted.");
+				LOGGER.info("{0} The file has been deleted.", file.getName());
 			} else if (!file.exists()) {
-				LOGGER.info(file.getName() + " The file could not be deleted because it does not exist.");
+				LOGGER.info("{0} The file could not be deleted because it does not exist.", file.getName());
 			} else {
 				LOGGER.warn("Error while deleting file.");
 			}
 
 		} catch (Exception e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 
@@ -442,7 +433,7 @@ public class TedamFileUtils {
 			Document document = builder.parse(new File(filePath));
 			return document.getDocumentElement();
 		} catch (Exception e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return null;
 		}
 	}
@@ -461,7 +452,7 @@ public class TedamFileUtils {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			return builder.parse(new InputSource(new StringReader(xml)));
 		} catch (Exception e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return null;
 		}
 	}
@@ -471,21 +462,21 @@ public class TedamFileUtils {
 	 *
 	 * @param fileAbsolutePath
 	 * @param fileContent
-	 * @throws IOException <br>
+	 * @throws IOException
+	 *             <br>
 	 * @author Canberk.Erkmen
 	 */
 	public static void createFile(String fileAbsolutePath, String fileContent) throws IOException {
 		Path filePath = Paths.get(fileAbsolutePath);
-		Files.write(filePath, fileContent.getBytes(), StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING,
-				StandardOpenOption.CREATE);
+		Files.write(filePath, fileContent.getBytes(), StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
 
 	}
 
 	/**
-	 * this method createNewFile The procedure that should be called when a file is
-	 * created on the system. <br>
+	 * this method createNewFile The procedure that should be called when a file is created on the system. <br>
 	 *
-	 * @param filePath <br>
+	 * @param filePath
+	 *            <br>
 	 * @throws CreateNewFileException
 	 * @author Tarik.Mikyas
 	 */
@@ -498,20 +489,18 @@ public class TedamFileUtils {
 			} else if (file.createNewFile()) {
 				return true;
 			} else {
-				LOGGER.error(filePath + FILE_NOT_FOUND);
+				LOGGER.error("{0} {1}", filePath, FILE_NOT_FOUND);
 				return false;
 			}
 		} catch (IOException e) {
-			LOGGER.error(filePath + "-error occurred while creating file..." + e);
+			LOGGER.error("{0} -error occurred while creating file... {1}", filePath, e);
 			throw new CreateNewFileException(filePath + "-error occurred while creating file..." + e);
 		}
 	}
 
 	/**
-	 * this method createNewFilePath creates the given path hierarchy if the given
-	 * path does not exist. <br>
-	 * true if such a file path already exists or if the given file path is created.
-	 * <br>
+	 * this method createNewFilePath creates the given path hierarchy if the given path does not exist. <br>
+	 * true if such a file path already exists or if the given file path is created. <br>
 	 * If this file path can not be created, an exception is thrown.
 	 *
 	 * @param filePath
@@ -526,18 +515,17 @@ public class TedamFileUtils {
 			} else if (file.mkdirs()) {
 				return;
 			} else {
-				LOGGER.error(filePath + FILE_NOT_FOUND);
+				LOGGER.error("{0} {1}", filePath, FILE_NOT_FOUND);
 				throw new IOException(" File could not create! ");
 			}
 		} catch (IOException e) {
-			LOGGER.error(filePath + FILE_NOT_FOUND + e);
+			LOGGER.error("{0} {1}", FILE_NOT_FOUND, e);
 			throw new CreateNewFileException(filePath + FILE_NOT_FOUND);
 		}
 	}
 
 	/**
-	 * this method writeToTextDocument Creates the given file if no path exists and
-	 * writes the given contents in UTF8 format.<br>
+	 * this method writeToTextDocument Creates the given file if no path exists and writes the given contents in UTF8 format.<br>
 	 * Returns false if it can not be written or created. <br>
 	 *
 	 * @param filePath
@@ -547,8 +535,7 @@ public class TedamFileUtils {
 	 * @throws IOException
 	 * @author Tarik.Mikyas
 	 */
-	public static void writeToTextDocumentUTF8(String filePath, String content)
-			throws CreateNewFileException, IOException {
+	public static void writeToTextDocumentUTF8(String filePath, String content) throws CreateNewFileException, IOException {
 
 		List<String> lines = new ArrayList<>();
 		try (Scanner scanner = new Scanner(content)) {
@@ -562,10 +549,10 @@ public class TedamFileUtils {
 			// SnapShot is a new way to break down the document.
 			Files.write(file, lines, StandardCharsets.UTF_8);
 		} catch (IOException e) {
-			LOGGER.error(filePath + "Could not write to file. IOException : " + e);
+			LOGGER.error("{0} Could not write to file. IOException : {1}", filePath, e);
 			throw e;
 		} catch (CreateNewFileException e) {
-			LOGGER.error(filePath + "Failed to create file. CreateNewFileException : " + e);
+			LOGGER.error("{0} Failed to create file. CreateNewFileException : {1}", filePath, e);
 			throw e;
 		}
 	}
@@ -576,7 +563,7 @@ public class TedamFileUtils {
 			fileContent = new String(Files.readAllBytes(Paths.get(filePath)));
 			LOGGER.info("getFileContent succeded");
 		} catch (IOException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 		return fileContent;
 	}
@@ -586,11 +573,11 @@ public class TedamFileUtils {
 			File file = new File(sourceFilePath);
 			File newFile = new File(targetFilePath);
 			if (file.exists() && !newFile.exists()) {
-				LOGGER.info(newFile.getPath() + " the file will be created.");
+				LOGGER.info("{0} the file will be created.", newFile.getPath());
 				Files.copy(Paths.get(file.getPath()), Paths.get(newFile.getPath()), StandardCopyOption.COPY_ATTRIBUTES);
 			}
 		} catch (Exception e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{}", e);
 		}
 	}
 
@@ -598,11 +585,11 @@ public class TedamFileUtils {
 		try {
 			File sourceFile = new File(sourceFilePath);
 			if (sourceFile.exists()) {
-				LOGGER.info("sourceFilePath : " + sourceFilePath + " targetFilePath : " + targetFilePath);
+				LOGGER.info("sourceFilePath : {0} targetFilePath : {1}", sourceFilePath, targetFilePath);
 				Files.move(Paths.get(sourceFile.getPath()), Paths.get(targetFilePath), StandardCopyOption.ATOMIC_MOVE);
 			}
 		} catch (Exception e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 

@@ -17,10 +17,23 @@
 
 package com.lbs.tedam.snapshot.utils;
 
-import com.lbs.tedam.model.DTO.ButtonCtrl;
-import com.lbs.tedam.util.*;
-import com.lbs.tedam.util.Enums.PathType;
-import javassist.NotFoundException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -29,14 +42,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
-import java.io.*;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.lbs.tedam.model.DTO.ButtonCtrl;
+import com.lbs.tedam.util.Constants;
+import com.lbs.tedam.util.Enums.PathType;
+import com.lbs.tedam.util.PropUtils;
+import com.lbs.tedam.util.TedamDOMUtils;
+import com.lbs.tedam.util.TedamStringUtils;
+import com.lbs.tedam.util.TedamXPathUtils;
+
+import javassist.NotFoundException;
 
 public class SnapShotUtils {
 	private static Logger LOGGER = LoggerFactory.getLogger(SnapShotUtils.class);
@@ -280,7 +294,7 @@ public class SnapShotUtils {
 				}
 			}
 		} catch (NullPointerException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return null;
 		}
 		return null;
@@ -348,7 +362,7 @@ public class SnapShotUtils {
 		try (PrintStream ps = new PrintStream(PropUtils.getProperty(Constants.PROPERTY_SNAPSHOTCOLLECTOR_ORDERFILE_PATH))) {
 			ps.print(newConfigOrderParameter);
 		} catch (FileNotFoundException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 	}
 

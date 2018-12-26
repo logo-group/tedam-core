@@ -51,8 +51,7 @@ public class TedamDOMUtils {
 	}
 
 	/**
-	 * It opens the xml document in the filePath given as parameter and returns the
-	 * document in Document type.
+	 * It opens the xml document in the filePath given as parameter and returns the document in Document type.
 	 *
 	 * @param filePath
 	 * @return
@@ -75,11 +74,11 @@ public class TedamDOMUtils {
 			File fXmlFile = new File(filePath);
 			document = builder.parse(fXmlFile);
 		} catch (ParserConfigurationException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		} catch (SAXException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		} catch (IOException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 		}
 		return document;
 	}
@@ -87,8 +86,7 @@ public class TedamDOMUtils {
 	/**
 	 * @param node
 	 * @return <br>
-	 *         returns true if the type of the incoming Node object is
-	 *         Node.TEXT_NODE or Node.COMMENT_NODE; returns false if not
+	 *         returns true if the type of the incoming Node object is Node.TEXT_NODE or Node.COMMENT_NODE; returns false if not
 	 * @author Tarik.Mikyas
 	 */
 	public static boolean isDummyNode(Node node) {
@@ -99,8 +97,7 @@ public class TedamDOMUtils {
 	}
 
 	/**
-	 * This method converts the xml file from the Element class into a single line
-	 * in the String type.
+	 * This method converts the xml file from the Element class into a single line in the String type.
 	 *
 	 * @param element
 	 * @return
@@ -117,14 +114,13 @@ public class TedamDOMUtils {
 			serializer.transform(new DOMSource(element), new StreamResult(sw));
 			result = sw.toString();
 		} catch (TransformerException e) {
-			LOGGER.error("transform failed", e);
+			LOGGER.error("transform failed {0}", e);
 		}
 		return result;
 	}
 
 	/**
-	 * The snapshot parameter returns the formName information from the xml file in
-	 * path.
+	 * The snapshot parameter returns the formName information from the xml file in path.
 	 *
 	 * @param filePath
 	 * @return
@@ -140,12 +136,11 @@ public class TedamDOMUtils {
 			doc = TedamDOMUtils.domParserStarter(filePath);
 			// From within formName information is returned.
 			if (doc == null) {
-				throw new DocumentBuildException(
-						"From the domParserStarter procedure, the document object returned null.");
+				throw new DocumentBuildException("From the domParserStarter procedure, the document object returned null.");
 			}
 			return TedamXPathUtils.getFormNameFromSnapshot(doc.getDocumentElement());
 		} catch (DocumentBuildException e) {
-			LOGGER.error("" + e);
+			LOGGER.error("{0}", e);
 			return Constants.EMPTY_STRING;
 		}
 
