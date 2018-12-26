@@ -32,48 +32,48 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {FormFieldServiceImpl.class, TestDataConfig.class, DataConfig.class})
+@SpringBootTest(classes = { FormFieldServiceImpl.class, TestDataConfig.class, DataConfig.class })
 public class FormFieldServiceTest extends BaseServiceTest {
 
-    @Autowired
-    private FormFieldService formFieldService;
+	@Autowired
+	private FormFieldService formFieldService;
 
-    @Test
-    public void testGetFormFieldListByVersionAndFormDefId() throws LocalizedException {
-        List<FormField> formFieldList = formFieldService.getFormFieldListByVersionAndFormDefId("2.34.9.0", 1);
-        Assert.assertEquals(formFieldList.size(), 41);
-    }
+	@Test
+	public void testGetFormFieldListByVersionAndFormDefId() throws LocalizedException {
+		List<FormField> formFieldList = formFieldService.getFormFieldListByVersionAndFormDefId("2.34.9.0", 1);
+		Assert.assertEquals(41, formFieldList.size());
+	}
 
-    @Test
-    public void testGetHistoryOfTag() throws LocalizedException {
-        List<FormField> formFieldList = formFieldService.getHistoryOfTag(1);
-        Assert.assertEquals(formFieldList.size(), 1);
-    }
+	@Test
+	public void testGetHistoryOfTag() throws LocalizedException {
+		List<FormField> formFieldList = formFieldService.getHistoryOfTag(1);
+		Assert.assertEquals(1, formFieldList.size());
+	}
 
-    @Test
-    public void testGetCaptionBySnapshotValue() throws LocalizedException {
-        String caption = formFieldService.getCaptionBySnapshotValue(37999, "30004");
-        Assert.assertTrue("Yetki Kodu".equalsIgnoreCase(caption));
-    }
+	@Test
+	public void testGetCaptionBySnapshotValue() throws LocalizedException {
+		String caption = formFieldService.getCaptionBySnapshotValue(37999, "30004");
+		Assert.assertTrue("Yetki Kodu".equalsIgnoreCase(caption));
+	}
 
-    @Test
-    public void testGetControlFieldsOfVersionsAndForms() throws LocalizedException {
-        List<FormField> formFieldList = formFieldService.getControlFieldsOfVersionsAndForms("2.52.7.0", 505);
-        Assert.assertEquals(formFieldList.size(), 44);
-    }
+	@Test
+	public void testGetControlFieldsOfVersionsAndForms() throws LocalizedException {
+		List<FormField> formFieldList = formFieldService.getControlFieldsOfVersionsAndForms("2.52.7.0", 505);
+		Assert.assertEquals(44, formFieldList.size());
+	}
 
-    @Test
-    public void testGetFieldsOfVersionsAndForms() throws LocalizedException {
-        List<FormField> formFieldList = formFieldService.getFieldsOfVersionsAndForms("2.52.7.0", 505, true);
-        Assert.assertEquals(formFieldList.size(), 88);
-    }
+	@Test
+	public void testGetFieldsOfVersionsAndForms() throws LocalizedException {
+		List<FormField> formFieldList = formFieldService.getFieldsOfVersionsAndForms("2.52.7.0", 505, true);
+		Assert.assertEquals(88, formFieldList.size());
+	}
 
-    @Test
-    public void test01GetFormFieldListByVersionAndFormDefId() throws LocalizedException {
-        List<FormField> formFieldList;
-        formFieldList = formFieldService.getFormFieldListByVersionAndFormDefId("2.34.9.0", 1);
-        Assert.assertNotEquals(formFieldList.size(), 0);
+	@Test
+	public void test01GetFormFieldListByVersionAndFormDefId() throws LocalizedException {
+		List<FormField> formFieldList;
+		formFieldList = formFieldService.getFormFieldListByVersionAndFormDefId("2.34.9.0", 1);
+		Assert.assertNotEquals(0, formFieldList.size());
 
-    }
+	}
 
 }
