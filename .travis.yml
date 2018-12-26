@@ -18,7 +18,7 @@ before_install:
   - mysql -u root -e 'CREATE DATABASE TEDAM CHARACTER SET utf8 COLLATE utf8_turkish_ci;'
   - mysql -u root TEDAM < backup.sql && cd ..
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.scm.disabled=true
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 notifications:
   email:
     recipients:

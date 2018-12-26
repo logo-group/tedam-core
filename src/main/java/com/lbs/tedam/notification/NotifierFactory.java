@@ -21,6 +21,9 @@ import com.lbs.tedam.util.EnumsV2.NotificationType;
 
 public class NotifierFactory {
 
+	private NotifierFactory() {
+	}
+
 	public static Notifier getNotifier(NotificationType type) {
 		switch (type) {
 		case MAIL:

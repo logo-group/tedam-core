@@ -75,7 +75,7 @@ public class ScriptService {
 	public ScriptService(boolean isTest) {
 		if (isTest) {
 			String configFilePath = getClass().getResource(Constants.RESOURCE_CONFIG_TEST_PROPERTIES).getFile();
-			LOGGER.info("ScriptService created. configFilePath : " + configFilePath);
+			LOGGER.info(configFilePath, "ScriptService created. configFilePath : {}");
 			TedamLogUtils.log(SCRIPT_SERVICE, "configFilePath : " + configFilePath, TedamLogLevel.INFO, true);
 			PropUtils.loadPropFile(configFilePath);
 		}
