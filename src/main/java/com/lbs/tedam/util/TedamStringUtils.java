@@ -72,8 +72,7 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * This method parse the given parameter and maintains the maneuverable parts.
-	 * Each element of the rotated list has button and message values. <br>
+	 * This method parse the given parameter and maintains the maneuverable parts. Each element of the rotated list has button and message values. <br>
 	 * [(true,Sure!spc!yourown),(false,Son!spcDecision!spc?)]
 	 *
 	 * @param messageDialogParameter
@@ -81,7 +80,7 @@ public class TedamStringUtils {
 	 */
 	public static List<MessageDialog> messageDialogParameterParser(String messageDialogParameter) {
 		List<MessageDialog> returnList = new ArrayList<>();
-		LOGGER.info("messageDialogParameter = " + messageDialogParameter);
+		LOGGER.info("messageDialogParameter = {0}", messageDialogParameter);
 		if (messageDialogParameter == null || messageDialogParameter.equals(Constants.VALUE_NULL)) {
 			LOGGER.info("messageDialogParameter == null || messageDialogParameter.equals(Constants.VALUE_NULL)");
 			return null;
@@ -100,13 +99,11 @@ public class TedamStringUtils {
 				switch (propertySet[i].substring(1).toLowerCase()) {
 				case "tamam":
 				case "true":
-					messageDialog = new MessageDialog(propertySet[i + 1].substring(0, propertySet[i + 1].length() - 1),
-							true);
+					messageDialog = new MessageDialog(propertySet[i + 1].substring(0, propertySet[i + 1].length() - 1), true);
 					break;
 				case "vazgec":
 				case "false":
-					messageDialog = new MessageDialog(propertySet[i + 1].substring(0, propertySet[i + 1].length() - 1),
-							false);
+					messageDialog = new MessageDialog(propertySet[i + 1].substring(0, propertySet[i + 1].length() - 1), false);
 					break;
 				default:
 					messageDialog = null;
@@ -118,12 +115,9 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * This method separates the itemList value given in the parameter into units
-	 * and returns a list of the parts equal to the index value in each unit. <br>
-	 * When index numbers are separated from within units, '~' is taken as basis. If
-	 * the value of '~' is not found, the index value of that unit is '0'.<br>
-	 * Example: resourceList: "Barcode | Customer / Supplier Code ~ 2 | Producer
-	 * Code ~ 3" returns: [0,2,3]
+	 * This method separates the itemList value given in the parameter into units and returns a list of the parts equal to the index value in each unit. <br>
+	 * When index numbers are separated from within units, '~' is taken as basis. If the value of '~' is not found, the index value of that unit is '0'.<br>
+	 * Example: resourceList: "Barcode | Customer / Supplier Code ~ 2 | Producer Code ~ 3" returns: [0,2,3]
 	 *
 	 * @param itemList
 	 * @return
@@ -148,8 +142,7 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * This method parses the resourceList value given in the parameter into units
-	 * and returns it as a list. <br>
+	 * This method parses the resourceList value given in the parameter into units and returns it as a list. <br>
 	 * When parsing into units '|' is based on character.
 	 *
 	 * @param itemList
@@ -161,13 +154,9 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * This method separates the itemList value given in the parameter into units
-	 * and takes the parts corresponding to the index value in each unit and returns
-	 * them as a list.<br>
-	 * When index numbers are separated from within units, '~' is taken as basis. If
-	 * the value of '~' is not found, the index value of that unit is '0'.<br>
-	 * Example: resourceList: "Barcode | Customer / Supplier Code ~ 2 | Producer
-	 * Code ~ 3" returns: [Barcode, Customer / Supplier Code, Producer Code]
+	 * This method separates the itemList value given in the parameter into units and takes the parts corresponding to the index value in each unit and returns them as a list.<br>
+	 * When index numbers are separated from within units, '~' is taken as basis. If the value of '~' is not found, the index value of that unit is '0'.<br>
+	 * Example: resourceList: "Barcode | Customer / Supplier Code ~ 2 | Producer Code ~ 3" returns: [Barcode, Customer / Supplier Code, Producer Code]
 	 *
 	 * @param itemList
 	 * @return
@@ -189,8 +178,7 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * Parse the itemList given in the parameter and return it as List<Resource>.
-	 * Resource objects contain tag and text values.
+	 * Parse the itemList given in the parameter and return it as List<Resource>. Resource objects contain tag and text values.
 	 *
 	 * @param itemList
 	 * @return
@@ -228,15 +216,11 @@ public class TedamStringUtils {
 	 * @return
 	 * @throws FileNotFoundException
 	 */
-	public static String createBSHPackageContentForTedam(String reportDir, String packageName, String pTestCases,
-			String baseBshFileName) throws FileNotFoundException {
-		String result = "<TestPlayer>" + "\n" + "<MainDir Value=\"\"/>" + "\n" + "<ReportFile Directory=\"" + reportDir
-				+ "\" Name=\"" + packageName + "\" Type=\"1\"/>" + "\n"
-				+ "<ReportedStatus Completed=\"true\" CriticalError=\"true\" Error=\"true\" Repeated=\"false\"/>" + "\n"
-				+ "<TimeOut Enabled=\"true\" Value=\"" + Constants.JGUAR_TIMEOUT + "\"/>" + "\n" + "<ExecRate Value=\""
-				+ Constants.JGUAR_EXEC_RATE + "\"/>" + "\n" + "<TestPackageList>" + "\n"
-				+ "<TestPackage Desc=\"BSH Runner tarafından yaratılan paket\" Name=\"BSHRunner\" StopIfFailed=\"false\">"
-				+ "\n" + "<TestInstanceList>" + "\n";
+	public static String createBSHPackageContentForTedam(String reportDir, String packageName, String pTestCases, String baseBshFileName) throws FileNotFoundException {
+		String result = "<TestPlayer>" + "\n" + "<MainDir Value=\"\"/>" + "\n" + "<ReportFile Directory=\"" + reportDir + "\" Name=\"" + packageName + "\" Type=\"1\"/>" + "\n"
+				+ "<ReportedStatus Completed=\"true\" CriticalError=\"true\" Error=\"true\" Repeated=\"false\"/>" + "\n" + "<TimeOut Enabled=\"true\" Value=\""
+				+ Constants.JGUAR_TIMEOUT + "\"/>" + "\n" + "<ExecRate Value=\"" + Constants.JGUAR_EXEC_RATE + "\"/>" + "\n" + "<TestPackageList>" + "\n"
+				+ "<TestPackage Desc=\"BSH Runner tarafından yaratılan paket\" Name=\"BSHRunner\" StopIfFailed=\"false\">" + "\n" + "<TestInstanceList>" + "\n";
 
 		String mNameStr = "Test1";
 		File filePath = new File(baseBshFileName);
@@ -244,12 +228,10 @@ public class TedamStringUtils {
 		if (!filePath.exists()) {
 			throw new FileNotFoundException("Unable to find a test script at : " + baseBshFileName);
 		}
-		result += "<TestInstance Desc=\"" + "http:\\\\tys.logo.com.tr/SpiraTest/TestCase/" + pTestCases + ".aspx"
-				+ "\" " + "Name=\"" + mNameStr + "\" Path=\"" + baseBshFileName
+		result += "<TestInstance Desc=\"" + "http:\\\\tys.logo.com.tr/SpiraTest/TestCase/" + pTestCases + ".aspx" + "\" " + "Name=\"" + mNameStr + "\" Path=\"" + baseBshFileName
 				+ "\" SelectedDataPoolIndexes=\"1~1\" StopIfFailed=\"true\"/>" + "\n";
 
-		result += "</TestInstanceList>" + "\n" + "</TestPackage>" + "\n" + "</TestPackageList>" + "\n"
-				+ "</TestPlayer>";
+		result += "</TestInstanceList>" + "\n" + "</TestPackage>" + "\n" + "</TestPackageList>" + "\n" + "</TestPlayer>";
 
 		return result;
 	}
@@ -269,17 +251,13 @@ public class TedamStringUtils {
 		for (TestStep testStep : testSteps) {
 			if (testStep.getExpectedFormname() == null || testStep.getExpectedFormname().isEmpty()) {
 				if (testStep.getType() == null) {
-					LOGGER.error("TestCaseId : " + testStep.getTestCaseId() + " testStepId :" + testStep.getId()
-							+ " parameter is empty.");
-					throw new JobCommandBuildException("TestCaseId : " + testStep.getTestCaseId() + " testStepId :"
-							+ testStep.getId() + " parameter is empty.");
+					LOGGER.error("TestCaseId : " + testStep.getTestCaseId() + " testStepId :" + testStep.getId() + " parameter is empty.");
+					throw new JobCommandBuildException("TestCaseId : " + testStep.getTestCaseId() + " testStepId :" + testStep.getId() + " parameter is empty.");
 				}
-				parameter += testStep.getType().getValue() + Regex.EQUALS.getRegex() + testStep.getParameter()
-						+ Regex.TEST_STEP.getRegex() + testStep.getId() + Constants.BLANK;
+				parameter += testStep.getType().getValue() + Regex.EQUALS.getRegex() + testStep.getParameter() + Regex.TEST_STEP.getRegex() + testStep.getId() + Constants.BLANK;
 			} else {
-				parameter += testStep.getType().getValue() + Regex.EQUALS.getRegex() + testStep.getParameter()
-						+ Regex.TEST_STEP.getRegex() + testStep.getId() + Regex.FORM_NAME.getRegex()
-						+ testStep.getExpectedFormname() + Constants.BLANK;
+				parameter += testStep.getType().getValue() + Regex.EQUALS.getRegex() + testStep.getParameter() + Regex.TEST_STEP.getRegex() + testStep.getId()
+						+ Regex.FORM_NAME.getRegex() + testStep.getExpectedFormname() + Constants.BLANK;
 			}
 		}
 		return parameter;
@@ -313,33 +291,30 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * This method compares control and datagrid elements of given xml document with
-	 * the snapshotValues of snapshotDefinition with given snapshotDefinitionId.
-	 * <br>
+	 * This method compares control and datagrid elements of given xml document with the snapshotValues of snapshotDefinition with given snapshotDefinitionId. <br>
 	 * Returns test step object of resulting report for verify. <br>
 	 *
 	 * @param verifyFieldMap
 	 * @param fillerFieldsList
 	 * @param formName
 	 * @param isLookup
-	 * @param isIgnoreRowIndex Will the rowIndex be ignored or ignored?
+	 * @param isIgnoreRowIndex
+	 *            Will the rowIndex be ignored or ignored?
 	 * @return
 	 * @usedIn: Verify.bsh
 	 * @author Tarik.Mikyas
 	 */
-	public static TestReport validateSavedData(Map<String, String> verifyFieldMap, List<SnapshotValue> fillerFieldsList,
-			String formName, boolean isLookup, boolean isIgnoreRowIndex) {
+	public static TestReport validateSavedData(Map<String, String> verifyFieldMap, List<SnapshotValue> fillerFieldsList, String formName, boolean isLookup,
+			boolean isIgnoreRowIndex) {
 
 		TestReport bshTestReportResult = new TestReport(Constants.OPERATION_VERIFY_BSH, formName, isLookup);
 		ScriptService ss = new ScriptService();
 		StatusMessages status = StatusMessages.SUCCEEDED;
-		ss.log("TedamReportUtils.validateSavedData", "verifyFieldMap :" + verifyFieldMap, TedamLogLevel.INFO,
-				Boolean.TRUE);
+		ss.log("TedamReportUtils.validateSavedData", "verifyFieldMap :" + verifyFieldMap, TedamLogLevel.INFO, Boolean.TRUE);
 
 		for (SnapshotValue snapshotValue : fillerFieldsList) {
 			// For Control values
-			status = checkForFillerFieldsList(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status,
-					snapshotValue);
+			status = checkForFillerFieldsList(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status, snapshotValue);
 		}
 
 		checkForStatusMessages(bshTestReportResult, status);
@@ -347,8 +322,8 @@ public class TedamStringUtils {
 		return bshTestReportResult;
 	}
 
-	private static StatusMessages checkForFillerFieldsList(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex,
-			TestReport bshTestReportResult, StatusMessages status, SnapshotValue snapshotValue) {
+	private static StatusMessages checkForFillerFieldsList(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex, TestReport bshTestReportResult, StatusMessages status,
+			SnapshotValue snapshotValue) {
 		if (snapshotValue.getRowIndex() == -1) {
 			String tag = snapshotValue.getTag().trim();
 			String value = snapshotValue.getValue().trim();
@@ -364,43 +339,37 @@ public class TedamStringUtils {
 			// with the same data. If the rowIndex is checked independently but does not
 			// find the same datagram, it appends the error
 			// to the report.
-			status = isIgnoreRowIndex(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status, snapshotValue,
-					tag, value, rowID, mapKey);
+			status = isIgnoreRowIndex(verifyFieldMap, isIgnoreRowIndex, bshTestReportResult, status, snapshotValue, tag, value, rowID, mapKey);
 		}
 		return status;
 	}
 
-	private static StatusMessages verifyFieldMap(Map<String, String> verifyFieldMap, TestReport bshTestReportResult,
-			StatusMessages status, SnapshotValue snapshotValue, String tag, String value) {
+	private static StatusMessages verifyFieldMap(Map<String, String> verifyFieldMap, TestReport bshTestReportResult, StatusMessages status, SnapshotValue snapshotValue, String tag,
+			String value) {
 		if (!value.equals(verifyFieldMap.get(tag))) {
-			bshTestReportResult.addMessage(tag + TAGGED_DATA + value + "), entered data ("
-					+ verifyFieldMap.get(tag) + ") It does not match.");
+			bshTestReportResult.addMessage(tag + TAGGED_DATA + value + "), entered data (" + verifyFieldMap.get(tag) + ") It does not match.");
 			status = getStatus(status, snapshotValue.getContinueOnError());
 		}
 		return status;
 	}
 
-	private static StatusMessages isIgnoreRowIndex(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex,
-			TestReport bshTestReportResult, StatusMessages status, SnapshotValue snapshotValue, String tag,
-			String value, int rowID, String mapKey) {
+	private static StatusMessages isIgnoreRowIndex(Map<String, String> verifyFieldMap, boolean isIgnoreRowIndex, TestReport bshTestReportResult, StatusMessages status,
+			SnapshotValue snapshotValue, String tag, String value, int rowID, String mapKey) {
 		if (isIgnoreRowIndex && !isValueExistInVerifyFieldMap(tag, value, verifyFieldMap)) { // if rowIndex
 			// is to be
 			// checked
 			// independently
-			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
-					+ "), entered data validation map" + tag + " 'does not match any area.");
+			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value + "), entered data validation map" + tag + " 'does not match any area.");
 			status = getStatus(status, snapshotValue.getContinueOnError());
 
-		} else if (!isIgnoreRowIndex && !value
-				.equals(verifyFieldMap.get(mapKey) == null ? null : verifyFieldMap.get(mapKey).trim())) {// When
+		} else if (!isIgnoreRowIndex && !value.equals(verifyFieldMap.get(mapKey) == null ? null : verifyFieldMap.get(mapKey).trim())) {// When
 			// loop
 			// encountered
 			// a
 			// incompability
 			// between
 			// values
-			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value
-					+ "), entered data(" + verifyFieldMap.get(mapKey) + ") It does not match.");
+			bshTestReportResult.addMessage(rowID + " indexed line, " + tag + TAGGED_DATA + value + "), entered data(" + verifyFieldMap.get(mapKey) + ") It does not match.");
 			status = getStatus(status, snapshotValue.getContinueOnError());
 		}
 		return status;
@@ -417,14 +386,13 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * this method returns true if the snapShotValue given in the controlIT
-	 * attribute is in a verifyFieldMap of the appropriate data, false
-	 * otherwise.<br>
+	 * this method returns true if the snapShotValue given in the controlIT attribute is in a verifyFieldMap of the appropriate data, false otherwise.<br>
 	 *
 	 * @param tag
 	 * @param value
 	 * @param rowID
-	 * @param verifyFieldMap <br>
+	 * @param verifyFieldMap
+	 *            <br>
 	 * @author Tarik.Mikyas
 	 */
 	private static boolean isValueExistInVerifyFieldMap(String tag, String value, Map<String, String> verifyFieldMap) {
@@ -443,8 +411,7 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * If the incoming status parameter isContinue is true then @
-	 * statusMessages.caution, is false then @ statusMessages.failed.
+	 * If the incoming status parameter isContinue is true then @ statusMessages.caution, is false then @ statusMessages.failed.
 	 *
 	 * @param status
 	 * @param isContinue
@@ -480,19 +447,16 @@ public class TedamStringUtils {
 				break;
 			}
 		}
-		String testSetId = pathString.substring(
-				pathString.indexOf(Constants.TEDAM_TEST_SET) + Constants.TEDAM_TEST_SET.length(),
+		String testSetId = pathString.substring(pathString.indexOf(Constants.TEDAM_TEST_SET) + Constants.TEDAM_TEST_SET.length(),
 				pathString.indexOf(Constants.TEDAM_TEST_CASE) - Constants.TEXT_UNDERSCORE.length());
-		String testCaseId = pathString
-				.substring(pathString.indexOf(Constants.TEDAM_TEST_CASE) + Constants.TEDAM_TEST_CASE.length());
+		String testCaseId = pathString.substring(pathString.indexOf(Constants.TEDAM_TEST_CASE) + Constants.TEDAM_TEST_CASE.length());
 		testSetTestCaseParameters.put(Constants.TEST_SET_ID, testSetId);
 		testSetTestCaseParameters.put(Constants.TEST_CASE_ID, testCaseId);
 		return testSetTestCaseParameters;
 	}
 
 	/**
-	 * this method calculateTotalTestResult reads the values from the resultet in
-	 * the project id and returns the result.
+	 * this method calculateTotalTestResult reads the values from the resultet in the project id and returns the result.
 	 *
 	 * @param resultSet
 	 * @return <br>
@@ -518,8 +482,7 @@ public class TedamStringUtils {
 	}
 
 	/**
-	 * this method buildTestCaseResultDescription contains steps with error in
-	 * testResult and is returned.<br>
+	 * this method buildTestCaseResultDescription contains steps with error in testResult and is returned.<br>
 	 *
 	 * @param result
 	 * @param results
@@ -528,20 +491,17 @@ public class TedamStringUtils {
 	 */
 	public static String buildTestCaseResultDescription(ExecutionStatus result, List<LogoTestResult> results) {
 		StringBuilder sb = new StringBuilder();
-		if (!result.equals(ExecutionStatus.SUCCEEDED) && !result.equals(ExecutionStatus.NOTRUN)
-				&& !result.equals(ExecutionStatus.BLOCKED)) {
+		if (!result.equals(ExecutionStatus.SUCCEEDED) && !result.equals(ExecutionStatus.NOTRUN) && !result.equals(ExecutionStatus.BLOCKED)) {
 			LOGGER.info("result is either failed or cautioned.");
 			for (int i = 0; i < results.size(); i++) {
-				sb.append("TS" + results.get(i).getId() + " StepName = " + results.get(i).getName() + " Description = "
-						+ results.get(i).getDescription() + Constants.BLANK);
+				sb.append("TS" + results.get(i).getId() + " StepName = " + results.get(i).getName() + " Description = " + results.get(i).getDescription() + Constants.BLANK);
 			}
 		}
 		return sb.toString().trim();
 	}
 
 	/**
-	 * this method getListAsString is written to the given Integer list as a String
-	 * expression with a comma between them.<br>
+	 * this method getListAsString is written to the given Integer list as a String expression with a comma between them.<br>
 	 *
 	 * @param list
 	 * @return <br>
@@ -565,10 +525,9 @@ public class TedamStringUtils {
 	 * @author Tarik.Mikyas
 	 */
 	public static String getTestResultReportPath(int testSetId, int testCaseId, boolean isCreateScriptCommand) {
-		String reportHeader = isCreateScriptCommand == true ? Constants.REPORT_HEADER_SCRIPT
-				: Constants.REPORT_HEADER_RUN;
-		String testResultReportPath = PropUtils.getProperty(Constants.TEMP_FILE_PATH) + Constants.FILE_SEPARATOR
-				+ reportHeader + testSetId + Constants.REPORT_TEST_CASE + testCaseId + Constants.FILE_EXTENSION_XLS;
+		String reportHeader = isCreateScriptCommand == true ? Constants.REPORT_HEADER_SCRIPT : Constants.REPORT_HEADER_RUN;
+		String testResultReportPath = PropUtils.getProperty(Constants.TEMP_FILE_PATH) + Constants.FILE_SEPARATOR + reportHeader + testSetId + Constants.REPORT_TEST_CASE
+				+ testCaseId + Constants.FILE_EXTENSION_XLS;
 		return testResultReportPath;
 	}
 
@@ -582,8 +541,7 @@ public class TedamStringUtils {
 	 */
 	public static List<String> splitStringContentByParameter(String line, String splitParameter) {
 		List<String> stringList = new ArrayList<>();
-		StringTokenizer stringTokenizer = new StringTokenizer(line,
-				(splitParameter == Constants.EMPTY_STRING) ? Constants.BLANK : splitParameter);
+		StringTokenizer stringTokenizer = new StringTokenizer(line, (splitParameter == Constants.EMPTY_STRING) ? Constants.BLANK : splitParameter);
 		while (stringTokenizer.hasMoreElements()) {
 			stringList.add(stringTokenizer.nextElement().toString());
 		}
