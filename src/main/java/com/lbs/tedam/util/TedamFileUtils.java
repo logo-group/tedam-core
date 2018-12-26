@@ -489,7 +489,7 @@ public class TedamFileUtils {
 			} else if (file.createNewFile()) {
 				return true;
 			} else {
-				LOGGER.error("{0} {1}", filePath, FILE_NOT_FOUND);
+				LOGGER.error("CreateNewFile: {0} {1}", filePath, FILE_NOT_FOUND);
 				return false;
 			}
 		} catch (IOException e) {
@@ -515,11 +515,11 @@ public class TedamFileUtils {
 			} else if (file.mkdirs()) {
 				return;
 			} else {
-				LOGGER.error("{0} {1}", filePath, FILE_NOT_FOUND);
+				LOGGER.error("createNewFilePath: {0} {1}", filePath, FILE_NOT_FOUND);
 				throw new IOException(" File could not create! ");
 			}
 		} catch (IOException e) {
-			LOGGER.error("{0} {1}", FILE_NOT_FOUND, e);
+			LOGGER.error("createNewFilePathException: {0} {1}", FILE_NOT_FOUND, e);
 			throw new CreateNewFileException(filePath + FILE_NOT_FOUND);
 		}
 	}
