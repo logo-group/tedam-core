@@ -23,6 +23,6 @@ public class DoubleClickDTOTest {
 		String tag = doubleClick.getTag();
 		String title = doubleClick.getTitle();
 		String type = doubleClick.getType();
-		assertEquals(tag, "DC Get");
+		assertEquals("DC Get", tag);
 	}
 }
