@@ -202,7 +202,7 @@ public class FormFieldServiceImpl extends BaseServiceImpl<FormField, Integer> im
 		for (int i = 0; i < nodes.getLength(); i++) {
 			String tempType = nodes.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue();
 			// ms_UnpermittedComponentList array ignore type control in array.
-			if (Constants.unpermittedComponentList.contains(tempType)) {
+			if (Constants.getUnpermittedcomponentlist().contains(tempType)) {
 				continue;
 			}
 
@@ -252,7 +252,7 @@ public class FormFieldServiceImpl extends BaseServiceImpl<FormField, Integer> im
 			String tempType = nodes.item(i).getAttributes().getNamedItem(Constants.SNAPSHOT_CONTROL_ATTRIBUTES_TYPE).getNodeValue();
 			// Fields written in the ms_UnpermittedComponentList array should be ignored.
 			// Do not care if it is not Leaf.
-			if (Constants.unpermittedComponentList.contains(tempType) || nodes.item(i).hasChildNodes()) {
+			if (Constants.getUnpermittedcomponentlist().contains(tempType) || nodes.item(i).hasChildNodes()) {
 				continue;
 			}
 			incomingFieldList.add(fillAndGetFormFieldsWithAttributes(formDefinition, nodes.item(i).getAttributes()));

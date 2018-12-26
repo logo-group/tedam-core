@@ -156,7 +156,7 @@ public final class Constants {
 	public static final String COMBO_CONTROLTYPE_TREEGRID = "7";
 	public static final String COMBO_CONTROLTYPE_FILTERGRID = "11";
 	public static final String COMBO_CONTROLTYPE_LABEL = "101";
-	public static final List<String> unpermittedComponentList = Arrays.asList(Constants.COMBO_CONTROLTYPE_LABEL);
+	private static final List<String> unpermittedComponentList = Arrays.asList(Constants.COMBO_CONTROLTYPE_LABEL);
 	public static final String COMBO_CONTROLTYPE_TEXTEDIT = "102";
 	public static final String COMBO_CONTROLTYPE_DATEEDIT = "104";
 	public static final String COMBO_CONTROLTYPE_COMBOBOX = "106";
@@ -575,6 +575,10 @@ public final class Constants {
 	public static final String ATTR_TYPE = "type";
 
 	private Constants() {
+	}
+
+	public static List<String> getUnpermittedcomponentlist() {
+		return unpermittedComponentList;
 	}
 
 }
