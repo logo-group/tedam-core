@@ -41,78 +41,78 @@ import com.lbs.tedam.model.SnapshotValue;
 import com.lbs.tedam.test.BaseServiceTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SnapshotValueServiceImpl.class, SnapshotDefinitionServiceImpl.class, PropertyServiceImpl.class, MenuPathServiceImpl.class, TestDataConfig.class,
-        DataConfig.class})
+@SpringBootTest(classes = { SnapshotValueServiceImpl.class, SnapshotDefinitionServiceImpl.class, PropertyServiceImpl.class, MenuPathServiceImpl.class, TestDataConfig.class,
+		DataConfig.class })
 public class SnapshotValueServiceImplTest extends BaseServiceTest {
 
-    @Autowired
-    private SnapshotValueService snapshotValueService;
+	@Autowired
+	private SnapshotValueService snapshotValueService;
 
-    @Test
-    public void testFindBySnapshotDefinitionId() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueList(37, null);
-        Assert.assertNotEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void testFindBySnapshotDefinitionId() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueList(37, null);
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    public void testFindBySnapshotDefinitionIdAndRowIndexNot() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueList(37, -1);
-        Assert.assertNotEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void testFindBySnapshotDefinitionIdAndRowIndexNot() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueList(37, -1);
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    public void testFindByVersionLike() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueListByVersion("33.08");
-        Assert.assertNotEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void testFindByVersionLike() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueListByVersion("33.08");
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    public void testGetLatestVersionOfSnapshotValue() throws LocalizedException {
-        SnapshotValue snapshotVal = snapshotValueService.getLatestVersionOfSnapshotValue("197001", 37);
-        Assert.assertNotNull(snapshotVal);
-    }
+	@Test
+	public void testGetLatestVersionOfSnapshotValue() throws LocalizedException {
+		SnapshotValue snapshotVal = snapshotValueService.getLatestVersionOfSnapshotValue("197001", 37);
+		Assert.assertNotNull(snapshotVal);
+	}
 
-    @Test
-    public void testGetSnapshotValuesVersionedRowIndexEquals() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "", true);
-        Assert.assertEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void testGetSnapshotValuesVersionedRowIndexEquals() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "", true);
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    public void testGetSnapshotValuesVersionedRowIndexNotEquals() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "ROW_INDEX,RUN_ORDER", false);
-		Assert.assertEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void testGetSnapshotValuesVersionedRowIndexNotEquals() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("'2.36.6.0'", 37, "ROW_INDEX,RUN_ORDER", false);
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    public void test02GetLatestVersionOfSnapshotValue() throws LocalizedException {
-        SnapshotValue snapshotVal;
-        snapshotVal = snapshotValueService.getLatestVersionOfSnapshotValue("1001", 37);
-        assertNotNull(snapshotVal);
-    }
+	@Test
+	public void test02GetLatestVersionOfSnapshotValue() throws LocalizedException {
+		SnapshotValue snapshotVal;
+		snapshotVal = snapshotValueService.getLatestVersionOfSnapshotValue("1001", 37);
+		assertNotNull(snapshotVal);
+	}
 
-    @Test
-    public void test03GetValuesVersioned() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("2.33.08.0", 37, "ID", false);
-        Assert.assertNotEquals(snapshotValList.size(), 0);
+	@Test
+	public void test03GetValuesVersioned() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesVersioned("2.33.08.0", 37, "ID", false);
+		Assert.assertNotEquals(0, snapshotValList.size());
 
-    }
+	}
 
-    @Test
-    public void test04GetSnapshotValueListByVersion() throws LocalizedException {
-        List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueListByVersion("2.45.16.0");
-        Assert.assertNotEquals(snapshotValList.size(), 0);
-    }
+	@Test
+	public void test04GetSnapshotValueListByVersion() throws LocalizedException {
+		List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValueListByVersion("2.45.16.0");
+		Assert.assertNotEquals(0, snapshotValList.size());
+	}
 
-    @Test
-    @Transactional
-    public void testGetSnapshotValuesFromFile() throws LocalizedException {
-        try {
-            List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesFromFile("", getFilePathFromSourceName("/DifferencesSnapshots1.xml"), 37);
-            Assert.assertNotEquals(snapshotValList.size(), 0);
-        } catch (DifferencesSnapshotException e) {
-            e.printStackTrace();
-        }
-    }
+	@Test
+	@Transactional
+	public void testGetSnapshotValuesFromFile() throws LocalizedException {
+		try {
+			List<SnapshotValue> snapshotValList = snapshotValueService.getSnapshotValuesFromFile("", getFilePathFromSourceName("/DifferencesSnapshots1.xml"), 37);
+			Assert.assertNotEquals(0, snapshotValList.size());
+		} catch (DifferencesSnapshotException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
