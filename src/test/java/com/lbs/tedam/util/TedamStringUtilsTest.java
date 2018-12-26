@@ -305,17 +305,17 @@ public class TedamStringUtilsTest extends BaseServiceTest {
 
 	@Test
 	public void testGetStatus() {
-		assertEquals(TedamStringUtils.getStatus(StatusMessages.CAUTION, true), StatusMessages.CAUTION);
+		assertEquals(StatusMessages.CAUTION, TedamStringUtils.getStatus(StatusMessages.CAUTION, true));
 	}
 
 	@Test
 	public void testGetStatus1() {
-		assertEquals(TedamStringUtils.getStatus(StatusMessages.FAILED, true), StatusMessages.FAILED);
+		assertEquals(StatusMessages.FAILED, TedamStringUtils.getStatus(StatusMessages.FAILED, true));
 	}
 
 	@Test
 	public void testGetStatus2() {
-		assertEquals(TedamStringUtils.getStatus(StatusMessages.FAILED, false), StatusMessages.FAILED);
+		assertEquals(StatusMessages.FAILED, TedamStringUtils.getStatus(StatusMessages.FAILED, false));
 	}
 
 	@Test
