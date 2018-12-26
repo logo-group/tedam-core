@@ -17,12 +17,14 @@ public class DoubleClickDTOTest {
 	@Test
 	public void testGetters() {
 		DoubleClick doubleClick = new DoubleClick();
-		doubleClick.setTitle("Double Get");
 		doubleClick.setTag("DC Get");
+		doubleClick.setTitle("Double Get");
 		doubleClick.setType("Click Get");
 		String tag = doubleClick.getTag();
 		String title = doubleClick.getTitle();
 		String type = doubleClick.getType();
 		assertEquals("DC Get", tag);
+		assertEquals("Double Get", title);
+		assertEquals("Click Get", type);
 	}
 }
