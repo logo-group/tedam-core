@@ -60,7 +60,7 @@ public class FormDefinitionServiceTest extends BaseServiceTest {
     @Test
     public void testGetUpdatedFormDefinitionIdList() throws LocalizedException {
         List<Integer> list = formDefinitionService.getUpdatedFormDefinitionIdList("2.47.6.0");
-        Assert.assertEquals(list.size(), 15);
+        Assert.assertEquals(15, list.size());
     }
 
     @Test
