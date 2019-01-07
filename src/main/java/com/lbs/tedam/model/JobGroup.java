@@ -49,6 +49,9 @@ public class JobGroup extends AbstractBaseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
+	@Column(name = "IS_ACTIVE")
+	private boolean active = false;
+
 	@ManyToOne
 	@JoinColumn(name = "PROJECT_ID")
 	@Where(clause = "IS_DELETED=0")
@@ -87,6 +90,14 @@ public class JobGroup extends AbstractBaseEntity {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }
