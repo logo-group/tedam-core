@@ -17,18 +17,19 @@
 
 package com.lbs.tedam.model;
 
+import java.util.ArrayList;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import com.lbs.tedam.data.config.DataConfig;
 import com.lbs.tedam.data.service.TestDataConfig;
 import com.lbs.tedam.test.BaseServiceTest;
 import com.lbs.tedam.util.EnumsV2.CommandStatus;
 import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
 import com.lbs.tedam.util.EnumsV2.RunOrder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -48,6 +49,7 @@ public class JobRunnerDetailCommandTest extends BaseServiceTest {
         jobRunnerDetailCommand.setExecutionStatus(ExecutionStatus.CAUTION);
         jobRunnerDetailCommand.setTestCaseId(1);
         jobRunnerDetailCommand.setTestResultList(new ArrayList<>());
+		jobRunnerDetailCommand.setJobCommandId(Integer.valueOf(1));
     }
 
     @Test
@@ -64,6 +66,7 @@ public class JobRunnerDetailCommandTest extends BaseServiceTest {
         jobRunnerDetailCommand.getExecutionStatus();
         jobRunnerDetailCommand.getTestCaseId();
         jobRunnerDetailCommand.getTestResultList();
+		jobRunnerDetailCommand.getJobGroupId();
     }
 
 }

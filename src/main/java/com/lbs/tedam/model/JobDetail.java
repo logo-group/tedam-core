@@ -17,12 +17,23 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.util.EnumsV2.CommandStatus;
-import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Where;
+
+import com.lbs.tedam.util.EnumsV2.CommandStatus;
 
 /**
  * @author Tarik.Mikyas<br>
@@ -63,6 +74,9 @@ public class JobDetail extends AbstractBaseEntity {
     @JoinColumn(name = "JOB_DETAIL_ID")
     @Where(clause = "IS_DELETED=0")
     private List<JobCommand> jobCommands = new ArrayList<>();
+
+	@Transient
+	private Integer jobGroupId = null;
 
     public JobDetail() {
         // An empty constructor is needed for all beans
@@ -179,5 +193,13 @@ public class JobDetail extends AbstractBaseEntity {
         }
         return "";
     }
+
+	public Integer getJobGroupId() {
+		return jobGroupId;
+	}
+
+	public void setJobGroupId(Integer jobGroupId) {
+		this.jobGroupId = jobGroupId;
+	}
 
 }

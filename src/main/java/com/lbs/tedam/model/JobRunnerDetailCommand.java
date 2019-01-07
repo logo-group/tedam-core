@@ -17,15 +17,15 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.model.DTO.LogoTestResult;
-import com.lbs.tedam.util.EnumsV2.CommandStatus;
-import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
-import com.lbs.tedam.util.EnumsV2.RunOrder;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.lbs.tedam.model.DTO.LogoTestResult;
+import com.lbs.tedam.util.EnumsV2.CommandStatus;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
+import com.lbs.tedam.util.EnumsV2.RunOrder;
 
 public class JobRunnerDetailCommand implements Serializable {
 
@@ -50,6 +50,8 @@ public class JobRunnerDetailCommand implements Serializable {
     private ExecutionStatus executionStatus;
 
     private Integer testCaseId;
+
+	private Integer jobGroupId = null;
 
     private LocalDateTime startDate;
 
@@ -238,5 +240,13 @@ public class JobRunnerDetailCommand implements Serializable {
     public void setTestResultList(List<LogoTestResult> testResultList) {
         this.testResultList = testResultList;
     }
+
+	public Integer getJobGroupId() {
+		return jobGroupId;
+	}
+
+	public void setJobGroupId(Integer jobGroupId) {
+		this.jobGroupId = jobGroupId;
+	}
 
 }

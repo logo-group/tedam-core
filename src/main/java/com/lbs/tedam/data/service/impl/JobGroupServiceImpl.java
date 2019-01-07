@@ -48,7 +48,6 @@ public class JobGroupServiceImpl extends BaseServiceImpl<JobGroup, Integer> impl
 	public List<JobGroup> getJobGroupListByProject(Project project) throws LocalizedException {
 		List<JobGroup> jobGroupList = dao.getJobGroupList(project);
 		return jobGroupList;
-
 	}
 
 }

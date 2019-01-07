@@ -17,16 +17,17 @@
 
 package com.lbs.tedam.model;
 
-import com.lbs.tedam.data.config.DataConfig;
-import com.lbs.tedam.data.service.TestDataConfig;
-import com.lbs.tedam.test.BaseServiceTest;
-import com.lbs.tedam.util.EnumsV2.CommandStatus;
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
+import com.lbs.tedam.data.config.DataConfig;
+import com.lbs.tedam.data.service.TestDataConfig;
+import com.lbs.tedam.test.BaseServiceTest;
+import com.lbs.tedam.util.EnumsV2.CommandStatus;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TestDataConfig.class, DataConfig.class})
@@ -42,6 +43,7 @@ public class JobDetailTest extends BaseServiceTest {
         jobDetail.setTestSet(null);
         jobDetail.setTestSetId(1);
         jobDetail.setPosition(1);
+		jobDetail.setJobGroupId(Integer.valueOf(1));
     }
 
     @Test
@@ -54,6 +56,7 @@ public class JobDetailTest extends BaseServiceTest {
         jobDetail.getTestSet();
         jobDetail.getPosition();
         jobDetail.getTestSetName();
+		jobDetail.getJobGroupId();
     }
 
 }
