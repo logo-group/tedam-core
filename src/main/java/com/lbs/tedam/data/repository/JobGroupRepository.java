@@ -23,5 +23,8 @@ import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
 
 public interface JobGroupRepository extends BaseRepository<JobGroup, Integer> {
+
 	public List<JobGroup> findByProjectAndDeleted(Project project, boolean deleted);
+
+	public List<JobGroup> findByProjectAndDeletedAndActive(Project project, boolean deleted, boolean active);
 }

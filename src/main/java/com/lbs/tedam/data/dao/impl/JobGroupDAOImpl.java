@@ -56,4 +56,15 @@ public class JobGroupDAOImpl extends BaseDAOImpl<JobGroup, Integer> implements J
 		}
 	}
 
+	@Override
+	public List<JobGroup> getRunnableJobGroupList(Project project) throws LocalizedException {
+		try {
+			List<JobGroup> jobGroupList = repository.findByProjectAndDeletedAndActive(project,
+					TedamBoolean.FALSE.getBooleanValue(), TedamBoolean.TRUE.getBooleanValue());
+			return jobGroupList;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
+
 }

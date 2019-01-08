@@ -50,4 +50,10 @@ public class JobGroupServiceImpl extends BaseServiceImpl<JobGroup, Integer> impl
 		return jobGroupList;
 	}
 
+	@Override
+	public List<JobGroup> getRunnableJobGroupListByProject(Project project) throws LocalizedException {
+		List<JobGroup> jobGroupList = dao.getRunnableJobGroupList(project);
+		return jobGroupList;
+	}
+
 }

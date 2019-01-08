@@ -24,5 +24,8 @@ import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
 
 public interface JobGroupDAO extends BaseDAO<JobGroup, Integer> {
-	List<JobGroup> getJobGroupList(Project project) throws LocalizedException;
+
+	public List<JobGroup> getJobGroupList(Project project) throws LocalizedException;
+
+	public List<JobGroup> getRunnableJobGroupList(Project project) throws LocalizedException;
 }
