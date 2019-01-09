@@ -24,7 +24,7 @@ public class RunningJobException extends LocalizedException {
 	private Integer jobId;
 
 	public RunningJobException(Integer jobId) {
-		super("localized.exception.jobgroupcontainsrunningjob");
+		super("localized.exception.runningjob");
 		this.jobId = jobId;
 	}
 
