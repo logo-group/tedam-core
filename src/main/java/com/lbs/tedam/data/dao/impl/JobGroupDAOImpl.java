@@ -28,6 +28,7 @@ import com.lbs.tedam.exception.localized.GeneralLocalizedException;
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
+import com.lbs.tedam.util.EnumsV2.JobStatus;
 import com.lbs.tedam.util.EnumsV2.TedamBoolean;
 
 @Component
@@ -49,7 +50,8 @@ public class JobGroupDAOImpl extends BaseDAOImpl<JobGroup, Integer> implements J
 	@Override
 	public List<JobGroup> getJobGroupList(Project project) throws LocalizedException {
 		try {
-			List<JobGroup> jobGroupList = repository.findByProjectAndDeleted(project, TedamBoolean.FALSE.getBooleanValue());
+			List<JobGroup> jobGroupList = repository.findByProjectAndDeleted(project,
+					TedamBoolean.FALSE.getBooleanValue());
 			return jobGroupList;
 		} catch (Exception e) {
 			throw new GeneralLocalizedException(e);
@@ -61,6 +63,17 @@ public class JobGroupDAOImpl extends BaseDAOImpl<JobGroup, Integer> implements J
 		try {
 			List<JobGroup> jobGroupList = repository.findByProjectAndDeletedAndActive(project,
 					TedamBoolean.FALSE.getBooleanValue(), TedamBoolean.TRUE.getBooleanValue());
+			return jobGroupList;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
+
+	@Override
+	public List<JobGroup> getRunningJobGroupList(Project project) throws LocalizedException {
+		try {
+			List<JobGroup> jobGroupList = repository.findByProjectAndDeletedAndStatus(project,
+					TedamBoolean.FALSE.getBooleanValue(), JobStatus.STARTED);
 			return jobGroupList;
 		} catch (Exception e) {
 			throw new GeneralLocalizedException(e);

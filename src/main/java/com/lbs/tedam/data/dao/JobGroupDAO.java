@@ -28,4 +28,6 @@ public interface JobGroupDAO extends BaseDAO<JobGroup, Integer> {
 	public List<JobGroup> getJobGroupList(Project project) throws LocalizedException;
 
 	public List<JobGroup> getRunnableJobGroupList(Project project) throws LocalizedException;
+
+	public List<JobGroup> getRunningJobGroupList(Project project) throws LocalizedException;
 }

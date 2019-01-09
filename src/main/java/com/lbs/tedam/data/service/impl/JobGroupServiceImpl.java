@@ -17,6 +17,7 @@
 
 package com.lbs.tedam.data.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.lbs.tedam.data.dao.JobGroupDAO;
 import com.lbs.tedam.data.service.JobGroupService;
+import com.lbs.tedam.exception.localized.JobGroupContainsRunningJobException;
 import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
 
@@ -54,6 +57,24 @@ public class JobGroupServiceImpl extends BaseServiceImpl<JobGroup, Integer> impl
 	public List<JobGroup> getRunnableJobGroupListByProject(Project project) throws LocalizedException {
 		List<JobGroup> jobGroupList = dao.getRunnableJobGroupList(project);
 		return jobGroupList;
+	}
+
+	@Override
+	public void checkForRunningJobGroups(JobGroup entity, Project project) throws LocalizedException {
+		List<JobGroup> runningJobGroupList = dao.getRunningJobGroupList(project);
+		List<Integer> jobIdList = new ArrayList<>();
+		for (Job job : entity.getJobs()) {
+			jobIdList.add(job.getId());
+		}
+		for (JobGroup jobGroup : runningJobGroupList) {
+			if (jobGroup.equals(entity) == false) {
+				for (Job job : jobGroup.getJobs()) {
+					if (jobIdList.contains(job.getId())) {
+						throw new JobGroupContainsRunningJobException(jobGroup.getId(), job.getId());
+					}
+				}
+			}
+		}
 	}
 
 }

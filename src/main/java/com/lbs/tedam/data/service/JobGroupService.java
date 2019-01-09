@@ -28,4 +28,6 @@ public interface JobGroupService extends BaseService<JobGroup, Integer> {
 	public List<JobGroup> getJobGroupListByProject(Project project) throws LocalizedException;
 
 	public List<JobGroup> getRunnableJobGroupListByProject(Project project) throws LocalizedException;
+
+	public void checkForRunningJobGroups(JobGroup entity, Project project) throws LocalizedException;
 }
