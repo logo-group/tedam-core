@@ -17,34 +17,36 @@
 
 package com.lbs.tedam.data.dao;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import com.lbs.tedam.exception.localized.LocalizedException;
 import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.util.EnumsV2.JobStatus;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Canberk.Erkmen
  */
 public interface JobDAO extends BaseDAO<Job, Integer> {
 
-    List<Job> getJobList(Project project) throws LocalizedException;
+	List<Job> getJobList(Project project) throws LocalizedException;
 
-    List<Job> getCIJobList(Project project) throws LocalizedException;
+	List<Job> getCIJobList(Project project) throws LocalizedException;
 
-    List<Job> getRunnableJobList(Project project) throws LocalizedException;
+	List<Job> getRunnableJobList(Project project) throws LocalizedException;
 
-    void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate)
-            throws LocalizedException;
+	void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate,
+			LocalDateTime lastExecutedEndDate) throws LocalizedException;
 
-    public void resetJob(Integer jobId) throws LocalizedException;
+	public void resetJob(Integer jobId) throws LocalizedException;
 
-    public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException;
+	public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException;
 
-    public List<Job> getJobListByClientId(Integer clientId) throws LocalizedException;
+	public List<Job> getJobListByClientId(Integer clientId) throws LocalizedException;
 
-    public void resetJobPlannedDate(Integer jobId) throws LocalizedException;
+	public void resetJobPlannedDate(Integer jobId) throws LocalizedException;
+
+	public List<Integer> getJobIdListForJobGroup(Project project) throws LocalizedException;
 
 }

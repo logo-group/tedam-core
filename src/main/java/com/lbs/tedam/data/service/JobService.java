@@ -56,4 +56,6 @@ public interface JobService extends BaseService<Job, Integer> {
 
 	public void checkJobForEmptyValues(Job entity) throws LocalizedException;
 
+	public List<Integer> getJobIdListForJobGroup(Project project) throws LocalizedException;
+
 }

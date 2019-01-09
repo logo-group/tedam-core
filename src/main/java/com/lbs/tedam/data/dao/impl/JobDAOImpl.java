@@ -17,6 +17,12 @@
 
 package com.lbs.tedam.data.dao.impl;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.lbs.tedam.data.dao.JobDAO;
 import com.lbs.tedam.data.repository.JobRepository;
 import com.lbs.tedam.exception.localized.GeneralLocalizedException;
@@ -25,11 +31,6 @@ import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.util.EnumsV2.JobStatus;
 import com.lbs.tedam.util.EnumsV2.TedamBoolean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Canberk.Erkmen
@@ -37,59 +38,62 @@ import java.util.List;
 @Component
 public class JobDAOImpl extends BaseDAOImpl<Job, Integer> implements JobDAO {
 
-    /**
-     * long serialVersionUID
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * long serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private transient JobRepository repository;
+	private transient JobRepository repository;
 
-    @Autowired
-    public void setRepository(JobRepository repository) {
-        this.repository = repository;
-        super.setRepository(repository);
-    }
+	@Autowired
+	public void setRepository(JobRepository repository) {
+		this.repository = repository;
+		super.setRepository(repository);
+	}
 
-    @Override
-    public List<Job> getJobList(Project project) throws LocalizedException {
-        try {
-            List<Job> jobList = repository.findByProjectAndDeleted(project, TedamBoolean.FALSE.getBooleanValue());
-            return jobList;
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public List<Job> getJobList(Project project) throws LocalizedException {
+		try {
+			List<Job> jobList = repository.findByProjectAndDeleted(project, TedamBoolean.FALSE.getBooleanValue());
+			return jobList;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public List<Job> getCIJobList(Project project) throws LocalizedException {
-        try {
-            List<Job> jobList = repository.findByProjectAndDeletedAndCi(project, TedamBoolean.FALSE.getBooleanValue(), TedamBoolean.TRUE.getBooleanValue());
-            return jobList;
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public List<Job> getCIJobList(Project project) throws LocalizedException {
+		try {
+			List<Job> jobList = repository.findByProjectAndDeletedAndCi(project, TedamBoolean.FALSE.getBooleanValue(),
+					TedamBoolean.TRUE.getBooleanValue());
+			return jobList;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public List<Job> getRunnableJobList(Project project) throws LocalizedException {
-        try {
-            List<Job> jobList = repository.findByProjectAndDeletedAndActive(project, TedamBoolean.FALSE.getBooleanValue(), TedamBoolean.TRUE.getBooleanValue());
-            return jobList;
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public List<Job> getRunnableJobList(Project project) throws LocalizedException {
+		try {
+			List<Job> jobList = repository.findByProjectAndDeletedAndActive(project,
+					TedamBoolean.FALSE.getBooleanValue(), TedamBoolean.TRUE.getBooleanValue());
+			return jobList;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate)
-            throws LocalizedException {
-        try {
-            repository.updateJobStatusAndExecutedDateByJobId(jobId, jobStatus, lastExecutedStartDate, lastExecutedEndDate);
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
-    
+	@Override
+	public void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus,
+			LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate) throws LocalizedException {
+		try {
+			repository.updateJobStatusAndExecutedDateByJobId(jobId, jobStatus, lastExecutedStartDate,
+					lastExecutedEndDate);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
+
 	@Override
 	public void resetJobPlannedDate(Integer jobId) throws LocalizedException {
 		try {
@@ -99,46 +103,55 @@ public class JobDAOImpl extends BaseDAOImpl<Job, Integer> implements JobDAO {
 		}
 	}
 
-    @Override
-    public void deleteByLogic(Integer id) throws LocalizedException {
-        try {
-            Job job = getById(id);
-            job.getJobDetails().forEach(jobDetail -> jobDetail.setDeleted(TedamBoolean.TRUE.getBooleanValue()));
-            job.setDeleted(TedamBoolean.TRUE.getBooleanValue());
-            job.setDateUpdated(LocalDateTime.now());
-            repository.save(job);
-        } catch (LocalizedException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public void deleteByLogic(Integer id) throws LocalizedException {
+		try {
+			Job job = getById(id);
+			job.getJobDetails().forEach(jobDetail -> jobDetail.setDeleted(TedamBoolean.TRUE.getBooleanValue()));
+			job.setDeleted(TedamBoolean.TRUE.getBooleanValue());
+			job.setDateUpdated(LocalDateTime.now());
+			repository.save(job);
+		} catch (LocalizedException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public void resetJob(Integer jobId) throws LocalizedException {
-        try {
-            repository.resetJob(jobId);
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public void resetJob(Integer jobId) throws LocalizedException {
+		try {
+			repository.resetJob(jobId);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException {
-        try {
-            return repository.getJobIdListByEnvironmentId(environmentId);
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public List<Integer> getJobIdListByEnvironmentId(Integer environmentId) throws LocalizedException {
+		try {
+			return repository.getJobIdListByEnvironmentId(environmentId);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
-    @Override
-    public List<Job> getJobListByClientId(Integer clientId) throws LocalizedException {
-        try {
-            return repository.findByClientsId(clientId);
-        } catch (Exception e) {
-            throw new GeneralLocalizedException(e);
-        }
-    }
+	@Override
+	public List<Job> getJobListByClientId(Integer clientId) throws LocalizedException {
+		try {
+			return repository.findByClientsId(clientId);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
+
+	@Override
+	public List<Integer> getJobIdListForJobGroup(Project project) throws LocalizedException {
+		try {
+			return repository.getJobIdListForJobGroup(project);
+		} catch (Exception e) {
+			throw new GeneralLocalizedException(e);
+		}
+	}
 
 }

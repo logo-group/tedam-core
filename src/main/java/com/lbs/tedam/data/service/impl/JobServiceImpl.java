@@ -212,4 +212,9 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 		dao.resetJobPlannedDate(jobId);
 	}
 
+	@Override
+	public List<Integer> getJobIdListForJobGroup(Project project) throws LocalizedException {
+		return dao.getJobIdListForJobGroup(project);
+	}
+
 }
