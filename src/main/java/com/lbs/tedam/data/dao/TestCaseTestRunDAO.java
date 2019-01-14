@@ -17,16 +17,16 @@
 
 package com.lbs.tedam.data.dao;
 
+import java.util.List;
+
 import com.lbs.tedam.exception.localized.GeneralLocalizedException;
 import com.lbs.tedam.model.TestCaseTestRun;
-
-import java.util.List;
 
 public interface TestCaseTestRunDAO extends BaseDAO<TestCaseTestRun, Integer> {
 
     public List<TestCaseTestRun> findByTestCaseIdRange(Integer testCaseIdStart, Integer testCaseIdEnd, boolean deleted)
             throws GeneralLocalizedException;
 
-    public List<TestCaseTestRun> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
+	public List<Object[]> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
             throws GeneralLocalizedException;
 }

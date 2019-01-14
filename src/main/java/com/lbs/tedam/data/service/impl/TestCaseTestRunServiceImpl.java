@@ -17,14 +17,15 @@
 
 package com.lbs.tedam.data.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.lbs.tedam.data.dao.TestCaseTestRunDAO;
 import com.lbs.tedam.data.service.TestCaseTestRunService;
 import com.lbs.tedam.exception.localized.GeneralLocalizedException;
 import com.lbs.tedam.model.TestCaseTestRun;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TestCaseTestRunServiceImpl extends BaseServiceImpl<TestCaseTestRun, Integer>
@@ -50,7 +51,7 @@ public class TestCaseTestRunServiceImpl extends BaseServiceImpl<TestCaseTestRun,
     }
 
     @Override
-    public List<TestCaseTestRun> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
+	public List<Object[]> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
             throws GeneralLocalizedException {
         return dao.findByTestSetIdRange(testSetIdStart, testSetIdEnd, deleted);
     }

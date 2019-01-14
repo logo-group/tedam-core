@@ -17,10 +17,10 @@
 
 package com.lbs.tedam.data.service;
 
+import java.util.List;
+
 import com.lbs.tedam.exception.localized.GeneralLocalizedException;
 import com.lbs.tedam.model.TestCaseTestRun;
-
-import java.util.List;
 
 /**
  * @author Canberk.Erkmen
@@ -30,7 +30,7 @@ public interface TestCaseTestRunService extends BaseService<TestCaseTestRun, Int
     public List<TestCaseTestRun> findByTestCaseIdRange(Integer testCaseIdStart, Integer testCaseIdEnd, boolean deleted)
             throws GeneralLocalizedException;
 
-    public List<TestCaseTestRun> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
+	public List<Object[]> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
             throws GeneralLocalizedException;
 
 }
