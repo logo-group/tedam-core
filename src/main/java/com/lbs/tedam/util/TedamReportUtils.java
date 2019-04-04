@@ -17,9 +17,12 @@
 
 package com.lbs.tedam.util;
 
-import com.lbs.tedam.model.TestReport;
-import com.lbs.tedam.util.Enums.StatusMessages;
-import com.lbs.tedam.util.Enums.TedamLogLevel;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -29,11 +32,9 @@ import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.lbs.tedam.model.TestReport;
+import com.lbs.tedam.util.Enums.StatusMessages;
+import com.lbs.tedam.util.Enums.TedamLogLevel;
 
 public class TedamReportUtils {
 
@@ -100,12 +101,21 @@ public class TedamReportUtils {
 
 	private void loopOnSourceLines(String headerCompareTwoPDFFile, String pdfTargetFormName,
 			List<TestReport> reportList, int i, String[] sourceLines, String[] targetLines) {
-		for (int j = 0; j < sourceLines.length; j++) {
-		    LinkedList<Diff> diffList = new DiffMatchPatch().diffMain(sourceLines[j], targetLines[j]);
-		    if (diffList.size() > 0) {
-		        loopOnDiff(headerCompareTwoPDFFile, pdfTargetFormName, reportList, i, j, diffList);
+		if (sourceLines.length != targetLines.length) {
+			TestReport testReport = createTestReport(
+					"", pdfTargetFormName, "Different line count in page " + (i + 1) + " -> SourceLines # : "
+							+ sourceLines.length + " TargetLines # : " + targetLines.length,
+					StatusMessages.FAILED.getStatus());
+			reportList.add(testReport);
+		} else {
 
-		    }
+			for (int j = 0; j < sourceLines.length; j++) {
+				LinkedList<Diff> diffList = new DiffMatchPatch().diffMain(sourceLines[j], targetLines[j]);
+				if (diffList.size() > 0) {
+					loopOnDiff(headerCompareTwoPDFFile, pdfTargetFormName, reportList, i, j, diffList);
+
+				}
+			}
 		}
 	}
 
