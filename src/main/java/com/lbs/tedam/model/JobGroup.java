@@ -17,6 +17,7 @@
 
 package com.lbs.tedam.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Where;
+
+import com.lbs.tedam.util.EnumsV2.JobStatus;
 
 @Entity
 @Where(clause = "IS_DELETED=0")
@@ -48,6 +51,20 @@ public class JobGroup extends AbstractBaseEntity {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+
+	@Column(name = "IS_ACTIVE")
+	private boolean active = false;
+
+	@Column(name = "STATUS")
+	private JobStatus status = JobStatus.NOT_STARTED;
+
+	@Column(name = "LAST_EXECUTED_START_DATE")
+	private LocalDateTime lastExecutedStartDate;
+
+	@ManyToOne
+	@JoinColumn(name = "LAST_EXECUTING_USER_ID")
+	@Where(clause = "IS_DELETED=0")
+	private TedamUser lastExecutingUser;
 
 	@ManyToOne
 	@JoinColumn(name = "PROJECT_ID")
@@ -87,6 +104,38 @@ public class JobGroup extends AbstractBaseEntity {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public void setStatus(JobStatus status) {
+		this.status = status;
+	}
+
+	public JobStatus getStatus() {
+		return status;
+	}
+
+	public LocalDateTime getLastExecutedStartDate() {
+		return lastExecutedStartDate;
+	}
+
+	public void setLastExecutedStartDate(LocalDateTime lastExecutedStartDate) {
+		this.lastExecutedStartDate = lastExecutedStartDate;
+	}
+
+	public TedamUser getLastExecutingUser() {
+		return lastExecutingUser;
+	}
+
+	public void setLastExecutingUser(TedamUser lastExecutingUser) {
+		this.lastExecutingUser = lastExecutingUser;
 	}
 
 }

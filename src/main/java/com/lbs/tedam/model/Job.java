@@ -98,6 +98,9 @@ public class Job extends AbstractBaseEntity {
 
 	@Column(name = "IS_RUN_EVERY_DAY")
 	private boolean runEveryDay = false;
+	
+	@Transient
+	private Integer jobGroupId = null;
 
     /**
      * Environment jobEnvironment
@@ -333,6 +336,14 @@ public class Job extends AbstractBaseEntity {
 
 	public void setRunEveryDay(boolean runEveryDay) {
 		this.runEveryDay = runEveryDay;
+	}
+
+	public Integer getJobGroupId() {
+		return jobGroupId;
+	}
+
+	public void setJobGroupId(Integer jobGroupId) {
+		this.jobGroupId = jobGroupId;
 	}
 
 }

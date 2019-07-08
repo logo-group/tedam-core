@@ -17,21 +17,34 @@
 
 package com.lbs.tedam.data.service.impl;
 
-import com.lbs.tedam.data.service.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lbs.tedam.data.service.JobCommandService;
+import com.lbs.tedam.data.service.JobParameterService;
+import com.lbs.tedam.data.service.JobRunnerDetailCommandService;
+import com.lbs.tedam.data.service.TestCaseService;
+import com.lbs.tedam.data.service.TestCaseTestRunService;
 import com.lbs.tedam.exception.VersionParameterValueException;
 import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.model.Job;
+import com.lbs.tedam.model.JobCommand;
+import com.lbs.tedam.model.JobDetail;
+import com.lbs.tedam.model.JobParameter;
+import com.lbs.tedam.model.JobParameterValue;
+import com.lbs.tedam.model.JobRunnerDetailCommand;
+import com.lbs.tedam.model.TestCaseTestRun;
+import com.lbs.tedam.model.TestStep;
+import com.lbs.tedam.model.TestStepTestRun;
 import com.lbs.tedam.model.DTO.LogoTestResult;
-import com.lbs.tedam.model.*;
 import com.lbs.tedam.util.Constants;
 import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
 import com.lbs.tedam.util.EnumsV2.TestRunType;
 import com.lbs.tedam.util.TedamStringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class JobRunnerDetailCommandServiceImpl implements JobRunnerDetailCommandService {
@@ -63,6 +76,7 @@ public class JobRunnerDetailCommandServiceImpl implements JobRunnerDetailCommand
             jobRunnerDetailCommand.setUnixCommand(jobCommand.getUnixCommand());
             jobRunnerDetailCommand.setExecutionStatus(jobCommand.getExecutionStatus());
             jobRunnerDetailCommand.setTestCaseId(jobCommand.getTestCase().getId());
+			jobRunnerDetailCommand.setJobGroupId(jobDetail.getJobGroupId());
             jobRunnerDetailCommandList.add(jobRunnerDetailCommand);
         }
         return jobRunnerDetailCommandList;

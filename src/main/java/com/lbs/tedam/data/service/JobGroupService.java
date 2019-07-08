@@ -24,5 +24,13 @@ import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
 
 public interface JobGroupService extends BaseService<JobGroup, Integer> {
-	List<JobGroup> getJobGroupListByProject(Project project) throws LocalizedException;
+
+	public List<JobGroup> getJobGroupListByProject(Project project) throws LocalizedException;
+
+	public List<JobGroup> getRunnableJobGroupListByProject(Project project) throws LocalizedException;
+
+	public void checkForRunningJobGroups(JobGroup entity, Project project) throws LocalizedException;
+
+	public void checkForRunningJobs(JobGroup entity, List<Integer> jobIdListForJobGroup) throws LocalizedException;
+
 }

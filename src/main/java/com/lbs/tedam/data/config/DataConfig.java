@@ -35,96 +35,103 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import com.lbs.tedam.data.DbConnectionInfo;
 
 /**
- * This class is configuration class for data management. Database connection, data source, entity and adapter beans are in this class. Looks up package
- * com.lbs.tedam.data.repository for repository operations and package com.lbs.tedam.data.dao for DAO implementations.
+ * This class is configuration class for data management. Database connection,
+ * data source, entity and adapter beans are in this class. Looks up package
+ * com.lbs.tedam.data.repository for repository operations and package
+ * com.lbs.tedam.data.dao for DAO implementations.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.lbs.tedam.data.repository"})
-@ComponentScan(basePackages = {"com.lbs.tedam.data.dao"})
+@EnableJpaRepositories(basePackages = { "com.lbs.tedam.data.repository" })
+@ComponentScan(basePackages = { "com.lbs.tedam.data.dao" })
 public class DataConfig {
 
-    /**
-     * Creates a data source based on connection info given by parameter.
-     *
-     * @param connectionInfo Database connection info to create data source instance.
-     * @return New data source instance.
-     */
-    @Bean
-    public DataSource dataSource(DbConnectionInfo connectionInfo) {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(connectionInfo.getDriverClassName());
-        dataSource.setUrl(connectionInfo.getUrl());
-        dataSource.setUsername(connectionInfo.getUserName());
-        dataSource.setPassword(connectionInfo.getPass());
-        return dataSource;
-    }
+	/**
+	 * Creates a data source based on connection info given by parameter.
+	 *
+	 * @param connectionInfo Database connection info to create data source
+	 *                       instance.
+	 * @return New data source instance.
+	 */
+	@Bean
+	public DataSource dataSource(DbConnectionInfo connectionInfo) {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(connectionInfo.getDriverClassName());
+		dataSource.setUrl(connectionInfo.getUrl());
+		dataSource.setUsername(connectionInfo.getUserName());
+		dataSource.setPassword(connectionInfo.getPass());
+		return dataSource;
+	}
 
-    /**
-     * Creates entity manager factory based on data source and adapter.
-     *
-     * @param dataSource           Data source instance to connect database.
-     * @param adapter              JPA adapter.
-     * @param additionalProperties Additional properties.
-     * @return New LocalContainerEntityManagerFactoryBean instance.
-     */
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter, Properties additionalProperties) {
-        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource);
-        emf.setPackagesToScan("com.lbs.tedam.model", "com.lbs.tedam.util");
-        emf.setJpaVendorAdapter(adapter);
-        emf.setJpaProperties(additionalProperties);
-        return emf;
-    }
+	/**
+	 * Creates entity manager factory based on data source and adapter.
+	 *
+	 * @param dataSource           Data source instance to connect database.
+	 * @param adapter              JPA adapter.
+	 * @param additionalProperties Additional properties.
+	 * @return New LocalContainerEntityManagerFactoryBean instance.
+	 */
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter,
+			Properties additionalProperties) {
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+		emf.setDataSource(dataSource);
+		emf.setPackagesToScan("com.lbs.tedam.model", "com.lbs.tedam.util");
+		emf.setJpaVendorAdapter(adapter);
+		emf.setJpaProperties(additionalProperties);
+		return emf;
+	}
 
-    /**
-     * Creates additional properties.
-     *
-     * @return Singleton Properties instance.
-     */
-    @Bean
-    @ConfigurationProperties
-    public Properties additionalProperties(DbConnectionInfo connectionInfo) {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", connectionInfo.getDialect());
-        properties.setProperty("hibernate.current_session_context_class", "thread");
-        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
-        properties.setProperty("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
-        properties.setProperty("hibernate.hikari.dataSourceClassName", connectionInfo.getDataSource());
-        properties.setProperty("hibernate.hikari.dataSource.url", connectionInfo.getUrl());
-        properties.setProperty("hibernate.hikari.dataSource.user", connectionInfo.getUserName());
-        properties.setProperty("hibernate.hikari.dataSource.password", connectionInfo.getPass());
-		properties.setProperty("hibernate.hikari.maximumPoolSize", "1");
-        properties.setProperty("hibernate.hikari.connectionTimeout", "30000");
-        properties.setProperty("hibernate.hikari.maxLifetime", "600000");
-        properties.setProperty("hibernate.hbm2ddl.auto", connectionInfo.getDdlMode());
-        properties.setProperty("hibernate.show_sql", connectionInfo.getShowSql());
-        return properties;
-    }
+	/**
+	 * Creates additional properties.
+	 *
+	 * @return Singleton Properties instance.
+	 */
+	@Bean
+	@ConfigurationProperties
+	public Properties additionalProperties(DbConnectionInfo connectionInfo) {
+		Properties properties = new Properties();
+		properties.setProperty("hibernate.dialect", connectionInfo.getDialect());
+		properties.setProperty("hibernate.current_session_context_class", "thread");
+		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+		properties.setProperty("hibernate.connection.provider_class",
+				"org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
+		properties.setProperty("hibernate.hikari.dataSourceClassName", connectionInfo.getDataSource());
+		properties.setProperty("hibernate.hikari.dataSource.url", connectionInfo.getUrl());
+		properties.setProperty("hibernate.hikari.dataSource.user", connectionInfo.getUserName());
+		properties.setProperty("hibernate.hikari.dataSource.password", connectionInfo.getPass());
+		properties.setProperty("hibernate.hikari.maximumPoolSize", "1"); // change to 50 for production mode.
+		properties.setProperty("hibernate.hikari.connectionTimeout", "30000");
+		properties.setProperty("hibernate.hikari.maxLifetime", "600000");
+		properties.setProperty("hibernate.hbm2ddl.auto", connectionInfo.getDdlMode());
+		properties.setProperty("hibernate.show_sql", connectionInfo.getShowSql());
+		return properties;
+	}
 
-    /**
-     * Creates a JPA vendor adapter. Default is HibernateJpaVendorAdapter.
-     *
-     * @return New JpaVendorAdapter instance.
-     */
-    @Bean
-    public JpaVendorAdapter adapter() {
-        JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        return adapter;
-    }
+	/**
+	 * Creates a JPA vendor adapter. Default is HibernateJpaVendorAdapter.
+	 *
+	 * @return New JpaVendorAdapter instance.
+	 */
+	@Bean
+	public JpaVendorAdapter adapter() {
+		JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+		return adapter;
+	}
 
-    /**
-     * Creates a JpaTransactionManager instance based on given parameters.
-     *
-     * @param dataSource           Data source instance to connect database.
-     * @param entityManagerFactory LocalContainerEntityManagerFactoryBean instance for entity operations.
-     * @return New JpaTransactionManager instance.
-     */
-    @Bean
-    public JpaTransactionManager transactionManager(DataSource dataSource, LocalContainerEntityManagerFactoryBean entityManagerFactory) {
-        JpaTransactionManager jtm = new JpaTransactionManager();
-        jtm.setEntityManagerFactory(entityManagerFactory.getObject());
-        return jtm;
-    }
+	/**
+	 * Creates a JpaTransactionManager instance based on given parameters.
+	 *
+	 * @param dataSource           Data source instance to connect database.
+	 * @param entityManagerFactory LocalContainerEntityManagerFactoryBean instance
+	 *                             for entity operations.
+	 * @return New JpaTransactionManager instance.
+	 */
+	@Bean
+	public JpaTransactionManager transactionManager(DataSource dataSource,
+			LocalContainerEntityManagerFactoryBean entityManagerFactory) {
+		JpaTransactionManager jtm = new JpaTransactionManager();
+		jtm.setEntityManagerFactory(entityManagerFactory.getObject());
+		return jtm;
+	}
 
 }

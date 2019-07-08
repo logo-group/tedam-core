@@ -57,6 +57,7 @@ public class JobTest extends BaseServiceTest {
 		job.setPlannedDate(null);
 		job.setNotificationGroup(new NotificationGroup());
 		job.setLastExecutingUser(new TedamUser());
+		job.setJobGroupId(Integer.valueOf(1));
     }
 
     @Test
@@ -79,6 +80,7 @@ public class JobTest extends BaseServiceTest {
 		job.getLastExecutingUser();
 		job.getLastExecutingUserName();
 		job.getJobEnvironmentName();
+		job.getJobGroupId();
 
         assertTrue(job.getExecutionDuration().isEmpty());
         job.setLastExecutedStartDate(LocalDateTime.of(LocalDate.now(), LocalTime.of(10, 10)));

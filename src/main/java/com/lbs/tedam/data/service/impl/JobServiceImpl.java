@@ -167,7 +167,8 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 		}
 	}
 
-	private void checkJobForEmptyValues(Job entity) throws LocalizedException {
+	@Override
+	public void checkJobForEmptyValues(Job entity) throws LocalizedException {
 		List<JobDetail> jobDetails = entity.getJobDetails();
 		if (jobDetails.size() == 0) {
 			throw new EmptyJobDetailException();
@@ -209,6 +210,11 @@ public class JobServiceImpl extends BaseServiceImpl<Job, Integer> implements Job
 	@Override
 	public void resetJobPlannedDate(Integer jobId) throws LocalizedException {
 		dao.resetJobPlannedDate(jobId);
+	}
+
+	@Override
+	public List<Integer> getJobIdListForJobGroup(Project project) throws LocalizedException {
+		return dao.getJobIdListForJobGroup(project);
 	}
 
 }

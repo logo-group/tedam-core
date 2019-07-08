@@ -17,6 +17,7 @@
 
 package com.lbs.tedam.data.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,10 @@ import org.springframework.stereotype.Service;
 
 import com.lbs.tedam.data.dao.JobGroupDAO;
 import com.lbs.tedam.data.service.JobGroupService;
+import com.lbs.tedam.exception.localized.JobGroupContainsRunningJobException;
 import com.lbs.tedam.exception.localized.LocalizedException;
+import com.lbs.tedam.exception.localized.RunningJobException;
+import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
 
@@ -48,7 +52,56 @@ public class JobGroupServiceImpl extends BaseServiceImpl<JobGroup, Integer> impl
 	public List<JobGroup> getJobGroupListByProject(Project project) throws LocalizedException {
 		List<JobGroup> jobGroupList = dao.getJobGroupList(project);
 		return jobGroupList;
+	}
 
+	@Override
+	public List<JobGroup> getRunnableJobGroupListByProject(Project project) throws LocalizedException {
+		List<JobGroup> jobGroupList = dao.getRunnableJobGroupList(project);
+		return jobGroupList;
+	}
+
+	@Override
+	public void checkForRunningJobs(JobGroup entity, List<Integer> jobIdListForJobGroup) throws LocalizedException {
+		if (jobIdListForJobGroup != null && jobIdListForJobGroup.size() > 0) {
+			for (Job job : entity.getJobs()) {
+				if (jobIdListForJobGroup.contains(job.getId())) {
+					throw new RunningJobException(job.getId());
+				}
+			}
+		}
+	}
+
+	@Override
+	public void checkForRunningJobGroups(JobGroup entity, Project project) throws LocalizedException {
+		List<JobGroup> runningJobGroupList = dao.getRunningJobGroupList(project);
+		List<Integer> jobIdList = findJobIdList(entity);
+		checkForRunningJobGroups(entity, runningJobGroupList, jobIdList);
+	}
+
+	private List<Integer> findJobIdList(JobGroup entity) {
+		List<Integer> jobIdList = new ArrayList<>();
+		for (Job job : entity.getJobs()) {
+			jobIdList.add(job.getId());
+		}
+		return jobIdList;
+	}
+
+	private void checkForRunningJobGroups(JobGroup entity, List<JobGroup> runningJobGroupList, List<Integer> jobIdList)
+			throws JobGroupContainsRunningJobException {
+		for (JobGroup jobGroup : runningJobGroupList) {
+			if (jobGroup.equals(entity) == false) {
+				checkForRunningJobs(jobIdList, jobGroup);
+			}
+		}
+	}
+
+	private void checkForRunningJobs(List<Integer> jobIdList, JobGroup jobGroup)
+			throws JobGroupContainsRunningJobException {
+		for (Job job : jobGroup.getJobs()) {
+			if (jobIdList.contains(job.getId())) {
+				throw new JobGroupContainsRunningJobException(jobGroup.getId(), job.getId());
+			}
+		}
 	}
 
 }

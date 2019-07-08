@@ -33,10 +33,10 @@ import com.lbs.tedam.exception.localized.TestSetDeleteException;
 import com.lbs.tedam.model.JobDetail;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.model.TedamFolder;
-import com.lbs.tedam.model.TestCaseTestRun;
 import com.lbs.tedam.model.TestSet;
 import com.lbs.tedam.util.Constants;
 import com.lbs.tedam.util.EnumsV2.CommandStatus;
+import com.lbs.tedam.util.EnumsV2.ExecutionStatus;
 import com.lbs.tedam.util.EnumsV2.TedamBoolean;
 import com.lbs.tedam.util.EnumsV2.TedamFolderType;
 import com.lbs.tedam.util.TedamStringUtils;
@@ -100,13 +100,15 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		if (size > 0) {
 			Integer endId = testSetList.get(0).getId();
 			Integer startId = testSetList.get(size - 1).getId();
-			List<TestCaseTestRun> runList = testCaseRunService.findByTestSetIdRange(startId, endId, TedamBoolean.FALSE.getBooleanValue());
+			List<Object[]> runList = testCaseRunService.findByTestSetIdRange(startId, endId,
+					TedamBoolean.FALSE.getBooleanValue());
 			List<Object[]> testSetTestCaseList = dao.findByTestSetIdRange(startId, endId, TedamBoolean.FALSE.getBooleanValue());
 			countTestCaseStatus(testSetList, testSetTestCaseList, runList);
 		}
 	}
 
-	private void countTestCaseStatus(List<TestSet> testSetList, List<Object[]> testSetTestCaseList, List<TestCaseTestRun> runList) {
+	private void countTestCaseStatus(List<TestSet> testSetList, List<Object[]> testSetTestCaseList,
+			List<Object[]> runList) {
 		int[] countArray = new int[5];
 		for (TestSet testSet : testSetList) {
 
@@ -126,7 +128,8 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		}
 	}
 
-	private void testSetTestCaseLoop(List<Object[]> testSetTestCaseList, List<TestCaseTestRun> runList, int[] countArray, TestSet testSet) {
+	private void testSetTestCaseLoop(List<Object[]> testSetTestCaseList, List<Object[]> runList, int[] countArray,
+			TestSet testSet) {
 		for (Object[] testSetTestCase : testSetTestCaseList) {
 			Integer testSetId = (Integer) testSetTestCase[0];
 			if (!testSetId.equals(testSet.getId())) {
@@ -137,10 +140,10 @@ public class TestSetServiceImpl extends BaseServiceImpl<TestSet, Integer> implem
 		}
 	}
 
-	private void countArrayLoop(List<TestCaseTestRun> runList, int[] countArray, Integer testSetId, Integer testCaseId) {
-		for (TestCaseTestRun run : runList) {
-			if (testSetId.equals(run.getTestSetId()) && testCaseId.equals(run.getTestCaseId())) {
-				switch (run.getExecutionStatus()) {
+	private void countArrayLoop(List<Object[]> runList, int[] countArray, Integer testSetId, Integer testCaseId) {
+		for (Object[] array : runList) {
+			if (testSetId.equals(array[1]) && testCaseId.equals(array[2])) {
+				switch ((ExecutionStatus) array[3]) {
 				case FAILED:
 					countArray[0] = countArray[0] + 1;
 					break;

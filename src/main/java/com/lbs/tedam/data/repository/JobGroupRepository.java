@@ -21,7 +21,13 @@ import java.util.List;
 
 import com.lbs.tedam.model.JobGroup;
 import com.lbs.tedam.model.Project;
+import com.lbs.tedam.util.EnumsV2.JobStatus;
 
 public interface JobGroupRepository extends BaseRepository<JobGroup, Integer> {
+
 	public List<JobGroup> findByProjectAndDeleted(Project project, boolean deleted);
+
+	public List<JobGroup> findByProjectAndDeletedAndActive(Project project, boolean deleted, boolean active);
+
+	public List<JobGroup> findByProjectAndDeletedAndStatus(Project project, boolean deleted, JobStatus jobStatus);
 }

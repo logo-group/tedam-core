@@ -15,22 +15,24 @@
  * the License.
  */
 
-package com.lbs.tedam.data.service;
+package com.lbs.tedam.exception.localized;
 
-import java.util.List;
+public class JobGroupContainsRunningJobException extends LocalizedException {
 
-import com.lbs.tedam.exception.localized.GeneralLocalizedException;
-import com.lbs.tedam.model.TestCaseTestRun;
+	private static final long serialVersionUID = 1L;
 
-/**
- * @author Canberk.Erkmen
- */
-public interface TestCaseTestRunService extends BaseService<TestCaseTestRun, Integer> {
+	private Integer jobGroupId;
+	private Integer jobId;
 
-    public List<TestCaseTestRun> findByTestCaseIdRange(Integer testCaseIdStart, Integer testCaseIdEnd, boolean deleted)
-            throws GeneralLocalizedException;
+	public JobGroupContainsRunningJobException(Integer jobGroupId, Integer jobId) {
+		super("localized.exception.jobgroupcontainsrunningjob");
+		this.jobGroupId = jobGroupId;
+		this.jobId = jobId;
+	}
 
-	public List<Object[]> findByTestSetIdRange(Integer testSetIdStart, Integer testSetIdEnd, boolean deleted)
-            throws GeneralLocalizedException;
+	@Override
+	public String getLocalizedMessage() {
+		return super.getLocalizedMessage() + String.valueOf(jobGroupId) + ", " + String.valueOf(jobId);
+	}
 
 }

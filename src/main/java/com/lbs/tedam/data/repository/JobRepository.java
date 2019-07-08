@@ -17,45 +17,51 @@
 
 package com.lbs.tedam.data.repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.lbs.tedam.model.Job;
 import com.lbs.tedam.model.Project;
 import com.lbs.tedam.util.EnumsV2.JobStatus;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Repository for entity Job.
  */
 public interface JobRepository extends BaseRepository<Job, Integer> {
 
-    public List<Job> findByProjectAndDeleted(Project project, boolean deleted);
+	public List<Job> findByProjectAndDeleted(Project project, boolean deleted);
 
-    public List<Job> findByProjectAndDeletedAndCi(Project project, boolean deleted, boolean ci);
+	public List<Job> findByProjectAndDeletedAndCi(Project project, boolean deleted, boolean ci);
 
-    public List<Job> findByProjectAndDeletedAndActive(Project project, boolean deleted, boolean active);
+	public List<Job> findByProjectAndDeletedAndActive(Project project, boolean deleted, boolean active);
 
-    @Transactional
-    @Modifying
-    @Query("update Job j set j.status = ?2, j.lastExecutedStartDate = ?3 , j.lastExecutedEndDate = ?4 where j.id = ?1")
-    public void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus, LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate);
+	@Transactional
+	@Modifying
+	@Query("update Job j set j.status = ?2, j.lastExecutedStartDate = ?3 , j.lastExecutedEndDate = ?4 where j.id = ?1")
+	public void updateJobStatusAndExecutedDateByJobId(Integer jobId, JobStatus jobStatus,
+			LocalDateTime lastExecutedStartDate, LocalDateTime lastExecutedEndDate);
 
-    @Transactional
-    @Modifying
-    @Query("update Job j set j.status = 0 where j.id = ?1")
-    public void resetJob(Integer jobId);
-    
-    @Transactional
-    @Modifying
-    @Query("update Job j set j.plannedDate = null where j.id = ?1")
-    public void resetJobPlannedDate(Integer jobId);
+	@Transactional
+	@Modifying
+	@Query("update Job j set j.status = 0 where j.id = ?1")
+	public void resetJob(Integer jobId);
 
-    @Query("select j.id from Job j where j.jobEnvironment.id = ?1")
-    public List<Integer> getJobIdListByEnvironmentId(Integer environmentId);
+	@Transactional
+	@Modifying
+	@Query("update Job j set j.plannedDate = null where j.id = ?1")
+	public void resetJobPlannedDate(Integer jobId);
 
-    public List<Job> findByClientsId(Integer clientId);
+	@Query("select j.id from Job j where j.jobEnvironment.id = ?1")
+	public List<Integer> getJobIdListByEnvironmentId(Integer environmentId);
+
+	public List<Job> findByClientsId(Integer clientId);
+
+	@Query("select j.id from Job j where j.status in (1,2,3,4,7,8) and j.deleted = 0 and j.project = :project")
+	public List<Integer> getJobIdListForJobGroup(@Param("project") Project project);
 
 }

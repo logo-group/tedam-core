@@ -32,7 +32,8 @@ public interface TestCaseTestRunRepository extends BaseRepository<TestCaseTestRu
 	@Query("select run from TestCaseTestRun run where run.testCaseId between :testCaseIdStart and :testCaseIdEnd and run.deleted = :deleted group by run.testCaseId order by run.testCaseId desc, run.id desc")
     public List<TestCaseTestRun> findByTestCaseIdRange(@Param("testCaseIdStart") Integer testCaseIdStart, @Param("testCaseIdEnd") Integer testCaseIdEnd, @Param("deleted") boolean deleted);
 
-	@Query("select run from TestCaseTestRun run where run.testSetId between :testSetIdStart and :testSetIdEnd and run.deleted = :deleted group by run.testSetId order by run.testSetId desc, run.id desc")
-    public List<TestCaseTestRun> findByTestSetIdRange(@Param("testSetIdStart") Integer testSetIdStart, @Param("testSetIdEnd") Integer testSetIdEnd, @Param("deleted") boolean deleted);
+	@Query("select max(run.id) as maxi, run.testSetId, run.testCaseId, run.executionStatus from TestCaseTestRun run where run.testSetId between :testSetIdStart and :testSetIdEnd and run.deleted = :deleted group by run.testSetId, run.testCaseId, run.executionStatus order by run.testSetId desc, maxi desc")
+	public List<Object[]> findByTestSetIdRange(@Param("testSetIdStart") Integer testSetIdStart,
+			@Param("testSetIdEnd") Integer testSetIdEnd, @Param("deleted") boolean deleted);
 
 }
