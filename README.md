@@ -1,6 +1,4 @@
 # TEDAM-Core
-<a href="http://www.logo.com.tr"><img src="https://www.logo.com.tr/img/logo.png"/></a>
-
 [![Build Status](https://travis-ci.com/logobs/tedam-core.svg?branch=master)](https://travis-ci.com/logobs/tedam-core)
 [![sonar-quality-gate][sonar-quality-gate]][sonar-url] [![sonar-bugs][sonar-bugs]][sonar-url] [![sonar-vulnerabilities][sonar-vulnerabilities]][sonar-url] [![sonar-coverage][sonar-coverage]][sonar-url] [![sonar-duplicated-lines][sonar-dublicated-lines]][sonar-url]
 
